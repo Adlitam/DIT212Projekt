@@ -17,9 +17,11 @@ public final class Main {
 		SwingUtilities.invokeLater(() -> {
                     final Project project = new Project();
                     final ProjectView projectView = new ProjectView(project);
+
                     
                     ProjectController.create(project, projectView);
                     projectView.setVisible(true);
                 });
+        System.out.println("Bla");
 	}
 }
