@@ -22,7 +22,7 @@ public final class Main {
                     ProjectController.create(project, projectView);
                     projectView.setVisible(true);
                 });
-        System.out.println("Bla");
+        System.out.println("Bla2");
         System.out.println("Testar git");
 	}
 }
