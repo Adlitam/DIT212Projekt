@@ -23,9 +23,5 @@ public final class Main {
                     projectView.setVisible(true);
                 });
 
-
-        System.out.println("Bla2");
-
-        System.out.println("Testar git");
 	}
 }
