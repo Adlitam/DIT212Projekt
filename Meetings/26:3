@@ -1,53 +1,0 @@
-Meeting Agenda    Date: 26/3    
-
-Facilitator: Matilda Andersson    
-
-Participants: Jonathan Johansson, Matilda Andersson, Johan Ärlebrandt, Karin Wibergh  
-
-1. Objectives (5 min). Resolve any issues preventing the team to continue.
-    We don't have enough usecases.
-
-  2. Reports (15 min) from previous meeting
-    We have learned git. 
-    Installed all necessary software. 
-    We have figure out which RAD template to use.
-
-   3. Discussion items (35 min)
-  - Usecases
-
-
-  4. Outcomes and assignments (5 min)
--Usecases
--move character around with arrow keys
--Questions
-    -Correct Answer
-    checkpoint?
-    remove one wall?
-    get keys
-    get food for the monster
-    get points
-    -Wrong Answer
-    be moved to random location on the map/ to the beginning?
-    a monster has appeared on the map
-    lose points
--Time - Time converts to points
--Points
--Teleporter
--Chests containing food or keys
--Doors that need keys to be opened
--High score board
--Set name
--choose characters
--save user
-    name
-    which levels has the user completed
-    highest high score per level
--load user
--remove user
--may select any level if the previous ones have been completed
-
-
-5. Wrap up   
-	Think about the model for use cases.
-
-Next meeting: monday 30/3  Edit building, 5205 13:oo - 14:oo
