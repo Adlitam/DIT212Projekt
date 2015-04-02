@@ -11,6 +11,6 @@ public class Road implements ISquare {
 
     @Override
     public boolean teleportable() {
-        return false;
+        return true;
     }
 }
