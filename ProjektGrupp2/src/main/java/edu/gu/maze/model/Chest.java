@@ -11,6 +11,7 @@ public class Chest implements ISquare {
 
     @Override
     public boolean teleportable() {
+
         return true;
     }
 }

@@ -11,6 +11,7 @@ public class Wizard implements ISquare {
 
     @Override
     public boolean teleportable() {
+        
         return false;
     }
 }
