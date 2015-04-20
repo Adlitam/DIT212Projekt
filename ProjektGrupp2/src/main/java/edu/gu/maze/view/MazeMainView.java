@@ -19,9 +19,9 @@ public class MazeMainView extends Application {
 
     Button button;
 
-    public MazeMainView(){
+    public MazeMainView(String[] args){
 
-        launch();
+        launch(args);
 
     }
 
