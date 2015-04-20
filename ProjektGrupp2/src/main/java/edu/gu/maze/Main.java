@@ -28,17 +28,12 @@ public final class Main extends Application {
     private final int YMAX = 5;
 
     public static void main(String[] args) {
-
         launch(args);
     }
 
     GridPane layout;
-    Rectangle a, b, c, d, e;
+    Rectangle [] rect = new Rectangle[5];
     Circle circle;
-    ArrayList<Rectangle> boxes;
-
-
-    //-------------Johans-------------
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -46,6 +41,7 @@ public final class Main extends Application {
         primaryStage.setTitle("Maze");
         //Circle circle = new Circle(50,100,10, Color.MAGENTA);
         layout = new GridPane();
+
 
         Label bottom = new Label();
         bottom.setMinHeight(100);
@@ -81,40 +77,18 @@ public final class Main extends Application {
         borderPane.setBottom(bottom);
         borderPane.setRight(right);
 
-
-
-
-
-
-
         circle = new Circle(15.0f, Color.RED);
-        a = new Rectangle(50, 50, Color.GREEN);
-        b = new Rectangle(50, 50, Color.GREEN);
-        c = new Rectangle(50, 50, Color.GREEN);
-        d = new Rectangle(50, 50, Color.GREEN);
-        e = new Rectangle(50, 50, Color.GREEN);
-        layout.add(a, 2, 0);
-        layout.add(b, 2, 1);
-        layout.add(c, 2, 2);
-        layout.add(d, 2, 3);
-        layout.add(e, 2, 4);
-        boxes = new ArrayList();
-        boxes.add(a);
-        boxes.add(b);
-        boxes.add(c);
-        boxes.add(d);
-        boxes.add(e);
+        //set all rectangels to green
+        //add all rectangles to the layout
+        for(int i = 0;i<rect.length;i++){
+            rect[i]=new Rectangle(50, 50, Color.GREEN);
+            layout.add(rect[i], 2, i);
+            layout.getRowConstraints().add(new RowConstraints(50));
+            layout.getColumnConstraints().add(new ColumnConstraints(50));
+        }
+
+
         layout.add(circle, 2, 4);
-        layout.getRowConstraints().add(new RowConstraints(50));
-        layout.getRowConstraints().add(new RowConstraints(50));
-        layout.getRowConstraints().add(new RowConstraints(50));
-        layout.getRowConstraints().add(new RowConstraints(50));
-        layout.getRowConstraints().add(new RowConstraints(50));
-        layout.getColumnConstraints().add(new ColumnConstraints(50));
-        layout.getColumnConstraints().add(new ColumnConstraints(50));
-        layout.getColumnConstraints().add(new ColumnConstraints(50));
-        layout.getColumnConstraints().add(new ColumnConstraints(50));
-        layout.getColumnConstraints().add(new ColumnConstraints(50));
         layout.setValignment(circle, javafx.geometry.VPos.CENTER);
         layout.setHalignment(circle, javafx.geometry.HPos.CENTER);
         Scene scene = new Scene(borderPane, 500, 500, Color.BLACK);
@@ -132,15 +106,6 @@ public final class Main extends Application {
             }
         });
 
-
-
-
-
-
-
-
-
-
         primaryStage.setScene(scene);
 
         primaryStage.show();
@@ -153,7 +118,7 @@ public final class Main extends Application {
 
     private void moveup() {
         if (YPOS <= 1) return;
-        for (Rectangle r : boxes) {
+        for (Rectangle r : rect) {
             layout.setRowIndex(r, layout.getRowIndex(r) + 1);
         }
         YPOS--;
@@ -161,7 +126,7 @@ public final class Main extends Application {
 
     private void movedown() {
         if (YPOS >= YMAX) return;
-        for (Rectangle r : boxes) {
+        for (Rectangle r : rect) {
             layout.setRowIndex(r, layout.getRowIndex(r) - 1);
         }
         YPOS++;
