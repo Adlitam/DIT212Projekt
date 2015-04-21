@@ -5,7 +5,9 @@ import edu.gu.maze.model.Game;
 import edu.gu.maze.view.MazeMainView;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -76,19 +78,17 @@ public final class Main extends Application {
         bottom.getChildren().addAll(output,input);
 
         // BLÄ
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         VBox right = new VBox();
-        right.setStyle("-fx-border-color: black;");
 
         Label apple = new Label("Apple");
         apple.setAlignment(Pos.CENTER);
-        apple.setMinHeight(100);
-        apple.setMinWidth(100);
+        apple.setPrefSize(100,(screenSize.getHeight()-100)/4);
         apple.setStyle("-fx-border-color: black;");
 
         Label key = new Label("Key");
         key.setAlignment(Pos.CENTER);
-        key.setMinHeight(100);
-        key.setMinWidth(100);
+        key.setPrefSize(100,(screenSize.getHeight()-100)/4);
         key.setStyle("-fx-border-color: black;");
 
         VBox points = new VBox();
@@ -97,17 +97,14 @@ public final class Main extends Application {
         Label text = new Label("Score");
         Label score = new Label();
         score.setText(currentScore + "");
-        points.getChildren().addAll(text,score);
+        points.getChildren().addAll(text, score);
         points.setAlignment(Pos.CENTER);
-        points.setMinHeight(100);
-        points.setMaxWidth(100);
+        points.setPrefSize(100,(screenSize.getHeight()-100)/4);
         points.setStyle("-fx-border-color: black;");
 
         Label time = new Label("Time");
         time.setAlignment(Pos.CENTER);
-        time.setMinHeight(100);
-        time.setMaxHeight(Double.MAX_VALUE);
-        time.setMinWidth(100);
+        time.setPrefSize(100,(screenSize.getHeight()-100)/4);
         time.setStyle("-fx-border-color: black;");
 
         right.getChildren().addAll(apple,key,points,time);
@@ -132,7 +129,7 @@ public final class Main extends Application {
         layout.add(circle, 2, 4);
         layout.setValignment(circle, javafx.geometry.VPos.CENTER);
         layout.setHalignment(circle, javafx.geometry.HPos.CENTER);
-        Scene scene = new Scene(borderPane, 500, 500, Color.BLACK);
+        Scene scene = new Scene(borderPane, 500, 500);
        /* scene.setOnKeyPressed(e -> {
                 switch (e.getCode()) {
                     case UP:
