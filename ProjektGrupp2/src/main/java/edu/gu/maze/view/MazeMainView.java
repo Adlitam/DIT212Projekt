@@ -10,14 +10,22 @@ import javafx.stage.Stage;
 
 
 public class MazeMainView {
+    //Stage
 
+
+    //Scenes
     Scene mainScene,gameScene;
 
+    //Instance
     GameView gameView = new GameView();
 
+    //Layouts
     BorderPane layout;
 
+    //Buttons
     Button playButton;
+
+
 
     public MazeMainView(Stage stage){
 
@@ -41,8 +49,11 @@ public class MazeMainView {
 
         //Show the window
         stage.show();
-
     }
+
+
+
+
 
 }
 
