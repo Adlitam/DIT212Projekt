@@ -1,144 +1,49 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.model.Game;
-import javafx.geometry.*;
+
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.stage.Screen;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+
 
 
 public class MazeMainView {
 
-    private int XPOS = 2;
-    private int YPOS = 5;
-    private final int XMAX = 5;
-    private final int YMAX = 5;
-    GridPane layout;
-    Rectangle[] rect = new Rectangle[5];
-    Circle circle;
+    Scene mainScene,gameScene;
 
-    public void mainView(Stage primaryStage) throws Exception {
+    GameView gameView = new GameView();
 
-        primaryStage.setTitle("Maze");
-        GridPane layout = new GridPane();
+    BorderPane layout;
 
-        VBox bottom = new VBox();
-        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
-        //If you want to move the circle, click in the commentField
-        TextArea output = new TextArea();
-        output.setEditable(false);
-        output.setWrapText(true);
-        TextField input = new TextField();
-        input.setOnKeyPressed(e -> {
-            switch (e.getCode()) {
-                case ENTER:
-                    output.setText(input.getText());
-                    input.clear();
-                    break;
-                case UP:
-                    moveup();
-                    break;
-                case DOWN:
-                    movedown();
-                    break;
-            }
-        });
-        bottom.setPrefSize(screenSize.getWidth(), 100);
-        bottom.getChildren().addAll(output, input);
+    Button playButton;
 
-        // BLÄ
-        VBox right = new VBox();
+    public MazeMainView(Stage stage){
 
-        Label apple = new Label("Apple");
-        apple.setAlignment(Pos.CENTER);
-        apple.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
-        apple.setStyle("-fx-border-color: black;");
+        //Sets the title of the window
+        stage.setTitle("Maze");
 
-        Label key = new Label("Key");
-        key.setAlignment(Pos.CENTER);
-        key.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
-        key.setStyle("-fx-border-color: black;");
+        //The layout
+        layout = new BorderPane();
 
-        VBox points = new VBox();
-        Game gameScore = new Game();
-        int currentScore = gameScore.getcurrentHighScore();
-        Label text = new Label("Score");
-        Label score = new Label();
-        score.setText(currentScore + "");
-        points.getChildren().addAll(text, score);
-        points.setAlignment(Pos.CENTER);
-        points.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
-        points.setStyle("-fx-border-color: black;");
+        //The play button
+        playButton = new Button("Play the game");
+        playButton.setOnAction(e -> stage.setScene(gameView.gameView(gameScene)));
 
-        Label time = new Label("Time");
-        time.setAlignment(Pos.CENTER);
-        time.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
-        time.setStyle("-fx-border-color: black;");
-
-        right.getChildren().addAll(apple, key, points, time);
+        layout.setCenter(playButton);
 
 
-        BorderPane borderPane = new BorderPane();
-        borderPane.setCenter(layout);
-        borderPane.setBottom(bottom);
-        borderPane.setRight(right);
+        //Sets the scene
+        mainScene = new Scene(layout,500,500);
 
-        circle = new Circle(15.0f, Color.RED);
-        //set all rectangels to green
-        //add all rectangles to the layout
-        for (int i = 0; i < rect.length; i++) {
-            rect[i] = new Rectangle(50, 50, Color.GREEN);
-            layout.add(rect[i], 2, i);
-            layout.getRowConstraints().add(new RowConstraints(50));
-            layout.getColumnConstraints().add(new ColumnConstraints(50));
-        }
+        stage.setScene(mainScene);
 
+        //Show the window
+        stage.show();
 
-        layout.add(circle, 2, 4);
-        layout.setValignment(circle, VPos.CENTER);
-        layout.setHalignment(circle, HPos.CENTER);
-        Scene scene = new Scene(borderPane, 500, 500);
-        /*scene.setOnKeyPressed(e -> {
-                switch (e.getCode()) {
-                    case UP:
-                        moveup();
-                        break;
-                    case DOWN:
-                        movedown();
-                        break;
-                }
-
-        });
-       */
-
-        primaryStage.setScene(scene);
-
-        primaryStage.show();
     }
 
-
-    private void moveup() {
-        if (YPOS <= 1) return;
-        for (Rectangle r : rect) {
-            layout.setRowIndex(r, layout.getRowIndex(r) + 1);
-        }
-        YPOS--;
-    }
-
-    private void movedown() {
-        if (YPOS >= YMAX) return;
-        for (Rectangle r : rect) {
-            layout.setRowIndex(r, layout.getRowIndex(r) - 1);
-        }
-        YPOS++;
-    }
 }
 
 
