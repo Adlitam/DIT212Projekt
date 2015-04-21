@@ -123,6 +123,7 @@ public final class Main extends Application {
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case UP:
+
                         moveup();
                         break;
                     case DOWN:
