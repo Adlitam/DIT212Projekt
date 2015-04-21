@@ -4,13 +4,13 @@ package edu.gu.maze.model;
  * Created by Matildaandersson on 15-04-01.
  */
 public class Game {
-    int currentHighScore;
+    int currentHighScore = 0;
 
-    private int getcurrentHighScore(){
+    public int getcurrentHighScore(){
         return currentHighScore;
     }
 
-    private void setcurrentHighScore(int score){
+    public void setcurrentHighScore(int score){
         currentHighScore=score;
     }
 }

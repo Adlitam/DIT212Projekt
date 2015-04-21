@@ -1,20 +1,27 @@
 package edu.gu.maze;
 
 
+import edu.gu.maze.model.Game;
 import edu.gu.maze.view.MazeMainView;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.util.*;
 
 /*
@@ -39,36 +46,70 @@ public final class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         primaryStage.setTitle("Maze");
-        //Circle circle = new Circle(50,100,10, Color.MAGENTA);
         layout = new GridPane();
 
+        VBox bottom = new VBox();
 
-        Label bottom = new Label();
+        //If you want to move the circle, click in the commentField
+        TextArea output = new TextArea();
+        output.setMaxHeight(80);
+        output.setEditable(false);
+        output.setWrapText(true);
+        TextField input = new TextField();
+        input.setOnKeyPressed(e -> {
+            switch (e.getCode()) {
+                case ENTER:
+                    output.setText(input.getText());
+                    input.clear();
+                    break;
+                case UP:
+                    moveup();
+                    break;
+                case DOWN:
+                    movedown();
+                    break;
+             }
+        });
+        input.setMinHeight(20);
         bottom.setMinHeight(100);
-        bottom.setMinWidth(500);
-        bottom.setStyle("-fx-border-color: black;");
+        bottom.setMaxWidth(Double.MAX_VALUE);
+        bottom.getChildren().addAll(output,input);
 
+        // BLÄ
         VBox right = new VBox();
+        right.setStyle("-fx-border-color: black;");
+
         Label apple = new Label("Apple");
         apple.setAlignment(Pos.CENTER);
         apple.setMinHeight(100);
         apple.setMinWidth(100);
         apple.setStyle("-fx-border-color: black;");
+
         Label key = new Label("Key");
         key.setAlignment(Pos.CENTER);
         key.setMinHeight(100);
         key.setMinWidth(100);
         key.setStyle("-fx-border-color: black;");
-        Label points = new Label("Points");
+
+        VBox points = new VBox();
+        Game gameScore = new Game();
+        int currentScore = gameScore.getcurrentHighScore();
+        Label text = new Label("Score");
+        Label score = new Label();
+        score.setText(currentScore + "");
+        points.getChildren().addAll(text,score);
         points.setAlignment(Pos.CENTER);
         points.setMinHeight(100);
         points.setMaxWidth(100);
         points.setStyle("-fx-border-color: black;");
+
         Label time = new Label("Time");
         time.setAlignment(Pos.CENTER);
         time.setMinHeight(100);
+        time.setMaxHeight(Double.MAX_VALUE);
         time.setMinWidth(100);
         time.setStyle("-fx-border-color: black;");
+
         right.getChildren().addAll(apple,key,points,time);
 
 
@@ -92,10 +133,8 @@ public final class Main extends Application {
         layout.setValignment(circle, javafx.geometry.VPos.CENTER);
         layout.setHalignment(circle, javafx.geometry.HPos.CENTER);
         Scene scene = new Scene(borderPane, 500, 500, Color.BLACK);
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
+       /* scene.setOnKeyPressed(e -> {
+                switch (e.getCode()) {
                     case UP:
 
                         moveup();
@@ -104,17 +143,14 @@ public final class Main extends Application {
                         movedown();
                         break;
                 }
-            }
+
         });
+       */
 
         primaryStage.setScene(scene);
 
         primaryStage.show();
     }
-
-
-
-    //-------------Johans-------------
 
 
     private void moveup() {
