@@ -1,5 +1,6 @@
 package edu.gu.maze.view;
 
+import com.sun.imageio.stream.StreamCloser;
 import edu.gu.maze.model.Game;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -25,6 +26,8 @@ import javafx.stage.Stage;
  */
 public class GameView {
 
+   Stage mainStage = new Stage();
+
     private int XPOS = 2;
     private int YPOS = 5;
     private final int XMAX = 5;
@@ -47,7 +50,9 @@ public class GameView {
         TextArea output = new TextArea();
         output.setEditable(false);
         output.setWrapText(true);
+        HBox inputAndBack = new HBox();
         TextField input = new TextField();
+        input.setPrefWidth(screenSize.getWidth() - 100);
         input.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case ENTER:
@@ -62,8 +67,18 @@ public class GameView {
                     break;
             }
         });
+
+
+        Button backButton = new Button("Back to start");
+        backButton.setOnAction(e -> {
+            new MazeMainView(mainStage);
+
+        });
+        backButton.setMinWidth(100);
+
+        inputAndBack.getChildren().addAll(input,backButton);
         bottom.setPrefSize(screenSize.getWidth(), 100);
-        bottom.getChildren().addAll(output, input);
+        bottom.getChildren().addAll(output, inputAndBack);
 
         // The planel on the right
         VBox right = new VBox();
@@ -71,13 +86,13 @@ public class GameView {
         //The label with how many apples the player have
         Label apple = new Label("Apple");
         apple.setAlignment(Pos.CENTER);
-        apple.setPrefSize(100, (screenSize.getHeight() - 100) / 5);
+        apple.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
         apple.setStyle("-fx-border-color: black;");
 
         //The label with how many keys the player have
         Label key = new Label("Key");
         key.setAlignment(Pos.CENTER);
-        key.setPrefSize(100, (screenSize.getHeight() - 100) / 5);
+        key.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
         key.setStyle("-fx-border-color: black;");
 
         VBox points = new VBox();
@@ -90,29 +105,15 @@ public class GameView {
 
         points.getChildren().addAll(text, score);
         points.setAlignment(Pos.CENTER);
-        points.setPrefSize(100, (screenSize.getHeight() - 100) / 5);
+        points.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
         points.setStyle("-fx-border-color: black;");
 
         Label time = new Label("Time");
         time.setAlignment(Pos.CENTER);
-        time.setPrefSize(100, (screenSize.getHeight() - 100) / 5);
+        time.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
         time.setStyle("-fx-border-color: black;");
 
-
-
-        Pane back = new Pane();
-
-        Button backButton = new Button("Back to start");
-
-
-        back.getChildren().add(backButton);
-
-        back.setPrefSize(100, (screenSize.getHeight() - 100) / 5);
-        back.setStyle("-fx-border-color: black;");
-
-
-
-        right.getChildren().addAll(apple, key, points, time, back);
+        right.getChildren().addAll(apple, key, points, time);
 
 
         BorderPane borderPane = new BorderPane();
