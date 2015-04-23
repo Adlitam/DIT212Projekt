@@ -1,6 +1,6 @@
 package edu.gu.maze.view;
 
-import com.sun.imageio.stream.StreamCloser;
+
 import edu.gu.maze.model.Game;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
