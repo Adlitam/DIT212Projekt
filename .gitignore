@@ -5,11 +5,11 @@
 
 # Intellij
 .idea/
-*.iml
-*.iws
+**/*.iml
+**/*.iws
 
 # Mac
-.DS_Store
+**/.DS_Store
 
 # Maven
 log/
