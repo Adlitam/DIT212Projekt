@@ -4,25 +4,25 @@ package edu.gu.maze.view;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.Effect;
-import javafx.scene.effect.Lighting;
+
 import javafx.scene.layout.BorderPane;
+
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 
 public class MazeMainView {
 
-    Scene mainScene, gameScene;
+    Scene mainScene, gameScene, highScene;
 
     GameView gameView = new GameView();
+    HighScoreView highView = new HighScoreView();
 
     BorderPane layout;
 
-    Button playButton;
+    Button playButton, highScoreButton;
 
     public MazeMainView(Stage stage) {
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
@@ -32,7 +32,9 @@ public class MazeMainView {
         //The layout
         layout = new BorderPane();
 
+        VBox center = new VBox();
 
+        layout.setCenter(center);
 
 
         //The play button
@@ -40,7 +42,15 @@ public class MazeMainView {
 
         playButton.setOnAction(e -> stage.setScene(gameView.gameView(gameScene)));
 
-        layout.setCenter(playButton);
+
+
+        //The Highscore Button
+        highScoreButton = new Button("High Score");
+
+        highScoreButton.setOnAction(e -> stage.setScene(highView.highScore(highScene)));
+
+
+        center.getChildren().addAll(playButton,highScoreButton);
 
 
         //Sets the scene

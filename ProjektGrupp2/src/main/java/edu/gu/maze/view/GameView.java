@@ -135,7 +135,7 @@ public class GameView {
         layout.add(circle, 2, 4);
         layout.setValignment(circle, VPos.CENTER);
         layout.setHalignment(circle, HPos.CENTER);
-        gameScene = new Scene(borderPane, 500, 500);
+        gameScene = new Scene(borderPane, screenSize.getWidth(), screenSize.getHeight());
 
 
         return gameScene;
