@@ -4,16 +4,16 @@
 .settings/
 
 # Intellij
-**/.idea/
-**/*.iml
+*/.idea/*
+*/*.iml/*
 *.iws
 
 # Mac
-**/.DS_Store
+.DS_Store
 
 # Maven
 log/
-**/target
+*/target/*
 
 nbproject/private/
 build/

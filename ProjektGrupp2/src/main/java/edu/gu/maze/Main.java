@@ -1,7 +1,7 @@
 package edu.gu.maze;
 
 
-import edu.gu.maze.view.GameView;
+
 
 import edu.gu.maze.view.MazeMainView;
 import javafx.application.Application;
