@@ -2,6 +2,7 @@ package edu.gu.maze.view;
 
 
 import edu.gu.maze.model.Game;
+import edu.gu.maze.model.Map;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -43,6 +44,7 @@ public class GameView {
 
 
         GridPane layout = new GridPane();
+        //GridPane testPane = Map.createMap1();
 
         VBox bottom = new VBox();
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
@@ -118,6 +120,7 @@ public class GameView {
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(layout);
+        //borderPane.setCenter(testPane);
         borderPane.setBottom(bottom);
         borderPane.setRight(right);
 
