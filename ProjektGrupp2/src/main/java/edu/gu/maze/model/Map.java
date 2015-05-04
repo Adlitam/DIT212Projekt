@@ -14,7 +14,7 @@ import java.util.Observer;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class Map extends Observable{
+public class Map extends Observable implements IGame{
     public static GridPane createMap1(){
         GridPane g = new GridPane();
         //g.setHgap(10);   //gep between every row in the gridPane

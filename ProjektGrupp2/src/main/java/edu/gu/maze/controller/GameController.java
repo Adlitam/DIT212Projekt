@@ -1,5 +1,6 @@
 package edu.gu.maze.controller;
 
+import edu.gu.maze.model.IGame;
 import edu.gu.maze.model.Map;
 import edu.gu.maze.view.MainView;
 import java.awt.event.ActionEvent;
@@ -12,10 +13,10 @@ import java.util.Observer;
  * Created by xiang-yu on 2015-04-28.
  */
 public class GameController implements Observer {
-    Map model;
+    IGame model;
     MainView view;
 
-    public GameController(Map model, MainView view){
+    public GameController(IGame model, MainView view){
         this.model = model;
         this.view = view;
         this.view.addObserver(this);
