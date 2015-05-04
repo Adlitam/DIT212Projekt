@@ -9,7 +9,7 @@ public class Player extends ImageView{
     String playerName = "john";
     private int xPos;
     private int yPos;
-    Image image = new Image("file:\\C:\\Users\\xiang-yu\\Desktop\\studier\\player1.png");
+    Image image = new Image("player1.png");
 
     public Player(int x, int y){
         xPos = x;

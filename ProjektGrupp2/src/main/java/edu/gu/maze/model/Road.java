@@ -14,7 +14,7 @@ import javafx.scene.shape.Rectangle;
 public class Road extends ImageView implements ISquare {
     private final int xPos;
     private final int yPos;
-    Image image = new Image("file:\\C:\\Users\\xiang-yu\\Desktop\\studier\\road.jpg");
+    Image image = new Image("road.jpg");
 
     public Road(int x, int y, Paint p){
         this.xPos = x;
