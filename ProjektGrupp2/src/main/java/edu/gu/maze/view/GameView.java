@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -19,7 +20,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-
+import static javafx.scene.input.KeyCode.*;
 
 
 /**
@@ -36,15 +37,20 @@ public class GameView {
     GridPane layout;
     Rectangle[] rect = new Rectangle[5];
     Circle circle;
+    BorderPane borderPane = new BorderPane();
+    GridPane testPane = Map.createMap1();   //TEST
+    //testPane.setMaxHeight(300);
+    //testPane.setMaxWidth(700);
+    //testPane.setMaxSize(700,300);
+    //StackPane stackPane = new StackPane();
+    //stackPane.setStyle("-fx-background-color: rgba(0, 0, 0, 0);");
 
-
-    public Scene gameView(Scene gameScene) {
+    public Scene getGameScene(Scene gameScene) {
 
 
 
 
         GridPane layout = new GridPane();
-        //GridPane testPane = Map.createMap1();
 
         VBox bottom = new VBox();
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
@@ -55,7 +61,7 @@ public class GameView {
         HBox inputAndBack = new HBox();
         TextField input = new TextField();
         input.setPrefWidth(screenSize.getWidth() - 100);
-        input.setOnKeyPressed(e -> {
+        /*input.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case ENTER:
                     output.setText(input.getText());
@@ -67,6 +73,21 @@ public class GameView {
                 case DOWN:
                     movedown();
                     break;
+            }
+        });*/
+        testPane.setOnKeyPressed(e -> {
+            Object b = e.getSource();
+            if(b.equals(KeyCode.UP)) {
+                //moveUp();
+            }
+            if(b.equals(KeyCode.DOWN)){
+                //moveDown();
+            }
+            if(b.equals(KeyCode.LEFT)){
+                //moveLeft();
+            }
+            if(b.equals(KeyCode.RIGHT)){
+                //moveRight();
             }
         });
 
@@ -116,11 +137,14 @@ public class GameView {
         time.setStyle("-fx-border-color: black;");
 
         right.getChildren().addAll(apple, key, points, time);
+        right.minWidth(100);
+        right.setMinWidth(100);
 
 
-        BorderPane borderPane = new BorderPane();
-        borderPane.setCenter(layout);
-        //borderPane.setCenter(testPane);
+        //BorderPane borderPane = new BorderPane();
+        //borderPane.setCenter(layout);
+        borderPane.setCenter(testPane);    //TEST
+        //borderPane.setCenter(stackPane);    //TEST
         borderPane.setBottom(bottom);
         borderPane.setRight(right);
 
@@ -138,12 +162,24 @@ public class GameView {
         layout.add(circle, 2, 4);
         layout.setValignment(circle, VPos.CENTER);
         layout.setHalignment(circle, HPos.CENTER);
-        gameScene = new Scene(borderPane, screenSize.getWidth(), screenSize.getHeight());
+        gameScene = new Scene(borderPane, 1000, 600);
+        //gameScene = new Scene(borderPane, screenSize.getWidth(), screenSize.getHeight());
 
 
         return gameScene;
 
 
+    }
+
+    private void moveDown() {
+    }
+    private void moveUp() {
+        //int x = testPane.
+        //if(testPane.getChildren() )
+    }
+    private void moveLeft() {
+    }
+    private void moveRight() {
     }
 
 

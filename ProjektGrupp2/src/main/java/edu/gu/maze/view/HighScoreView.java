@@ -20,7 +20,8 @@ public class HighScoreView {
         //Layout
         BorderPane layout = new BorderPane();
 
-        hsScene = new Scene(layout,screenSize.getWidth(), screenSize.getHeight());
+        //hsScene = new Scene(layout,screenSize.getWidth(), screenSize.getHeight());
+        hsScene = new Scene(layout, 1000, 600);
 
         return hsScene;
     }

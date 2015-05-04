@@ -40,7 +40,7 @@ public class MazeMainView {
         //The play button
         playButton = new Button("Play the game");
 
-        playButton.setOnAction(e -> stage.setScene(gameView.gameView(gameScene)));
+        playButton.setOnAction(e -> stage.setScene(gameView.getGameScene(gameScene)));
 
 
 
@@ -54,7 +54,8 @@ public class MazeMainView {
 
 
         //Sets the scene
-        mainScene = new Scene(layout, screenSize.getWidth(), screenSize.getHeight());
+        mainScene = new Scene(layout, 1000, 600);
+        //mainScene = new Scene(layout, screenSize.getWidth(), screenSize.getHeight());
 
         stage.setScene(mainScene);
 
