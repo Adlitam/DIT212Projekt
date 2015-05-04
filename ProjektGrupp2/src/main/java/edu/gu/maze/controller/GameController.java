@@ -24,6 +24,20 @@ public class GameController implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        if(o == view){
+            if(view.getPlayButtonPressed()){
+                view.setPlayButtonFalse();
+                view.changeToGameScene();
+            }
+            if(view.getBackButtonPressed()){
+                view.setBackButtonFalse();
+                view.changeToStartScene();
+            }
+            if(view.getHighScoreButtonPressed()){
+                view.setHighScoreButtonFalse();
+                view.changeToHighScoreScene();
+            }
+        }
 
     }
 }
