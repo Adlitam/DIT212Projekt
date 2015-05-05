@@ -46,8 +46,8 @@ public class MainView extends Observable{
         playButton = new Button("Play the game");
         playButton.setOnAction(e -> {
             playButtonPressed = true;
-            setChanged();
-            notifyObservers();
+            changeToGameScene();
+            newGame();
         });
         highScoreButton = new Button("High Score");
         highScoreButton.setOnAction(e -> {
@@ -160,5 +160,14 @@ public class MainView extends Observable{
         highScoreScene = new Scene(borderPaneLayout, 1000, 600);
         stage.setScene(highScoreScene);
     }
+
+    public void newGame(){
+
+        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+        new LwjglApplication(new MazeTest(), config);
+
+    }
+
+
 }
 
