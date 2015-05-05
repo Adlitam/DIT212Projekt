@@ -1,15 +1,35 @@
 package edu.gu.maze;
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+//import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+//import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 
-public class Main {
-    public static void main (String[] arg) {
 
-        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
-        new LwjglApplication(new MazeTest(), config);
+        public final class Main extends Application {
 
-    }
-}
+            public static void main(String[] args) {
+                launch(args);
+            }
+
+            @Override
+            public void start(Stage primaryStage) throws Exception {
+                //new MazeMainView(primaryStage);
+
+
+/*
+            //model
+            IGame model = new Game();
+
+            //view
+            MainView view = new MainView(primaryStage);
+
+            //controller
+            GameController controller = new GameController(model, view);
+            */
+            }
+
+        }
+
