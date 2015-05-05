@@ -3,6 +3,7 @@ package edu.gu.maze.View;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
+import edu.gu.maze.MazeTest;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -48,6 +49,9 @@ public class MainView extends Observable{
             playButtonPressed = true;
             setChanged();
             notifyObservers();
+            new LwjglApplication(new MazeTest(), new LwjglApplicationConfiguration());
+            //changeToGameScene();
+
         });
         highScoreButton = new Button("High Score");
         highScoreButton.setOnAction(e -> {
