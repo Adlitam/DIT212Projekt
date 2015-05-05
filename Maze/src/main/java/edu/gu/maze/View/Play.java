@@ -1,4 +1,4 @@
-package com.mygdx.game.screens;
+package edu.gu.maze.View;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -10,7 +10,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.mygdx.game.entities.Player;
+import edu.gu.maze.Entities.Player;
+
 
 /**
  * Created by Johan on 2015-05-05.
@@ -24,13 +25,13 @@ public class Play implements Screen {
 
     @Override
     public void show() {
-        map = new TmxMapLoader().load("C:\\Users\\Johan\\Desktop\\Programmering\\Java\\MazeTest\\desktop\\assets\\Maze4.tmx");
+        map = new TmxMapLoader().load("Maze4.tmx");
 
         renderer = new OrthogonalTiledMapRenderer(map);
 
         camera = new OrthographicCamera();
 
-        player = new Player(new Sprite(new Texture("C:\\Users\\Johan\\Desktop\\Programmering\\Java\\MazeTest\\desktop\\assets\\lion.png")),(TiledMapTileLayer) map.getLayers().get(0));
+        player = new Player(new Sprite(new Texture("lion.png")),(TiledMapTileLayer) map.getLayers().get(0));
         player.setPosition(22*player.getCollisionLayer().getTileWidth(),(player.getCollisionLayer().getHeight()-47) * player.getCollisionLayer().getTileHeight());
         Gdx.input.setInputProcessor(player);
     }

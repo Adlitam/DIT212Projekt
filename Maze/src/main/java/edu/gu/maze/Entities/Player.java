@@ -1,4 +1,4 @@
-package com.mygdx.game.entities;
+package edu.gu.maze.Entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;

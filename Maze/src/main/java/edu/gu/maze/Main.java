@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
             @Override
             public void start(Stage primaryStage) throws Exception {
-                //new MazeMainView(primaryStage);
+               // new MazeMainView(primaryStage);
 
 
 /*
