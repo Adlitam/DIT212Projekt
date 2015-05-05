@@ -23,8 +23,10 @@ public class MainView extends Observable{
     Stage stage;
     private Scene mainScene, gameScene, highScoreScene;
     private VBox vBoxlayout;
+    private HBox hBoxlayout;
     private BorderPane borderPaneLayout;
     private Button playButton, highScoreButton;
+    private Button backButton = new Button("Back to start");
     private boolean playButtonPressed;
     private boolean BackButtonPressed;
     private boolean HighScoreButtonPressed;
@@ -81,7 +83,6 @@ public class MainView extends Observable{
         TextField input = new TextField();
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         input.setPrefWidth(screenSize.getWidth() - 100);
-        Button backButton = new Button("Back to start");
         backButton.setOnAction(e -> {
             BackButtonPressed = true;
             setChanged();
@@ -146,6 +147,15 @@ public class MainView extends Observable{
 
     public void changeToHighScoreScene(){
         borderPaneLayout = new BorderPane();
+        hBoxlayout = new HBox();
+        hBoxlayout.getChildren().add(backButton);
+        hBoxlayout.setAlignment(Pos.CENTER);
+        backButton.setOnAction(e -> {
+            BackButtonPressed = true;
+            setChanged();
+            notifyObservers();
+        });
+        borderPaneLayout.setBottom(hBoxlayout);
         highScoreScene = new Scene(borderPaneLayout, 1000, 600);
         stage.setScene(highScoreScene);
     }
