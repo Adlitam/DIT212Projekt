@@ -1,4 +1,4 @@
-package edu.gu.maze.model;
+package edu.gu.maze.view;
 
 //import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
@@ -11,7 +11,7 @@ import javafx.scene.shape.Rectangle;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class Road extends ImageView implements ISquare {
+public class Road extends ImageView{
     private final int xPos;
     private final int yPos;
     Image image = new Image("road.jpg");
@@ -35,12 +35,12 @@ public class Road extends ImageView implements ISquare {
         return yPos;
     }
 
-    @Override
+    //@Override
     public int interact() {
         return 0;
     }
 
-    @Override
+    //@Override
     public boolean teleportable() {
         return true;
     }
