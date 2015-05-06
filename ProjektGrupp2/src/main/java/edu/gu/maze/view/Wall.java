@@ -1,4 +1,4 @@
-package edu.gu.maze.model;
+package edu.gu.maze.view;
 
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -6,7 +6,7 @@ import javafx.scene.shape.Rectangle;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class Wall extends Rectangle implements ISquare {
+public class Wall extends Rectangle{
 
     private final int xPos;
     private final int yPos;
@@ -26,12 +26,12 @@ public class Wall extends Rectangle implements ISquare {
     public int getYValue(){
         return yPos;
     }
-    @Override
+    //@Override
     public int interact() {
         return 0;
     }
 
-    @Override
+    //@Override
     public boolean teleportable() {
         return false;
     }
