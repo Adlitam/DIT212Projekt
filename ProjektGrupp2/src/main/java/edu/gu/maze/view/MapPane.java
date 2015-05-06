@@ -1,6 +1,6 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.model.Map;
+//import edu.gu.maze.view.Map;
 
 /**
  * Created by Matildaandersson on 15-05-04.

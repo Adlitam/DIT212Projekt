@@ -1,4 +1,4 @@
-package edu.gu.maze.model;
+package edu.gu.maze.view;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;

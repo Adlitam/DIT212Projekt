@@ -1,6 +1,6 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.model.Map;
+//import edu.gu.maze.model.Map;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;

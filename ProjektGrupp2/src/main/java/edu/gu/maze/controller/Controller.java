@@ -1,7 +1,7 @@
 package edu.gu.maze.controller;
 
 import edu.gu.maze.model.IGame;
-import edu.gu.maze.model.Map;
+import edu.gu.maze.view.Map;
 import edu.gu.maze.view.MainView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
