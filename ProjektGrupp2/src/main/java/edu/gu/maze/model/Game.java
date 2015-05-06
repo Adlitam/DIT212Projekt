@@ -6,7 +6,7 @@ import java.io.Serializable;
  */
 public class Game implements IGame, Serializable{
     int currentHighScore = 0;
-
+    private static final long serialVersionUID = 1L;
     public int getcurrentHighScore(){
         return currentHighScore;
     }
