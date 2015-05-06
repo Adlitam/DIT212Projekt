@@ -23,8 +23,8 @@ public class Road extends ImageView{
         //setHeight(50);
         //setWidth(50);
         setImage(image);
-        setFitWidth(50);
-        setFitHeight(50);
+        setFitWidth(30);
+        setFitHeight(30);
     }
 
     public int getXValue(){

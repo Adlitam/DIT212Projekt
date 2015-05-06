@@ -3,7 +3,9 @@ package edu.gu.maze.view;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.awt.event.ActionListener;
@@ -15,8 +17,12 @@ import java.util.Observer;
  * Created by Matildaandersson on 15-04-01.
  */
 public class Map extends Observable{
-    public static GridPane createMap1(){
-        GridPane g = new GridPane();
+    Pane map = new Pane();
+    GridPane g = new GridPane();
+
+
+    public  Pane createMap1(){
+
         //g.setHgap(10);   //gep between every row in the gridPane
         //g.setVgap(50);   //gep between every column in the gridPane
 
@@ -63,12 +69,42 @@ public class Map extends Observable{
             Road road = new Road(roadColumns[i], roadRows[i], Color.valueOf("gray"));
             g.add(road, roadColumns[i], roadRows[i]);    //node, column, row
         }
-        Player player = new Player(11, 15);
+        Player player = new Player();
+        player.update(11,15);
         g.add(player, 11, 15);
 
+        int playerX = player.getxPos();
+        int playerY = player.getyPos();
 
-        return g;
+        g.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()){
+                    case W:
+                        player.update(playerX,playerY-1);
+                        g.add(player,playerX,playerY-1);
+                        System.out.println("W");
+                        break;
+
+                }
+            }
+        });
+
+        map.setPrefSize(900,500);
+
+        map.getChildren().add(g);
+
+        return map;
     }
 
 
+
+
+    public Pane getMap() {
+        return map;
+    }
+
+    public GridPane getG() {
+        return g;
+    }
 }

@@ -11,13 +11,16 @@ public class Player extends ImageView{
     private int yPos;
     Image image = new Image("player1.png");
 
-    public Player(int x, int y){
+
+    public void update(int x, int y){
         xPos = x;
         yPos = y;
         setImage(image);
-        setFitWidth(50);
-        setFitHeight(50);
+        setFitWidth(30);
+        setFitHeight(30);
     }
+
+
 
     public void setxPos(int x){
         xPos = x;
@@ -27,6 +30,13 @@ public class Player extends ImageView{
         yPos = y;
     }
 
+    public int getxPos() {
+        return xPos;
+    }
+
+    public int getyPos() {
+        return yPos;
+    }
 
     private String getplayerName(){
         return playerName;

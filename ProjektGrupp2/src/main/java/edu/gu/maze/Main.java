@@ -1,6 +1,7 @@
 package edu.gu.maze;
 
 import edu.gu.maze.controller.Controller;
+import edu.gu.maze.controller.GameController;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.MainView;
@@ -15,7 +16,6 @@ public final class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //new MazeMainView(primaryStage);
 
         //model
         IGame model = new Game();
@@ -25,5 +25,8 @@ public final class Main extends Application {
 
         //controller
         Controller controller = new Controller(model, view);
+
+        GameController game = new GameController();
+
     }
 }
