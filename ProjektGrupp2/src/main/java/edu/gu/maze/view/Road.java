@@ -1,12 +1,9 @@
 package edu.gu.maze.view;
 
-//import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
-//import javafx.scene.shape.Shape;
+
 
 /**
  * Created by Matildaandersson on 15-04-01.

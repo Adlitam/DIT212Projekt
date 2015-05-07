@@ -66,7 +66,7 @@ public class Map extends Observable{
 
         Player player = new Player();
         player.update(11,15);
-        g.add(player, 11, 15);
+        g.add(player, 1, 1);
 
 
         MapController game = new MapController();
