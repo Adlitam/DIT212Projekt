@@ -1,18 +1,11 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.controller.GameController;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
+import edu.gu.maze.controller.MapController;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import java.awt.event.ActionListener;
-import java.util.EventListener;
+
 import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Created by Matildaandersson on 15-04-01.
@@ -76,7 +69,7 @@ public class Map extends Observable{
         g.add(player, 11, 15);
 
 
-        GameController game = new GameController();
+        MapController game = new MapController();
         player.setOnKeyPressed(e -> game.handle(e));
 
 
