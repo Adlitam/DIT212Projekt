@@ -125,7 +125,7 @@ public class MainView extends Observable{
         right.setMinWidth(100);
 
 
-        Map map = new Map();
+        MapView map = new MapView();
 
         Pane testPane = map.createMap1();
         borderPane.setCenter(testPane);

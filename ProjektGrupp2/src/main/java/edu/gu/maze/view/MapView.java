@@ -3,6 +3,7 @@ package edu.gu.maze.view;
 import edu.gu.maze.controller.MapController;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 
 import java.util.Observable;
@@ -10,12 +11,12 @@ import java.util.Observable;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class Map extends Observable{
-    Pane map = new Pane();
+public class MapView extends Observable{
+    TilePane map = new TilePane();
     GridPane g = new GridPane();
 
 
-    public  Pane createMap1(){
+    public TilePane createMap1(){
 
         //g.setHgap(10);   //gep between every row in the gridPane
         //g.setVgap(50);   //gep between every column in the gridPane

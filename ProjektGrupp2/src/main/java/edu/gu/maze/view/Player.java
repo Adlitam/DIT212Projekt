@@ -18,6 +18,7 @@ public class Player extends ImageView{
         setImage(image);
         setFitWidth(30);
         setFitHeight(30);
+
     }
 
 
