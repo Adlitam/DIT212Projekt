@@ -1,5 +1,6 @@
 package edu.gu.maze.view;
 
+import edu.gu.maze.controller.GameController;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -69,26 +70,16 @@ public class Map extends Observable{
             Road road = new Road(roadColumns[i], roadRows[i], Color.valueOf("gray"));
             g.add(road, roadColumns[i], roadRows[i]);    //node, column, row
         }
+
         Player player = new Player();
         player.update(11,15);
         g.add(player, 11, 15);
 
-        int playerX = player.getxPos();
-        int playerY = player.getyPos();
 
-        g.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()){
-                    case W:
-                        player.update(playerX,playerY-1);
-                        g.add(player,playerX,playerY-1);
-                        System.out.println("W");
-                        break;
+        GameController game = new GameController();
+        player.setOnKeyPressed(e -> game.handle(e));
 
-                }
-            }
-        });
+
 
         map.setPrefSize(900,500);
 
