@@ -7,9 +7,24 @@ import javafx.scene.control.TextField;
  * Created by Johan on 2015-05-07.
  */
 public class InputController {
+    String inValue;
+
+    public String getInValue() {
+        return inValue;
+    }
 
     public TextField getInput(TextField input){
-        input.setOnAction(e -> System.out.println(input.getText()));
+        input.setOnKeyPressed(e -> {
+            switch (e.getCode()) {
+                case ENTER:
+                    this.inValue = input.getText();
+                    System.out.println(inValue);
+                    input.clear();
+                    break;
+            }
+        });
+
+
         return input;
     }
 

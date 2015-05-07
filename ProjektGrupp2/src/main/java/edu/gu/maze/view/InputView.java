@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 public class InputView {
     private TextField input = new TextField();
     public TextField createInput(Rectangle2D screenSize) {
-
         input.setPrefWidth(screenSize.getWidth() - 100);
         new InputController().getInput(input);
         return input;
