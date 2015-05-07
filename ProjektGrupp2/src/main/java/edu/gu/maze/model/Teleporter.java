@@ -3,7 +3,7 @@ package edu.gu.maze.model;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class Teleporter implements ISquare {
+class Teleporter implements ISquare {
     @Override
     public int interact() {
         return 0;

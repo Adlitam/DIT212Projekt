@@ -4,6 +4,6 @@ package edu.gu.maze.model;
  *
  * @author omega
  */
-public interface IGame {
+class Wall {
     
 }

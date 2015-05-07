@@ -1,9 +1,10 @@
 package edu.gu.maze.model;
 
 /**
- * Created by Matildaandersson on 15-04-01.
+ *
+ * @author omega
  */
-public class Wizard implements ISquare {
+class Questioner implements ISquare{
     @Override
     public int interact() {
         return 0;

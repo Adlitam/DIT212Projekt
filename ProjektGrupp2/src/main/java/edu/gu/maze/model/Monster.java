@@ -3,7 +3,7 @@ package edu.gu.maze.model;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class Monster implements ISquare {
+class Monster implements ISquare {
     //private boolean isHungry=true;
 
     @Override
