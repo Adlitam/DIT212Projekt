@@ -1,5 +1,6 @@
 package edu.gu.maze.view;
 
+import edu.gu.maze.controller.OutputController;
 import javafx.scene.control.TextArea;
 
 
@@ -11,6 +12,7 @@ public class OutputView {
         TextArea output = new TextArea();
         output.setEditable(false);
         output.setWrapText(true);
+        new OutputController().Output(output);
         return output;
     }
 
