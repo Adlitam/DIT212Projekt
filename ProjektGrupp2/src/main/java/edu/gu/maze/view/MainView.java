@@ -72,57 +72,23 @@ public class MainView extends Observable{
     public void changeToGameScene(){
         BorderPane borderPane = new BorderPane();
         VBox bottom = new VBox();
-        TextArea output = new TextArea();
-        output.setEditable(false);
-        output.setWrapText(true);
         HBox inputAndBack = new HBox();
-        TextField input = new TextField();
+
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
-        input.setPrefWidth(screenSize.getWidth() - 100);
+
         backButton.setOnAction(e -> {
             BackButtonPressed = true;
             setChanged();
             notifyObservers();
         });
         backButton.setMinWidth(100);
-        inputAndBack.getChildren().addAll(input,backButton);
+        // The input View
+        InputView input = new InputView();
+        inputAndBack.getChildren().addAll(input.createInput(screenSize), backButton);
         bottom.setPrefSize(screenSize.getWidth(), 100);
-        bottom.getChildren().addAll(output, inputAndBack);
-
-        // The planel on the right
-        VBox right = new VBox();
-
-        //The label with how many apples the player have
-        Label apple = new Label("Apple");
-        apple.setAlignment(Pos.CENTER);
-        apple.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
-        apple.setStyle("-fx-border-color: black;");
-
-        //The label with how many keys the player have
-        Label key = new Label("Key");
-        key.setAlignment(Pos.CENTER);
-        key.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
-        key.setStyle("-fx-border-color: black;");
-
-        VBox points = new VBox();
-        Label text = new Label("Score");
-
-        Label score = new Label();
-        score.setText("placeholder");
-
-        points.getChildren().addAll(text, score);
-        points.setAlignment(Pos.CENTER);
-        points.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
-        points.setStyle("-fx-border-color: black;");
-
-        Label time = new Label("Time");
-        time.setAlignment(Pos.CENTER);
-        time.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
-        time.setStyle("-fx-border-color: black;");
-
-        right.getChildren().addAll(apple, key, points, time);
-        right.minWidth(100);
-        right.setMinWidth(100);
+        // The output View
+        OutputView output = new OutputView();
+        bottom.getChildren().addAll(output.createOutput(), inputAndBack);
 
 
         MapView map = new MapView();
@@ -130,7 +96,9 @@ public class MainView extends Observable{
         Pane testPane = map.createMap1();
         borderPane.setCenter(testPane);
         borderPane.setBottom(bottom);
-        borderPane.setRight(right);
+        //The info View
+        InfoView info = new InfoView();
+        borderPane.setRight(info.createInfoPanel(screenSize));
 
         gameScene = new Scene(borderPane, 1000, 600);
         stage.setScene(gameScene);
