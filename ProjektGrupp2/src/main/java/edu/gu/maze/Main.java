@@ -23,6 +23,7 @@ public final class Main extends Application {
         //view
         MainView view = new MainView(primaryStage);
 
+
         //mainController
         MainController mainController = new MainController(model, view);
 

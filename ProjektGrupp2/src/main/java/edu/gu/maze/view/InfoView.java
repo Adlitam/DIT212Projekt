@@ -1,9 +1,12 @@
 package edu.gu.maze.view;
 
+import edu.gu.maze.controller.InfoController;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+
+import java.util.Date;
 
 /**
  * Created by Johan on 2015-05-07.
@@ -59,12 +62,15 @@ public class InfoView {
 
         return points;
     }
+
     //The Time label that show the current time
     private Label time(Rectangle2D screenSize){
-        Label time = new Label("Time");
+        Label time = new Label();
+        new InfoController().timeController(time);
         time.setAlignment(Pos.CENTER);
         time.setPrefSize(100,(screenSize.getHeight()-100)/4);
         time.setStyle("-fx-border-color: black;");
+
 
         return time;
     }

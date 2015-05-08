@@ -98,10 +98,14 @@ public class MainView extends Observable{
         borderPane.setBottom(bottom);
         //The info View
         InfoView info = new InfoView();
+
         borderPane.setRight(info.createInfoPanel(screenSize));
+
+
 
         gameScene = new Scene(borderPane, 1000, 600);
         stage.setScene(gameScene);
+
     }
 
     public void changeToStartScene(){
