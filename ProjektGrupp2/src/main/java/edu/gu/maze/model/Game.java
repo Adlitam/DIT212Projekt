@@ -7,11 +7,21 @@ import java.io.Serializable;
 public class Game implements IGame, Serializable{
     int currentHighScore = 0;
     private static final long serialVersionUID = 1L;
-    public int getcurrentHighScore(){
-        return currentHighScore;
+
+    @Override
+    public String getQuestion() {
+        return "This is a dummy question.";
     }
 
-    public void setcurrentHighScore(int score){
-        currentHighScore=score;
+    @Override
+    public String[] getAnswers() {
+        return new String[] {"Correct answer", "Wrong answer"};
     }
+
+    @Override
+    public int[] isThisTheRightAnswer(int index) {
+        if (index==0) return new int[] {1,0,0,0,5};
+        return new int[] {1,0,0,0,0};
+    }
+    
 }

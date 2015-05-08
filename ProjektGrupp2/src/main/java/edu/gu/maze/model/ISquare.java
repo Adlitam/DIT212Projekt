@@ -5,8 +5,8 @@ package edu.gu.maze.model;
  */
 interface ISquare {
 
-    public abstract int interact();
+    public abstract int canIMoveHere();
 
-    public abstract boolean teleportable();
+    public abstract boolean okayToTeleportHere();
 
 }

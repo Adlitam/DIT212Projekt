@@ -5,12 +5,12 @@ package edu.gu.maze.model;
  */
 class Teleporter implements ISquare {
     @Override
-    public int interact() {
+    public int canIMoveHere() {
         return 0;
     }
 
     @Override
-    public boolean teleportable() {
+    public boolean okayToTeleportHere() {
         return false;
     }
 }

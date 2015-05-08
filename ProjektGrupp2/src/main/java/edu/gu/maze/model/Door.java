@@ -4,13 +4,14 @@ package edu.gu.maze.model;
  * Created by Matildaandersson on 15-04-01.
  */
 class Door implements ISquare {
+    private boolean open = false;
     @Override
-    public int interact() {
+    public int canIMoveHere() {
         return 0;
     }
 
     @Override
-    public boolean teleportable() {
-        return false;
+    public boolean okayToTeleportHere() {
+        return open;
     }
 }
