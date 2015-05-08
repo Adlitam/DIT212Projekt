@@ -21,7 +21,7 @@ public class Game implements IGame, Serializable{
     @Override
     public int[] isThisTheRightAnswer(int index) {
         if (index==0) return new int[] {1,0,0,0,5};
-        return new int[] {1,0,0,0,0};
+        return new int[] {0,0,0,0,0};
     }
     
 }
