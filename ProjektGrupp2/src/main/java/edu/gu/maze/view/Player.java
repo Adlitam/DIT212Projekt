@@ -6,10 +6,21 @@ import javafx.scene.image.Image;
  * Created by Matildaandersson on 15-04-01.
  */
 public class Player extends ImageView{
-    String playerName = "john";
+    private String playerName = "john";
     private int xPos;
     private int yPos;
-    Image image = new Image("player1.png");
+    private Image image = new Image("player1.png");
+
+    public Player(){
+    }
+
+    public Player(int x, int y){
+        xPos = x;
+        yPos = y;
+        setImage(image);
+        setFitWidth(30);
+        setFitHeight(30);
+    }
 
 
     public void update(int x, int y){

@@ -1,7 +1,6 @@
 package edu.gu.maze;
 
 import edu.gu.maze.controller.MainController;
-import edu.gu.maze.controller.MapController;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.MainView;
@@ -23,11 +22,8 @@ public final class Main extends Application {
         //view
         MainView view = new MainView(primaryStage);
 
-
         //mainController
-        MainController mainController = new MainController(model, view);
-
-        MapController game = new MapController();
+        MainController mainController = new MainController(model, view, primaryStage);
 
     }
 }

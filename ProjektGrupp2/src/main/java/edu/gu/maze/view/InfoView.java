@@ -1,35 +1,53 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.controller.InfoController;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
-import java.util.Date;
 
 /**
  * Created by Johan on 2015-05-07.
  */
 public class InfoView {
+    private Rectangle2D screenSize;
+    private VBox right;
+    private Label apple;
+    private Label key;
+    private VBox points;
+    private Label time;
+    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-    // The planel on the right
-    public VBox createInfoPanel(Rectangle2D screenSize) {
-        VBox right = new VBox();
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        pcs.addPropertyChangeListener(listener);
+    }
 
-        Label apple = getAppleLabel(screenSize);
-        Label key = getKeyLabel(screenSize);
-        VBox points = getPointsVBox(screenSize);
-        Label time = getTimeLabel(screenSize);
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        pcs.removePropertyChangeListener(listener);
+    }
 
+    public InfoView(){
+        screenSize = Screen.getPrimary().getVisualBounds();
+        right = new VBox();
+        apple = getAppleLabel();
+        key = getKeyLabel();
+        points = getPointsVBox();
+        time = getTimeLabel();
         right.getChildren().addAll(apple, key, points, time);
         right.minWidth(100);
         right.setMinWidth(100);
+    }
+
+    // The planel on the right
+    public VBox getInfoView(){
         return right;
     }
 
     //The label that show the current amount of apples that the player has
-    private Label getAppleLabel(Rectangle2D screenSize){
+    private Label getAppleLabel(){
         Label apple = new Label("Apples:");
         apple.setAlignment(Pos.CENTER);
         apple.setPrefSize(100,(screenSize.getHeight()-100)/4);
@@ -37,7 +55,7 @@ public class InfoView {
         return apple;
     }
     //The label that show the current amount of keys that the player has
-    private Label getKeyLabel(Rectangle2D screenSize){
+    private Label getKeyLabel(){
         Label key = new Label("Keys:");
         key.setAlignment(Pos.CENTER);
         key.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
@@ -45,7 +63,7 @@ public class InfoView {
         return key;
     }
     // The label that show the current score
-    private VBox getPointsVBox(Rectangle2D screenSize){
+    private VBox getPointsVBox(){
         VBox points = new VBox();
         Label text = new Label("Score");
 
@@ -62,13 +80,12 @@ public class InfoView {
     }
 
     //The Time label that show the current time
-    private Label getTimeLabel(Rectangle2D screenSize){
+    private Label getTimeLabel(){
         Label time = new Label();
-        new InfoController().timeController(time);
+        //new InfoController().timeController(time);   //what is this? View shouldn't know about the controller
         time.setAlignment(Pos.CENTER);
         time.setPrefSize(100,(screenSize.getHeight()-100)/4);
         time.setStyle("-fx-border-color: black;");
-
         return time;
     }
 }

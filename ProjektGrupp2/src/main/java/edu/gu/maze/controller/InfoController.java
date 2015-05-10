@@ -1,14 +1,30 @@
 package edu.gu.maze.controller;
 
-
+import edu.gu.maze.model.IGame;
+import edu.gu.maze.view.InfoView;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 //import org.apache.commons.lang.time.StopWatch;
 
 
 /**
  * Created by Johan on 2015-05-07.
  */
-public class InfoController {
+public class InfoController implements PropertyChangeListener{
+    IGame model;
+    InfoView view;
+    Stage stage;
+
+    public InfoController(IGame model, InfoView view, Stage primaryStage){
+        this.stage = primaryStage;
+        this.model = model;
+        this.view = view;
+        this.view.addPropertyChangeListener(this);
+    }
+
+
 
     private Label label;
     private String time;
@@ -23,4 +39,8 @@ public class InfoController {
     }
 
 
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
+    }
 }
