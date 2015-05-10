@@ -8,14 +8,20 @@ public interface IGame {
     //For questions
     //Returns a question
     public String getQuestion();
-    //Returns an array of answers of length at least 2.
+    /*Returns an array of answers of length at least 2.
+    Throws an exception if getQuestion() hasn't been called, or if
+    isThisTheRightAnswer() has been called since the last time
+    getQuestion() was called.*/
     public String[] getAnswers();
-    //This method takes an int which is an index to the array returned by getAnswers()
-    //It returns an array of ints which signify, in order:
-    //0 for wrong answer, 1 for correct
-    //change in the number of apples
-    //change in the number of keys
-    //change in the number of final keys
-    //change in the number of points
+    /*This method takes an int which is an index to the array returned by getAnswers()
+    It returns an array of ints which signify, in order:
+    0 for wrong answer, 1 for correct
+    change in the number of apples
+    change in the number of keys
+    change in the number of final keys (a correct answer will provide one final key
+    if the player doesn't have it yet.
+    change in the number of points
+    A call to this method must be preceded by a call to getQuestion().
+    */
     public int[] isThisTheRightAnswer(int index);
 }
