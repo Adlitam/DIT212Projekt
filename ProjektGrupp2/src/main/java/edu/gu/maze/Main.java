@@ -17,13 +17,15 @@ public final class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        Player player = new Player();
+
         //model
         IGame model = new Game();
 
         //view
         MainView view = new MainView(primaryStage);
 
-        Player player = new Player();
+
 
         //mainController
         MainController mainController = new MainController(model, view, primaryStage, player);

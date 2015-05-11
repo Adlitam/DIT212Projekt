@@ -12,11 +12,18 @@ public class Game implements IGame, Serializable{
     private Question allQuestions = new Question("What is Gilderoy Lockhart's favourite colour?",
             new String[]{"Pink", "Lilac", "Gold"}, 1);
     private Question currentQuestion = null;
+
+
+
     @Override
     public String getQuestion() {
         currentQuestion = selectQuestion();
         return currentQuestion.getQuestion();
     }
+
+
+
+
 
     @Override
     public String[] getAnswers() {

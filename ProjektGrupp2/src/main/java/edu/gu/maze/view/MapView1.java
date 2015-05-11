@@ -92,7 +92,7 @@ public class MapView1{
         player = new Player(11, 15,"matilda");
         g.add(player, 11, 15);
 
-//        mapController = new MapController(game,this,stage,player);
+
 
 
     }
