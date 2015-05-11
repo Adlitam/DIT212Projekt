@@ -1,18 +1,23 @@
 package edu.gu.maze.model;
 import java.io.Serializable;
-
 /**
  * Created by Matildaandersson on 15-04-01.
  */
 public class Game implements IGame, Serializable{
     private static final long serialVersionUID = 1L;
-    //TODO: Move this to player class
-    private boolean finalkey =false;
+    
     //TODO : Replace this with appropriate data structure of questions.
     private Question allQuestions = new Question("What is Gilderoy Lockhart's favourite colour?",
             new String[]{"Pink", "Lilac", "Gold"}, 1);
-    private Question currentQuestion = null;
-
+    private Player slot1 = new Player("Harry Potter", Constants.MAGE);
+    private Player slot2 = null;
+    private Player slot3 = null;
+    
+    
+    //TODO: Move this to player class
+    private boolean finalkey =false;
+    private transient Question currentQuestion = null;
+    private transient Player currentPlayer = slot1;
 
 
     @Override
@@ -51,13 +56,43 @@ public class Game implements IGame, Serializable{
 
     @Override
     public void createPlayer(int Slot, String name, int type) {
-        int i = Constants.SLOT1;
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (type !=Constants.MAGE && type != Constants.WARRIOR && type != Constants.THIEF){
+            throw new IllegalArgumentException("Tried to call createPlayer with type " + type);
+        } 
+        if (Slot==Constants.SLOT1){
+            slot1 = new Player (name, type);
+            currentPlayer = slot1;
+        }
+        else if (Slot == Constants.SLOT2){
+            slot2 = new Player (name, type);
+            currentPlayer = slot2;
+        }
+        else if (Slot == Constants.SLOT3){
+            slot3 = new Player (name, type);
+            currentPlayer = slot3;
+        }
+        else {
+            throw new IllegalArgumentException("Tried to call createPlayer with slot number " + Slot);
+        }
     }
 
     @Override
-    public void selectPlayer(int Slot) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void selectPlayer(int Slot) throws Exception{
+        if (Slot==Constants.SLOT1 && slot1!=null){
+            currentPlayer = slot1;
+        }
+        else if (Slot == Constants.SLOT2&&slot2!=null){
+            currentPlayer = slot2;
+        }
+        else if (Slot == Constants.SLOT3&&slot3!=null){
+            currentPlayer = slot3;
+        }
+        else {
+            if (Slot==Constants.SLOT1||Slot==Constants.SLOT2||Slot==Constants.SLOT3){
+                throw new Exception ("No player found in slot " + Slot);
+            }
+            throw new IllegalArgumentException("Tried to call createPlayer with slot number " + Slot);
+        }
     }
     
 }

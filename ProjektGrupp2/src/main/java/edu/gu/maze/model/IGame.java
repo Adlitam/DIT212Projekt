@@ -25,11 +25,11 @@ public interface IGame {
     */
     public int[] isThisTheRightAnswer(int index);
     
-    //NOTE: METHODS BELOW HAVE NOT BEEN IMPLEMENTED YET.
     //To create a player and set him/her as current player
     //Slot may be either 0, 1, or 2. Type has the same possible values, representing
     //warrior, mage and thief respectively.
+    //Note: Overwrites previous value of slot.
     public void createPlayer(int Slot, String name, int type);
     //select existing player
-    public void selectPlayer (int Slot);
+    public void selectPlayer (int Slot) throws Exception;
 }
