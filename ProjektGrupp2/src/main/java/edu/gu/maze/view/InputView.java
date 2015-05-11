@@ -13,7 +13,7 @@ import java.beans.PropertyChangeSupport;
  */
 public class InputView {
     private HBox inputAndReturn;
-    private TextField input;
+    private TextField input= new TextField();
     private Rectangle2D screenSize;
     private Button backButton;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
@@ -26,14 +26,23 @@ public class InputView {
         pcs.removePropertyChangeListener(listener);
     }
 
-    public InputView(){
+
+    public InputView() {
         inputAndReturn = new HBox();
-        input = new TextField();
+
         screenSize = Screen.getPrimary().getVisualBounds();
         input.setPrefWidth(screenSize.getWidth() - 100);
+        input.setOnKeyPressed(e1 -> {
+            switch (e1.getCode()) {
+                case ENTER:
+                    pcs.firePropertyChange("Input", input, "value2");
+
+                    break;
+            }
+        });
         backButton = new Button("Back to start");
         backButton.setMinWidth(100);
-        backButton.setOnAction(e -> {
+        backButton.setOnAction(e2 -> {
             pcs.firePropertyChange("backButtonG", "value1", "value2");
         });
         inputAndReturn.getChildren().addAll(input, backButton);
@@ -45,9 +54,4 @@ public class InputView {
 
 
 
-    public TextField createInput(Rectangle2D screenSize) {
-        input.setPrefWidth(screenSize.getWidth() - 100);
-        //new InputController().getInput(input);   //what is this? View shouldn't know about the controller
-        return input;
-    }
 }

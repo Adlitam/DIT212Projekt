@@ -33,18 +33,7 @@ public class InputController implements PropertyChangeListener {
         return inValue;
     }
 
-    public TextField getInput(TextField input){
-        input.setOnKeyPressed(e -> {
-            switch (e.getCode()) {
-                case ENTER:
-                    this.inValue = input.getText();
-                    System.out.println(inValue);
-                    input.clear();
-                    break;
-            }
-        });
-        return input;
-    }
+
 
 
     @Override
@@ -53,5 +42,14 @@ public class InputController implements PropertyChangeListener {
             MainView mainView = new MainView(stage);
             MainController h = new MainController(model, mainView, stage, player);
         }
+        if(evt.getPropertyName()== "Input"){
+
+            TextField input = (TextField) evt.getOldValue();
+            System.out.println("Enter");
+            inValue = input.getText();
+            input.clear();
+        }
     }
+
+
 }
