@@ -45,8 +45,9 @@ public class InputOutputController implements PropertyChangeListener {
         if(evt.getPropertyName()== "Input"){
 
             TextField input = (TextField) evt.getOldValue();
-            System.out.println("Enter");
             inValue = input.getText();
+            System.out.println("Button Pressed: Enter");
+            System.out.println("Input Value: " + inValue);
             input.clear();
         }
     }

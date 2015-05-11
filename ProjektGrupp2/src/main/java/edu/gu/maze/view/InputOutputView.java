@@ -65,7 +65,7 @@ public class InputOutputView {
 
     private void outputArea(){
         output = new TextArea();
-        output.setPrefSize(screenSize.getWidth(),80);
+        output.setPrefSize(screenSize.getWidth(),90);
         output.setEditable(false);
         output.setWrapText(true);
     }

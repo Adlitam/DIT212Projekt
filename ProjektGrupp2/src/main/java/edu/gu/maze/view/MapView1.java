@@ -6,6 +6,7 @@ import edu.gu.maze.model.IGame;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -31,6 +32,7 @@ public class MapView1{
     }
 
     public MapView1(Stage stage, Player playerView) {
+        VBox test = new VBox();
         g = new GridPane();
         this.player = playerView;
         int[] roadRows = {0,
@@ -77,8 +79,7 @@ public class MapView1{
             g.add(road, roadColumns[i], roadRows[i]);    //node, column, row
         }
 
-        System.out.print("UP\n");
-        System.out.print(player + "\n");
+
 
         playerView.setOnKeyPressed(e -> {
             switch (e.getCode()) {
