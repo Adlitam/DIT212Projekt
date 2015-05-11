@@ -34,13 +34,11 @@ public class MainController implements PropertyChangeListener {
 
             InfoView infoView = new InfoView();
             InfoController infoController = new InfoController(model, infoView, stage);
-            InputView inputView = new InputView();
-            InputController inputController = new InputController(model, inputView, stage, player);
-            OutputView outputView = new OutputView();
-            OutputController outputController = new OutputController(model, outputView, stage);
+            InputOutputView inputView = new InputOutputView();
+            InputOutputController inputController = new InputOutputController(model, inputView, stage, player);
 
-            GameView gameView = new GameView(stage, mapView1, infoView, inputView, outputView);
 
+            GameView gameView = new GameView(stage, mapView1, infoView, inputView);
 
         }
         if(evt.getPropertyName() == "highScoreButton"){
