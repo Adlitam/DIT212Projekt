@@ -3,6 +3,7 @@ package edu.gu.maze.controller;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.MapView1;
 import edu.gu.maze.view.Player;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -24,22 +25,32 @@ public class MapController implements PropertyChangeListener{
         this.view = view;
         this.player = player;
         this.view.addPropertyChangeListener(this);
+
+
+
     }
 
 
 
-
-/*
-
-    int playerX = player.getxPos();
-    int playerY = player.getyPos();
-
-*/
 
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
+        int playerX = player.getxPos();
+        int playerY = player.getyPos();
+
+        if(evt.getPropertyName() == "mapview"){
+
+            System.out.print("Hej");
+
+        }
+
+
+
     }
+
+
+
 
 }

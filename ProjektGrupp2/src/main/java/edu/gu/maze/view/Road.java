@@ -13,7 +13,7 @@ public class Road extends ImageView{
     private final int yPos;
     Image image = new Image("road.jpg");
 
-    public Road(int x, int y, Paint p){
+    public Road(int x, int y){
         this.xPos = x;
         this.yPos = y;
         //setFill(p);    //for instance: Color.valueOf("gray")
