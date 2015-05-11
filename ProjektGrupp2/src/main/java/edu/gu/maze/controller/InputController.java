@@ -3,6 +3,7 @@ package edu.gu.maze.controller;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.InputView;
 import edu.gu.maze.view.MainView;
+import edu.gu.maze.view.Player;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.beans.PropertyChangeEvent;
@@ -16,11 +17,13 @@ public class InputController implements PropertyChangeListener {
     InputView view;
     Stage stage;
     String inValue;
+    Player player;
 
-    public InputController(IGame model, InputView view, Stage primaryStage){
+    public InputController(IGame model, InputView view, Stage primaryStage, Player player){
         this.stage = primaryStage;
         this.model = model;
         this.view = view;
+        this.player = player;
         this.view.addPropertyChangeListener(this);
     }
 
@@ -48,7 +51,7 @@ public class InputController implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName() == "backButtonG"){
             MainView mainView = new MainView(stage);
-            MainController h = new MainController(model, mainView, stage);
+            MainController h = new MainController(model, mainView, stage, player);
         }
     }
 }

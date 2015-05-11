@@ -1,7 +1,12 @@
 package edu.gu.maze.view;
 
+import edu.gu.maze.controller.MapController;
+import edu.gu.maze.model.Game;
+import edu.gu.maze.model.IGame;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -10,7 +15,24 @@ import java.beans.PropertyChangeSupport;
  */
 public class MapView1{
     private GridPane g;
-    private Player player;
+    Player player;
+    MapController mapController;
+    Game game = new Game() {
+        @Override
+        public String getQuestion() {
+            return null;
+        }
+
+        @Override
+        public String[] getAnswers() {
+            return new String[0];
+        }
+
+        @Override
+        public int[] isThisTheRightAnswer(int index) {
+            return new int[0];
+        }
+    };
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -21,7 +43,7 @@ public class MapView1{
         pcs.removePropertyChangeListener(listener);
     }
 
-    public MapView1(){
+    public MapView1(Stage stage){
         g = new GridPane();
         int[] roadRows = {0,
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,   //14
@@ -66,8 +88,13 @@ public class MapView1{
             Road road = new Road(roadColumns[i], roadRows[i], Color.valueOf("gray"));
             g.add(road, roadColumns[i], roadRows[i]);    //node, column, row
         }
-        player = new Player(11, 15);
+
+        player = new Player(11, 15,"matilda");
         g.add(player, 11, 15);
+
+//        mapController = new MapController(game,this,stage,player);
+
+
     }
 
     public GridPane getMap(){

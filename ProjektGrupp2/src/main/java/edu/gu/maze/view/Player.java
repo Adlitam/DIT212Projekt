@@ -14,9 +14,10 @@ public class Player extends ImageView{
     public Player(){
     }
 
-    public Player(int x, int y){
+    public Player(int x, int y,String name){
         xPos = x;
         yPos = y;
+        playerName = name;
         setImage(image);
         setFitWidth(30);
         setFitHeight(30);
@@ -54,8 +55,6 @@ public class Player extends ImageView{
         return playerName;
     }
 
-    private void setplayerName(String name){
-        playerName=name;
-    }
+
 
 }

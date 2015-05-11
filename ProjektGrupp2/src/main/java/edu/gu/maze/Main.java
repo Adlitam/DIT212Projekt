@@ -4,6 +4,7 @@ import edu.gu.maze.controller.MainController;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.MainView;
+import edu.gu.maze.view.Player;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -22,8 +23,10 @@ public final class Main extends Application {
         //view
         MainView view = new MainView(primaryStage);
 
+        Player player = new Player();
+
         //mainController
-        MainController mainController = new MainController(model, view, primaryStage);
+        MainController mainController = new MainController(model, view, primaryStage, player);
 
     }
 }
