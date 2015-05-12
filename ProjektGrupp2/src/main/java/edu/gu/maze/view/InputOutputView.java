@@ -16,8 +16,8 @@ import java.beans.PropertyChangeSupport;
 public class InputOutputView {
     private HBox inputAndReturn;
     private VBox inputAndReturnAndOutput;
-    private TextField input = new TextField();
-    private TextArea output = new TextArea();
+    private TextField input;
+    private TextArea output;
     private Rectangle2D screenSize;
     private Button backButton;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
@@ -43,6 +43,7 @@ public class InputOutputView {
     }
 
     private void inputArea(){
+        input = new TextField();
         input.setPrefWidth(screenSize.getWidth() - 100);
         input.setOnKeyPressed(e1 -> {
             switch (e1.getCode()) {
