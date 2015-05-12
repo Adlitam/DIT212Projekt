@@ -14,7 +14,6 @@ import java.beans.PropertyChangeSupport;
  * Created by Johan on 2015-05-07.
  */
 public class InputOutputView {
-    private HBox inputAndReturn;
     private VBox inputAndReturnAndOutput;
     private TextField input;
     private TextArea output;
@@ -32,7 +31,7 @@ public class InputOutputView {
 
 
     public InputOutputView() {
-        inputAndReturn = new HBox();
+        HBox inputAndReturn = new HBox();
         inputAndReturnAndOutput = new VBox();
         screenSize = Screen.getPrimary().getVisualBounds();
         inputArea();
@@ -58,9 +57,7 @@ public class InputOutputView {
     private void backButton(){
         backButton = new Button("Back to start");
         backButton.setMinWidth(100);
-        backButton.setOnAction(e2 -> {
-            pcs.firePropertyChange("backButtonG", "value1", "value2");
-        });
+        backButton.setOnAction(e2 -> pcs.firePropertyChange("backButtonG", "value1", "value2"));
 
     }
 

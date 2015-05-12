@@ -32,7 +32,6 @@ public class MapView1{
     }
 
     public MapView1(Stage stage, Player playerView) {
-        VBox test = new VBox();
         g = new GridPane();
         this.player = playerView;
         int[] roadRows = {0,

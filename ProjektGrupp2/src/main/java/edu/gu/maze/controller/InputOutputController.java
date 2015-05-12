@@ -27,22 +27,13 @@ public class InputOutputController implements PropertyChangeListener {
         this.view.addPropertyChangeListener(this);
     }
 
-
-
-    public String getInValue() {
-        return inValue;
-    }
-
-
-
-
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if(evt.getPropertyName() == "backButtonG"){
+        if(evt.getPropertyName().equals("backButtonG")){
             MainView mainView = new MainView(stage);
-            MainController h = new MainController(model, mainView, stage, player);
+            new MainController(model, mainView, stage, player);
         }
-        if(evt.getPropertyName()== "Input"){
+        if(evt.getPropertyName().equals("Input")){
 
             TextField input = (TextField) evt.getOldValue();
             inValue = input.getText();
