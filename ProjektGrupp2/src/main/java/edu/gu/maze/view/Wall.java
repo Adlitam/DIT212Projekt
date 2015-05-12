@@ -17,7 +17,7 @@ public class Wall extends Rectangle{
         setFill(p);    //for instance: Color.valueOf("gray")
         setHeight(30);
         setWidth(30);
-    
+    }
 
     public int getXValue(){
         return xPos;
