@@ -1,14 +1,8 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.controller.MapController;
-import edu.gu.maze.model.Game;
-import edu.gu.maze.model.IGame;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
+
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -31,7 +25,7 @@ public class MapView1{
         pcs.removePropertyChangeListener(listener);
     }
 
-    public MapView1(Stage stage, Player playerView) {
+    public MapView1(Player playerView) {
         g = new GridPane();
         this.player = playerView;
         int[] roadRows = {0,

@@ -15,10 +15,6 @@ import java.beans.PropertyChangeSupport;
 public class InfoView {
     private Rectangle2D screenSize;
     private VBox right;
-    private Label apple;
-    private Label key;
-    private VBox points;
-    private Label time;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -32,10 +28,10 @@ public class InfoView {
     public InfoView(){
         screenSize = Screen.getPrimary().getVisualBounds();
         right = new VBox();
-        apple = getAppleLabel();
-        key = getKeyLabel();
-        points = getPointsVBox();
-        time = getTimeLabel();
+        Label apple = getAppleLabel();
+        Label key = getKeyLabel();
+        VBox points = getPointsVBox();
+        Label time = getTimeLabel();
         right.getChildren().addAll(apple, key, points, time);
         right.minWidth(100);
         right.setMinWidth(100);

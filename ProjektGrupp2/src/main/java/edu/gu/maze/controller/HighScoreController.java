@@ -27,9 +27,9 @@ public class HighScoreController implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if(evt.getPropertyName() == "backButtonH"){
+        if(evt.getPropertyName().equals("backButtonH")){
             MainView mainView = new MainView(stage);
-            MainController h = new MainController(model, mainView, stage, player);
+            new MainController(model, mainView, stage, player);
         }
     }
 }

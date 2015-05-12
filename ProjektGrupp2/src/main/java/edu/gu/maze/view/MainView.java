@@ -13,9 +13,6 @@ import java.beans.PropertyChangeSupport;
  */
 public class MainView{
     Stage stage;
-    private Scene mainScene;
-    private VBox vBoxlayout;
-    private Button playButton, highScoreButton;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -30,18 +27,14 @@ public class MainView{
     public MainView(Stage primaryStage){
         stage = primaryStage;
         stage.setTitle("Maze");
-        playButton = new Button("Play the game");
-        playButton.setOnAction(e -> {
-            pcs.firePropertyChange("playButton", "value1", "value2");
-        });
-        highScoreButton = new Button("High Score");
-        highScoreButton.setOnAction(e -> {
-            pcs.firePropertyChange("highScoreButton", "value1", "value2");
-        });
-        vBoxlayout = new VBox();
-        vBoxlayout.getChildren().addAll(playButton,highScoreButton);
+        Button playButton = new Button("Play the game");
+        playButton.setOnAction(e -> pcs.firePropertyChange("playButton", "value1", "value2"));
+        Button highScoreButton = new Button("High Score");
+        highScoreButton.setOnAction(e -> pcs.firePropertyChange("highScoreButton", "value1", "value2"));
+        VBox vBoxlayout = new VBox();
+        vBoxlayout.getChildren().addAll(playButton, highScoreButton);
         vBoxlayout.setAlignment(Pos.CENTER);
-        mainScene = new Scene(vBoxlayout, 1000, 600);
+        Scene mainScene = new Scene(vBoxlayout, 1000, 600);
         stage.setScene(mainScene);
         stage.show();
     }
