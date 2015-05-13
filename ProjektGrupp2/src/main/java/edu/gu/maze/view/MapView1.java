@@ -21,13 +21,10 @@ public class MapView1{
         pcs.addPropertyChangeListener(listener);
     }
 
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        pcs.removePropertyChangeListener(listener);
-    }
 
-    public MapView1(Player playerView) {
+    public MapView1() {
         g = new GridPane();
-        this.player = playerView;
+
         int[] roadRows = {0,
                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,   //14
                 2, 2, 2, 2,  //4
@@ -72,13 +69,15 @@ public class MapView1{
             g.add(road, roadColumns[i], roadRows[i]);    //node, column, row
         }
 
+        player = new Player();
 
 
-        playerView.setOnKeyPressed(e -> {
-            switch (e.getCode()) {
-                case UP:
-                    System.out.print("UP");
-                    pcs.firePropertyChange("mapview", "v1", "v2");
+
+        player.setOnKeyPressed(e -> {
+            switch (e.getCode()){
+                case W:
+                    System.out.print("Hej");
+                    pcs.firePropertyChange("player","v1","v2");
                     break;
             }
         });

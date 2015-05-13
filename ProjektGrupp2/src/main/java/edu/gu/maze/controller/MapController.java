@@ -40,7 +40,7 @@ public class MapController implements PropertyChangeListener{
         int playerX = player.getxPos();
         int playerY = player.getyPos();
 
-        if(evt.getPropertyName() == "mapview"){
+        if(evt.getPropertyName().equals("player")){
 
             System.out.print("Hej");
 

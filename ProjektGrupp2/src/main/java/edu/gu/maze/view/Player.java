@@ -1,27 +1,26 @@
 package edu.gu.maze.view;
 
+
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
+
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 /**
  * Created by Matildaandersson on 15-04-01.
  */
 public class Player extends ImageView{
-    private String playerName = "john";
     private int xPos;
     private int yPos;
     private Image image = new Image("player1.png");
+    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-    public Player(){
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        pcs.addPropertyChangeListener(listener);
     }
 
-    public Player(int x, int y,String name){
-        xPos = x;
-        yPos = y;
-        playerName = name;
-        setImage(image);
-        setFitWidth(30);
-        setFitHeight(30);
-    }
 
 
     public void update(int x, int y){
@@ -30,6 +29,17 @@ public class Player extends ImageView{
         setImage(image);
         setFitWidth(30);
         setFitHeight(30);
+
+    }
+
+    public void update(KeyEvent evt){
+        switch (evt.getCode()){
+            case UP:
+                pcs.firePropertyChange("player","v1","v2");
+                break;
+
+        }
+
 
     }
 
@@ -49,10 +59,6 @@ public class Player extends ImageView{
 
     public int getyPos() {
         return yPos;
-    }
-
-    private String getplayerName(){
-        return playerName;
     }
 
 

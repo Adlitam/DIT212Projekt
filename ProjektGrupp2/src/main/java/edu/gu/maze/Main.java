@@ -25,7 +25,7 @@ public final class Main extends Application {
         //view
         MainView view = new MainView(primaryStage);
 
-        System.out.print(player +"\n");
+
 
         //mainController
         MainController mainController = new MainController(model, view, primaryStage, player);

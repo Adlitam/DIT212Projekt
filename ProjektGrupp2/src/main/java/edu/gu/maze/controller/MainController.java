@@ -27,7 +27,7 @@ public class MainController implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("playButton")){
-            MapView1 mapView1 = new MapView1(player);
+            MapView1 mapView1 = new MapView1();
             new MapController(model, mapView1, stage, player);
             InfoView infoView = new InfoView();
             new InfoController(model, infoView, stage);
