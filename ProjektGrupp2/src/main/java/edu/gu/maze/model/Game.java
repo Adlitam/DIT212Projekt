@@ -9,7 +9,7 @@ public class Game implements IGame, Serializable{
     //TODO : Replace this with appropriate data structure of questions.
     private Question allQuestions = new Question("What is Gilderoy Lockhart's favourite colour?",
             new String[]{"Pink", "Lilac", "Gold"}, 1);
-    private Player slot1 = new Player("Harry Potter", Constants.MAGE);
+    private Player slot1 = null;
     private Player slot2 = null;
     private Player slot3 = null;
     
@@ -17,7 +17,7 @@ public class Game implements IGame, Serializable{
     //TODO: Move this to player class
     private boolean finalkey =false;
     private transient Question currentQuestion = null;
-    private transient Player currentPlayer = slot1;
+    private transient Player currentPlayer = null;
 
 
     @Override
@@ -25,10 +25,6 @@ public class Game implements IGame, Serializable{
         currentQuestion = selectQuestion();
         return currentQuestion.getQuestion();
     }
-
-
-
-
 
     @Override
     public String[] getAnswers() {
@@ -57,27 +53,30 @@ public class Game implements IGame, Serializable{
     @Override
     public void createPlayer(int Slot, String name, int type) {
         if (type !=Constants.MAGE && type != Constants.WARRIOR && type != Constants.THIEF){
-            throw new IllegalArgumentException("Tried to call createPlayer with type " + type);
+            throw new IllegalArgumentException("Tried to create player with nonexistent type " + type);
         } 
         if (Slot==Constants.SLOT1){
+            if (slot1!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
             slot1 = new Player (name, type);
             currentPlayer = slot1;
         }
         else if (Slot == Constants.SLOT2){
+            if (slot2!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
             slot2 = new Player (name, type);
             currentPlayer = slot2;
         }
         else if (Slot == Constants.SLOT3){
+            if (slot3!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
             slot3 = new Player (name, type);
             currentPlayer = slot3;
         }
         else {
-            throw new IllegalArgumentException("Tried to call createPlayer with slot number " + Slot);
+            throw new IllegalArgumentException("Tried to create player in nonexistent slot " + Slot);
         }
     }
 
     @Override
-    public void selectPlayer(int Slot) throws Exception{
+    public void selectPlayer(int Slot){
         if (Slot==Constants.SLOT1 && slot1!=null){
             currentPlayer = slot1;
         }
@@ -89,10 +88,28 @@ public class Game implements IGame, Serializable{
         }
         else {
             if (Slot==Constants.SLOT1||Slot==Constants.SLOT2||Slot==Constants.SLOT3){
-                throw new Exception ("No player found in slot " + Slot);
+                throw new RuntimeException ("No player found in slot " + Slot);
             }
-            throw new IllegalArgumentException("Tried to call createPlayer with slot number " + Slot);
+            throw new IllegalArgumentException("Tried to select nonexistent player"
+                    + " with slot number " + Slot);
         }
+    }
+    
+    @Override
+    public void deletePlayer(int Slot){
+        if (Slot==Constants.SLOT1){
+            if (slot1==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
+            slot1=null;
+        }
+        else if (Slot==Constants.SLOT2){
+            if (slot1==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
+            slot2=null;
+        }
+        else if (Slot==Constants.SLOT3){
+            if (slot1==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
+            slot3=null;
+        }
+        else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
     }
     
 }
