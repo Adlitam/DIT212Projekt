@@ -73,24 +73,21 @@ public class MapView1{
 
 
 
-        player.setOnKeyPressed(e -> {
+        g.setOnKeyPressed(e -> {
             switch (e.getCode()){
-                case W:
+                case UP:
                     System.out.print("Hej");
                     pcs.firePropertyChange("player","v1","v2");
                     break;
             }
         });
 
-        movePlayer(11,15,player);
+        player.update(11,15);
+        g.add(player, 11, 15);
 
 
     }
 
-    public void movePlayer(int x, int y, Player player1){
-        player.update(x,y);
-        g.add(player1, x, y);
-    }
 
     public GridPane getMap(){
         return g;
