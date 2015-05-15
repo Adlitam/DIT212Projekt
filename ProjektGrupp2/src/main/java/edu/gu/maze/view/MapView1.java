@@ -1,6 +1,9 @@
 package edu.gu.maze.view;
 
 
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
@@ -13,6 +16,9 @@ import java.beans.PropertyChangeSupport;
 public class MapView1{
     private GridPane g;
     Player player;
+
+
+
 
 
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
@@ -71,21 +77,32 @@ public class MapView1{
 
         player = new Player();
 
+        player.update(11,15);
+        g.add(player,11,15);
 
+        g.requestFocus();
+        
 
-        g.setOnKeyPressed(e -> {
-            switch (e.getCode()){
-                case UP:
-                    System.out.print("Hej");
-                    pcs.firePropertyChange("player","v1","v2");
-                    break;
-            }
+        player.setOnMouseClicked(e -> {
+            System.out.print("Player");
+
+            pcs.firePropertyChange("Player","v1","v2");
+
         });
+
+
+
+
+/*
+        player = new Player();
+
+
+
 
         player.update(11,15);
         g.add(player, 11, 15);
 
-
+*/
     }
 
 

@@ -40,9 +40,13 @@ public class MapController implements PropertyChangeListener{
         int playerX = player.getxPos();
         int playerY = player.getyPos();
 
-        if(evt.getPropertyName().equals("player")){
+        if(evt.getPropertyName().equals("Player")){
 
-            System.out.print("Hej");
+            System.out.print("Moved");
+
+            player.update(11,14);
+            view.getMap().add(player,11,14);
+
 
         }
 

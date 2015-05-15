@@ -23,6 +23,7 @@ public class GameView{
         borderPane.setRight(info);
         borderPane.setBottom(inputAndReturnAndOutput);
         Scene gameScene = new Scene(borderPane, 800, 600);
+        gameScene.getRoot().requestFocus();
         stage.setScene(gameScene);
     }
 }

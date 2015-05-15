@@ -1,6 +1,7 @@
 package edu.gu.maze.view;
 
 
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
@@ -11,10 +12,10 @@ import java.beans.PropertyChangeSupport;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class Player extends ImageView{
+public class Player extends Label{
     private int xPos;
     private int yPos;
-    private Image image = new Image("player1.png");
+    private Image image = new Image("player2.png");
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -26,9 +27,9 @@ public class Player extends ImageView{
     public void update(int x, int y){
         xPos = x;
         yPos = y;
-        setImage(image);
-        setFitWidth(30);
-        setFitHeight(30);
+        setGraphic(new ImageView(image));
+        setMaxSize(30,30);
+
 
     }
 
