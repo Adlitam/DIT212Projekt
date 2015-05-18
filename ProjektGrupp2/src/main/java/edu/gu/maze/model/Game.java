@@ -1,23 +1,31 @@
 package edu.gu.maze.model;
 import java.io.Serializable;
+import java.util.ArrayList;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
 public class Game implements IGame, Serializable{
-    private static final long serialVersionUID = 1L;
     
+    //DATA
+    private static final long serialVersionUID = 1L;
     //TODO : Replace this with appropriate data structure of questions.
     private Question allQuestions = new Question("What is Gilderoy Lockhart's favourite colour?",
             new String[]{"Pink", "Lilac", "Gold"}, 1);
     private Player slot1 = null;
     private Player slot2 = null;
     private Player slot3 = null;
+    private Map map1 = new Map();
+    private Map map2 = new Map();
+    private Map map3 = new Map();
+    ArrayList<HighScore> totalHighScores = new ArrayList();
     
     
+    //MATERIAL RELATING TO CURRENT GAME
     //TODO: Move this to player class
-    private boolean finalkey =false;
+    private transient boolean finalkey =false;
     private transient Question currentQuestion = null;
     private transient Player currentPlayer = null;
+    private transient Map currentMap = null;
 
 
     @Override
@@ -111,5 +119,33 @@ public class Game implements IGame, Serializable{
         }
         else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
     }
+
+    @Override
+    public String[] getHighScoresForMap(int map) {
+        if (map==Constants.MAP1){
+            return map1.getHighScores();
+        }
+        else if (map==Constants.MAP2){
+            return map2.getHighScores();
+        }
+        else if (map==Constants.MAP3){
+            return map3.getHighScores();
+        }
+        else throw new IllegalArgumentException ("Tried to obtain high scores for "
+                + "nonexisting map " + map);
+        
+    }
+
+    @Override
+    public String[] getTotalHighScores() {
+        int a = totalHighScores.size();
+        String[] ans = new String[a];
+        for (int i=0; i<a; i++){
+            ans[i]=totalHighScores.get(i).toString();
+        }
+        return ans;
+    }
+    
+    
     
 }

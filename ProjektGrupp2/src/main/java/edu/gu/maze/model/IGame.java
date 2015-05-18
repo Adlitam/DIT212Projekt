@@ -35,4 +35,10 @@ public interface IGame {
     public void selectPlayer (int Slot);
     //Throws an exception if you try to delete a nonexistent player.
     public void deletePlayer (int Slot);
+    
+    //Retrieve specified high scores as formatted strings.
+    //Results are sorted so that highest scores come first and newer scores 
+    //before older ones.
+    public String[] getHighScoresForMap (int map);
+    public String[] getTotalHighScores();
 }
