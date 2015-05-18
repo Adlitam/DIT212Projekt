@@ -7,7 +7,6 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 
-
 /**
  * Created by Johan on 2015-05-07.
  */

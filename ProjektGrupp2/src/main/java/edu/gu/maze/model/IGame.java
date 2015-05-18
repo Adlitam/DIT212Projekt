@@ -28,16 +28,25 @@ public interface IGame {
     public int[] isThisTheRightAnswer(int index);
     
     //To create a player and set him/her as current player
-    //Slot may be either 0, 1, or 2. Type has the same possible values, representing
-    //warrior, mage and thief respectively.
-    //Note: Overwrites previous value of slot.
+    //Slot may be either Constants.SLOT1, Constants.SLOT2, or Constants.SLOT3
+    //Type has possible values Constants.MAGE, Constants.WARRIOR, and Constants.THIEF
+    //NEW: Throws an exception at any attempt to create a player in a slot that is
+    //already occupied.
     public void createPlayer(int Slot, String name, int type);
     //select existing player
-    public void selectPlayer (int Slot) throws Exception;
 
     public abstract void addRoadsToMap();
     public abstract void moveUp();
     public abstract void moveDown();
     public abstract void moveLeft();
     public abstract void moveRight();
+    public void selectPlayer (int Slot);
+    //Throws an exception if you try to delete a nonexistent player.
+    public void deletePlayer (int Slot);
+    
+    //Retrieve specified high scores as formatted strings.
+    //Results are sorted so that highest scores come first and newer scores 
+    //before older ones.
+    public String[] getHighScoresForMap (int map);
+    public String[] getTotalHighScores();
 }

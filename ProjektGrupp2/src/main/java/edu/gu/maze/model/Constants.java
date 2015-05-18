@@ -17,4 +17,10 @@ public final class Constants {
     public static final int WARRIOR = 0;
     public static final int MAGE = 1;
     public static final int THIEF = 2;
+    
+    //Map variable to retrieve high scores, and to select maps.
+    public static final int MAP1=0;
+    public static final int MAP2=1;
+    public static final int MAP3=2;
+    
 }

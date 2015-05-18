@@ -25,9 +25,7 @@ public class InputOutputView {
         pcs.addPropertyChangeListener(listener);
     }
 
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        pcs.removePropertyChangeListener(listener);
-    }
+
 
 
     public InputOutputView() {

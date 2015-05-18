@@ -36,7 +36,7 @@ public class InputOutputController implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        switch(evt.getPropertyName()){
+        switch(evt.getPropertyName()) {
             case "backButtonG":
                 MainView mainView = new MainView(stage);
                 new MainController(model, mainView, stage);
@@ -62,6 +62,4 @@ public class InputOutputController implements PropertyChangeListener {
                 break;
         }
     }
-
-
 }

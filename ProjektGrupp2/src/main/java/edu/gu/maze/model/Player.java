@@ -10,10 +10,13 @@ class Player implements Serializable{
     private final int type;
     private int x;
     private int y;
+    int[] scores = new int[3];
+    private int totalHighScore = 0;
     public Player (String name, int type){
         this.name = name;
         this.type = type;
     }
+
     public Player(String name, int type, int x, int y){
         this.name = name;
         this.type = type;
@@ -36,4 +39,16 @@ class Player implements Serializable{
     public void setY(int y){
         this.y = y;
     }
+
+    
+    public HighScore addHighScore(int score, int map){
+        if (scores[map]<score) {
+            totalHighScore-=scores[map];
+            totalHighScore +=score;
+            scores[map]=score;
+        }
+        return new HighScore(name, totalHighScore);
+    }
+    
+
 }

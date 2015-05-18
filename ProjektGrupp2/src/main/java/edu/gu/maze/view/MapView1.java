@@ -1,8 +1,14 @@
 package edu.gu.maze.view;
 
+
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import java.beans.PropertyChangeListener;
@@ -20,17 +26,15 @@ public class MapView1{
         pcs.addPropertyChangeListener(listener);
     }
 
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        pcs.removePropertyChangeListener(listener);
-    }
 
     public MapView1() {
         g = new GridPane();
+        player = new PlayerView(11,15, "john");
         g.setFocusTraversable(true);
         g.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                switch (keyEvent.getCode()){
+                switch (keyEvent.getCode()) {
                     case UP:
                         pcs.firePropertyChange("UP", "value1", "value2");
                         keyEvent.consume();
@@ -50,7 +54,7 @@ public class MapView1{
                 }
             }
         });
-        player = new PlayerView();
+
         int[] roadRows = {0,
                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,   //14
                 2, 2, 2, 2,  //4
@@ -95,10 +99,10 @@ public class MapView1{
             g.add(roadView, roadColumns[i], roadRows[i]);    //node, column, row
         }
 
-        movePlayer(11,15);
-
-
+        player.update(11, 15);
+        g.add(player, 11, 15);
     }
+        
 
     public void movePlayer(int x, int y){
         player.update(x,y);
@@ -109,5 +113,4 @@ public class MapView1{
     public GridPane getMap(){
         return g;
     }
-
 }
