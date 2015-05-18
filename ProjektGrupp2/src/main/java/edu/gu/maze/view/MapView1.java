@@ -86,7 +86,7 @@ public class MapView1{
         player.setOnMouseClicked(e -> {
             System.out.print("Player");
 
-            pcs.firePropertyChange("Player","v1","v2");
+            pcs.firePropertyChange("Player",player,"v2");
 
         });
 
