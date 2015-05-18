@@ -1,23 +1,18 @@
 package edu.gu.maze.view;
 
-
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
+
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class MapView1{
+public class MapView1 implements PropertyChangeListener{
     private GridPane g;
     PlayerView player;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
@@ -112,5 +107,23 @@ public class MapView1{
 
     public GridPane getMap(){
         return g;
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        switch(evt.getPropertyName()){
+            case "UP":
+                //TODO update view
+                break;
+            case "DOWN":
+                //TODO update view
+                break;
+            case "LEFT":
+                //TODO update view
+                break;
+            case "RIGHT":
+                //TODO update view
+                break;
+        }
     }
 }

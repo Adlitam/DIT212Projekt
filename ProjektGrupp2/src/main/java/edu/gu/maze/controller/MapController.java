@@ -36,15 +36,15 @@ public class MapController implements PropertyChangeListener{
                 break;
             case "DOWN":
                 System.out.println("Key Pressed: DOWN");
-                model.moveDown();
+                //model.moveDown();
                 break;
             case "LEFT":
                 System.out.println("Key Pressed: LEFT");
-                model.moveLeft();
+                //model.moveLeft();
                 break;
             case "RIGHT":
                 System.out.println("Key Pressed: RIGHT");
-                model.moveRight();
+                //model.moveRight();
                 break;
         }
     }
