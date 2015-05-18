@@ -19,7 +19,7 @@ public class HighScoreController implements PropertyChangeListener {
         this.stage = primaryStage;
         this.model = model;
         this.view = view;
-      //  this.view.addPropertyChangeListener(this);
+        this.view.addPropertyChangeListener(this);
     }
 
     @Override

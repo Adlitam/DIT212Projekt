@@ -33,11 +33,11 @@ public class MainController implements PropertyChangeListener {
             new MapController(model, mapView1, inputView, stage);
             new GameView(stage, mapView1, infoView, inputView);
         }
-        /*
+
         if(evt.getPropertyName().equals("highScoreButton")){
             HighScoreView highScoreView = new HighScoreView(stage);
             new HighScoreController(model, highScoreView, stage);
         }
-        */
+
     }
 }
