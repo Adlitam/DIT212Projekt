@@ -45,25 +45,26 @@ public class InputOutputView {
         input.setOnKeyPressed(e1 -> {
             switch (e1.getCode()) {
                 case ENTER:
-                    pcs.firePropertyChange("Input", input, "value2");
+                    pcs.firePropertyChange("Input", input, output);
                     e1.consume();
                     break;
                 case UP:
-                    pcs.firePropertyChange("UP", "value1", "value2");
+                    pcs.firePropertyChange("UP", output, "value2");
                     e1.consume();
                     break;
                 case DOWN:
-                    pcs.firePropertyChange("DOWN", "value1", "value2");
+                    pcs.firePropertyChange("DOWN", output, "value2");
                     e1.consume();
                     break;
                 case LEFT:
-                    pcs.firePropertyChange("LEFT", "value1", "value2");
+                    pcs.firePropertyChange("LEFT", output, "value2");
                     e1.consume();
                     break;
                 case RIGHT:
-                    pcs.firePropertyChange("RIGHT", "value1", "value2");
+                    pcs.firePropertyChange("RIGHT", output, "value2");
                     e1.consume();
                     break;
+
             }
         });
     }
@@ -80,25 +81,29 @@ public class InputOutputView {
         output.setPrefSize(screenSize.getWidth(),90);
         output.setEditable(false);
         output.setWrapText(true);
+
+
+
         output.setOnKeyPressed(e2 -> {
             switch (e2.getCode()) {
                 case UP:
-                    pcs.firePropertyChange("UP", "value1", "value2");
+                    pcs.firePropertyChange("UP", output, "value2");
                     e2.consume();
                     break;
                 case DOWN:
-                    pcs.firePropertyChange("DOWN", "value1", "value2");
+                    pcs.firePropertyChange("DOWN", output, "value2");
                     e2.consume();
                     break;
                 case LEFT:
-                    pcs.firePropertyChange("LEFT", "value1", "value2");
+                    pcs.firePropertyChange("LEFT", output, "value2");
                     e2.consume();
                     break;
                 case RIGHT:
-                    pcs.firePropertyChange("RIGHT", "value1", "value2");
+                    pcs.firePropertyChange("RIGHT", output, "value2");
                     e2.consume();
                     break;
             }
+
         });
     }
 

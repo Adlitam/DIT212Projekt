@@ -2,13 +2,7 @@ package edu.gu.maze.view;
 
 
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import java.beans.PropertyChangeListener;
@@ -31,29 +25,30 @@ public class MapView1{
         g = new GridPane();
         player = new PlayerView(11,15, "john");
         g.setFocusTraversable(true);
-        g.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                switch (keyEvent.getCode()) {
-                    case UP:
-                        pcs.firePropertyChange("UP", "value1", "value2");
-                        keyEvent.consume();
-                        break;
-                    case DOWN:
-                        pcs.firePropertyChange("DOWN", "value1", "value2");
-                        keyEvent.consume();
-                        break;
-                    case LEFT:
-                        pcs.firePropertyChange("LEFT", "value1", "value2");
-                        keyEvent.consume();
-                        break;
-                    case RIGHT:
-                        pcs.firePropertyChange("RIGHT", "value1", "value2");
-                        keyEvent.consume();
-                        break;
+            g.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent keyEvent) {
+                    switch (keyEvent.getCode()) {
+                        case UP:
+                            pcs.firePropertyChange("UP", "value1", "value2");
+                            keyEvent.consume();
+                            break;
+                        case DOWN:
+                            pcs.firePropertyChange("DOWN", "value1", "value2");
+                            keyEvent.consume();
+                            break;
+                        case LEFT:
+                            pcs.firePropertyChange("LEFT", "value1", "value2");
+                            keyEvent.consume();
+                            break;
+                        case RIGHT:
+                            pcs.firePropertyChange("RIGHT", "value1", "value2");
+                            keyEvent.consume();
+                            break;
+                    }
                 }
-            }
-        });
+            });
+
 
         int[] roadRows = {0,
                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,   //14

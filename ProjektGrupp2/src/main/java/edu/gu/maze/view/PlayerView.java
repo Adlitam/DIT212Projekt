@@ -36,17 +36,6 @@ public class PlayerView extends ImageView{
         yPos = y;
     }
 
-    public void update(KeyEvent evt){
-        switch (evt.getCode()){
-            case UP:
-                pcs.firePropertyChange("player","v1","v2");
-                break;
-
-        }
-
-
-    }
-
 
 
     public void setxPos(int x){
