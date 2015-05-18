@@ -52,22 +52,22 @@ public class InputOutputController implements PropertyChangeListener {
                 break;
             case "UP":
                 output = (TextArea) evt.getOldValue();
-                output.setText(model.getQuestion());
+                output.setText("Up");
                 pcs.firePropertyChange("UP", "value1", "value2");
                 break;
             case "DOWN":
                 output = (TextArea) evt.getOldValue();
-                output.setText(model.getQuestion());
+                output.setText("Down");
                 pcs.firePropertyChange("DOWN", "value1", "value2");
                 break;
             case "LEFT":
                 output = (TextArea) evt.getOldValue();
-                output.setText(model.getQuestion());
+                output.setText("Left");
                 pcs.firePropertyChange("LEFT", "value1", "value2");
                 break;
             case "RIGHT":
                 output = (TextArea) evt.getOldValue();
-                output.setText(model.getQuestion());
+                output.setText("Right");
                 pcs.firePropertyChange("RIGHT", "value1", "value2");
                 break;
         }

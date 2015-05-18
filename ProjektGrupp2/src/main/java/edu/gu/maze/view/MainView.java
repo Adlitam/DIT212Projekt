@@ -27,16 +27,19 @@ public class MainView{
     public MainView(Stage primaryStage){
         stage = primaryStage;
         stage.setTitle("Maze");
-        Button playButton = new Button("Play the game");
-        playButton.setOnAction(e -> {
-            pcs.firePropertyChange("playButton", "value1", "value2");
-        });
+
         Button highScoreButton = new Button("High Score");
-        highScoreButton.setOnAction(e -> {
-            pcs.firePropertyChange("highScoreButton", "value1", "value2");
-        });
+        highScoreButton.setOnAction(e ->
+            pcs.firePropertyChange("highScoreButton", "value1", "value2")
+        );
+
+        Button createPlayer = new Button("Create Player");
+        createPlayer.setOnAction(e ->
+                        pcs.firePropertyChange("createPlayerButton", "value1", "value2")
+        );
+
         VBox vBoxlayout = new VBox();
-        vBoxlayout.getChildren().addAll(playButton,highScoreButton);
+        vBoxlayout.getChildren().addAll(highScoreButton,createPlayer);
         vBoxlayout.setAlignment(Pos.CENTER);
         Scene mainScene = new Scene(vBoxlayout, 800, 600);
         stage.setScene(mainScene);
