@@ -134,7 +134,7 @@ public class Game implements IGame, Serializable{
     public void addRoadsToMap(){
         Scanner s = null;
         try {
-            s = new Scanner(new File("C:\\Users\\xiang-yu\\Desktop\\studier\\objektorienterat programmeringsprojekt dit212\\Dit212Projekt\\ProjektGrupp2\\src\\main\\resources\\map1Roads.txt"));
+            s = new Scanner(new File("map1Roads.txt"));
         }catch(IOException e){
             System.out.println("could not open map1Roads.txt");
             System.exit(0);

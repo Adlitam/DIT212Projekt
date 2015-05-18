@@ -33,7 +33,7 @@ public class HighScoreView{
         backButton.setOnAction(e ->
                 pcs.firePropertyChange("backButtonH", "value1", "value2"));
         borderPaneLayout.setBottom(hBoxlayout);
-        Scene highScoreScene = new Scene(borderPaneLayout, 1000, 600);
+        Scene highScoreScene = new Scene(borderPaneLayout, 800, 600);
         stage.setScene(highScoreScene);
     }
 }
