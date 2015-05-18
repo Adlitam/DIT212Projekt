@@ -2,11 +2,10 @@ package edu.gu.maze.controller;
 
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.InfoView;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-//import org.apache.commons.lang.time.StopWatch;
+
 
 
 /**
@@ -23,21 +22,6 @@ public class InfoController implements PropertyChangeListener{
         this.view = view;
         this.view.addPropertyChangeListener(this);
     }
-
-
-
-    private Label label;
-    private String time;
-    //StopWatch timer = new StopWatch();
-
-    public Label timeController(Label l){
-        //timer.start();
-        this.label=l;
-        //time = timer.toString();
-        label.setText(time);
-        return label;
-    }
-
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {

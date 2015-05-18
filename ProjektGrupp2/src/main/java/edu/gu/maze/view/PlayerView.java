@@ -5,16 +5,16 @@ import javafx.scene.image.Image;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class Player extends ImageView{
+public class PlayerView extends ImageView{
     private String playerName = "john";
     private int xPos;
     private int yPos;
     private Image image = new Image("player1.png");
 
-    public Player(){
+    public PlayerView(){
     }
 
-    public Player(int x, int y,String name){
+    public PlayerView(int x, int y, String name){
         xPos = x;
         yPos = y;
         playerName = name;

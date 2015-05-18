@@ -6,12 +6,12 @@ import javafx.scene.shape.Rectangle;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class Wall extends Rectangle{
+public class WallView extends Rectangle{
 
     private final int xPos;
     private final int yPos;
 
-    public Wall(int x, int y, Paint p){
+    public WallView(int x, int y, Paint p){
         this.xPos = x;
         this.yPos = y;
         setFill(p);    //for instance: Color.valueOf("gray")

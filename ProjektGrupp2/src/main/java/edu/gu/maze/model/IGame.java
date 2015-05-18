@@ -1,5 +1,7 @@
 package edu.gu.maze.model;
 
+import java.io.IOException;
+
 /**
  *
  * @author omega
@@ -32,4 +34,10 @@ public interface IGame {
     public void createPlayer(int Slot, String name, int type);
     //select existing player
     public void selectPlayer (int Slot) throws Exception;
+
+    public abstract void addRoadsToMap();
+    public abstract void moveUp();
+    public abstract void moveDown();
+    public abstract void moveLeft();
+    public abstract void moveRight();
 }

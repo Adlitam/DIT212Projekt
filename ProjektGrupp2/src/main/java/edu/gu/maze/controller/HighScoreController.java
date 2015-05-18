@@ -3,7 +3,6 @@ package edu.gu.maze.controller;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.HighScoreView;
 import edu.gu.maze.view.MainView;
-import edu.gu.maze.view.Player;
 import javafx.stage.Stage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -15,21 +14,19 @@ public class HighScoreController implements PropertyChangeListener {
     IGame model;
     HighScoreView view;
     Stage stage;
-    Player player;
 
-    public HighScoreController(IGame model, HighScoreView view, Stage primaryStage, Player player){
+    public HighScoreController(IGame model, HighScoreView view, Stage primaryStage){
         this.stage = primaryStage;
         this.model = model;
         this.view = view;
-        this.player = player;
         this.view.addPropertyChangeListener(this);
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if(evt.getPropertyName() == "backButtonH"){
+        if(evt.getPropertyName().equals("backButtonH")){
             MainView mainView = new MainView(stage);
-            MainController h = new MainController(model, mainView, stage, player);
+            new MainController(model, mainView, stage);
         }
     }
 }

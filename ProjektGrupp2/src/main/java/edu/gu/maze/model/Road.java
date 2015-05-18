@@ -15,5 +15,5 @@ class Road implements ISquare{
     public boolean okayToTeleportHere() {
         return true;
     }
-    
+
 }

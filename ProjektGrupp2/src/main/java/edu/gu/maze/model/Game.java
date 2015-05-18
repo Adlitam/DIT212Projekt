@@ -1,5 +1,8 @@
 package edu.gu.maze.model;
-import java.io.Serializable;
+import java.io.*;
+import java.util.HashMap;
+import java.util.*;
+
 /**
  * Created by Matildaandersson on 15-04-01.
  */
@@ -19,6 +22,11 @@ public class Game implements IGame, Serializable{
     private transient Question currentQuestion = null;
     private transient Player currentPlayer = slot1;
 
+    private HashMap<String, Road> map = new HashMap<>();
+
+    public Game(){
+        addRoadsToMap();
+    }
 
     @Override
     public String getQuestion() {
@@ -94,5 +102,34 @@ public class Game implements IGame, Serializable{
             throw new IllegalArgumentException("Tried to call createPlayer with slot number " + Slot);
         }
     }
-    
+
+    public void addRoadsToMap(){
+        Scanner s = null;
+        try {
+            s = new Scanner(new File("C:\\Users\\xiang-yu\\Desktop\\studier\\objektorienterat programmeringsprojekt dit212\\Dit212Projekt\\ProjektGrupp2\\src\\main\\resources\\map1Roads.txt"));
+        }catch(IOException e){
+            System.out.println("could not open map1Roads.txt");
+            System.exit(0);
+        }
+        while(s.hasNext()){
+            Road r = new Road();
+            map.put(s.next(),r);
+        }
+        System.out.println(map.get("7,19"));
+    }
+
+    public void moveUp(){
+        int x = slot1.getX();
+        int y = slot1.getY();
+        //TODO
+    }
+    public void moveDown(){
+
+    }
+    public void moveLeft(){
+
+    }
+    public void moveRight(){
+
+    }
 }

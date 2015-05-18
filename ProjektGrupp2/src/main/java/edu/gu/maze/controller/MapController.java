@@ -1,11 +1,8 @@
 package edu.gu.maze.controller;
 
 import edu.gu.maze.model.IGame;
+import edu.gu.maze.view.InputOutputView;
 import edu.gu.maze.view.MapView1;
-import edu.gu.maze.view.Player;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -16,41 +13,39 @@ import java.beans.PropertyChangeListener;
 public class MapController implements PropertyChangeListener{
     IGame model;
     MapView1 view;
+    InputOutputView inputView;
     Stage stage;
-    Player player;
 
-    public MapController(IGame model, MapView1 view, Stage primaryStage, Player player){
+    public MapController(IGame model, MapView1 view, InputOutputView inputView, Stage primaryStage){
         this.stage = primaryStage;
         this.model = model;
         this.view = view;
-        this.player = player;
+        this.inputView = inputView;
+        this.inputView.addPropertyChangeListener(this);
         this.view.addPropertyChangeListener(this);
-
-
-
     }
-
-
-
 
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
-        int playerX = player.getxPos();
-        int playerY = player.getyPos();
-
-        if(evt.getPropertyName() == "mapview"){
-
-            System.out.print("Hej");
-
+        switch(evt.getPropertyName()){
+            case "UP":
+                System.out.println("Key Pressed: UP");
+                view.movePlayer(11,14);
+                model.moveUp();
+                break;
+            case "DOWN":
+                System.out.println("Key Pressed: DOWN");
+                model.moveDown();
+                break;
+            case "LEFT":
+                System.out.println("Key Pressed: LEFT");
+                model.moveLeft();
+                break;
+            case "RIGHT":
+                System.out.println("Key Pressed: RIGHT");
+                model.moveRight();
+                break;
         }
-
-
-
     }
-
-
-
-
 }

@@ -14,10 +14,9 @@ import java.beans.PropertyChangeSupport;
  * Created by Johan on 2015-05-07.
  */
 public class InputOutputView {
-    private HBox inputAndReturn;
     private VBox inputAndReturnAndOutput;
-    private TextField input = new TextField();
-    private TextArea output = new TextArea();
+    private TextField input;
+    private TextArea output;
     private Rectangle2D screenSize;
     private Button backButton;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
@@ -32,7 +31,7 @@ public class InputOutputView {
 
 
     public InputOutputView() {
-        inputAndReturn = new HBox();
+        HBox inputAndReturn = new HBox();
         inputAndReturnAndOutput = new VBox();
         screenSize = Screen.getPrimary().getVisualBounds();
         inputArea();
@@ -43,12 +42,29 @@ public class InputOutputView {
     }
 
     private void inputArea(){
+        input = new TextField();
         input.setPrefWidth(screenSize.getWidth() - 100);
         input.setOnKeyPressed(e1 -> {
             switch (e1.getCode()) {
                 case ENTER:
                     pcs.firePropertyChange("Input", input, "value2");
-
+                    e1.consume();
+                    break;
+                case UP:
+                    pcs.firePropertyChange("UP", "value1", "value2");
+                    e1.consume();
+                    break;
+                case DOWN:
+                    pcs.firePropertyChange("DOWN", "value1", "value2");
+                    e1.consume();
+                    break;
+                case LEFT:
+                    pcs.firePropertyChange("LEFT", "value1", "value2");
+                    e1.consume();
+                    break;
+                case RIGHT:
+                    pcs.firePropertyChange("RIGHT", "value1", "value2");
+                    e1.consume();
                     break;
             }
         });
@@ -57,10 +73,8 @@ public class InputOutputView {
     private void backButton(){
         backButton = new Button("Back to start");
         backButton.setMinWidth(100);
-        backButton.setOnAction(e2 -> {
-            pcs.firePropertyChange("backButtonG", "value1", "value2");
-        });
-
+        backButton.setOnAction(e2 ->
+                pcs.firePropertyChange("backButtonG", "value1", "value2"));
     }
 
     private void outputArea(){
@@ -68,6 +82,26 @@ public class InputOutputView {
         output.setPrefSize(screenSize.getWidth(),90);
         output.setEditable(false);
         output.setWrapText(true);
+        output.setOnKeyPressed(e2 -> {
+            switch (e2.getCode()) {
+                case UP:
+                    pcs.firePropertyChange("UP", "value1", "value2");
+                    e2.consume();
+                    break;
+                case DOWN:
+                    pcs.firePropertyChange("DOWN", "value1", "value2");
+                    e2.consume();
+                    break;
+                case LEFT:
+                    pcs.firePropertyChange("LEFT", "value1", "value2");
+                    e2.consume();
+                    break;
+                case RIGHT:
+                    pcs.firePropertyChange("RIGHT", "value1", "value2");
+                    e2.consume();
+                    break;
+            }
+        });
     }
 
 

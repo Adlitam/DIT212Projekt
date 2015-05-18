@@ -13,11 +13,6 @@ import java.beans.PropertyChangeSupport;
  * Created by xiang-yu on 2015-05-10.
  */
 public class HighScoreView{
-    private Stage stage;
-    private BorderPane borderPaneLayout;
-    private HBox hBoxlayout;
-    private Button backButton = new Button("Back to start");
-    private Scene highScoreScene;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -28,18 +23,17 @@ public class HighScoreView{
         pcs.removePropertyChangeListener(listener);
     }
 
-    public HighScoreView(Stage primaryStage){
-        stage = primaryStage;
+    public HighScoreView(Stage stage){
         stage.setTitle("Maze");
-        borderPaneLayout = new BorderPane();
-        hBoxlayout = new HBox();
+        BorderPane borderPaneLayout = new BorderPane();
+        HBox hBoxlayout = new HBox();
+        Button backButton = new Button("Back to start");
         hBoxlayout.getChildren().add(backButton);
         hBoxlayout.setAlignment(Pos.CENTER);
-        backButton.setOnAction(e -> {
-            pcs.firePropertyChange("backButtonH", "value1", "value2");
-        });
+        backButton.setOnAction(e ->
+                pcs.firePropertyChange("backButtonH", "value1", "value2"));
         borderPaneLayout.setBottom(hBoxlayout);
-        highScoreScene = new Scene(borderPaneLayout, 1000, 600);
+        Scene highScoreScene = new Scene(borderPaneLayout, 1000, 600);
         stage.setScene(highScoreScene);
     }
 }
