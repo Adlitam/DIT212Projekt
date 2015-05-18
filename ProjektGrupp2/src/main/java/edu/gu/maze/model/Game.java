@@ -1,5 +1,7 @@
 package edu.gu.maze.model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.*;
 import java.util.HashMap;
 import java.util.*;
@@ -10,7 +12,7 @@ import java.util.ArrayList;
  * Created by Matildaandersson on 15-04-01.
  */
 public class Game implements IGame, Serializable{
-    
+    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     //DATA
     private static final long serialVersionUID = 1L;
     //TODO : Replace this with appropriate data structure of questions.
@@ -23,7 +25,10 @@ public class Game implements IGame, Serializable{
     private Map map2 = new Map();
     private Map map3 = new Map();
     ArrayList<HighScore> totalHighScores = new ArrayList();
-    
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        pcs.addPropertyChangeListener(listener);
+    }
     
     //MATERIAL RELATING TO CURRENT GAME
     //TODO: Move this to player class
@@ -32,7 +37,7 @@ public class Game implements IGame, Serializable{
     private transient Player currentPlayer = null;
     private transient Map currentMap = null;
 
-    private HashMap<String, Road> map = new HashMap<>();
+    private HashMap<String, ISquare> map = new HashMap<>();
 
     public Game(){
         addRoadsToMap();
@@ -140,8 +145,7 @@ public class Game implements IGame, Serializable{
             System.exit(0);
         }
         while(s.hasNext()){
-            Road r = new Road();
-            map.put(s.next(),r);
+            map.put(s.next(),new Road());
         }
         //System.out.println(map.get("7,19"));
     }
@@ -149,16 +153,26 @@ public class Game implements IGame, Serializable{
     public void moveUp(){
         int x = slot1.getX();
         int y = slot1.getY();
-        //TODO
+        //TODO check if can move then update player position and notify view
+        pcs.firePropertyChange("UP", "value1", "value2");
     }
     public void moveDown(){
-
+        int x = slot1.getX();
+        int y = slot1.getY();
+        //TODO check if can move then update player position and notify view
+        pcs.firePropertyChange("DOWN", "value1", "value2");
     }
     public void moveLeft(){
-
+        int x = slot1.getX();
+        int y = slot1.getY();
+        //TODO check if can move then update player position and notify view
+        pcs.firePropertyChange("LEFT", "value1", "value2");
     }
     public void moveRight(){
-
+        int x = slot1.getX();
+        int y = slot1.getY();
+        //TODO check if can move then update player position and notify view
+        pcs.firePropertyChange("RIGHT", "value1", "value2");
     }
 
     @Override
