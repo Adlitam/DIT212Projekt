@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -43,12 +44,12 @@ public class HighScoreView{
         Label highScore2 = new Label("Player 2");
         Label highScore3 = new Label("Player 3");
 
-        HBox hBoxCenter = new HBox();
+        VBox vBoxCenter = new VBox();
         //Added the labels to the HBox
-        hBoxCenter.getChildren().addAll(highScore1,highScore2,highScore3);
-        hBoxCenter.setAlignment(Pos.CENTER);
+        vBoxCenter.getChildren().addAll(highScore1,highScore2,highScore3);
+        vBoxCenter.setAlignment(Pos.CENTER);
         //Added the hBox to the layout.
-        borderPaneLayout.setCenter(hBoxCenter);
+        borderPaneLayout.setCenter(vBoxCenter);
 
 
     }
