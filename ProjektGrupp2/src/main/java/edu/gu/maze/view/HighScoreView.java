@@ -4,9 +4,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -33,12 +32,14 @@ public class HighScoreView{
         backButton.setOnAction(e ->
                 pcs.firePropertyChange("backButtonH", "value1", "value2"));
         borderPaneLayout.setBottom(hBoxlayout);
-        create();
+        createList();
+        createTop();
         Scene highScoreScene = new Scene(borderPaneLayout, 800, 600);
+        
         stage.setScene(highScoreScene);
     }
 
-    public void create(){
+    public void createList(){
         //Add three labels
         Label highScore1 = new Label("Player 1");
         Label highScore2 = new Label("Player 2");
@@ -50,6 +51,24 @@ public class HighScoreView{
         vBoxCenter.setAlignment(Pos.CENTER);
         //Added the hBox to the layout.
         borderPaneLayout.setCenter(vBoxCenter);
+
+
+    }
+
+    public void createTop(){
+
+        Label title = new Label("High Score");
+        title.setFont(new Font("Cambria", 40));
+
+        HBox hBoxTop = new HBox();
+        hBoxTop.getChildren().addAll(title);
+        hBoxTop.setAlignment(Pos.CENTER);
+
+
+
+
+        borderPaneLayout.setTop(hBoxTop);
+
 
 
     }
