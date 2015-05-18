@@ -19,10 +19,6 @@ public class HighScoreView{
         pcs.addPropertyChangeListener(listener);
     }
 
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        pcs.removePropertyChangeListener(listener);
-    }
-
     public HighScoreView(Stage stage){
         stage.setTitle("Maze");
         BorderPane borderPaneLayout = new BorderPane();
