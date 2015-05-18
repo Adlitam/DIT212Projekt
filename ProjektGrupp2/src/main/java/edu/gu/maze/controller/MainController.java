@@ -25,24 +25,15 @@ public class MainController implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if(evt.getPropertyName().equals("playButton")){
-            InfoView infoView = new InfoView();
-            new InfoController(model, infoView, stage);
-            InputOutputView inputView = new InputOutputView();
-            new InputOutputController(model, inputView, stage);
-            MapView1 mapView1 = new MapView1();
-            model.addPropertyChangeListener(mapView1);
-            new MapController(model, mapView1, inputView, stage);
-            new GameView(stage, mapView1, infoView, inputView);
-        }
-
-        if(evt.getPropertyName().equals("highScoreButton")){
-            HighScoreView highScoreView = new HighScoreView(stage);
-            new HighScoreController(model, highScoreView, stage);
-        }
-        if(evt.getPropertyName().equals("createPlayerButton")){
-            CreatePlayerView createPlayerView = new CreatePlayerView(stage);
-            new CreatePlayerController(model, createPlayerView, stage);
+        switch(evt.getPropertyName()) {
+            case "highScoreButton":
+                HighScoreView highScoreView = new HighScoreView(stage);
+                new HighScoreController(model, highScoreView, stage);
+            break;
+            case "createPlayerButton":
+                CreatePlayerView createPlayerView = new CreatePlayerView(stage);
+                new CreatePlayerController(model, createPlayerView, stage);
+            break;
         }
 
     }

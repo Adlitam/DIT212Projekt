@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -47,6 +49,41 @@ public class CreatePlayerView {
     }
 
     private void createMiddle(){
+        HBox chooseCharacter = new HBox();
+        chooseCharacter.getChildren().addAll(getMageNode(),getWarriorNode(),getThiefNode());
+        chooseCharacter.setAlignment(Pos.CENTER);
+        chooseCharacter.setSpacing(20);
+        borderPaneLayout.setCenter(chooseCharacter);
+
+    }
+
+
+    private ImageView getMageNode(){
+        Image image = new Image("Mage.png");
+        ImageView mage = new ImageView();
+        mage.setImage(image);
+        mage.setFitHeight(200);
+        mage.setFitWidth(200);
+        mage.setOnMouseClicked(e ->  pcs.firePropertyChange("mage", mage, "value2"));
+        return mage;
+    }
+    private ImageView getWarriorNode(){
+        Image image = new Image("warrior.png");
+        ImageView warrior = new ImageView();
+        warrior.setImage(image);
+        warrior.setFitHeight(200);
+        warrior.setFitWidth(200);
+        warrior.setOnMouseClicked(e -> pcs.firePropertyChange("warrior", warrior, "value2"));
+        return warrior;
+    }
+    private ImageView getThiefNode(){
+        Image image = new Image("thief.png");
+        ImageView thief = new ImageView();
+        thief.setImage(image);
+        thief.setFitHeight(200);
+        thief.setFitWidth(200);
+        thief.setOnMouseClicked(e ->  pcs.firePropertyChange("thief", thief, "value2"));
+        return thief;
     }
 
     private void createBottom(){
@@ -67,8 +104,6 @@ public class CreatePlayerView {
         playAndReturn.getChildren().addAll(playButton, backButton);
         playAndReturn.setAlignment(Pos.CENTER);
         playAndReturn.setSpacing(10);
-
-
 
         borderPaneLayout.setBottom(playAndReturn);
     }
