@@ -32,7 +32,7 @@ public class Game implements IGame, Serializable{
     private transient Player currentPlayer = null;
     private transient Map currentMap = null;
 
-    private HashMap<String, Road> map = new HashMap<>();
+    private HashMap<String, ISquare> map = new HashMap<>();
 
     public Game(){
         addRoadsToMap();
@@ -140,8 +140,7 @@ public class Game implements IGame, Serializable{
             System.exit(0);
         }
         while(s.hasNext()){
-            Road r = new Road();
-            map.put(s.next(),r);
+            map.put(s.next(),new Road());
         }
         //System.out.println(map.get("7,19"));
     }
@@ -152,13 +151,19 @@ public class Game implements IGame, Serializable{
         //TODO
     }
     public void moveDown(){
-
+        int x = slot1.getX();
+        int y = slot1.getY();
+        //TODO
     }
     public void moveLeft(){
-
+        int x = slot1.getX();
+        int y = slot1.getY();
+        //TODO
     }
     public void moveRight(){
-
+        int x = slot1.getX();
+        int y = slot1.getY();
+        //TODO
     }
 
     @Override
