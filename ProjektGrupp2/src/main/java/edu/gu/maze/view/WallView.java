@@ -12,15 +12,6 @@ public class WallView extends ImageView {
     private final int yPos;
     private Image image;
 
-    public WallView(){
-        xPos = 0;
-        yPos = 0;
-        image = new Image("wall.jpg");
-        setImage(image);
-        setFitWidth(30);
-        setFitHeight(30);
-    }
-
     public WallView(int x, int y){
         this.xPos = x;
         this.yPos = y;

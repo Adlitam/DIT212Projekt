@@ -11,15 +11,6 @@ public class RoadView extends ImageView {
     private final int yPos;
     private Image image;
 
-    public RoadView(){
-        this.xPos = 0;
-        this.yPos = 0;
-        image = new Image("road.jpg");
-        setImage(image);
-        setFitWidth(30);
-        setFitHeight(30);
-    }
-
     public RoadView(int x, int y){
         this.xPos = x;
         this.yPos = y;
