@@ -44,7 +44,7 @@ public class InfoView {
         Label apple = new Label("Apples:");
         apple.setAlignment(Pos.CENTER);
         apple.setPrefSize(100,(screenSize.getHeight()-100)/4);
-        apple.setStyle("-fx-border-color: black;");
+        apple.setStyle("-fx-border-color: white;");
         return apple;
     }
     //The label that show the current amount of keys that the player has
@@ -52,7 +52,7 @@ public class InfoView {
         Label key = new Label("Keys:");
         key.setAlignment(Pos.CENTER);
         key.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
-        key.setStyle("-fx-border-color: black;");
+        key.setStyle("-fx-border-color: white;");
         return key;
     }
     // The label that show the current score
@@ -67,7 +67,7 @@ public class InfoView {
 
         points.setAlignment(Pos.CENTER);
         points.setPrefSize(100, (screenSize.getHeight()-100)/4);
-        points.setStyle("-fx-border-color: black;");
+        points.setStyle("-fx-border-color: white;");
 
         return points;
     }
@@ -78,7 +78,7 @@ public class InfoView {
         //new InfoController().timeController(time);   //what is this? View shouldn't know about the controller
         time.setAlignment(Pos.CENTER);
         time.setPrefSize(100,(screenSize.getHeight()-100)/4);
-        time.setStyle("-fx-border-color: black;");
+        time.setStyle("-fx-border-color: white;");
         return time;
     }
 }
