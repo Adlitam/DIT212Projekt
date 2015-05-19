@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -13,30 +14,22 @@ import java.beans.PropertyChangeSupport;
  */
 public class MainView{
     Stage stage;
+    Button createPlayer;
+    Button highScoreButton;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
 
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        pcs.removePropertyChangeListener(listener);
-    }
 
 
     public MainView(Stage primaryStage){
         stage = primaryStage;
         stage.setTitle("Maze");
 
-        Button highScoreButton = new Button("High Score");
-        highScoreButton.setOnAction(e ->
-            pcs.firePropertyChange("highScoreButton", "value1", "value2")
-        );
-
-        Button createPlayer = new Button("Create Player");
-        createPlayer.setOnAction(e ->
-                        pcs.firePropertyChange("createPlayerButton", "value1", "value2")
-        );
+        createPlayButton();
+        createHighScoreButton();
 
         VBox vBoxlayout = new VBox();
         vBoxlayout.getChildren().addAll(highScoreButton,createPlayer);
@@ -44,6 +37,27 @@ public class MainView{
         Scene mainScene = new Scene(vBoxlayout, 800, 600);
         stage.setScene(mainScene);
         stage.show();
+    }
+
+
+    public void createPlayButton(){
+        //Creates the PlayButton
+        createPlayer = new Button("Play");
+        createPlayer.setFont(new Font("Cambria", 20));
+        createPlayer.setOnAction(e ->
+                        pcs.firePropertyChange("createPlayerButton", "value1", "value2")
+        );
+
+    }
+
+    public void createHighScoreButton(){
+
+        //Creates the highscoreButton
+        highScoreButton = new Button("High Score");
+        highScoreButton.setFont(new Font("Cambria", 20));
+        highScoreButton.setOnAction(e ->
+                        pcs.firePropertyChange("highScoreButton", "value1", "value2")
+        );
     }
 
 

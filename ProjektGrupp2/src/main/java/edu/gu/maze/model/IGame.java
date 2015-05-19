@@ -10,11 +10,13 @@ public interface IGame {
     //For questions
     //Returns a question
     public String getQuestion();
+
     /*Returns an array of answers of length at least 2.
     Throws an exception if getQuestion() hasn't been called, or if
     isThisTheRightAnswer() has been called since the last time
     getQuestion() was called.*/
     public String[] getAnswers();
+
     /*This method takes an int which is an index to the array returned by getAnswers()
     It returns an array of ints which signify, in order:
     0 for wrong answer, 1 for correct
@@ -32,6 +34,7 @@ public interface IGame {
     //Type has possible values Constants.MAGE, Constants.WARRIOR, and Constants.THIEF
     //NEW: Throws an exception at any attempt to create a player in a slot that is
     //already occupied.
+
     public void createPlayer(int Slot, String name, int type);
     //select existing player
 

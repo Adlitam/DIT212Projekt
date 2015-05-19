@@ -10,6 +10,7 @@ import javafx.stage.Stage;
  * Created by xiang-yu on 2015-05-10.
  */
 public class GameView{
+
     public GameView(Stage s, MapView1 m, InfoView i1, InputOutputView i2){
         s.setTitle("Maze");
         BorderPane borderPane = new BorderPane();
@@ -22,4 +23,5 @@ public class GameView{
         Scene gameScene = new Scene(borderPane, 800, 600);
         s.setScene(gameScene);
     }
+
 }

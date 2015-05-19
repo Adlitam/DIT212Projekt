@@ -21,9 +21,6 @@ public class InfoView {
         pcs.addPropertyChangeListener(listener);
     }
 
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        pcs.removePropertyChangeListener(listener);
-    }
 
     public InfoView(){
         screenSize = Screen.getPrimary().getVisualBounds();

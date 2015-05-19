@@ -9,9 +9,12 @@ import java.util.Date;
  * @author omega
  */
 class HighScore implements Comparable, Serializable{
+
     private final int score;
     private final String name;
     private final Date date;
+
+
     public HighScore (String name, int score){
         this.name = name;
         this.score = score;
