@@ -3,7 +3,10 @@ package edu.gu.maze.view;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -25,11 +28,7 @@ public class InfoView {
     public InfoView(){
         screenSize = Screen.getPrimary().getVisualBounds();
         right = new VBox();
-        Label apple = getAppleLabel();
-        Label key = getKeyLabel();
-        VBox points = getPointsVBox();
-        Label time = getTimeLabel();
-        right.getChildren().addAll(apple, key, points, time);
+        right.getChildren().addAll(getAppleNode(), getKeyNode(), getPointsNode(), getTimeNode());
         right.minWidth(100);
         right.setMinWidth(100);
     }
@@ -40,23 +39,43 @@ public class InfoView {
     }
 
     //The label that show the current amount of apples that the player has
-    private Label getAppleLabel(){
-        Label apple = new Label("Apples:");
-        apple.setAlignment(Pos.CENTER);
-        apple.setPrefSize(100,(screenSize.getHeight()-100)/4);
-        apple.setStyle("-fx-border-color: white;");
-        return apple;
+    private VBox getAppleNode(){
+        VBox appleBox = new VBox();
+
+        Image image = new Image("apple.png");
+        ImageView apple = new ImageView();
+        apple.setImage(image);
+        apple.setFitHeight(75);
+        apple.setFitWidth(75);
+
+        Label nrApples = new Label("0");
+        nrApples.setFont(new Font(20));
+        appleBox.getChildren().addAll(apple,nrApples);
+        appleBox.setPrefSize(100,(screenSize.getHeight()-100)/4);
+        appleBox.setStyle("-fx-border-color: white;");
+        appleBox.setAlignment(Pos.CENTER);
+        return appleBox;
     }
     //The label that show the current amount of keys that the player has
-    private Label getKeyLabel(){
-        Label key = new Label("Keys:");
-        key.setAlignment(Pos.CENTER);
-        key.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
-        key.setStyle("-fx-border-color: white;");
-        return key;
+    private VBox getKeyNode(){
+        VBox keyBox = new VBox();
+
+        Image image = new Image("key.png");
+        ImageView key = new ImageView();
+        key.setImage(image);
+        key.setFitHeight(75);
+        key.setFitWidth(75);
+
+        Label nrKeys = new Label("0");
+        nrKeys.setFont(new Font(20));
+        keyBox.getChildren().addAll(key,nrKeys);
+        keyBox.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
+        keyBox.setStyle("-fx-border-color: white;");
+        keyBox.setAlignment(Pos.CENTER);
+        return keyBox;
     }
     // The label that show the current score
-    private VBox getPointsVBox(){
+    private VBox getPointsNode(){
         VBox points = new VBox();
         Label text = new Label("Score");
 
@@ -73,8 +92,9 @@ public class InfoView {
     }
 
     //The Time label that show the current time
-    private Label getTimeLabel(){
-        Label time = new Label();
+    private Label getTimeNode(){
+        Label time = new Label("00:00:00");
+        time.setFont(new Font(20));
         //new InfoController().timeController(time);   //what is this? View shouldn't know about the controller
         time.setAlignment(Pos.CENTER);
         time.setPrefSize(100,(screenSize.getHeight()-100)/4);
