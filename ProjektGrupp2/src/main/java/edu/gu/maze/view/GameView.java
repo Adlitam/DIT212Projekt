@@ -19,7 +19,7 @@ public class GameView{
         borderPane.setCenter(map);
         borderPane.setRight(info);
         borderPane.setBottom(inputAndReturnAndOutput);
-        Scene gameScene = new Scene(borderPane, 1000, 600);
+        Scene gameScene = new Scene(borderPane, 800, 600);
         s.setScene(gameScene);
     }
 }

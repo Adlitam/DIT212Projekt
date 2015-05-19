@@ -24,25 +24,22 @@ public class HighScoreView{
     public HighScoreView(Stage stage){
         stage.setTitle("Maze");
         borderPaneLayout = new BorderPane();
-        HBox hBoxlayout = new HBox();
-        Button backButton = new Button("Back to start");
-        hBoxlayout.getChildren().add(backButton);
-        hBoxlayout.setAlignment(Pos.CENTER);
-        backButton.setOnAction(e ->
-                pcs.firePropertyChange("backButtonH", "value1", "value2"));
-        borderPaneLayout.setBottom(hBoxlayout);
+
+        //Create the layout
         createList();
         createTop();
+        createBackButton();
+
+        //Sets the scene
         Scene highScoreScene = new Scene(borderPaneLayout, 800, 600);
-        
         stage.setScene(highScoreScene);
     }
 
     public void createList(){
         //Add three labels
-        Label highScore1 = new Label("Player 1");
-        Label highScore2 = new Label("Player 2");
-        Label highScore3 = new Label("Player 3");
+        Label highScore1 = new Label("Player 1 ....................... Points");
+        Label highScore2 = new Label("Player 2 ....................... Points");
+        Label highScore3 = new Label("Player 3 ....................... Points");
 
         VBox vBoxCenter = new VBox();
         //Added the labels to the HBox
@@ -54,8 +51,10 @@ public class HighScoreView{
 
     }
 
+
     public void createTop(){
 
+        //The title and the font
         Label title = new Label("High Score");
         title.setFont(new Font("Cambria", 40));
 
@@ -63,12 +62,22 @@ public class HighScoreView{
         hBoxTop.getChildren().addAll(title);
         hBoxTop.setAlignment(Pos.CENTER);
 
-
-
-
         borderPaneLayout.setTop(hBoxTop);
 
+    }
 
+    public void createBackButton(){
+
+        //Create the backbutton
+        HBox hBoxlayout = new HBox();
+        Button backButton = new Button("Back to start");
+        hBoxlayout.getChildren().add(backButton);
+        hBoxlayout.setAlignment(Pos.CENTER);
+
+        //add a propertyChnageListner
+        backButton.setOnAction(e ->
+                pcs.firePropertyChange("backButtonH", "value1", "value2"));
+        borderPaneLayout.setBottom(hBoxlayout);
 
     }
 
