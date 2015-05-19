@@ -105,5 +105,3 @@ public class CreatePlayerController implements PropertyChangeListener {
         new GameView(stage, mapView1, infoView, inputView);
     }
 }
-
-g
