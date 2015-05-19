@@ -24,13 +24,15 @@ public class CreatePlayerView {
     private ImageView mage;
     private ImageView thief;
     private ImageView warrior;
+    private int slot;
 
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
 
-    public CreatePlayerView(Stage stage){
+    public CreatePlayerView(Stage stage, int slot){
+        this.slot = slot;
         stage.setTitle("Maze");
         borderPaneLayout = new BorderPane();
         createTop();
@@ -102,7 +104,7 @@ public class CreatePlayerView {
         Button playButton = new Button("Play");
         playButton.setPrefWidth(200);
         playButton.setOnAction(e ->
-                        pcs.firePropertyChange("playButton", name, "value2")
+                        pcs.firePropertyChange("playButton", name, slot)
         );
 
         Button backButton = new Button("Back to start");

@@ -32,8 +32,9 @@ public class MainView{
         createHighScoreButton();
 
         VBox vBoxlayout = new VBox();
-        vBoxlayout.getChildren().addAll(highScoreButton,createPlayer);
+        vBoxlayout.getChildren().addAll(createPlayer,highScoreButton);
         vBoxlayout.setAlignment(Pos.CENTER);
+        vBoxlayout.setSpacing(50);
         Scene mainScene = new Scene(vBoxlayout, 800, 620);
         //stage.setResizable(false);
         stage.setScene(mainScene);
@@ -46,7 +47,7 @@ public class MainView{
         createPlayer = new Button("Play");
         createPlayer.setFont(new Font("Cambria", 20));
         createPlayer.setOnAction(e ->
-                        pcs.firePropertyChange("createPlayerButton", "value1", "value2")
+                        pcs.firePropertyChange("Play", "value1", "value2")
         );
 
     }

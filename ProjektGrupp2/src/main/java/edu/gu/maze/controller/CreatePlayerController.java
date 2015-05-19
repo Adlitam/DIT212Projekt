@@ -54,10 +54,16 @@ public class CreatePlayerController implements PropertyChangeListener {
                 TextField input = (TextField) evt.getOldValue();
                 String name = input.getText();
 
+                int slot = (int) evt.getNewValue();
+
+
+
                 System.out.println("Name: " + name);
                 System.out.println("Type: " + type);
+                System.out.println("Slot: " + slot);
 
-                model.createPlayer(1, name,type);
+
+                model.createPlayer(slot, name,type);
                 break;
 
             case "mage":

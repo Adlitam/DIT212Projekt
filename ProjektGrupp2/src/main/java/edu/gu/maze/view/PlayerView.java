@@ -13,7 +13,7 @@ public class PlayerView extends ImageView{
     private String playerName = "john";
     private int xPos;
     private int yPos;
-    private Image image = new Image("player2.png");
+    private Image image = new Image("thief.png");
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public PlayerView(int x, int y, String name){
