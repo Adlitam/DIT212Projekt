@@ -1,10 +1,9 @@
 package edu.gu.maze.model;
 
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.*;
-import java.util.HashMap;
-import java.util.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -37,7 +36,6 @@ public class Game implements IGame, Serializable{
     private transient Player currentPlayer = null;
     private transient Map currentMap = null;
 
-    private HashMap<String, ISquare> map = new HashMap<>();
 
     public Game() throws FileNotFoundException{
         new Map("map1Roads.txt");
@@ -135,46 +133,34 @@ public class Game implements IGame, Serializable{
         else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
     }
 
-/*
 
-    public void addRoadsToMap(){
-        Scanner s = null;
-        try {
-            s = new Scanner(new File("map1Roads.txt"));
-        }catch(IOException e){
-            System.out.println("could not open map1Roads.txt");
-            System.exit(0);
-        }
-        while(s.hasNext()){
-            map.put(s.next(),new Road());
-        }
-        //System.out.println(map.get("7,19"));
-    }
-
-*/
     public void moveUp(){
         int x = slot1.getX();
         int y = slot1.getY();
-        //TODO check if can move then update player position and notify view
-        pcs.firePropertyChange("UP", "value1", "value2");
+        if(currentMap.map[x][y+1].canIMoveHere() == 0){
+            pcs.firePropertyChange("UP", "value1", "value2");
+        }
     }
     public void moveDown(){
         int x = slot1.getX();
         int y = slot1.getY();
-        //TODO check if can move then update player position and notify view
-        pcs.firePropertyChange("DOWN", "value1", "value2");
+        if(currentMap.map[x][y-1].canIMoveHere() == 0){
+            pcs.firePropertyChange("DOWN", "value1", "value2");
+        }
     }
     public void moveLeft(){
         int x = slot1.getX();
         int y = slot1.getY();
-        //TODO check if can move then update player position and notify view
-        pcs.firePropertyChange("LEFT", "value1", "value2");
+        if(currentMap.map[x-1][y].canIMoveHere() == 0){
+            pcs.firePropertyChange("LEFT", "value1", "value2");
+        }
     }
     public void moveRight(){
         int x = slot1.getX();
         int y = slot1.getY();
-        //TODO check if can move then update player position and notify view
-        pcs.firePropertyChange("RIGHT", "value1", "value2");
+        if(currentMap.map[x+1][y].canIMoveHere() == 0){
+            pcs.firePropertyChange("RIGHT", "value1", "value2");
+        }
     }
 
     @Override

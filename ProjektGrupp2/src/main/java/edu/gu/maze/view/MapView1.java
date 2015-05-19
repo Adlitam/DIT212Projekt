@@ -109,6 +109,7 @@ public class MapView1 implements PropertyChangeListener{
         return g;
     }
 
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch(evt.getPropertyName()){
