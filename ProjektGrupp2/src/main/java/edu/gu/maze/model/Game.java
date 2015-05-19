@@ -149,8 +149,8 @@ public class Game implements IGame, Serializable{
                 System.out.println("slot3 är inte null! SPECIAL TACTICS!");
             }
         }
-        int x = slot2.getX();
-        int y = slot2.getY();
+        int x = slot1.getX();
+        int y = slot1.getY();
 
         if(currentMap == null) {
             System.out.println("currentMap är null! PROBLEMS!");
