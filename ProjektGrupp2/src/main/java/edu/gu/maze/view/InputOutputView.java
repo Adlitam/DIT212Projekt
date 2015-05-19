@@ -41,7 +41,7 @@ public class InputOutputView {
 
     private void inputArea(){
         input = new TextField();
-        input.setPrefWidth(screenSize.getWidth() - 100);
+        input.setPrefWidth(screenSize.getWidth() - 130);
         input.setOnKeyPressed(e1 -> {
             switch (e1.getCode()) {
                 case ENTER:
@@ -71,7 +71,7 @@ public class InputOutputView {
 
     private void backButton(){
         backButton = new Button("Back to start");
-        backButton.setMinWidth(100);
+        backButton.setMinWidth(130);
         backButton.setOnAction(e2 ->
                 pcs.firePropertyChange("backButtonG", "value1", "value2"));
     }

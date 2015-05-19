@@ -37,7 +37,7 @@ public class CreatePlayerView {
         createTop();
         createMiddle();
         createBottom();
-        Scene highScoreScene = new Scene(borderPaneLayout, 800, 600);
+        Scene highScoreScene = new Scene(borderPaneLayout, 800, 620);
 
         stage.setScene(highScoreScene);
     }

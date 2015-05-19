@@ -34,7 +34,8 @@ public class MainView{
         VBox vBoxlayout = new VBox();
         vBoxlayout.getChildren().addAll(highScoreButton,createPlayer);
         vBoxlayout.setAlignment(Pos.CENTER);
-        Scene mainScene = new Scene(vBoxlayout, 800, 600);
+        Scene mainScene = new Scene(vBoxlayout, 800, 620);
+        //stage.setResizable(false);
         stage.setScene(mainScene);
         stage.show();
     }
