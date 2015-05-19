@@ -21,7 +21,6 @@ public class StartView {
     Button slot1;
     Button slot2;
     Button slot3;
-    Button playButton;
     BorderPane layout;
     HBox hBox1 = new HBox();
     HBox hBox2 = new HBox();
@@ -62,7 +61,7 @@ public class StartView {
         hBox1.getChildren().addAll(slot1,playerName1);
         hBox1.setSpacing(10);
         hBox1.setAlignment(Pos.CENTER);
-        slot1.setOnAction(e -> pcs.firePropertyChange("Slot1","v1","v2"));
+        slot1.setOnAction(e -> pcs.firePropertyChange("Slot1",playerName1,"v2"));
 
         //Second slot
         slot2 = new Button("Slot2");
@@ -70,7 +69,7 @@ public class StartView {
         hBox2.getChildren().addAll(slot2,playerName2);
         hBox2.setSpacing(10);
         hBox2.setAlignment(Pos.CENTER);
-        slot2.setOnAction(e -> pcs.firePropertyChange("Slot2","v1","v2"));
+        slot2.setOnAction(e -> pcs.firePropertyChange("Slot2",playerName1,"v2"));
 
         //Slot 3
         slot3 = new Button("Slot3");
@@ -78,7 +77,7 @@ public class StartView {
         hBox3.getChildren().addAll(slot3,playerName3);
         hBox3.setSpacing(10);
         hBox3.setAlignment(Pos.CENTER);
-        slot3.setOnAction(e -> pcs.firePropertyChange("Slot3","v1","v2"));
+        slot3.setOnAction(e -> pcs.firePropertyChange("Slot3",playerName1,"v2"));
 
 
 
