@@ -16,4 +16,7 @@ class Road implements ISquare{
         return true;
     }
 
+    public String toString(){
+        return "Road";
+    }
 }

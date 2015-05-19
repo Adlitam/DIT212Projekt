@@ -9,4 +9,5 @@ interface ISquare {
 
     public abstract boolean okayToTeleportHere();
 
+    public String toString();
 }

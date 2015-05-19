@@ -21,9 +21,9 @@ public class Game implements IGame, Serializable{
     private Player slot1 = null;
     private Player slot2 = null;
     private Player slot3 = null;
-    private Map map1 = new Map();
-    private Map map2 = new Map();
-    private Map map3 = new Map();
+    private Map map1 = null;
+    private Map map2 = null;
+    private Map map3 = null;
     ArrayList<HighScore> totalHighScores = new ArrayList();
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -39,8 +39,8 @@ public class Game implements IGame, Serializable{
 
     private HashMap<String, ISquare> map = new HashMap<>();
 
-    public Game(){
-        addRoadsToMap();
+    public Game() throws FileNotFoundException{
+        new Map("map1Roads.txt");
     }
 
     @Override
@@ -135,6 +135,7 @@ public class Game implements IGame, Serializable{
         else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
     }
 
+/*
 
     public void addRoadsToMap(){
         Scanner s = null;
@@ -150,6 +151,7 @@ public class Game implements IGame, Serializable{
         //System.out.println(map.get("7,19"));
     }
 
+*/
     public void moveUp(){
         int x = slot1.getX();
         int y = slot1.getY();
