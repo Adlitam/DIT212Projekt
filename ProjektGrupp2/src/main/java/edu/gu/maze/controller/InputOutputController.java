@@ -19,6 +19,8 @@ public class InputOutputController implements PropertyChangeListener {
     Stage stage;
     String inValue;
     TextArea output;
+    String question;
+
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -48,11 +50,14 @@ public class InputOutputController implements PropertyChangeListener {
                 inValue = input.getText();
                 System.out.println("Button Pressed: Enter");
                 System.out.println("Input Value: " + inValue);
+
                 input.clear();
                 break;
             case "UP":
                 output = (TextArea) evt.getOldValue();
-                output.setText("Up");
+                question = model.getQuestion();
+                String [] answers = model.getAnswers();
+                output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
                 pcs.firePropertyChange("UP", "value1", "value2");
                 break;
             case "DOWN":
