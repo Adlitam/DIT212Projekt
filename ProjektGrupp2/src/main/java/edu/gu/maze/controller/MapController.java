@@ -30,21 +30,16 @@ public class MapController implements PropertyChangeListener{
     public void propertyChange(PropertyChangeEvent evt) {
         switch(evt.getPropertyName()){
             case "UP":
-                System.out.println("Key Pressed: UP");
-                view.movePlayer(11,14);
-                //model.moveUp();
+                model.moveUp();
                 break;
             case "DOWN":
-                System.out.println("Key Pressed: DOWN");
-                //model.moveDown();
+                model.moveDown();
                 break;
             case "LEFT":
-                System.out.println("Key Pressed: LEFT");
-                //model.moveLeft();
+                model.moveLeft();
                 break;
             case "RIGHT":
-                System.out.println("Key Pressed: RIGHT");
-                //model.moveRight();
+                model.moveRight();
                 break;
         }
     }

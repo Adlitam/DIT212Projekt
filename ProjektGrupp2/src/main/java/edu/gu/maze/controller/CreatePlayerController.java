@@ -63,7 +63,7 @@ public class CreatePlayerController implements PropertyChangeListener {
                 System.out.println("Slot: " + slot);
 
 
-                model.createPlayer(slot, name,type);
+                //model.createPlayer(slot, name, type, 11, 14);
                 break;
 
             case "mage":

@@ -1,22 +1,33 @@
 package edu.gu.maze.view;
 
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class WallView extends Rectangle{
+public class WallView extends ImageView {
 
     private final int xPos;
     private final int yPos;
+    private Image image;
 
-    public WallView(int x, int y, Paint p){
+    public WallView(){
+        xPos = 0;
+        yPos = 0;
+        image = new Image("wall.jpg");
+        setImage(image);
+        setFitWidth(30);
+        setFitHeight(30);
+    }
+
+    public WallView(int x, int y){
         this.xPos = x;
         this.yPos = y;
-        setFill(p);    //for instance: Color.valueOf("gray")
-        setHeight(30);
-        setWidth(30);
+        image = new Image("wall.jpg");
+        setImage(image);
+        setFitWidth(30);
+        setFitHeight(30);
     }
 
     public int getXValue(){
@@ -26,13 +37,9 @@ public class WallView extends Rectangle{
     public int getYValue(){
         return yPos;
     }
-    //@Override
-    public int interact() {
-        return 0;
-    }
 
-    //@Override
-    public boolean teleportable() {
-        return false;
+    @Override
+    public String toString(){
+        return "WallView, xPos = " + xPos + " yPos = " + yPos;
     }
 }

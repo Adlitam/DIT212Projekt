@@ -113,9 +113,9 @@ public class GameTest {
     @Test 
     public void testNoUnexpectedErrorsinPlayerSelection(){
         //Run this in debug mode to check actual values
-        instance.createPlayer(Constants.SLOT1, "Harry Potter", Constants.MAGE);
+        instance.createPlayer(Constants.SLOT1, "Harry Potter", Constants.MAGE, 14, 11);
         instance.selectPlayer(Constants.SLOT1);
         instance.deletePlayer(Constants.SLOT1);
-        instance.createPlayer(Constants.SLOT1, "Harry Potter", Constants.MAGE);
+        instance.createPlayer(Constants.SLOT1, "Harry Potter", Constants.MAGE, 14, 11);
     }
 }

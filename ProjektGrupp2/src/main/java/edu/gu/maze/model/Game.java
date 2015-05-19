@@ -17,28 +17,33 @@ public class Game implements IGame, Serializable{
     //TODO : Replace this with appropriate data structure of questions.
     private Question allQuestions = new Question("What is Gilderoy Lockhart's favourite colour?",
             new String[]{"Pink", "Lilac", "Gold"}, 1);
-    private Player slot1 = null;
-    private Player slot2 = null;
-    private Player slot3 = null;
-    private Map map1 = null;
-    private Map map2 = null;
-    private Map map3 = null;
+    private Player slot1;
+    private Player slot2;
+    private Player slot3;
+    private Map map1;
+    private Map map2;
+    private Map map3;
     ArrayList<HighScore> totalHighScores = new ArrayList();
+    //MATERIAL RELATING TO CURRENT GAME
+    //TODO: Move this to player class
+    private transient boolean finalkey =false;
+    private transient Question currentQuestion;
+    private Player currentPlayer;
+    private transient Map currentMap;
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
-    
-    //MATERIAL RELATING TO CURRENT GAME
-    //TODO: Move this to player class
-    private transient boolean finalkey =false;
-    private transient Question currentQuestion = null;
-    private transient Player currentPlayer = null;
-    private transient Map currentMap = null;
 
 
     public Game() throws FileNotFoundException{
-        new Map("map1Roads.txt");
+        currentMap = null;
+        try{
+            currentMap = new Map("map1.txt");
+        }catch(FileNotFoundException e){
+            System.out.println("Could not read the file map1Roads.txt");
+        }
+        createPlayer(1, "henry", Constants.MAGE, 11, 14);
     }
 
     @Override
@@ -72,23 +77,23 @@ public class Game implements IGame, Serializable{
     }
 
     @Override
-    public void createPlayer(int Slot, String name, int type) {
+    public void createPlayer(int Slot, String name, int type, int x, int y) {
         if (type !=Constants.MAGE && type != Constants.WARRIOR && type != Constants.THIEF){
             throw new IllegalArgumentException("Tried to create player with nonexistent type " + type);
         } 
         if (Slot==Constants.SLOT1){
             if (slot1!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot1 = new Player (name, type);
+            slot1 = new Player (name, type, x, y);
             currentPlayer = slot1;
         }
         else if (Slot == Constants.SLOT2){
             if (slot2!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot2 = new Player (name, type);
+            slot2 = new Player (name, type, x, y);
             currentPlayer = slot2;
         }
         else if (Slot == Constants.SLOT3){
             if (slot3!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot3 = new Player (name, type);
+            slot3 = new Player (name, type, x, y);
             currentPlayer = slot3;
         }
         else {
@@ -135,55 +140,35 @@ public class Game implements IGame, Serializable{
 
 
     public void moveUp(){
-        if(slot1 == null && slot2 == null && slot3 == null) {
-            System.out.println("Allt är null! PROBLEMS!");
-        }
-        else {
-            if(slot1 != null) {
-                System.out.println("slot1 är inte null! SPECIAL TACTICS!");
-            }
-            if(slot2 != null) {
-                System.out.println("slot2 är inte null! SPECIAL TACTICS!");
-            }
-            if(slot3 != null) {
-                System.out.println("slot3 är inte null! SPECIAL TACTICS!");
-            }
-        }
-        int x = slot1.getX();
-        int y = slot1.getY();
-
-        if(currentMap == null) {
-            System.out.println("currentMap är null! PROBLEMS!");
-        }
-        else if(currentMap.map == null) {
-            System.out.println("currentMap.map är null! PROBLEMS!");
-        }
-        else if(currentMap.map[x][y+1] == null) {
-            System.out.println("currentMap.map[x][y+1] är null! PROBLEMS!");
-        }
-        if(currentMap.map[x][y+1].canIMoveHere() == 0){
+        int x = currentPlayer.getX();
+        int y = currentPlayer.getY();
+        if(currentMap.map[y-1][x].canIMoveHere() == 0){
             pcs.firePropertyChange("UP", "value1", "value2");
+            currentPlayer.setY(y-1);
         }
     }
     public void moveDown(){
-        int x = slot1.getX();
-        int y = slot1.getY();
-        if(currentMap.map[x][y-1].canIMoveHere() == 0){
+        int x = currentPlayer.getX();
+        int y = currentPlayer.getY();
+        if(currentMap.map[y+1][x].canIMoveHere() == 0){
             pcs.firePropertyChange("DOWN", "value1", "value2");
+            currentPlayer.setY(y+1);
         }
     }
     public void moveLeft(){
-        int x = slot1.getX();
-        int y = slot1.getY();
-        if(currentMap.map[x-1][y].canIMoveHere() == 0){
+        int x = currentPlayer.getX();
+        int y = currentPlayer.getY();
+        if(currentMap.map[y][x-1].canIMoveHere() == 0){
             pcs.firePropertyChange("LEFT", "value1", "value2");
+            currentPlayer.setX(x-1);
         }
     }
     public void moveRight(){
-        int x = slot1.getX();
-        int y = slot1.getY();
-        if(currentMap.map[x+1][y].canIMoveHere() == 0){
+        int x = currentPlayer.getX();
+        int y = currentPlayer.getY();
+        if(currentMap.map[y][x+1].canIMoveHere() == 0){
             pcs.firePropertyChange("RIGHT", "value1", "value2");
+            currentPlayer.setX(x+1);
         }
     }
 

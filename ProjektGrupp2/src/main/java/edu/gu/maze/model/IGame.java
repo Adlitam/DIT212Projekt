@@ -35,7 +35,7 @@ public interface IGame {
     //NEW: Throws an exception at any attempt to create a player in a slot that is
     //already occupied.
 
-    public void createPlayer(int Slot, String name, int type);
+    public void createPlayer(int Slot, String name, int type, int x, int y);
     //select existing player
 
     //public abstract void addRoadsToMap();
