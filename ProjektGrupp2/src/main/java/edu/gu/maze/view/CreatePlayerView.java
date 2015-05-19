@@ -35,6 +35,7 @@ public class CreatePlayerView {
         this.slot = slot;
         stage.setTitle("Maze");
         borderPaneLayout = new BorderPane();
+        borderPaneLayout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
         createTop();
         createMiddle();
         createBottom();

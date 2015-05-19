@@ -14,6 +14,7 @@ public class GameView{
     public GameView(Stage s, MapView1 m, InfoView i1, InputOutputView i2){
         s.setTitle("Maze");
         BorderPane borderPane = new BorderPane();
+        borderPane.setStyle("-fx-background: Black");
         GridPane map = m.getMap();
         VBox info = i1.getInfoView();
         VBox inputAndReturnAndOutput = i2.getInputView();

@@ -42,17 +42,6 @@ public class StartController implements PropertyChangeListener {
         MainView mainView = new MainView(stage);
         new MainController(model, mainView, stage);
         break;
-
-            case "playButton":
-        InfoView infoView = new InfoView();
-        new InfoController(model, infoView, stage);
-        InputOutputView inputView = new InputOutputView();
-        new InputOutputController(model, inputView, stage);
-        MapView1 mapView1 = new MapView1();
-        Map.addPropertyChangeListener(mapView1);
-        new MapController(model, mapView1, inputView, stage);
-        new GameView(stage, mapView1, infoView, inputView);
-        break;
             case "Slot1":
                 CreatePlayerView startView = new CreatePlayerView(stage,cons.SLOT1);
                 new CreatePlayerController(model, startView, stage);

@@ -35,7 +35,8 @@ public class MainView{
         vBoxlayout.getChildren().addAll(createPlayer,highScoreButton);
         vBoxlayout.setAlignment(Pos.CENTER);
         vBoxlayout.setSpacing(50);
-        Scene mainScene = new Scene(vBoxlayout, 800, 620);
+        vBoxlayout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
+        Scene mainScene = new Scene(vBoxlayout, 800, 600);
         //stage.setResizable(false);
         stage.setScene(mainScene);
         stage.show();

@@ -11,7 +11,7 @@ import java.beans.PropertyChangeSupport;
 public class PlayerView extends ImageView{
     private int xPos;
     private int yPos;
-    private Image image = new Image("thief.png");
+    private Image image = new Image("warrior.png");
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public PlayerView(int x, int y){

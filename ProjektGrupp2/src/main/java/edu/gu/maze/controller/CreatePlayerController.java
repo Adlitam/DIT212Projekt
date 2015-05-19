@@ -42,26 +42,20 @@ public class CreatePlayerController implements PropertyChangeListener {
                 break;
 
             case "playButton":
-                InfoView infoView = new InfoView();
-                new InfoController(model, infoView, stage);
-                InputOutputView inputView = new InputOutputView();
-                new InputOutputController(model, inputView, stage);
-                MapView1 mapView1 = new MapView1();
-                Map.addPropertyChangeListener(mapView1);
-                new MapController(model, mapView1, inputView, stage);
-                new GameView(stage, mapView1, infoView, inputView);
-
                 TextField input = (TextField) evt.getOldValue();
                 String name = input.getText();
+                if(name.length() > 0 && !name.equals("Fill in your name!!!")) {
+                    play();
+                    int slot = (int) evt.getNewValue();
 
-                int slot = (int) evt.getNewValue();
+                    System.out.println("Name: " + name);
+                    System.out.println("Type: " + type);
+                    System.out.println("Slot: " + slot);
 
-
-
-                System.out.println("Name: " + name);
-                System.out.println("Type: " + type);
-                System.out.println("Slot: " + slot);
-
+                    //model.createPlayer(slot, name, type, 11, 14);
+                }else{
+                    input.setText("Fill in your name!!!");
+                }
 
                 //model.createPlayer(slot, name, type, 11, 14);
                 break;
@@ -100,5 +94,15 @@ public class CreatePlayerController implements PropertyChangeListener {
                 break;
         }
     }
-}
 
+    private void play(){
+        InfoView infoView = new InfoView();
+        new InfoController(model, infoView, stage);
+        InputOutputView inputView = new InputOutputView();
+        new InputOutputController(model, inputView, stage);
+        MapView1 mapView1 = new MapView1();
+        Map.addPropertyChangeListener(mapView1);
+        new MapController(model, mapView1, inputView, stage);
+        new GameView(stage, mapView1, infoView, inputView);
+    }
+}
