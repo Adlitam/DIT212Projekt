@@ -1,9 +1,10 @@
 package edu.gu.maze.model;
 
+import java.io.FileNotFoundException;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -16,8 +17,8 @@ public class MapTest {
     }
     
     @Before
-    public void setUp() throws InterruptedException{
-        map = new Map();
+    public void setUp() throws InterruptedException, FileNotFoundException{
+        map = new Map("map1Roads.txt");
         score1 = new HighScore("Harry", 10);
         score2 = new HighScore ("Draco", 11);
         score3 = new HighScore ("Draco", 13);
@@ -42,9 +43,9 @@ public class MapTest {
         map.addHighScore(score4);
         map.addHighScore(score5);
         map.addHighScore(score6);
-        for (HighScore h : map.scores){
-            System.out.println(h);
-        }
+        //for (HighScore h : map.scores){
+            System.out.println(map);
+        //}
     }
     
 }
