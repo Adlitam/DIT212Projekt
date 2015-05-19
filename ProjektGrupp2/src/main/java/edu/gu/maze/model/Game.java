@@ -135,8 +135,32 @@ public class Game implements IGame, Serializable{
 
 
     public void moveUp(){
-        int x = slot1.getX();
-        int y = slot1.getY();
+        if(slot1 == null && slot2 == null && slot3 == null) {
+            System.out.println("Allt är null! PROBLEMS!");
+        }
+        else {
+            if(slot1 != null) {
+                System.out.println("slot1 är inte null! SPECIAL TACTICS!");
+            }
+            if(slot2 != null) {
+                System.out.println("slot2 är inte null! SPECIAL TACTICS!");
+            }
+            if(slot3 != null) {
+                System.out.println("slot3 är inte null! SPECIAL TACTICS!");
+            }
+        }
+        int x = slot2.getX();
+        int y = slot2.getY();
+
+        if(currentMap == null) {
+            System.out.println("currentMap är null! PROBLEMS!");
+        }
+        else if(currentMap.map == null) {
+            System.out.println("currentMap.map är null! PROBLEMS!");
+        }
+        else if(currentMap.map[x][y+1] == null) {
+            System.out.println("currentMap.map[x][y+1] är null! PROBLEMS!");
+        }
         if(currentMap.map[x][y+1].canIMoveHere() == 0){
             pcs.firePropertyChange("UP", "value1", "value2");
         }
