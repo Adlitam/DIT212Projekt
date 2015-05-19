@@ -30,9 +30,9 @@ public class MainController implements PropertyChangeListener {
                 HighScoreView highScoreView = new HighScoreView(stage);
                 new HighScoreController(model, highScoreView, stage);
             break;
-            case "createPlayerButton":
-                CreatePlayerView createPlayerView = new CreatePlayerView(stage);
-                new CreatePlayerController(model, createPlayerView, stage);
+            case "Play":
+                StartView startView = new StartView(stage);
+                new StartController(model, startView, stage);
             break;
         }
 
