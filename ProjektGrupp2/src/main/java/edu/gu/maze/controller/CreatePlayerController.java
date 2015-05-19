@@ -4,9 +4,7 @@ import edu.gu.maze.model.Constants;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.*;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -23,7 +21,6 @@ public class CreatePlayerController implements PropertyChangeListener {
     Stage stage;
     Constants cons = new Constants();
 
-    private String name;
     private int type;
     private int slot;
 
@@ -55,27 +52,44 @@ public class CreatePlayerController implements PropertyChangeListener {
                 new GameView(stage, mapView1, infoView, inputView);
 
                 TextField input = (TextField) evt.getOldValue();
-                this.name = input.getText();
+                String name = input.getText();
 
-                model.createPlayer(1,name,type);
+                System.out.println("Name: " + name);
+                System.out.println("Type: " + type);
 
+                model.createPlayer(1, name,type);
                 break;
 
             case "mage":
-                ImageView mage = (ImageView) evt.getOldValue();
-                mage.setVisible(false);
+                ImageView temp1 = (ImageView) evt.getOldValue();
+                ImageView temp2 = (ImageView) evt.getNewValue();
+                temp1.setDisable(true);
+                temp2.setDisable(true);
+                temp1.setVisible(false);
+                temp2.setVisible(false);
+
                 this.type = cons.MAGE;
                 break;
 
             case "warrior":
-                ImageView warrior = (ImageView) evt.getOldValue();
-                warrior.setVisible(false);
+                temp1 = (ImageView) evt.getOldValue();
+                temp2 = (ImageView) evt.getNewValue();
+                temp1.setDisable(true);
+                temp2.setDisable(true);
+                temp1.setVisible(false);
+                temp2.setVisible(false);
+
                 this.type = cons.WARRIOR;
                 break;
 
             case "thief":
-                ImageView thief = (ImageView) evt.getOldValue();
-                thief.setVisible(false);
+                temp1 = (ImageView) evt.getOldValue();
+                temp2 = (ImageView) evt.getNewValue();
+                temp1.setDisable(true);
+                temp2.setDisable(true);
+                temp1.setVisible(false);
+                temp2.setVisible(false);
+
                 this.type = cons.THIEF;
                 break;
         }

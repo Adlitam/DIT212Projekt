@@ -22,6 +22,10 @@ public class CreatePlayerView {
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     BorderPane borderPaneLayout;
     private TextField name;
+    private ImageView mage;
+    private ImageView thief;
+    private ImageView warrior;
+
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
@@ -65,29 +69,31 @@ public class CreatePlayerView {
 
     private ImageView getMageNode(){
         Image image = new Image("Mage.png");
-        ImageView mage = new ImageView();
+        mage = new ImageView();
         mage.setImage(image);
         mage.setFitHeight(200);
         mage.setFitWidth(200);
-        mage.setOnMouseClicked(e ->  pcs.firePropertyChange("mage", mage, "value2"));
+        mage.setOnMouseClicked(e ->  pcs.firePropertyChange("mage", warrior, thief));
         return mage;
     }
     private ImageView getWarriorNode(){
         Image image = new Image("warrior.png");
-        ImageView warrior = new ImageView();
+        warrior = new ImageView();
         warrior.setImage(image);
         warrior.setFitHeight(200);
         warrior.setFitWidth(200);
-        warrior.setOnMouseClicked(e -> pcs.firePropertyChange("warrior", warrior, "value2"));
+        warrior.setOnMouseClicked(e -> pcs.firePropertyChange("warrior", mage, thief));
         return warrior;
     }
     private ImageView getThiefNode(){
         Image image = new Image("thief.png");
-        ImageView thief = new ImageView();
+        thief = new ImageView();
         thief.setImage(image);
         thief.setFitHeight(200);
         thief.setFitWidth(200);
-        thief.setOnMouseClicked(e ->  pcs.firePropertyChange("thief", thief, "value2"));
+        thief.setOnMouseClicked(e ->
+            pcs.firePropertyChange("thief", mage, warrior)
+        );
         return thief;
     }
 
