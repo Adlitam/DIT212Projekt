@@ -1,9 +1,11 @@
 package edu.gu.maze.controller;
 
+import edu.gu.maze.model.Constants;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.*;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -19,6 +21,12 @@ public class CreatePlayerController implements PropertyChangeListener {
     Game Map;
     CreatePlayerView view;
     Stage stage;
+    Constants cons = new Constants();
+
+    private String name;
+    private int type;
+    private int slot;
+
 
     public CreatePlayerController(IGame model, CreatePlayerView view, Stage primaryStage){
         this.Map = (Game) model;
@@ -45,21 +53,30 @@ public class CreatePlayerController implements PropertyChangeListener {
                 Map.addPropertyChangeListener(mapView1);
                 new MapController(model, mapView1, inputView, stage);
                 new GameView(stage, mapView1, infoView, inputView);
+
+                TextField input = (TextField) evt.getOldValue();
+                this.name = input.getText();
+
+                model.createPlayer(1,name,type);
+
                 break;
 
             case "mage":
                 ImageView mage = (ImageView) evt.getOldValue();
                 mage.setVisible(false);
+                this.type = cons.MAGE;
                 break;
 
             case "warrior":
                 ImageView warrior = (ImageView) evt.getOldValue();
                 warrior.setVisible(false);
+                this.type = cons.WARRIOR;
                 break;
 
             case "thief":
                 ImageView thief = (ImageView) evt.getOldValue();
                 thief.setVisible(false);
+                this.type = cons.THIEF;
                 break;
         }
     }

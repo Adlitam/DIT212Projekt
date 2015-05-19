@@ -26,7 +26,7 @@ public class GameTest {
     
     @Before
     public void setUp() {
-        instance = new Game();
+        //instance = new Game();
     }
     
     @After

@@ -8,9 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.beans.PropertyChangeListener;
@@ -22,6 +21,8 @@ import java.beans.PropertyChangeSupport;
 public class CreatePlayerView {
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     BorderPane borderPaneLayout;
+    private TextField name;
+
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
@@ -39,13 +40,17 @@ public class CreatePlayerView {
 
 
     private void createTop(){
-        VBox setName = new VBox();
-        Label title = new Label("Your Name");
-        TextField name = new TextField();
-        name.setMaxWidth(400);
+        GridPane setName = new GridPane();
+        Label title = new Label("Write Your Name:");
+        GridPane.setConstraints(title,0,0);
+        name = new TextField();
+
+        name.setMinWidth(400);
+        GridPane.setConstraints(name,0,1);
         setName.getChildren().addAll(title, name);
         setName.setAlignment(Pos.CENTER);
         borderPaneLayout.setTop(setName);
+
     }
 
     private void createMiddle(){
@@ -92,7 +97,7 @@ public class CreatePlayerView {
         Button playButton = new Button("Play");
         playButton.setPrefWidth(200);
         playButton.setOnAction(e ->
-                        pcs.firePropertyChange("playButton", "value1", "value2")
+                        pcs.firePropertyChange("playButton", name, "value2")
         );
 
         Button backButton = new Button("Back to start");
