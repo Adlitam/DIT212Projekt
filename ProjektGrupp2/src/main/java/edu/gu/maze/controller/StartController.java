@@ -1,5 +1,6 @@
 package edu.gu.maze.controller;
 
+import edu.gu.maze.model.Constants;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 
@@ -19,7 +20,9 @@ public class StartController implements PropertyChangeListener {
     Game Map;
     StartView view;
     Stage stage;
-    int type;
+    Constants cons = new Constants();
+
+
 
 
 
@@ -50,9 +53,17 @@ public class StartController implements PropertyChangeListener {
         new MapController(model, mapView1, inputView, stage);
         new GameView(stage, mapView1, infoView, inputView);
         break;
-            case "Create":
-                CreatePlayerView startView = new CreatePlayerView(stage);
+            case "Slot1":
+                CreatePlayerView startView = new CreatePlayerView(stage,cons.SLOT1);
                 new CreatePlayerController(model, startView, stage);
+                break;
+            case "Slot2":
+                CreatePlayerView startView2 = new CreatePlayerView(stage,cons.SLOT2);
+                new CreatePlayerController(model, startView2, stage);
+                break;
+            case "Slot3":
+                CreatePlayerView startView3 = new CreatePlayerView(stage,cons.SLOT3);
+                new CreatePlayerController(model, startView3, stage);
                 break;
 
     }

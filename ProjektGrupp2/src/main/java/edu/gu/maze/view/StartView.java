@@ -48,7 +48,9 @@ public class StartView {
         slot2 = new Button("Slot2");
         slot3 = new Button("Slot3");
 
-        slot1.setOnAction(e -> pcs.firePropertyChange("Create","v1","v2"));
+        slot1.setOnAction(e -> pcs.firePropertyChange("Slot1","v1","v2"));
+        slot2.setOnAction(e -> pcs.firePropertyChange("Slot2","v1","v2"));
+        slot3.setOnAction(e -> pcs.firePropertyChange("Slot3","v1","v2"));
 
         VBox vBox = new VBox();
         vBox.getChildren().addAll(slot1,slot2,slot3);
