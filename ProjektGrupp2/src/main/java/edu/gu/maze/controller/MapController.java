@@ -34,13 +34,6 @@ public class MapController implements PropertyChangeListener{
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch(evt.getPropertyName()){
-            case "Input":
-                TextField answer = (TextField) evt.getOldValue();
-                output = (TextArea) evt.getNewValue();
-                System.out.println(answer.getText());
-                output.setText(answer.getText());
-                answer.clear();
-                break;
             case "UP":
                 model.moveUp();
                 getQuestionAndAnswers(evt);

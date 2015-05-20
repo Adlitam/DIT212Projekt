@@ -13,7 +13,7 @@ import java.beans.PropertyChangeSupport;
 
 public class InputOutputView {
     private VBox inputAndReturnAndOutput;
-    private TextField input;
+
     private TextArea output;
     private Rectangle2D screenSize;
     private Button backButton;
@@ -50,19 +50,19 @@ public class InputOutputView {
         output.setOnKeyPressed(e2 -> {
             switch (e2.getCode()) {
                 case UP:
-                    pcs.firePropertyChange("UP", output, input);
+                    pcs.firePropertyChange("UP", output, "v2");
                     e2.consume();
                     break;
                 case DOWN:
-                    pcs.firePropertyChange("DOWN", output, input);
+                    pcs.firePropertyChange("DOWN", output, "v2");
                     e2.consume();
                     break;
                 case LEFT:
-                    pcs.firePropertyChange("LEFT", output, input);
+                    pcs.firePropertyChange("LEFT", output, "v2");
                     e2.consume();
                     break;
                 case RIGHT:
-                    pcs.firePropertyChange("RIGHT", output, input);
+                    pcs.firePropertyChange("RIGHT", output, "v2");
                     e2.consume();
                     break;
             }

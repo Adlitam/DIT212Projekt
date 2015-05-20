@@ -56,7 +56,7 @@ public class StartView {
         Label playerName3 = new Label("PlayerName3");
 
         //First slot
-        slot1 = new Button("Slot1");
+        slot1 = new Button();
         slot1.setMinSize(100,100);
         hBox1.getChildren().addAll(slot1,playerName1);
         hBox1.setSpacing(10);
@@ -64,7 +64,7 @@ public class StartView {
         slot1.setOnAction(e -> pcs.firePropertyChange("Slot1",playerName1,"v2"));
 
         //Second slot
-        slot2 = new Button("Slot2");
+        slot2 = new Button();
         slot2.setMinSize(100,100);
         hBox2.getChildren().addAll(slot2,playerName2);
         hBox2.setSpacing(10);
@@ -72,7 +72,7 @@ public class StartView {
         slot2.setOnAction(e -> pcs.firePropertyChange("Slot2",playerName1,"v2"));
 
         //Slot 3
-        slot3 = new Button("Slot3");
+        slot3 = new Button();
         slot3.setMinSize(100,100);
         hBox3.getChildren().addAll(slot3,playerName3);
         hBox3.setSpacing(10);
