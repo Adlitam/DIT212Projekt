@@ -30,7 +30,7 @@ public class MainController implements PropertyChangeListener {
             break;
             case "Play":
                 StartView startView = new StartView(stage);
-                StartController startController = new StartController(model, stage);
+                StartController startController = new StartController(model, startView, stage);
                 startView.addPropertyChangeListener(startController);
             break;
             case "aboutbutton":
