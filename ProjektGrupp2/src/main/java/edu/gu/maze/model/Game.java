@@ -37,13 +37,9 @@ public class Game implements IGame, Serializable{
 
 
     public Game() throws FileNotFoundException{
-        currentMap = null;
-        try{
-            currentMap = new Map("map1.txt");
-        }catch(FileNotFoundException e){
-            System.out.println("Could not read the file map1Roads.txt");
-        }
-        createPlayer(1, "henry", Constants.MAGE, 11, 14);
+        map1 = new Map("map1.txt");
+        map2 = new Map("map2.txt");
+        map3 = new Map("map3.txt");
     }
 
     @Override
@@ -118,6 +114,23 @@ public class Game implements IGame, Serializable{
             }
             throw new IllegalArgumentException("Tried to select nonexistent player"
                     + " with slot number " + Slot);
+        }
+    }
+    
+    @Override
+    public void selectMap(int map){
+        if (map==Constants.MAP1){
+            currentMap = map1;
+        }
+        else if (map == Constants.MAP2){
+            currentMap = map2;
+        }
+        else if (map == Constants.MAP3){
+            currentMap = map3;
+        }
+        else {
+            throw new IllegalArgumentException("Tried to select nonexistent map"
+                    + " with map number " + map);
         }
     }
     
