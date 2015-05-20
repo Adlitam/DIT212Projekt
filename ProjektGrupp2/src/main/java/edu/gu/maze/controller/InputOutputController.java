@@ -17,7 +17,6 @@ public class InputOutputController implements PropertyChangeListener {
     IGame model;
     InputOutputView view;
     Stage stage;
-    String inValue;
     TextArea output;
     String question;
 
@@ -47,33 +46,24 @@ public class InputOutputController implements PropertyChangeListener {
                 break;
             case "Input":
                 TextField input = (TextField) evt.getOldValue();
-                inValue = input.getText();
-                System.out.println("Button Pressed: Enter");
-                System.out.println("Input Value: " + inValue);
-
-                input.clear();
+                output = (TextArea) evt.getNewValue();
+                pcs.firePropertyChange("Input", input, output);
                 break;
             case "UP":
                 output = (TextArea) evt.getOldValue();
-                question = model.getQuestion();
-                String [] answers = model.getAnswers();
-                output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
-                pcs.firePropertyChange("UP", "value1", "value2");
+                pcs.firePropertyChange("UP", output, "value2");
                 break;
             case "DOWN":
                 output = (TextArea) evt.getOldValue();
-                output.setText("Down");
-                pcs.firePropertyChange("DOWN", "value1", "value2");
+                pcs.firePropertyChange("DOWN", output, "value2");
                 break;
             case "LEFT":
                 output = (TextArea) evt.getOldValue();
-                output.setText("Left");
-                pcs.firePropertyChange("LEFT", "value1", "value2");
+                pcs.firePropertyChange("LEFT", output, "value2");
                 break;
             case "RIGHT":
                 output = (TextArea) evt.getOldValue();
-                output.setText("Right");
-                pcs.firePropertyChange("RIGHT", "value1", "value2");
+                pcs.firePropertyChange("RIGHT", output, "value2");
                 break;
         }
     }

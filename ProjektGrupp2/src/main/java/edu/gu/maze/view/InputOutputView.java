@@ -43,19 +43,19 @@ public class InputOutputView {
                     e1.consume();
                     break;
                 case UP:
-                    pcs.firePropertyChange("UP", output, "value2");
+                    pcs.firePropertyChange("UP", output, input);
                     e1.consume();
                     break;
                 case DOWN:
-                    pcs.firePropertyChange("DOWN", output, "value2");
+                    pcs.firePropertyChange("DOWN", output, input);
                     e1.consume();
                     break;
                 case LEFT:
-                    pcs.firePropertyChange("LEFT", output, "value2");
+                    pcs.firePropertyChange("LEFT", output, input);
                     e1.consume();
                     break;
                 case RIGHT:
-                    pcs.firePropertyChange("RIGHT", output, "value2");
+                    pcs.firePropertyChange("RIGHT", output, input);
                     e1.consume();
                     break;
 
@@ -79,19 +79,19 @@ public class InputOutputView {
         output.setOnKeyPressed(e2 -> {
             switch (e2.getCode()) {
                 case UP:
-                    pcs.firePropertyChange("UP", output, "value2");
+                    pcs.firePropertyChange("UP", output, input);
                     e2.consume();
                     break;
                 case DOWN:
-                    pcs.firePropertyChange("DOWN", output, "value2");
+                    pcs.firePropertyChange("DOWN", output, input);
                     e2.consume();
                     break;
                 case LEFT:
-                    pcs.firePropertyChange("LEFT", output, "value2");
+                    pcs.firePropertyChange("LEFT", output, input);
                     e2.consume();
                     break;
                 case RIGHT:
-                    pcs.firePropertyChange("RIGHT", output, "value2");
+                    pcs.firePropertyChange("RIGHT", output, input);
                     e2.consume();
                     break;
             }

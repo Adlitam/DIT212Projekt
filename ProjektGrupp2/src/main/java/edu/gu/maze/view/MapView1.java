@@ -1,6 +1,7 @@
 package edu.gu.maze.view;
 
 import javafx.event.EventHandler;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -35,6 +36,7 @@ public class MapView1 implements PropertyChangeListener{
     private void createMapGridPane(){
         g = new GridPane();
         g.setFocusTraversable(true);
+        /*
         g.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -58,6 +60,7 @@ public class MapView1 implements PropertyChangeListener{
                 }
             }
         });
+        */
     }
 
     private ImageView[][] createMapArray(String filename){
