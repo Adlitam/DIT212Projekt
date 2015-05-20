@@ -71,16 +71,20 @@ class Map implements Serializable{
     
     public void moveUp(){
         y--;
+        System.out.println("Y" + y);
     }
     
     public void moveDown(){
         y++;
+        System.out.println("Y" + y);
     }
     public void moveRight(){
         x++;
+        System.out.println("X" + x);
     }
     public void moveLeft(){
         x--;
+        System.out.println("X" + x);
     }
     
     

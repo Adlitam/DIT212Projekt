@@ -60,6 +60,6 @@ public interface IGame {
     // returns the type of the player in slot, or -1 if there is no player in the slot.
     public int getPlayerType(int Slot);
     //Returns player name or empty string if there is no player in the slot.
-    public String getPlayerName(String name);
+    public String getPlayerName(int Slot);
     
 }
