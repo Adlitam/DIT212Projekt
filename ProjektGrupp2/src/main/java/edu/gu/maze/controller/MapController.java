@@ -2,6 +2,7 @@ package edu.gu.maze.controller;
 
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.InputOutputView;
+import edu.gu.maze.view.MainView;
 import edu.gu.maze.view.MapView1;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -34,6 +35,11 @@ public class MapController implements PropertyChangeListener{
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch(evt.getPropertyName()){
+            case "backButtonG":
+                MainView mainView = new MainView(stage);
+                MainController mainController = new MainController(model, stage);
+                mainView.addPropertyChangeListener(mainController);
+                break;
             case "UP":
                 model.moveUp();
                 getQuestionAndAnswers(evt);

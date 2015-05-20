@@ -31,6 +31,10 @@ public class MainController implements PropertyChangeListener {
                 StartView startView = new StartView(stage);
                 new StartController(model, startView, stage);
             break;
+            case "aboutbutton":
+                AboutView aboutView = new AboutView(stage);
+                new AboutController(model,aboutView,stage);
+                break;
         }
 
     }

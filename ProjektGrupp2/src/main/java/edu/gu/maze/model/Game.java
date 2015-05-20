@@ -151,6 +151,11 @@ public class Game implements IGame, Serializable{
         else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
     }
 
+    @Override
+    public Map getCurrentMap() {
+        return currentMap;
+    }
+
 
     public void moveUp(){
         int x = currentPlayer.getX();

@@ -93,7 +93,6 @@ public class CreatePlayerController implements PropertyChangeListener {
         InfoView infoView = new InfoView();
         new InfoController(model, infoView, stage);
         InputOutputView inputView = new InputOutputView();
-        new InputOutputController(model, inputView, stage);
         MapView1 mapView1 = new MapView1();
         Map.addPropertyChangeListener(mapView1);
         new MapController(model, mapView1, inputView, stage);
