@@ -15,7 +15,6 @@ public class CreatePlayerController implements PropertyChangeListener {
     private IGame model;
     private Game Map;
     private Stage stage;
-    Constants cons = new Constants();
     private int type;
 
     public CreatePlayerController(IGame model, Stage primaryStage){
@@ -59,7 +58,7 @@ public class CreatePlayerController implements PropertyChangeListener {
                 temp1.setVisible(false);
                 temp2.setVisible(false);
 
-                this.type = cons.MAGE;
+                this.type = Constants.MAGE;
                 break;
 
             case "warrior":
@@ -70,7 +69,7 @@ public class CreatePlayerController implements PropertyChangeListener {
                 temp1.setVisible(false);
                 temp2.setVisible(false);
 
-                this.type = cons.WARRIOR;
+                this.type = Constants.WARRIOR;
                 break;
 
             case "thief":
@@ -81,7 +80,7 @@ public class CreatePlayerController implements PropertyChangeListener {
                 temp1.setVisible(false);
                 temp2.setVisible(false);
 
-                this.type = cons.THIEF;
+                this.type = Constants.THIEF;
                 break;
         }
     }

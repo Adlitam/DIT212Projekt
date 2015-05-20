@@ -58,30 +58,41 @@ public class MapController implements PropertyChangeListener{
                 break;
             case "0":
                 output = (TextArea) evt.getOldValue();
-                isThisTheRightAnswer = model.isThisTheRightAnswer(0);
-                if(isThisTheRightAnswer[0] == 1){
-                    output.setText("Correct answer!!");
-                }else{
-                    output.setText("Wrong answer!!");
+                try {
+                    isThisTheRightAnswer = model.isThisTheRightAnswer(0);
+                    if (isThisTheRightAnswer[0] == 1) {
+                        output.setText("Correct answer!!");
+                    } else {
+                        output.setText("Wrong answer!!");
+                    }
+                }catch(NullPointerException e){
+
                 }
                 break;
             case "1":
                 output = (TextArea) evt.getOldValue();
+                try {
+                    isThisTheRightAnswer = model.isThisTheRightAnswer(1);
+                    if (isThisTheRightAnswer[0] == 1) {
+                        output.setText("Correct answer!!");
+                    } else {
+                        output.setText("Wrong answer!!");
+                    }
+                }catch(NullPointerException e){
 
-                isThisTheRightAnswer = model.isThisTheRightAnswer(1);
-                if(isThisTheRightAnswer[0] == 1){
-                    output.setText("Correct answer!!");
-                }else{
-                    output.setText("Wrong answer!!");
                 }
                 break;
             case "2":
                 output = (TextArea) evt.getOldValue();
-                isThisTheRightAnswer = model.isThisTheRightAnswer(2);
-                if(isThisTheRightAnswer[0] == 1){
-                    output.setText("Correct answer!!");
-                }else{
-                    output.setText("Wrong answer!!");
+                try {
+                    isThisTheRightAnswer = model.isThisTheRightAnswer(2);
+                    if (isThisTheRightAnswer[0] == 1) {
+                        output.setText("Correct answer!!");
+                    } else {
+                        output.setText("Wrong answer!!");
+                    }
+                }catch(NullPointerException e){
+
                 }
                 break;
 
