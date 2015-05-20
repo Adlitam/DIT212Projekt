@@ -8,8 +8,9 @@ class Player implements Serializable{
     private static final long serialVersionUID = 3L;
     private final String name;
     private final int type;
-    private int x;
-    private int y;
+    private int apples;
+    private int keys;
+    private boolean finalkey = false;
     int[] scores = new int[3];
     private int totalHighScore = 0;
 
@@ -21,26 +22,121 @@ class Player implements Serializable{
     public Player(String name, int type, int x, int y){
         this.name = name;
         this.type = type;
-        this.x = x;
-        this.y = y;
     }
 
-    public int getX(){
-        return x;
+    public int moveUp(int permission){
+        if (permission == Constants.APPLE){
+            if (apples>0) {
+                apples--;
+       
+                return Constants.YES;
+            }
+            else return Constants.NO;
+        }
+        else if (permission == Constants.KEY){
+            if (apples>0) {
+                apples--;
+                
+                return Constants.YES;
+            }
+            else return Constants.NO;     
+        }
+        else if (permission == Constants.FINALKEY){
+            if (finalkey) {
+                
+                return Constants.YES;
+            }
+            else return Constants.NO;
+        }
+        else if (permission == Constants.YES);
+        return permission;
     }
-
-    public int getY(){
-        return y;
+    
+    public int moveDown(int permission){
+        if (permission == Constants.APPLE){
+            if (apples>0) {
+                apples--;
+                
+                return Constants.YES;
+            }
+            else return Constants.NO;
+        }
+        else if (permission == Constants.KEY){
+            if (apples>0) {
+                apples--;
+                
+                return Constants.YES;
+            }
+            else return Constants.NO;     
+        }
+        else if (permission == Constants.FINALKEY){
+            if (finalkey) {
+                
+                return Constants.YES;
+            }
+            else return Constants.NO;
+        }
+        else if (permission == Constants.YES) ;
+        return permission;
     }
-
-    public void setX(int x){
-        this.x = x;
+    
+    public int moveRight(int permission){
+        if (permission == Constants.APPLE){
+            if (apples>0) {
+                apples--;
+                
+                return Constants.YES;
+            }
+            else return Constants.NO;
+        }
+        else if (permission == Constants.KEY){
+            if (apples>0) {
+                apples--;
+                
+                return Constants.YES;
+            }
+            else return Constants.NO;     
+        }
+        else if (permission == Constants.FINALKEY){
+            if (finalkey) {
+               
+                return Constants.YES;
+            }
+            else return Constants.NO;
+        }
+        else if (permission == Constants.YES);
+        return permission;
     }
-
-    public void setY(int y){
-        this.y = y;
+    
+    public int moveLeft(int permission){
+        if (permission == Constants.APPLE){
+            if (apples>0) {
+                apples--;
+                
+                return Constants.YES;
+            }
+            else return Constants.NO;
+        }
+        else if (permission == Constants.KEY){
+            if (apples>0) {
+                apples--;
+               
+                return Constants.YES;
+            }
+            else return Constants.NO;     
+        }
+        else if (permission == Constants.FINALKEY){
+            if (finalkey) {
+                
+                return Constants.YES;
+            }
+            else return Constants.NO;
+        }
+        else if (permission == Constants.YES);
+        return permission;
     }
-
+    
+    
     
     public HighScore addHighScore(int score, int map){
         if (scores[map]<score) {

@@ -47,7 +47,7 @@ public class CreatePlayerController implements PropertyChangeListener {
                     System.out.println("Type: " + type);
                     System.out.println("Slot: " + slot);
 
-                    model.createPlayer(slot, name, type, 11, 14);
+                    model.createPlayer(slot, name, type);
                     model.selectMap(Constants.MAP1);
                 }else{
                     input.setText("Fill in your name!!!");
