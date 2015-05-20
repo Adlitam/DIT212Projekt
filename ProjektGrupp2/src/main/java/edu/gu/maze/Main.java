@@ -23,7 +23,7 @@ public final class Main extends Application {
         MainView view = new MainView(primaryStage);
 
         //mainController
-        MainController mainController = new MainController(model, view, primaryStage);
-
+        MainController mainController = new MainController(model, primaryStage);
+        view.addPropertyChangeListener(mainController);
     }
 }

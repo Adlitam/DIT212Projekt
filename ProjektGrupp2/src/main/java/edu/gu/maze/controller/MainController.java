@@ -13,14 +13,11 @@ import java.beans.PropertyChangeListener;
  */
 public class MainController implements PropertyChangeListener {
     Game model;
-    MainView view;
     Stage stage;
 
-    public MainController(IGame model, MainView view, Stage primaryStage){
+    public MainController(IGame model, Stage primaryStage){
         this.stage = primaryStage;
         this.model = (Game) model;
-        this.view = view;
-        this.view.addPropertyChangeListener(this);
     }
 
     @Override

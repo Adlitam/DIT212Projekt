@@ -39,9 +39,10 @@ public class StartController implements PropertyChangeListener {
 
         switch (evt.getPropertyName()) {
             case "backButtonH":
-        MainView mainView = new MainView(stage);
-        new MainController(model, mainView, stage);
-        break;
+                MainView mainView = new MainView(stage);
+                MainController mainController = new MainController(model, stage);
+                mainView.addPropertyChangeListener(mainController);
+                break;
             case "Slot1":
                 CreatePlayerView startView = new CreatePlayerView(stage,cons.SLOT1);
                 new CreatePlayerController(model, startView, stage);

@@ -40,7 +40,8 @@ public class InputOutputController implements PropertyChangeListener {
         switch(evt.getPropertyName()) {
             case "backButtonG":
                 MainView mainView = new MainView(stage);
-                new MainController(model, mainView, stage);
+                MainController mainController = new MainController(model, stage);
+                mainView.addPropertyChangeListener(mainController);
                 break;
             case "Input":
                 TextField input = (TextField) evt.getOldValue();

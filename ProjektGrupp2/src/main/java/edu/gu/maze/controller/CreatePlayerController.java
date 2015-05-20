@@ -32,7 +32,8 @@ public class CreatePlayerController implements PropertyChangeListener {
         switch (evt.getPropertyName()) {
             case "backButtonH":
                 MainView mainView = new MainView(stage);
-                new MainController(model, mainView, stage);
+                MainController mainController = new MainController(model, stage);
+                mainView.addPropertyChangeListener(mainController);
                 break;
 
             case "playButton":
@@ -46,7 +47,8 @@ public class CreatePlayerController implements PropertyChangeListener {
                     System.out.println("Type: " + type);
                     System.out.println("Slot: " + slot);
 
-                    //model.createPlayer(slot, name, type, 11, 14);
+                    model.createPlayer(slot, name, type, 11, 14);
+                    model.selectMap(Constants.MAP1);
                 }else{
                     input.setText("Fill in your name!!!");
                 }
