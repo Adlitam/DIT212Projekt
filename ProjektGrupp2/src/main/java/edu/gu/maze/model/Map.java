@@ -25,6 +25,7 @@ class Map implements Serializable{
                 if (c=='W'){
                 snd.add(new Wall());
                         }
+                if (c=='F')snd.add(new FinalDoor());
                 else snd.add(new Road());
             }
             list.add(snd.toArray(new ISquare[1]));
