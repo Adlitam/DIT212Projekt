@@ -14,10 +14,10 @@ import java.util.Scanner;
 class Map implements Serializable{
     ISquare[][] map;
     ArrayList<HighScore> scores = new ArrayList();
-    private int x = 14;
-    private int y = 11;
+    private int x;
+    private int y;
     
-    public Map (String filename) throws FileNotFoundException{
+    public Map (String filename, int x, int y) throws FileNotFoundException{
         Scanner s = null;
         s = new Scanner(new File(filename));
         ArrayList<ISquare[]> list = new ArrayList();
@@ -33,6 +33,8 @@ class Map implements Serializable{
             list.add(snd.toArray(new ISquare[1]));
         }
         map = list.toArray(new ISquare[1][1]);
+        this.x = x;
+        this.y = y;
         
     }
     

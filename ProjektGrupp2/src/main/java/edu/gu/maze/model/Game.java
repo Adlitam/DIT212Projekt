@@ -37,9 +37,9 @@ public class Game implements IGame, Serializable{
 
 
     public Game() throws FileNotFoundException{
-        map1 = new Map("map1.txt");
-        map2 = new Map("map2.txt");
-        map3 = new Map("map3.txt");
+        map1 = new Map("map1.txt", 14, 11);
+        map2 = new Map("map2.txt", 0, 0);
+        map3 = new Map("map3.txt", 0, 0);
     }
 
     @Override
@@ -73,23 +73,23 @@ public class Game implements IGame, Serializable{
     }
 
     @Override
-    public void createPlayer(int Slot, String name, int type, int x, int y) {
+    public void createPlayer(int Slot, String name, int type) {
         if (type !=Constants.MAGE && type != Constants.WARRIOR && type != Constants.THIEF){
             throw new IllegalArgumentException("Tried to create player with nonexistent type " + type);
         } 
         if (Slot==Constants.SLOT1){
             if (slot1!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot1 = new Player (name, type, x, y);
+            slot1 = new Player (name, type);
             currentPlayer = slot1;
         }
         else if (Slot == Constants.SLOT2){
             if (slot2!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot2 = new Player (name, type, x, y);
+            slot2 = new Player (name, type);
             currentPlayer = slot2;
         }
         else if (Slot == Constants.SLOT3){
             if (slot3!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot3 = new Player (name, type, x, y);
+            slot3 = new Player (name, type);
             currentPlayer = slot3;
         }
         else {
@@ -151,7 +151,7 @@ public class Game implements IGame, Serializable{
         else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
     }
 
-
+    @Override
     public void moveUp(){
         int i = currentMap.tryMoveUp();
         int ans = currentPlayer.moveUp(i);
@@ -160,6 +160,8 @@ public class Game implements IGame, Serializable{
             pcs.firePropertyChange("UP", "value1", "value2");
         }
     }
+    
+    @Override
     public void moveDown(){
         int i = currentMap.tryMoveDown();
         int ans = currentPlayer.moveDown(i);
@@ -168,6 +170,8 @@ public class Game implements IGame, Serializable{
             pcs.firePropertyChange("DOWN", "value1", "value2");
         }
     }
+    
+    @Override
     public void moveLeft(){
         int i = currentMap.tryMoveLeft();
         int ans = currentPlayer.moveLeft(i);
@@ -176,6 +180,8 @@ public class Game implements IGame, Serializable{
             pcs.firePropertyChange("LEFT", "value1", "value2");
         }
     }
+    
+    @Override
     public void moveRight(){
         int i = currentMap.tryMoveRight();
         int ans = currentPlayer.moveRight(i);
