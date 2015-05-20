@@ -7,23 +7,17 @@ import edu.gu.maze.view.*;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-/**
- * Created by Johan on 2015-05-18.
- */
+
 public class CreatePlayerController implements PropertyChangeListener {
     IGame model;
     Game Map;
     CreatePlayerView view;
     Stage stage;
     Constants cons = new Constants();
-
     private int type;
-    private int slot;
-
 
     public CreatePlayerController(IGame model, CreatePlayerView view, Stage primaryStage){
         this.Map = (Game) model;

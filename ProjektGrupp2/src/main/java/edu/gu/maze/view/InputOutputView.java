@@ -10,9 +10,6 @@ import javafx.stage.Screen;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-/**
- * Created by Johan on 2015-05-07.
- */
 public class InputOutputView {
     private VBox inputAndReturnAndOutput;
     private TextField input;
@@ -24,9 +21,6 @@ public class InputOutputView {
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
-
-
-
 
     public InputOutputView() {
         HBox inputAndReturn = new HBox();
@@ -41,7 +35,7 @@ public class InputOutputView {
 
     private void inputArea(){
         input = new TextField();
-        input.setPrefWidth(screenSize.getWidth() - 130);
+        input.setPrefWidth(screenSize.getWidth() - 100);
         input.setOnKeyPressed(e1 -> {
             switch (e1.getCode()) {
                 case ENTER:
@@ -71,7 +65,7 @@ public class InputOutputView {
 
     private void backButton(){
         backButton = new Button("Back to start");
-        backButton.setMinWidth(130);
+        backButton.setMinWidth(100);
         backButton.setOnAction(e2 ->
                 pcs.firePropertyChange("backButtonG", "value1", "value2"));
     }
@@ -81,8 +75,6 @@ public class InputOutputView {
         output.setPrefSize(screenSize.getWidth(),90);
         output.setEditable(false);
         output.setWrapText(true);
-
-
 
         output.setOnKeyPressed(e2 -> {
             switch (e2.getCode()) {
@@ -103,11 +95,8 @@ public class InputOutputView {
                     e2.consume();
                     break;
             }
-
         });
     }
-
-
 
     public VBox getInputView(){
         return inputAndReturnAndOutput;

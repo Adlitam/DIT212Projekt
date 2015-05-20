@@ -14,9 +14,7 @@ import javafx.stage.Stage;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-/**
- * Created by Johan on 2015-05-18.
- */
+
 public class CreatePlayerView {
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     BorderPane borderPaneLayout;
@@ -47,16 +45,18 @@ public class CreatePlayerView {
 
     private void createTop(){
         GridPane setName = new GridPane();
+
         Label title = new Label("Write Your Name:");
         GridPane.setConstraints(title,0,0);
-        name = new TextField();
 
+        name = new TextField();
         name.setMinWidth(400);
         GridPane.setConstraints(name,0,1);
+
         setName.getChildren().addAll(title, name);
         setName.setAlignment(Pos.CENTER);
-        borderPaneLayout.setTop(setName);
 
+        borderPaneLayout.setTop(setName);
     }
 
     private void createMiddle(){
@@ -65,9 +65,7 @@ public class CreatePlayerView {
         chooseCharacter.setAlignment(Pos.CENTER);
         chooseCharacter.setSpacing(20);
         borderPaneLayout.setCenter(chooseCharacter);
-
     }
-
 
     private ImageView getMageNode(){
         Image image = new Image("Mage.png");
@@ -82,7 +80,7 @@ public class CreatePlayerView {
         Image image = new Image("warrior.png");
         warrior = new ImageView();
         warrior.setImage(image);
-        warrior.setFitHeight(200);
+        warrior.setFitHeight(250);
         warrior.setFitWidth(200);
         warrior.setOnMouseClicked(e -> pcs.firePropertyChange("warrior", mage, thief));
         return warrior;
@@ -103,6 +101,7 @@ public class CreatePlayerView {
         HBox playAndReturn = new HBox();
 
         Button playButton = new Button("Play");
+        playButton.setAlignment(Pos.TOP_CENTER);
         playButton.setPrefWidth(200);
         playButton.setOnAction(e ->
                         pcs.firePropertyChange("playButton", name, slot)
@@ -115,11 +114,9 @@ public class CreatePlayerView {
         );
 
         playAndReturn.getChildren().addAll(playButton, backButton);
-        playAndReturn.setAlignment(Pos.CENTER);
+        playAndReturn.setAlignment(Pos.TOP_CENTER);
         playAndReturn.setSpacing(10);
 
         borderPaneLayout.setBottom(playAndReturn);
     }
-
-
 }
