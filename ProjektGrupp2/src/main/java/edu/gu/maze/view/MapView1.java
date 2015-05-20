@@ -56,6 +56,9 @@ public class MapView1 implements PropertyChangeListener{
                     case 'R':
                         temp2.add(new RoadView(i,j));
                         break;
+                    case 'F':
+                        temp2.add(new FinalDoorView(i,j));
+                        break;
                 }
                 j++;
             }
