@@ -153,35 +153,35 @@ public class Game implements IGame, Serializable{
 
 
     public void moveUp(){
-        int x = currentPlayer.getX();
-        int y = currentPlayer.getY();
-        if(currentMap.map[y-1][x].canIMoveHere() == 0){
+        int i = currentMap.tryMoveUp();
+        int ans = currentPlayer.moveUp(i);
+        if(ans == Constants.YES){
+            currentMap.moveUp();
             pcs.firePropertyChange("UP", "value1", "value2");
-            currentPlayer.setY(y-1);
         }
     }
     public void moveDown(){
-        int x = currentPlayer.getX();
-        int y = currentPlayer.getY();
-        if(currentMap.map[y+1][x].canIMoveHere() == 0){
+        int i = currentMap.tryMoveDown();
+        int ans = currentPlayer.moveDown(i);
+        if(ans == Constants.YES){
+            currentMap.moveDown();
             pcs.firePropertyChange("DOWN", "value1", "value2");
-            currentPlayer.setY(y+1);
         }
     }
     public void moveLeft(){
-        int x = currentPlayer.getX();
-        int y = currentPlayer.getY();
-        if(currentMap.map[y][x-1].canIMoveHere() == 0){
+        int i = currentMap.tryMoveLeft();
+        int ans = currentPlayer.moveLeft(i);
+        if(ans == Constants.YES){
+            currentMap.moveLeft();
             pcs.firePropertyChange("LEFT", "value1", "value2");
-            currentPlayer.setX(x-1);
         }
     }
     public void moveRight(){
-        int x = currentPlayer.getX();
-        int y = currentPlayer.getY();
-        if(currentMap.map[y][x+1].canIMoveHere() == 0){
+        int i = currentMap.tryMoveRight();
+        int ans = currentPlayer.moveRight(i);
+        if(ans == Constants.YES){
+            currentMap.moveRight();
             pcs.firePropertyChange("RIGHT", "value1", "value2");
-            currentPlayer.setX(x+1);
         }
     }
 

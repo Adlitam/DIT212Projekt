@@ -14,6 +14,8 @@ import java.util.Scanner;
 class Map implements Serializable{
     ISquare[][] map;
     ArrayList<HighScore> scores = new ArrayList();
+    private int x = 14;
+    private int y = 11;
     
     public Map (String filename) throws FileNotFoundException{
         Scanner s = null;
@@ -50,6 +52,37 @@ class Map implements Serializable{
         }
         return ans;
     }
+    
+    public int tryMoveUp(){
+        return map[y-1][x].canIMoveHere();
+    }
+    
+   public int tryMoveDown(){
+        return map[y+1][x].canIMoveHere();
+    }
+    
+   public int tryMoveLeft(){
+        return map[y][x-1].canIMoveHere();
+    }
+    
+    public int tryMoveRight(){
+        return map[y][x+1].canIMoveHere();
+    }
+    
+    public void moveUp(){
+        y--;
+    }
+    
+    public void moveDown(){
+        y++;
+    }
+    public void moveRight(){
+        x++;
+    }
+    public void moveLeft(){
+        x--;
+    }
+    
     
     public String toString(){
         String string = "";
