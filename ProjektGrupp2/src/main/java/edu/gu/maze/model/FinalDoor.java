@@ -23,6 +23,6 @@ public class FinalDoor implements ISquare{
     }
 
     public String toString(){
-        return "FinalDoor";
+        return "F";
     }
 }

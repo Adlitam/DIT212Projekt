@@ -19,6 +19,6 @@ class Wall implements ISquare{
     }
     
     public String toString(){
-        return "Wall";
+        return "W";
     }
 }

@@ -221,4 +221,38 @@ public class Game implements IGame, Serializable{
         }
         return ans;
     }
+
+    @Override
+    public int getPlayerType(int Slot) {
+        if (Slot==Constants.SLOT1){
+            if (slot1==null) return -1;
+            return slot1.type;
+        }
+        else if (Slot==Constants.SLOT2){
+            if (slot1==null) return -1;
+            return slot2.type;
+        }
+        else if (Slot==Constants.SLOT3){
+            if (slot1==null) return -1;
+            return slot3.type;
+        }
+        else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
+    }
+
+    @Override
+    public String getPlayerName(int Slot) {
+        if (Slot==Constants.SLOT1){
+            if (slot1==null) return "";
+            return slot1.name;
+        }
+        else if (Slot==Constants.SLOT2){
+            if (slot1==null) return "";
+            return slot2.name;
+        }
+        else if (Slot==Constants.SLOT3){
+            if (slot1==null) return "";
+            return slot3.name;
+        }
+        else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
+    }
 }

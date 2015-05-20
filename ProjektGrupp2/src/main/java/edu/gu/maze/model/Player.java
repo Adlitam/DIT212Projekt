@@ -6,8 +6,8 @@ import java.io.Serializable;
  */
 class Player implements Serializable{
     private static final long serialVersionUID = 3L;
-    private final String name;
-    private final int type;
+    final String name;
+    final int type;
     private int apples;
     private int keys;
     private boolean finalkey = false;
@@ -34,8 +34,8 @@ class Player implements Serializable{
             else return Constants.NO;
         }
         else if (permission == Constants.KEY){
-            if (apples>0) {
-                apples--;
+            if (keys>0) {
+                keys--;
                 
                 return Constants.YES;
             }
@@ -62,8 +62,8 @@ class Player implements Serializable{
             else return Constants.NO;
         }
         else if (permission == Constants.KEY){
-            if (apples>0) {
-                apples--;
+            if (keys>0) {
+                keys--;
                 
                 return Constants.YES;
             }
@@ -90,8 +90,8 @@ class Player implements Serializable{
             else return Constants.NO;
         }
         else if (permission == Constants.KEY){
-            if (apples>0) {
-                apples--;
+            if (keys>0) {
+                keys--;
                 
                 return Constants.YES;
             }
@@ -118,8 +118,8 @@ class Player implements Serializable{
             else return Constants.NO;
         }
         else if (permission == Constants.KEY){
-            if (apples>0) {
-                apples--;
+            if (keys>0) {
+                keys--;
                
                 return Constants.YES;
             }
