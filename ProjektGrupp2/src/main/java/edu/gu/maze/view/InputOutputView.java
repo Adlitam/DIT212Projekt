@@ -1,5 +1,6 @@
 package edu.gu.maze.view;
 
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -26,41 +27,11 @@ public class InputOutputView {
         HBox inputAndReturn = new HBox();
         inputAndReturnAndOutput = new VBox();
         screenSize = Screen.getPrimary().getVisualBounds();
-        inputArea();
         backButton();
         outputArea();
-        inputAndReturn.getChildren().addAll(input,backButton);
-        inputAndReturnAndOutput.getChildren().addAll(output,inputAndReturn);
-    }
-
-    private void inputArea(){
-        input = new TextField();
-        input.setPrefWidth(screenSize.getWidth() - 100);
-        input.setOnKeyPressed(e1 -> {
-            switch (e1.getCode()) {
-                case ENTER:
-                    pcs.firePropertyChange("Input", input, output);
-                    e1.consume();
-                    break;
-                case UP:
-                    pcs.firePropertyChange("UP", output, input);
-                    e1.consume();
-                    break;
-                case DOWN:
-                    pcs.firePropertyChange("DOWN", output, input);
-                    e1.consume();
-                    break;
-                case LEFT:
-                    pcs.firePropertyChange("LEFT", output, input);
-                    e1.consume();
-                    break;
-                case RIGHT:
-                    pcs.firePropertyChange("RIGHT", output, input);
-                    e1.consume();
-                    break;
-
-            }
-        });
+        inputAndReturn.getChildren().addAll(backButton);
+        inputAndReturn.setAlignment(Pos.BOTTOM_RIGHT);
+        inputAndReturnAndOutput.getChildren().addAll(output, inputAndReturn);
     }
 
     private void backButton(){
