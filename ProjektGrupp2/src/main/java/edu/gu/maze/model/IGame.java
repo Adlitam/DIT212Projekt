@@ -56,4 +56,7 @@ public interface IGame {
     //before older ones.
     public String[] getHighScoresForMap (int map);
     public String[] getTotalHighScores();
+    public int getPlayerType(int Slot);
+    public String getPlayerName(String name);
+    
 }
