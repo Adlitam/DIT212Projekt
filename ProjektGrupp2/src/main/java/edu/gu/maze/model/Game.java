@@ -37,7 +37,7 @@ public class Game implements IGame, Serializable{
 
 
     public Game() throws FileNotFoundException{
-        map1 = new Map("map1.txt", 14, 11);
+        map1 = new Map("map1.txt", 11, 14);
         map2 = new Map("map2.txt", 0, 0);
         map3 = new Map("map3.txt", 0, 0);
     }
