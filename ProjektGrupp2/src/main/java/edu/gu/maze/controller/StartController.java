@@ -3,11 +3,8 @@ package edu.gu.maze.controller;
 import edu.gu.maze.model.Constants;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
-
 import edu.gu.maze.view.*;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -18,20 +15,13 @@ public class StartController implements PropertyChangeListener {
 
     IGame model;
     Game Map;
-    StartView view;
     Stage stage;
     Constants cons = new Constants();
 
-
-
-
-
-    public StartController(IGame model, StartView view, Stage primaryStage){
+    public StartController(IGame model, Stage primaryStage){
         this.Map = (Game) model;
         this.stage = primaryStage;
         this.model = model;
-        this.view = view;
-        this.view.addPropertyChangeListener(this);
     }
 
     @Override
@@ -45,15 +35,18 @@ public class StartController implements PropertyChangeListener {
                 break;
             case "Slot1":
                 CreatePlayerView startView = new CreatePlayerView(stage,cons.SLOT1);
-                new CreatePlayerController(model, startView, stage);
+                CreatePlayerController createPlayerController1 = new CreatePlayerController(model, stage);
+                startView.addPropertyChangeListener(createPlayerController1);
                 break;
             case "Slot2":
                 CreatePlayerView startView2 = new CreatePlayerView(stage,cons.SLOT2);
-                new CreatePlayerController(model, startView2, stage);
+                CreatePlayerController createPlayerController2 = new CreatePlayerController(model, stage);
+                startView2.addPropertyChangeListener(createPlayerController2);
                 break;
             case "Slot3":
                 CreatePlayerView startView3 = new CreatePlayerView(stage,cons.SLOT3);
-                new CreatePlayerController(model, startView3, stage);
+                CreatePlayerController createPlayerController3 = new CreatePlayerController(model, stage);
+                startView3.addPropertyChangeListener(createPlayerController3);
                 break;
 
     }

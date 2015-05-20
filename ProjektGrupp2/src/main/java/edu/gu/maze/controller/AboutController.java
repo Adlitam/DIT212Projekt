@@ -3,12 +3,8 @@ package edu.gu.maze.controller;
 
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
-import edu.gu.maze.view.AboutView;
-
 import edu.gu.maze.view.MainView;
-
 import javafx.stage.Stage;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -20,16 +16,13 @@ public class AboutController implements PropertyChangeListener {
 
     IGame model;
     Game Map;
-    AboutView view;
     Stage stage;
 
 
-    public AboutController(IGame model, AboutView view, Stage primaryStage){
+    public AboutController(IGame model, Stage primaryStage){
         this.Map = (Game) model;
         this.stage = primaryStage;
         this.model = model;
-        this.view = view;
-        this.view.addPropertyChangeListener(this);
     }
 
     @Override
