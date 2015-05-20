@@ -51,7 +51,7 @@ public class MapController implements PropertyChangeListener{
                 getQuestionAndAnswers(evt);
                 output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
                 break;
-            case "LEFT"
+            case "LEFT":
                 model.moveLeft();
                 getQuestionAndAnswers(evt);
                 output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
