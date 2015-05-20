@@ -16,6 +16,7 @@ public interface IGame {
     isThisTheRightAnswer() has been called since the last time
     getQuestion() was called.*/
     public String[] getAnswers();
+    public void selectMap(int map);
 
     /*This method takes an int which is an index to the array returned by getAnswers()
     It returns an array of ints which signify, in order:
