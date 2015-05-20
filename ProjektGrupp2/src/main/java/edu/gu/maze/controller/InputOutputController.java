@@ -43,11 +43,6 @@ public class InputOutputController implements PropertyChangeListener {
                 MainController mainController = new MainController(model, stage);
                 mainView.addPropertyChangeListener(mainController);
                 break;
-            case "Input":
-                TextField input = (TextField) evt.getOldValue();
-                output = (TextArea) evt.getNewValue();
-                pcs.firePropertyChange("Input", input, output);
-                break;
             case "UP":
                 output = (TextArea) evt.getOldValue();
                 pcs.firePropertyChange("UP", output, "value2");

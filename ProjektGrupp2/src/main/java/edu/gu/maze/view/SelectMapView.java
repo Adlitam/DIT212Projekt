@@ -51,33 +51,33 @@ public class SelectMapView {
 
 
 
-        Label playerName1 = new Label("PlayerName1");
-        Label playerName2 = new Label("PlayerName2");
-        Label playerName3 = new Label("PlayerName3");
+        Label playerName1 = new Label("Map 1");
+        Label playerName2 = new Label("Map 2");
+        Label playerName3 = new Label("Map 3");
 
         //First slot
-        map1 = new Button("Slot1");
+        map1 = new Button();
         map1.setMinSize(100,100);
         hBox1.getChildren().addAll(map1,playerName1);
         hBox1.setSpacing(10);
         hBox1.setAlignment(Pos.CENTER);
-        map1.setOnAction(e -> pcs.firePropertyChange("Slot1",playerName1,"v2"));
+        map1.setOnAction(e -> pcs.firePropertyChange("Map1","v1","v2"));
 
         //Second slot
-        map2 = new Button("Slot2");
+        map2 = new Button();
         map2.setMinSize(100,100);
         hBox2.getChildren().addAll(map2,playerName2);
         hBox2.setSpacing(10);
         hBox2.setAlignment(Pos.CENTER);
-        map2.setOnAction(e -> pcs.firePropertyChange("Slot2",playerName1,"v2"));
+        map2.setOnAction(e -> pcs.firePropertyChange("Map1","v1","v2"));
 
         //Slot 3
-        map3 = new Button("Slot3");
-        map3.setMinSize(100,100);
+        map3 = new Button();
+        map3.setMinSize(100,150);
         hBox3.getChildren().addAll(map3,playerName3);
         hBox3.setSpacing(10);
         hBox3.setAlignment(Pos.CENTER);
-        map3.setOnAction(e -> pcs.firePropertyChange("Slot3",playerName1,"v2"));
+        map3.setOnAction(e -> pcs.firePropertyChange("Map1","v1","v2"));
 
 
 

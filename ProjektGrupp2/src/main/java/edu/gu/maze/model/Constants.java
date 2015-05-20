@@ -32,4 +32,11 @@ public final class Constants {
     public static final int MAP2=1;
     public static final int MAP3=2;
     
+    //variables which say if you can move to a certain place
+    public static final int YES=0;
+    public static final int NO=1;
+    public static final int APPLE =2;
+    public static final int KEY = 3;
+    public static final int FINALKEY = 4;
+    
 }
