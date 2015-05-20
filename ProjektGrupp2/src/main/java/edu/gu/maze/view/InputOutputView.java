@@ -65,6 +65,18 @@ public class InputOutputView {
                     pcs.firePropertyChange("RIGHT", output, "v2");
                     e2.consume();
                     break;
+                case A:
+                    pcs.firePropertyChange("0", output, "v2");
+                    e2.consume();
+                    break;
+                case S:
+                    pcs.firePropertyChange("1", output, "v2");
+                    e2.consume();
+                    break;
+                case D:
+                    pcs.firePropertyChange("2", output, "v2");
+                    e2.consume();
+                    break;
             }
         });
     }

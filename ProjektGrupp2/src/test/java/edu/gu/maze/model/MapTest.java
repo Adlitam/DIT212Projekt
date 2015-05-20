@@ -18,7 +18,7 @@ public class MapTest {
     
     @Before
     public void setUp() throws InterruptedException, FileNotFoundException{
-        map = new Map("map1Roads.txt");
+        map = new Map("map1.txt");
         score1 = new HighScore("Harry", 10);
         score2 = new HighScore ("Draco", 11);
         score3 = new HighScore ("Draco", 13);
