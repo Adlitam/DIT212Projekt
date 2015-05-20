@@ -14,4 +14,8 @@ class Chest implements ISquare {
 
         return true;
     }
+
+    public String toString(){
+        return "Chest";
+    }
 }

@@ -15,4 +15,8 @@ class Questioner implements ISquare{
         
         return true;
     }
+
+    public String toString(){
+        return "Questioner";
+    }
 }

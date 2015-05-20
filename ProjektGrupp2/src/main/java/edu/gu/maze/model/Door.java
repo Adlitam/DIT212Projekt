@@ -14,4 +14,8 @@ class Door implements ISquare {
     public boolean okayToTeleportHere() {
         return open;
     }
+
+    public String toString(){
+        return "Door";
+    }
 }

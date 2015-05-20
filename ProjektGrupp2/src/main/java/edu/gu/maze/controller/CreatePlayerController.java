@@ -50,8 +50,6 @@ public class CreatePlayerController implements PropertyChangeListener {
                 }else{
                     input.setText("Fill in your name!!!");
                 }
-
-                //model.createPlayer(slot, name, type, 11, 14);
                 break;
 
             case "mage":

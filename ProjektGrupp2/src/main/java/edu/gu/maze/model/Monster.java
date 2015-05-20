@@ -15,4 +15,8 @@ class Monster implements ISquare {
     public boolean okayToTeleportHere() {
         return !isHungry;
     }
+
+    public String toString(){
+        return "Monster";
+    }
 }

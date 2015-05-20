@@ -13,4 +13,8 @@ class Teleporter implements ISquare {
     public boolean okayToTeleportHere() {
         return false;
     }
+
+    public String toString(){
+        return "Teleporter";
+    }
 }
