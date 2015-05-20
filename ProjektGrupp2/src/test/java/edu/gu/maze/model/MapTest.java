@@ -18,11 +18,7 @@ public class MapTest {
     
     @Before
     public void setUp() throws InterruptedException, FileNotFoundException{
-<<<<<<< HEAD
-        //map = new Map("map1.txt");
-=======
         map = new Map("map1.txt", 14, 11);
->>>>>>> 24ec1c4c3aaf59d62bd3507a0779b82b3885b100
         score1 = new HighScore("Harry", 10);
         score2 = new HighScore ("Draco", 11);
         score3 = new HighScore ("Draco", 13);
