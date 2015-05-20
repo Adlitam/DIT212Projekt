@@ -18,16 +18,14 @@ class Map implements Serializable{
     private int y;
     
     public Map (String filename, int x, int y) throws FileNotFoundException{
-        Scanner s = null;
-        s = new Scanner(new File(filename));
+        Scanner s = new Scanner(new File(filename));
         ArrayList<ISquare[]> list = new ArrayList();
         while(s.hasNext()){
             ArrayList<ISquare> snd = new ArrayList();
             for (char c : s.next().toCharArray()){
-                if (c=='W'){
-                snd.add(new Wall());
-                        }
-                if (c=='F')snd.add(new FinalDoor());
+                if (c=='W') snd.add(new Wall());
+                  
+                else if (c=='F')snd.add(new FinalDoor());
                 else snd.add(new Road());
             }
             list.add(snd.toArray(new ISquare[1]));
