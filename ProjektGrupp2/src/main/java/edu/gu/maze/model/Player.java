@@ -6,8 +6,8 @@ import java.io.Serializable;
  */
 class Player implements Serializable{
     private static final long serialVersionUID = 3L;
-    private final String name;
-    private final int type;
+    final String name;
+    final int type;
     private int apples;
     private int keys;
     private boolean finalkey = false;

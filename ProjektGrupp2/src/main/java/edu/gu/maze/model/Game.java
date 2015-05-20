@@ -240,7 +240,19 @@ public class Game implements IGame, Serializable{
     }
 
     @Override
-    public String getPlayerName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getPlayerName(int Slot) {
+        if (Slot==Constants.SLOT1){
+            if (slot1==null) return "";
+            return slot1.name;
+        }
+        else if (Slot==Constants.SLOT2){
+            if (slot1==null) return "";
+            return slot2.name;
+        }
+        else if (Slot==Constants.SLOT3){
+            if (slot1==null) return "";
+            return slot3.name;
+        }
+        else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
     }
 }
