@@ -16,7 +16,7 @@ public class Game implements IGame, Serializable{
     private static final long serialVersionUID = 1L;
     //TODO : Replace this with appropriate data structure of questions.
     private Question allQuestions = new Question("What is Gilderoy Lockhart's favourite colour?",
-            new String[]{"Pink", "Lilac", "Gold"}, 1);
+            new String[]{"A. Pink", "S. Lilac", "D. Gold"}, 1);
     private Player slot1;
     private Player slot2;
     private Player slot3;

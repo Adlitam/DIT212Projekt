@@ -21,6 +21,7 @@ public class MapController implements PropertyChangeListener{
     private TextArea output;
     private String question;
     private String[] answers;
+    private int[] isThisTheRightAnswer;
 
     public MapController(IGame model, MapView1 view, InputOutputView inputView, Stage primaryStage){
         this.stage = primaryStage;
@@ -42,29 +43,62 @@ public class MapController implements PropertyChangeListener{
                 break;
             case "UP":
                 model.moveUp();
-                getQuestionAndAnswers(evt);
+                output = (TextArea) evt.getOldValue();
+                getQuestionAndAnswers();
                 output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
                 break;
             case "DOWN":
                 model.moveDown();
-                getQuestionAndAnswers(evt);
+                output = (TextArea) evt.getOldValue();
+                getQuestionAndAnswers();
                 output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
                 break;
             case "LEFT":
                 model.moveLeft();
-                getQuestionAndAnswers(evt);
+                output = (TextArea) evt.getOldValue();
+                getQuestionAndAnswers();
                 output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
                 break;
             case "RIGHT":
                 model.moveRight();
-                getQuestionAndAnswers(evt);
+                output = (TextArea) evt.getOldValue();
+                getQuestionAndAnswers();
                 output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
                 break;
+            case "0":
+                output = (TextArea) evt.getOldValue();
+                isThisTheRightAnswer = model.isThisTheRightAnswer(0);
+                if(isThisTheRightAnswer[0] == 1){
+                    output.setText("Correct answer!!");
+                }else{
+                    output.setText("Wrong answer!!");
+                }
+                break;
+            case "1":
+                output = (TextArea) evt.getOldValue();
+
+                isThisTheRightAnswer = model.isThisTheRightAnswer(1);
+                if(isThisTheRightAnswer[0] == 1){
+                    output.setText("Correct answer!!");
+                }else{
+                    output.setText("Wrong answer!!");
+                }
+                break;
+            case "2":
+                output = (TextArea) evt.getOldValue();
+                isThisTheRightAnswer = model.isThisTheRightAnswer(2);
+                if(isThisTheRightAnswer[0] == 1){
+                    output.setText("Correct answer!!");
+                }else{
+                    output.setText("Wrong answer!!");
+                }
+                break;
+
+
         }
     }
 
-    private void getQuestionAndAnswers(PropertyChangeEvent evt){
-        output = (TextArea) evt.getOldValue();
+    private void getQuestionAndAnswers(){
         question = model.getQuestion();
         answers = model.getAnswers();
     }
