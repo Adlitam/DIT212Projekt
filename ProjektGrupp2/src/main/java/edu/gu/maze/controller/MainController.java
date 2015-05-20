@@ -25,15 +25,18 @@ public class MainController implements PropertyChangeListener {
         switch(evt.getPropertyName()) {
             case "highScoreButton":
                 HighScoreView highScoreView = new HighScoreView(stage);
-                new HighScoreController(model, highScoreView, stage);
+                HighScoreController highScoreController = new HighScoreController(model, stage);
+                highScoreView.addPropertyChangeListener(highScoreController);
             break;
             case "Play":
                 StartView startView = new StartView(stage);
-                new StartController(model, startView, stage);
+                StartController startController = new StartController(model, stage);
+                startView.addPropertyChangeListener(startController);
             break;
             case "aboutbutton":
                 AboutView aboutView = new AboutView(stage);
-                new AboutController(model,aboutView,stage);
+                AboutController aboutController = new AboutController(model, stage);
+                aboutView.addPropertyChangeListener(aboutController);
                 break;
         }
 

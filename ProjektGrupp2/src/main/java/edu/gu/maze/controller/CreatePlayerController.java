@@ -12,19 +12,16 @@ import java.beans.PropertyChangeListener;
 
 
 public class CreatePlayerController implements PropertyChangeListener {
-    IGame model;
-    Game Map;
-    CreatePlayerView view;
-    Stage stage;
+    private IGame model;
+    private Game Map;
+    private Stage stage;
     Constants cons = new Constants();
     private int type;
 
-    public CreatePlayerController(IGame model, CreatePlayerView view, Stage primaryStage){
+    public CreatePlayerController(IGame model, Stage primaryStage){
         this.Map = (Game) model;
         this.stage = primaryStage;
         this.model = model;
-        this.view = view;
-        this.view.addPropertyChangeListener(this);
     }
 
     @Override
@@ -91,11 +88,14 @@ public class CreatePlayerController implements PropertyChangeListener {
 
     private void play(){
         InfoView infoView = new InfoView();
-        new InfoController(model, infoView, stage);
+        InfoController infoController = new InfoController(model, stage);
+        infoView.addPropertyChangeListener(infoController);
         InputOutputView inputView = new InputOutputView();
         MapView1 mapView1 = new MapView1();
         Map.addPropertyChangeListener(mapView1);
-        new MapController(model, mapView1, inputView, stage);
+        MapController mapController = new MapController(model, stage);
+        mapView1.addPropertyChangeListener(mapController);
+        inputView.addPropertyChangeListener(mapController);
         new GameView(stage, mapView1, infoView, inputView);
     }
 }

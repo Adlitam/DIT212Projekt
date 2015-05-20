@@ -1,11 +1,8 @@
 package edu.gu.maze.controller;
 
 import edu.gu.maze.model.IGame;
-import edu.gu.maze.view.InputOutputView;
 import edu.gu.maze.view.MainView;
-import edu.gu.maze.view.MapView1;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -15,21 +12,15 @@ import java.beans.PropertyChangeListener;
  */
 public class MapController implements PropertyChangeListener{
     IGame model;
-    MapView1 view;
-    InputOutputView inputView;
     Stage stage;
     private TextArea output;
     private String question;
     private String[] answers;
     private int[] isThisTheRightAnswer;
 
-    public MapController(IGame model, MapView1 view, InputOutputView inputView, Stage primaryStage){
+    public MapController(IGame model, Stage primaryStage){
         this.stage = primaryStage;
         this.model = model;
-        this.view = view;
-        this.inputView = inputView;
-        this.inputView.addPropertyChangeListener(this);
-        this.view.addPropertyChangeListener(this);
     }
 
 
