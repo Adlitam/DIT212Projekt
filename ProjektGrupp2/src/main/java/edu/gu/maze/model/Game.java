@@ -152,6 +152,11 @@ public class Game implements IGame, Serializable{
     }
 
     @Override
+    public Map getCurrentMap() {
+        return currentMap;
+    }
+
+
     public void moveUp(){
         int i = currentMap.tryMoveUp();
         int ans = currentPlayer.moveUp(i);
