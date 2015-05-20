@@ -9,9 +9,9 @@ public final class Constants {
     //mentioned below. No other input will be accepted for that variable.
     
     //Slot variable in createPlayer() and selectPlayer() in IGame. 
-    public static final int SLOT1 = 0;
-    public static final int SLOT2 = 1;
-    public static final int SLOT3 = 2;
+    public static final int SLOT1 = 1;
+    public static final int SLOT2 = 2;
+    public static final int SLOT3 = 3;
     
     //Type variable in createPlayer()
     public static final int WARRIOR = 0;

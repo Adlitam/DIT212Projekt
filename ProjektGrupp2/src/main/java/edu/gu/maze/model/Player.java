@@ -12,6 +12,7 @@ class Player implements Serializable{
     private int y;
     int[] scores = new int[3];
     private int totalHighScore = 0;
+
     public Player (String name, int type){
         this.name = name;
         this.type = type;

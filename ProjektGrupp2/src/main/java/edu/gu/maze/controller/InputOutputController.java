@@ -26,9 +26,7 @@ public class InputOutputController implements PropertyChangeListener {
         pcs.addPropertyChangeListener(listener);
     }
 
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        pcs.removePropertyChangeListener(listener);
-    }
+
 
     public InputOutputController(IGame model, InputOutputView view, Stage primaryStage){
         this.stage = primaryStage;
