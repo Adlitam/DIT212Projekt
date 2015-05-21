@@ -13,9 +13,7 @@ import javafx.stage.Stage;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-/**
- * Created by Matildaandersson on 15-05-20.
- */
+
 public class AboutView {
 
     BorderPane layout;

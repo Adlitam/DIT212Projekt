@@ -12,9 +12,7 @@ import javafx.stage.Stage;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-/**
- * Created by Matildaandersson on 15-05-19.
- */
+
 public class StartView {
 
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);

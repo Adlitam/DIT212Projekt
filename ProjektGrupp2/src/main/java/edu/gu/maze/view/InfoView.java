@@ -16,7 +16,6 @@ public class InfoView {
     private Rectangle2D screenSize;
     private VBox right;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
-    private AnimationTimer animationTimer;
 
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -100,7 +99,7 @@ public class InfoView {
         time.setAlignment(Pos.CENTER);
         time.setPrefSize(100,(screenSize.getHeight()-100)/4);
         time.setStyle("-fx-border-color: white;");
-        animationTimer = new AnimationTimer() {
+        AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 pcs.firePropertyChange("timer", time, "v2");
