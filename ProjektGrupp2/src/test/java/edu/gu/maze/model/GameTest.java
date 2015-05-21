@@ -109,7 +109,7 @@ public class GameTest {
         instance.isThisTheRightAnswer(1);
         instance.isThisTheRightAnswer(2);
     }
-    
+    /*
     //@Test 
     public void testNoUnexpectedErrorsinPlayerSelection(){
         //Run this in debug mode to check actual values
@@ -118,4 +118,5 @@ public class GameTest {
         instance.deletePlayer(Constants.SLOT1);
         instance.createPlayer(Constants.SLOT1, "Harry Potter", Constants.MAGE);
     }
+    */
 }

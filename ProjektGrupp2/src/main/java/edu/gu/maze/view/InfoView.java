@@ -1,5 +1,6 @@
 package edu.gu.maze.view;
 
+import javafx.animation.AnimationTimer;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
@@ -11,14 +12,11 @@ import javafx.stage.Screen;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-
-/**
- * Created by Johan on 2015-05-07.
- */
 public class InfoView {
     private Rectangle2D screenSize;
     private VBox right;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
@@ -93,12 +91,19 @@ public class InfoView {
 
     //The Time label that show the current time
     private Label getTimeNode(){
-        Label time = new Label("00:00:00");
+        Label time = new Label();
+
+
         time.setFont(new Font(20));
-        //new InfoController().timeController(time);   //what is this? View shouldn't know about the controller
         time.setAlignment(Pos.CENTER);
         time.setPrefSize(100,(screenSize.getHeight()-100)/4);
         time.setStyle("-fx-border-color: white;");
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                pcs.firePropertyChange("timer", time, "v2");
+            }
+        }.start();
         return time;
     }
 }
