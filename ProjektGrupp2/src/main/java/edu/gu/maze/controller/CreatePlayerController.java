@@ -1,6 +1,6 @@
 package edu.gu.maze.controller;
 
-import edu.gu.maze.model.Constants;
+import edu.gu.maze.util.Constants;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.*;
