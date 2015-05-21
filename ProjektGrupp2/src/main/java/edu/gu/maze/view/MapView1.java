@@ -10,9 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Created by Matildaandersson on 15-04-01.
- */
+
 public class MapView1 implements PropertyChangeListener{
     private GridPane g;
     private PlayerView player;

@@ -8,13 +8,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-/**
- * Created by Matildaandersson on 15-05-20.
- */
+
 public class CongratzView {
     BorderPane layout;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
@@ -67,7 +64,7 @@ public class CongratzView {
 
         Label title = new Label("Congratulations \n Your score:" );
         title.setFont(new Font(20));
-        Label score = new Label();
+        //Label score = new Label();
 
 
     }

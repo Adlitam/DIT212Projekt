@@ -10,9 +10,6 @@ import javafx.stage.Stage;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-/**
- * Created by xiang-yu on 2015-05-03.
- */
 public class MainView{
     Stage stage;
     Button createPlayer;
@@ -24,8 +21,6 @@ public class MainView{
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
-
-
 
     public MainView(Stage primaryStage){
         stage = primaryStage;

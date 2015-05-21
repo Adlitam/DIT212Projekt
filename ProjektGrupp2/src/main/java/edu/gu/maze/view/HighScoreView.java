@@ -4,19 +4,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-/**
- * Created by xiang-yu on 2015-05-10.
- */
+
 public class HighScoreView{
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     BorderPane borderPaneLayout;
