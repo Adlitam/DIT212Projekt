@@ -1,4 +1,4 @@
-package edu.gu.maze.model;
+package edu.gu.maze.util;
 
 /**
  *
