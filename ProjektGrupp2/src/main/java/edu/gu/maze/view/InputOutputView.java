@@ -1,5 +1,6 @@
 package edu.gu.maze.view;
 
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
@@ -10,13 +11,14 @@ import javafx.stage.Screen;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class InputOutputView {
+public class InputOutputView{
     private VBox inputAndReturnAndOutput;
 
     private TextArea output;
     private Rectangle2D screenSize;
     private Button backButton;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
@@ -45,7 +47,8 @@ public class InputOutputView {
         output.setPrefSize(screenSize.getWidth(),90);
         output.setEditable(false);
         output.setWrapText(true);
-
+        output.requestFocus();
+        Platform.runLater(output::requestFocus);
         output.setOnKeyPressed(e2 -> {
             switch (e2.getCode()) {
                 case UP:
@@ -79,6 +82,8 @@ public class InputOutputView {
             }
         });
     }
+
+
 
     public VBox getInputView(){
         return inputAndReturnAndOutput;
