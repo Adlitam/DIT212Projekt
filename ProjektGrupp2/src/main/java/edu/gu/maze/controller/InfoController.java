@@ -22,7 +22,7 @@ public class InfoController implements PropertyChangeListener{
         switch (evt.getPropertyName()) {
             case "timer":
                 Label time = (Label) evt.getOldValue();
-                time.setText((min++/3600)%60 + ":" + (sec++/60)%60);
+                time.setText(String.format("%02d:%02d",(min++/3600)%60,(sec++/60)%60));
                 break;
         }
 
