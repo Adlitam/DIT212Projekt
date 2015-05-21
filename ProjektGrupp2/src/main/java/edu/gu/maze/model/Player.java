@@ -1,4 +1,5 @@
 package edu.gu.maze.model;
+import edu.gu.maze.util.Constants;
 import java.io.Serializable;
 /**
  *
