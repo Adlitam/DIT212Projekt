@@ -35,7 +35,7 @@ public class CreatePlayerController implements PropertyChangeListener {
             case "playButton":
                 TextField input = (TextField) evt.getOldValue();
                 String name = input.getText();
-                if(name.length() > 0 && !name.equals("Fill in your name!!!")) {
+                if(name.length() > 0) {
                     play();
                     int slot = (int) evt.getNewValue();
 
@@ -46,7 +46,7 @@ public class CreatePlayerController implements PropertyChangeListener {
                     model.createPlayer(slot, name, type);
                     model.selectMap(Constants.MAP1);
                 }else{
-                    input.setText("Fill in your name!!!");
+                    input.setPromptText("Fill in your name!!!");
                 }
                 break;
 

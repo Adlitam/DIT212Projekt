@@ -101,7 +101,6 @@ public class CreatePlayerView {
         HBox playAndReturn = new HBox();
 
         Button playButton = new Button("Play");
-        playButton.setAlignment(Pos.TOP_CENTER);
         playButton.setPrefWidth(200);
         playButton.setOnAction(e ->
                         pcs.firePropertyChange("playButton", name, slot)
