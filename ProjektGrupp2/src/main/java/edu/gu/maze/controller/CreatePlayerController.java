@@ -51,38 +51,29 @@ public class CreatePlayerController implements PropertyChangeListener {
                 break;
 
             case "mage":
-                ImageView temp1 = (ImageView) evt.getOldValue();
-                ImageView temp2 = (ImageView) evt.getNewValue();
-                temp1.setDisable(true);
-                temp2.setDisable(true);
-                temp1.setVisible(false);
-                temp2.setVisible(false);
-
+                removeNotSelected(evt);
                 this.type = Constants.MAGE;
                 break;
 
             case "warrior":
-                temp1 = (ImageView) evt.getOldValue();
-                temp2 = (ImageView) evt.getNewValue();
-                temp1.setDisable(true);
-                temp2.setDisable(true);
-                temp1.setVisible(false);
-                temp2.setVisible(false);
-
+                removeNotSelected(evt);
                 this.type = Constants.WARRIOR;
                 break;
 
             case "thief":
-                temp1 = (ImageView) evt.getOldValue();
-                temp2 = (ImageView) evt.getNewValue();
-                temp1.setDisable(true);
-                temp2.setDisable(true);
-                temp1.setVisible(false);
-                temp2.setVisible(false);
-
+                removeNotSelected(evt);
                 this.type = Constants.THIEF;
                 break;
         }
+    }
+    // remove and disable the two character whos not selected from the view
+    private void removeNotSelected(PropertyChangeEvent evt){
+        ImageView temp1 = (ImageView) evt.getOldValue();
+        ImageView temp2 = (ImageView) evt.getNewValue();
+        temp1.setDisable(true);
+        temp2.setDisable(true);
+        temp1.setVisible(false);
+        temp2.setVisible(false);
     }
 
     private void play(){

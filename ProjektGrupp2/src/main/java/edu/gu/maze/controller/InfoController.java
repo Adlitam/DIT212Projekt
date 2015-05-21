@@ -5,9 +5,6 @@ import javafx.stage.Stage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-/**
- * Created by Johan on 2015-05-07.
- */
 public class InfoController implements PropertyChangeListener{
     IGame model;
     Stage stage;

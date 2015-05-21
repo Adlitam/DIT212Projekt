@@ -4,7 +4,6 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
@@ -66,15 +65,15 @@ public class InputOutputView {
                     e2.consume();
                     break;
                 case A:
-                    pcs.firePropertyChange("0", output, "v2");
+                    pcs.firePropertyChange("Answer A", output, "v2");
                     e2.consume();
                     break;
                 case S:
-                    pcs.firePropertyChange("1", output, "v2");
+                    pcs.firePropertyChange("Answer S", output, "v2");
                     e2.consume();
                     break;
                 case D:
-                    pcs.firePropertyChange("2", output, "v2");
+                    pcs.firePropertyChange("Answer D", output, "v2");
                     e2.consume();
                     break;
             }

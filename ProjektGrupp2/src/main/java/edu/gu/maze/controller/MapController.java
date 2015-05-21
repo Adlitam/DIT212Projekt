@@ -7,16 +7,10 @@ import javafx.stage.Stage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-/**
- * Created by xiang-yu on 2015-04-28.
- */
 public class MapController implements PropertyChangeListener{
     IGame model;
     Stage stage;
     private TextArea output;
-    private String question;
-    private String[] answers;
-    private int[] isThisTheRightAnswer;
 
     public MapController(IGame model, Stage primaryStage){
         this.stage = primaryStage;
@@ -34,74 +28,53 @@ public class MapController implements PropertyChangeListener{
                 break;
             case "UP":
                 model.moveUp();
-                output = (TextArea) evt.getOldValue();
-                getQuestionAndAnswers();
-                output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
+                getQuestionAndAnswers(evt);
                 break;
             case "DOWN":
                 model.moveDown();
-                output = (TextArea) evt.getOldValue();
-                getQuestionAndAnswers();
-                output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
+                getQuestionAndAnswers(evt);
                 break;
             case "LEFT":
                 model.moveLeft();
-                output = (TextArea) evt.getOldValue();
-                getQuestionAndAnswers();
-                output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
+                getQuestionAndAnswers(evt);
                 break;
             case "RIGHT":
                 model.moveRight();
-                output = (TextArea) evt.getOldValue();
-                getQuestionAndAnswers();
-                output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
+                getQuestionAndAnswers(evt);
                 break;
-            case "0":
-                output = (TextArea) evt.getOldValue();
-                try {
-                    isThisTheRightAnswer = model.isThisTheRightAnswer(0);
-                    if (isThisTheRightAnswer[0] == 1) {
-                        output.setText("Correct answer!!");
-                    } else {
-                        output.setText("Wrong answer!!");
-                    }
-                }catch(NullPointerException e){
-
-                }
+            case "Answer A":
+                checkAnswer(evt,0);
                 break;
-            case "1":
-                output = (TextArea) evt.getOldValue();
-                try {
-                    isThisTheRightAnswer = model.isThisTheRightAnswer(1);
-                    if (isThisTheRightAnswer[0] == 1) {
-                        output.setText("Correct answer!!");
-                    } else {
-                        output.setText("Wrong answer!!");
-                    }
-                }catch(NullPointerException e){
-
-                }
+            case "Answer S":
+                checkAnswer(evt,1);
                 break;
-            case "2":
-                output = (TextArea) evt.getOldValue();
-                try {
-                    isThisTheRightAnswer = model.isThisTheRightAnswer(2);
-                    if (isThisTheRightAnswer[0] == 1) {
-                        output.setText("Correct answer!!");
-                    } else {
-                        output.setText("Wrong answer!!");
-                    }
-                }catch(NullPointerException e){
-
-                }
+            case "Answer D":
+                checkAnswer(evt,2);
                 break;
 
 
         }
     }
+    // get the Answer and print it out in the output field
+    private void getQuestionAndAnswers(PropertyChangeEvent evt){
+        output = (TextArea) evt.getOldValue();
+        String question = model.getQuestion();
+        String[] answers = model.getAnswers();
+        output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
+    }
 
-    private void getQuestionAndAnswers(){
-        question = model.getQuestion();
-        answers = model.getAnswers();
+   // Check if it is the right answer
+    private void checkAnswer(PropertyChangeEvent evt, int i){
+        output = (TextArea) evt.getOldValue();
+        try {
+            int[] isThisTheRightAnswer = model.isThisTheRightAnswer(i);
+            if (isThisTheRightAnswer[0] == 1) {
+                output.setText("Correct answer!!");
+            } else {
+                output.setText("Wrong answer!!");
+            }
+        }catch(NullPointerException e){
+            System.out.println("You gave an answer without any question");
+        }
     }
 }
