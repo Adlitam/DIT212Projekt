@@ -9,8 +9,9 @@ import java.beans.PropertyChangeListener;
 public class InfoController implements PropertyChangeListener{
     IGame model;
     Stage stage;
-    private int sec;
-    private int min;
+    private int a;
+    private int b;
+
 
     public InfoController(IGame model, Stage primaryStage){
         this.stage = primaryStage;
@@ -22,7 +23,12 @@ public class InfoController implements PropertyChangeListener{
         switch (evt.getPropertyName()) {
             case "timer":
                 Label time = (Label) evt.getOldValue();
-                time.setText(String.format("%02d:%02d",(min++/3600)%60,(sec++/60)%60));
+
+                int sec = ((a++) / 60) % 60;
+                int min = ((b++) / 3600) % 60;
+
+                time.setText(String.format("%02d:%02d", min, sec));
+
                 break;
         }
 

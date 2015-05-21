@@ -16,6 +16,7 @@ public class InfoView {
     private Rectangle2D screenSize;
     private VBox right;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    private AnimationTimer animationTimer;
 
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -29,6 +30,7 @@ public class InfoView {
         right.getChildren().addAll(getAppleNode(), getKeyNode(), getPointsNode(), getTimeNode());
         right.minWidth(100);
         right.setMinWidth(100);
+
     }
 
     // The planel on the right
@@ -98,12 +100,13 @@ public class InfoView {
         time.setAlignment(Pos.CENTER);
         time.setPrefSize(100,(screenSize.getHeight()-100)/4);
         time.setStyle("-fx-border-color: white;");
-        new AnimationTimer() {
+        animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 pcs.firePropertyChange("timer", time, "v2");
             }
-        }.start();
+        };
+        animationTimer.start();
         return time;
     }
 }
