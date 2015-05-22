@@ -27,12 +27,14 @@ public class CreatePlayerController implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         switch (evt.getPropertyName()) {
             case "backButtonH":
+                // Take you back to the start stage
                 MainView mainView = new MainView(stage);
                 MainController mainController = new MainController(model, stage);
                 mainView.addPropertyChangeListener(mainController);
                 break;
 
             case "playButton":
+                // Start the game only if you have written a name
                 TextField input = (TextField) evt.getOldValue();
                 String name = input.getText();
                 if(name.length() > 0) {
@@ -51,16 +53,19 @@ public class CreatePlayerController implements PropertyChangeListener {
                 break;
 
             case "mage":
+                // Sets the type to Mage
                 removeNotSelected(evt);
                 this.type = Constants.MAGE;
                 break;
 
             case "warrior":
+                // Sets the type to Warrior
                 removeNotSelected(evt);
                 this.type = Constants.WARRIOR;
                 break;
 
             case "thief":
+                // Sets the type to Thief
                 removeNotSelected(evt);
                 this.type = Constants.THIEF;
                 break;
@@ -68,7 +73,7 @@ public class CreatePlayerController implements PropertyChangeListener {
             default:
         }
     }
-    // remove and disable the two character whos not selected from the view
+    // Remove and disable the two character whos not selected from the view
     private void removeNotSelected(PropertyChangeEvent evt){
         ImageView temp1 = (ImageView) evt.getOldValue();
         ImageView temp2 = (ImageView) evt.getNewValue();
@@ -78,6 +83,7 @@ public class CreatePlayerController implements PropertyChangeListener {
         temp2.setVisible(false);
     }
 
+    // Starts the GameView
     private void play(){
         InfoView infoView = new InfoView();
         InfoController infoController = new InfoController(model, stage);

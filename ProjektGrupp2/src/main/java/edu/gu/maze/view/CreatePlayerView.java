@@ -29,6 +29,7 @@ public class CreatePlayerView {
         pcs.addPropertyChangeListener(listener);
     }
 
+    // Put together all parts of the stage
     public CreatePlayerView(Stage stage, int slot){
         this.slot = slot;
         stage.setTitle("Maze");
@@ -42,7 +43,7 @@ public class CreatePlayerView {
         stage.setScene(highScoreScene);
     }
 
-
+    // Creates the top of the stage that includes a label and a TextField
     private void createTop(){
         GridPane setName = new GridPane();
 
@@ -59,6 +60,7 @@ public class CreatePlayerView {
         borderPaneLayout.setTop(setName);
     }
 
+    // Creates the center of the stage that includes all the Character pictures
     private void createMiddle(){
         HBox chooseCharacter = new HBox();
         chooseCharacter.getChildren().addAll(getMageNode(),getWarriorNode(),getThiefNode());
@@ -67,6 +69,7 @@ public class CreatePlayerView {
         borderPaneLayout.setCenter(chooseCharacter);
     }
 
+    // Creates the Mage picture and sends away a event if you click on it
     private ImageView getMageNode(){
         Image image = new Image("Mage.png");
         mage = new ImageView();
@@ -76,6 +79,8 @@ public class CreatePlayerView {
         mage.setOnMouseClicked(e ->  pcs.firePropertyChange("mage", warrior, thief));
         return mage;
     }
+
+    // Creates the Warrior picture and sends away a event if you click on it
     private ImageView getWarriorNode(){
         Image image = new Image("warrior.png");
         warrior = new ImageView();
@@ -85,6 +90,8 @@ public class CreatePlayerView {
         warrior.setOnMouseClicked(e -> pcs.firePropertyChange("warrior", mage, thief));
         return warrior;
     }
+
+    // Creates the Thief picture and sends away a event if you click on it
     private ImageView getThiefNode(){
         Image image = new Image("thief.png");
         thief = new ImageView();
@@ -97,6 +104,7 @@ public class CreatePlayerView {
         return thief;
     }
 
+    // Creates the bottom of the stage that includes the play and back buttoms
     private void createBottom(){
         HBox playAndReturn = new HBox();
 

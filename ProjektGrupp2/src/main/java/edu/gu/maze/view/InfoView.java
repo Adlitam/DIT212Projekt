@@ -22,7 +22,7 @@ public class InfoView {
         pcs.addPropertyChangeListener(listener);
     }
 
-
+    // Put together all Nodes in the VBox
     public InfoView(){
         screenSize = Screen.getPrimary().getVisualBounds();
         right = new VBox();
@@ -37,7 +37,7 @@ public class InfoView {
         return right;
     }
 
-    //The label that show the current amount of apples that the player has
+    // The label that show the current amount of apples that the player has
     private VBox getAppleNode(){
         VBox appleBox = new VBox();
 
@@ -56,7 +56,7 @@ public class InfoView {
         appleBox.setAlignment(Pos.CENTER);
         return appleBox;
     }
-    //The label that show the current amount of keys that the player has
+    // The label that show the current amount of keys that the player has
     private VBox getKeyNode(){
         VBox keyBox = new VBox();
 
@@ -105,7 +105,7 @@ public class InfoView {
 
         return time;
     }
-
+    // Sends away a firePropertyChange 60 times/sec that includes the name and the label
     private void updateLabels(Label l, String s){
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
