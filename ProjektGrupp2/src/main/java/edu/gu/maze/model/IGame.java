@@ -27,9 +27,26 @@ public interface IGame {
     if the player doesn't have it yet.
     change in the number of points
     A call to this method must be preceded by a call to getQuestion().
-    */
     public int[] isThisTheRightAnswer(int index);
-    
+    */
+
+    // return true if its true or false if its false
+    // sets apple to apple + 1 if its true
+    // sets key to key + 1 if its true
+    // sets points to points + 1 if its true
+    // change in the number of final keys (a correct answer will provide one final key
+    // if the player doesn't have it yet.
+    public int isThisTheRightAnswer(int index);
+
+    // returns the number of Apples the user has
+    public Integer getApples();
+
+    // returns the number of Keys the user has
+    public Integer getKeys();
+
+    // returns the number of Points the user has
+    public Integer getPoints();
+
     //To create a player and set him/her as current player
     //Slot may be either Constants.SLOT1, Constants.SLOT2, or Constants.SLOT3
     //Type has possible values Constants.MAGE, Constants.WARRIOR, and Constants.THIEF

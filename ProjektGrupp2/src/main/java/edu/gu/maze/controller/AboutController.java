@@ -8,19 +8,16 @@ import javafx.stage.Stage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-/**
- * Created by Matildaandersson on 15-05-20.
- */
 public class AboutController implements PropertyChangeListener {
 
 
     IGame model;
-    Game Map;
+    Game map;
     Stage stage;
 
 
     public AboutController(IGame model, Stage primaryStage){
-        this.Map = (Game) model;
+        this.map = (Game) model;
         this.stage = primaryStage;
         this.model = model;
     }
@@ -34,6 +31,7 @@ public class AboutController implements PropertyChangeListener {
                 MainController mainController = new MainController(model, stage);
                 mainView.addPropertyChangeListener(mainController);
                 break;
+            default:
 
         }
     }

@@ -6,9 +6,7 @@ import javafx.stage.Stage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-/**
- * Created by xiang-yu on 2015-04-28.
- */
+
 public class HighScoreController implements PropertyChangeListener {
     IGame model;
     Stage stage;

@@ -14,13 +14,13 @@ import java.beans.PropertyChangeListener;
 public class StartController implements PropertyChangeListener {
 
     private IGame model;
-    private Game Map;
+    private Game map;
     private Stage stage;
     private StartView startView;
     private Constants cons = new Constants();
 
     public StartController(IGame model, StartView startView, Stage primaryStage){
-        this.Map = (Game) model;
+        this.map = (Game) model;
         this.stage = primaryStage;
         this.model = model;
         this.startView = startView;

@@ -81,8 +81,12 @@ public class GameTest {
     public void testIsThisTheRightAnswer() {
         System.out.println("isThisTheRightAnswer");
         instance.getQuestion();
-        int[] expResult = new int[] {1,0,0,1,5};
-        int[] result = instance.isThisTheRightAnswer(1);
+        int[] expResult = new int[] {1,1,1,5};
+        int correct = instance.isThisTheRightAnswer(1);
+        int apple = instance.getApples();
+        int key = instance.getKeys();
+        int points = instance.getKeys();
+        int[] result = new int[] {correct,apple,key,points};
         assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -91,9 +95,10 @@ public class GameTest {
     //@Test
     public void testIsThisTheRightAnswer2(){
         instance.getQuestion();
-        int[] expResult = new int[] {0,0,0,0,0};
-        int[] result = instance.isThisTheRightAnswer(2);
-        assertArrayEquals(expResult, result);
+
+        //int[] expResult = new int[] {0,0,0,0,0};
+        //int[] result = instance.isThisTheRightAnswer(2);
+        //assertArrayEquals(expResult, result);
     }
     
     //Test with nonexistent answer

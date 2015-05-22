@@ -33,6 +33,11 @@ public class Game implements IGame, Serializable{
     private Player currentPlayer;
     private transient Map currentMap;
 
+
+    private int apple = 0;
+    private int key = 0;
+    private int points = 0;
+
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
@@ -54,7 +59,7 @@ public class Game implements IGame, Serializable{
     public String[] getAnswers() {
         return currentQuestion.getAnswers();
     }
-
+/*
     @Override
     public int[] isThisTheRightAnswer(int index) {
         boolean a = currentQuestion.isThisTheRightAnswer(index);
@@ -67,12 +72,53 @@ public class Game implements IGame, Serializable{
             fk=1;
         }
         int points = a ? 5 : 0;
-        currentQuestion=null;
+
         return new int[] {ans,0,0,fk,points};
     }
+    */
+
+    // TODO om ni inte gillar den här lösningen så ta bort härifrån till
+    // Gamla lösningen är ovanför
+@Override
+public int isThisTheRightAnswer(int index) {
+    boolean a = currentQuestion.isThisTheRightAnswer(index);
+    if(a){
+        apple++;
+        key++;
+        points = points + 5;
+        if(!finalkey){
+            finalkey =true;
+        }
+        currentQuestion=null;
+        return 1;
+    }else{
+        currentQuestion=null;
+        return 0;
+    }
+
+}
+    @Override
+    public Integer getPoints() {
+        return points;
+    }
+
+    @Override
+    public Integer getKeys() {
+        return key;
+    }
+
+    @Override
+    public Integer getApples() {
+        return apple;
+    }
+
+    // TODO hit
+
     private Question selectQuestion(){
         return allQuestions;
     }
+
+
 
     @Override
     public void createPlayer(int Slot, String name, int type) {

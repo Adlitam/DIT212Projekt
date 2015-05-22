@@ -13,12 +13,12 @@ import java.beans.PropertyChangeListener;
 
 public class CreatePlayerController implements PropertyChangeListener {
     private IGame model;
-    private Game Map;
+    private Game map;
     private Stage stage;
     private int type;
 
     public CreatePlayerController(IGame model, Stage primaryStage){
-        this.Map = (Game) model;
+        this.map = (Game) model;
         this.stage = primaryStage;
         this.model = model;
     }
@@ -64,6 +64,8 @@ public class CreatePlayerController implements PropertyChangeListener {
                 removeNotSelected(evt);
                 this.type = Constants.THIEF;
                 break;
+
+            default:
         }
     }
     // remove and disable the two character whos not selected from the view
@@ -82,7 +84,7 @@ public class CreatePlayerController implements PropertyChangeListener {
         infoView.addPropertyChangeListener(infoController);
         InputOutputView inputView = new InputOutputView();
         MapView1 mapView1 = new MapView1();
-        Map.addPropertyChangeListener(mapView1);
+        map.addPropertyChangeListener(mapView1);
         MapController mapController = new MapController(model, stage);
         mapView1.addPropertyChangeListener(mapController);
         inputView.addPropertyChangeListener(mapController);

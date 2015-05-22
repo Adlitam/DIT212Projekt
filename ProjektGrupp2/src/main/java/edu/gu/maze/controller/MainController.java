@@ -8,9 +8,6 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 
-/**
- * Created by xiang-yu on 2015-04-28.
- */
 public class MainController implements PropertyChangeListener {
     Game model;
     Stage stage;
@@ -28,16 +25,19 @@ public class MainController implements PropertyChangeListener {
                 HighScoreController highScoreController = new HighScoreController(model, stage);
                 highScoreView.addPropertyChangeListener(highScoreController);
             break;
+
             case "Play":
                 StartView startView = new StartView(stage);
                 StartController startController = new StartController(model, startView, stage);
                 startView.addPropertyChangeListener(startController);
             break;
+
             case "aboutbutton":
                 AboutView aboutView = new AboutView(stage);
                 AboutController aboutController = new AboutController(model, stage);
                 aboutView.addPropertyChangeListener(aboutController);
                 break;
+            default:
         }
 
     }

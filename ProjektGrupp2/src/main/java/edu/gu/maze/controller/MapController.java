@@ -51,6 +51,7 @@ public class MapController implements PropertyChangeListener{
             case "Answer D":
                 checkAnswer(evt,2);
                 break;
+            default:
 
 
         }
@@ -67,8 +68,7 @@ public class MapController implements PropertyChangeListener{
     private void checkAnswer(PropertyChangeEvent evt, int i){
         output = (TextArea) evt.getOldValue();
         try {
-            int[] isThisTheRightAnswer = model.isThisTheRightAnswer(i);
-            if (isThisTheRightAnswer[0] == 1) {
+            if (model.isThisTheRightAnswer(i) == 1) {
                 output.setText("Correct answer!!");
             } else {
                 output.setText("Wrong answer!!");

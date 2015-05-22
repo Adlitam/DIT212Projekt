@@ -30,6 +30,19 @@ public class InfoController implements PropertyChangeListener{
                 time.setText(String.format("%02d:%02d", min, sec));
 
                 break;
+            case "apples":
+                Label apple = (Label) evt.getOldValue();
+                apple.setText(model.getApples().toString());
+                break;
+            case "keys":
+                Label keys = (Label) evt.getOldValue();
+                keys.setText(model.getKeys().toString());
+                break;
+            case "points":
+                Label points = (Label) evt.getOldValue();
+                points.setText(model.getPoints().toString());
+                break;
+            default:
         }
 
 
