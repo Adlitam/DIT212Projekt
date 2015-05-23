@@ -16,7 +16,7 @@ public interface IGame {
     isThisTheRightAnswer() has been called since the last time
     getQuestion() was called.*/
     public String[] getAnswers();
-    public void selectMap(int map);
+    public void startMatch(int map);
 
     /*This method takes an int which is an index to the array returned by getAnswers()
     It returns an array of ints which signify, in order:
@@ -66,7 +66,7 @@ public interface IGame {
     public void deletePlayer (int Slot);
 
     //Returns the current map
-    public Map getCurrentMap();
+    public Match getCurrentMap();
     
     //Retrieve specified high scores as formatted strings.
     //Results are sorted so that highest scores come first and newer scores 

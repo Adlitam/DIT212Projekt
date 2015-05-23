@@ -37,6 +37,8 @@ public final class Constants {
     public static final int NO=1;
     public static final int APPLE =2;
     public static final int KEY = 3;
-    public static final int FINALKEY = 4;
+    public static final int FINAL = 4;
+    public static final int GOTAPPLE = 5;
+    public static final int GOTKEY = 6;
     
 }

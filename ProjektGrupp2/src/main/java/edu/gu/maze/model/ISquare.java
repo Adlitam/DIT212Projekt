@@ -8,6 +8,10 @@ interface ISquare {
     public abstract int canIMoveHere();
 
     public abstract boolean okayToTeleportHere();
+    
+    public abstract void clearWay();
 
     public String toString();
+    
+    public void reset();
 }

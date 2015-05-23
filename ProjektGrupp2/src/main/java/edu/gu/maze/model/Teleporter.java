@@ -1,12 +1,14 @@
 package edu.gu.maze.model;
 
+import static edu.gu.maze.util.Constants.YES;
+
 /**
  * Created by Matildaandersson on 15-04-01.
  */
 class Teleporter implements ISquare {
     @Override
     public int canIMoveHere() {
-        return 0;
+        return YES;
     }
 
     @Override
@@ -16,5 +18,15 @@ class Teleporter implements ISquare {
 
     public String toString(){
         return "Teleporter";
+    }
+
+    @Override
+    public void clearWay() {
+        //do nothing
+    }
+
+    @Override
+    public void reset() {
+        //do nothing
     }
 }

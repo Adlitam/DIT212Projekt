@@ -19,24 +19,24 @@ public class Game implements IGame, Serializable{
     //TODO : Replace this with appropriate data structure of questions.
     private Question allQuestions = new Question("What is Gilderoy Lockhart's favourite colour?",
             new String[]{"A. Pink", "S. Lilac", "D. Gold"}, 1);
-    private Player slot1;
-    private Player slot2;
-    private Player slot3;
-    private Map map1;
-    private Map map2;
-    private Map map3;
+    private SaveSlot slot1;
+    private SaveSlot slot2;
+    private SaveSlot slot3;
+    private Level level1;
+    private Level level2;
+    private Level level3;
     ArrayList<HighScore> totalHighScores = new ArrayList();
     //MATERIAL RELATING TO CURRENT GAME
     //TODO: Move this to player class
-    private transient boolean finalkey =false;
+    //private transient boolean finalkey =false;
     private transient Question currentQuestion;
-    private Player currentPlayer;
-    private transient Map currentMap;
+    private SaveSlot currentPlayer;
+    private transient Match currentMatch;
 
 
-    private int apple = 0;
-    private int key = 0;
-    private int points = 0;
+    //private int apple = 0;
+    //private int key = 0;
+    //private int points = 0;
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
@@ -44,9 +44,9 @@ public class Game implements IGame, Serializable{
 
 
     public Game() throws FileNotFoundException{
-        map1 = new Map("map1.txt", 11, 14);
-        map2 = new Map("map2.txt", 0, 0);
-        map3 = new Map("map3.txt", 0, 0);
+        level1 = new Level ("map1.txt", 11, 14);
+        level2 = new Level ("map2.txt", 0, 0);
+        level3 = new Level ("map3.txt", 0, 0);
     }
 
     @Override
@@ -61,6 +61,7 @@ public class Game implements IGame, Serializable{
     }
 /*
     @Override
+    //TODO: FIX THIS TO USE MESSAGES INSTEAD. ALSO REMOVE LINE IN RESET WHEN YOU DO THIS.
     public int[] isThisTheRightAnswer(int index) {
         boolean a = currentQuestion.isThisTheRightAnswer(index);
         int ans = a ? 1 : 0;
@@ -82,34 +83,26 @@ public class Game implements IGame, Serializable{
 @Override
 public int isThisTheRightAnswer(int index) {
     boolean a = currentQuestion.isThisTheRightAnswer(index);
+    currentQuestion = null;
     if(a){
-        apple++;
-        key++;
-        points = points + 5;
-        if(!finalkey){
-            finalkey =true;
-        }
-        currentQuestion=null;
+        currentMatch.correctAnswer();
         return 1;
-    }else{
-        currentQuestion=null;
-        return 0;
     }
-
+        return 0;
 }
     @Override
     public Integer getPoints() {
-        return points;
+        return currentMatch.getScore();
     }
 
     @Override
     public Integer getKeys() {
-        return key;
+        return currentMatch.getKeys();
     }
 
     @Override
     public Integer getApples() {
-        return apple;
+        return currentMatch.getApples();
     }
 
     // TODO hit
@@ -127,17 +120,17 @@ public int isThisTheRightAnswer(int index) {
         } 
         if (Slot==SLOT1){
             if (slot1!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot1 = new Player (name, type);
+            slot1 = new SaveSlot (name, type);
             currentPlayer = slot1;
         }
         else if (Slot == SLOT2){
             if (slot2!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot2 = new Player (name, type);
+            slot2 = new SaveSlot (name, type);
             currentPlayer = slot2;
         }
         else if (Slot == SLOT3){
             if (slot3!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot3 = new Player (name, type);
+            slot3 = new SaveSlot (name, type);
             currentPlayer = slot3;
         }
         else {
@@ -166,15 +159,15 @@ public int isThisTheRightAnswer(int index) {
     }
     
     @Override
-    public void selectMap(int map){
+    public void startMatch(int map){
         if (map==MAP1){
-            currentMap = map1;
+            currentMatch = new Match (level1.getMap(), level1.getStartX(), level1.getStartY());
         }
         else if (map == MAP2){
-            currentMap = map2;
+            currentMatch = new Match (level2.getMap(), level2.getStartX(), level2.getStartY());
         }
         else if (map == MAP3){
-            currentMap = map3;
+            currentMatch = new Match (level3.getMap(), level3.getStartX(), level3.getStartY());;
         }
         else {
             throw new IllegalArgumentException("Tried to select nonexistent map"
@@ -200,76 +193,83 @@ public int isThisTheRightAnswer(int index) {
     }
 
     @Override //wait what?
-    public Map getCurrentMap() {
-        return currentMap;
+    public Match getCurrentMap() {
+        return currentMatch;
     }
 
 
     public void moveUp(){
-        int i = currentMap.tryMoveUp();
-        int ans = currentPlayer.moveUp(i);
-        if(ans == YES){
-            currentMap.moveUp();
-            sendMessages(i);
+        int i = currentMatch.moveUp();
+        if (i != NO){
             pcs.firePropertyChange("UP", "value1", "value2");
+        }
+        if (i == FINAL){
+            //calculate final score. Communicate to view somehow.
+            currentMatch = null;
         }
     }
     
     @Override
     public void moveDown(){
-        int i = currentMap.tryMoveDown();
-        int ans = currentPlayer.moveDown(i);
-        if(ans == YES){
-            currentMap.moveDown();
-            sendMessages(i);
+        int i = currentMatch.moveDown();
+        if (i != NO){
             pcs.firePropertyChange("DOWN", "value1", "value2");
+        }
+        if (i == FINAL){
+            //calculate final score. Communicate to view somehow.
+            currentMatch = null;
         }
     }
     
     @Override
     public void moveLeft(){
-        int i = currentMap.tryMoveLeft();
-        int ans = currentPlayer.moveLeft(i);
-        if(ans == YES){
-            currentMap.moveLeft();
-            sendMessages(i);
+        int i = currentMatch.moveLeft();
+        if (i != NO){
             pcs.firePropertyChange("LEFT", "value1", "value2");
+        }
+        if (i == FINAL){
+            //calculate final score. Communicate to view somehow.
+            currentMatch = null;
         }
     }
     
     @Override
     public void moveRight(){
-        int i = currentMap.tryMoveRight();
-        int ans = currentPlayer.moveRight(i);
-        if(ans == YES){
-            currentMap.moveRight();
-            sendMessages(i);
+        int i = currentMatch.moveRight();
+        if (i != NO){
             pcs.firePropertyChange("RIGHT", "value1", "value2");
+        }
+        if (i == FINAL){
+            //calculate final score. Communicate to view somehow.
+            currentMatch = null;
         }
     }
     
-    private void sendMessages(int what){
+    /*private void sendMessages(int what){
         if (what==APPLE){
             //TODO send message apples-1 and monster not hungry
         }
         else if (what==KEY){
             //send message key-1 and door open
         }
-        else if (what==FINALKEY){
+        else if (what==FINAL){
+            reset();
             //send message game finished
         }
-    }
+    }*/
+    
+    //this method resets all temporary variables used when playing
 
     @Override
     public String[] getHighScoresForMap(int map) {
         if (map==MAP1){
-            return map1.getHighScores();
+            return level1.getHighScores();
         }
         else if (map==MAP2){
-            return map2.getHighScores();
+            return level2.getHighScores();
         }
         else if (map==MAP3){
-            return map3.getHighScores();
+            return level3.getHighScores();
         }
         else throw new IllegalArgumentException ("Tried to obtain high scores for "
                 + "nonexisting map " + map);

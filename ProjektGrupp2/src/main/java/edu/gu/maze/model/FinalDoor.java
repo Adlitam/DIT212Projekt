@@ -6,6 +6,8 @@
 
 package edu.gu.maze.model;
 
+import static edu.gu.maze.util.Constants.FINAL;
+
 /**
  *
  * @author omega
@@ -14,15 +16,25 @@ public class FinalDoor implements ISquare{
 
     @Override
     public int canIMoveHere() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return FINAL;
     }
 
     @Override
     public boolean okayToTeleportHere() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     public String toString(){
         return "F";
+    }
+
+    @Override
+    public void clearWay() {
+        //do nothing
+    }
+
+    @Override
+    public void reset() {
+        //do nothing
     }
 }

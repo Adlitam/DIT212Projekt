@@ -1,5 +1,8 @@
 package edu.gu.maze.model;
 
+import static edu.gu.maze.util.Constants.APPLE;
+import static edu.gu.maze.util.Constants.YES;
+
 /**
  * Created by Matildaandersson on 15-04-01.
  */
@@ -8,7 +11,8 @@ class Monster implements ISquare {
 
     @Override
     public int canIMoveHere() {
-        return 0;
+        if (isHungry) return APPLE;
+        else return YES;
     }
 
     @Override
@@ -18,5 +22,15 @@ class Monster implements ISquare {
 
     public String toString(){
         return "Monster";
+    }
+
+    @Override
+    public void clearWay() {
+        isHungry=false;
+    }
+
+    @Override
+    public void reset() {
+        isHungry = true;
     }
 }

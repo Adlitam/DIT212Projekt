@@ -1,14 +1,17 @@
 package edu.gu.maze.model;
 
+import static edu.gu.maze.util.Constants.GOTKEY;
 import static edu.gu.maze.util.Constants.YES;
 
 /**
  * Created by Matildaandersson on 15-04-01.
  */
 class Chest implements ISquare {
+    //TODO: add constructor which distributes apples and keys randomly
+    int contains = GOTKEY;
     @Override
     public int canIMoveHere() {
-        return YES;
+        return contains;
     }
 
     @Override
@@ -17,7 +20,19 @@ class Chest implements ISquare {
         return true;
     }
 
+    @Override
     public String toString(){
         return "Chest";
+    }
+
+    @Override
+    public void clearWay() {
+        contains = YES;
+    }
+
+    @Override
+    public void reset() {
+        //TODO: use random generator
+        contains = GOTKEY;
     }
 }

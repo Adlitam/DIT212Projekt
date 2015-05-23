@@ -1,5 +1,7 @@
 package edu.gu.maze.model;
 
+import static edu.gu.maze.util.Constants.NO;
+
 /**
  *
  * @author omega
@@ -8,17 +10,25 @@ class Wall implements ISquare{
 
     @Override
     public int canIMoveHere() {
-        return 1;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return NO;
     }
 
     @Override
     public boolean okayToTeleportHere() {
         return false;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public String toString(){
         return "W";
+    }
+
+    @Override
+    public void clearWay() {
+        //do nothing
+    }
+
+    @Override
+    public void reset() {
+        //do nothing
     }
 }
