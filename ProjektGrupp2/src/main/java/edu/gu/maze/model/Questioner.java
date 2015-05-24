@@ -6,7 +6,7 @@ import static edu.gu.maze.util.Constants.YES;
  *
  * @author omega
  */
-class Questioner implements ISquare{
+public class Questioner implements ISquare{
     @Override
     public int canIMoveHere() {
         return YES;

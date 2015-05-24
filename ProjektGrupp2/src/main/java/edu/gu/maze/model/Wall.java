@@ -6,7 +6,7 @@ import static edu.gu.maze.util.Constants.NO;
  *
  * @author omega
  */
-class Wall implements ISquare{
+public class Wall implements ISquare{
 
     @Override
     public int canIMoveHere() {

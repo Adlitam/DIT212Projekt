@@ -5,7 +5,7 @@ import java.io.Serializable;
  *
  * @author omega
  */
-class SaveSlot implements Serializable{
+public class SaveSlot implements Serializable{
     private static final long serialVersionUID = 3L;
     final String name;
     final int type;

@@ -3,6 +3,7 @@ package edu.gu.maze.model;
 
 import static edu.gu.maze.util.Constants.*;
 //import static edu.gu.maze.util.Constants.APPLE;
+import edu.gu.maze.util.ResourceReader;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.*;
@@ -44,9 +45,9 @@ public class Game implements IGame, Serializable{
 
 
     public Game() throws FileNotFoundException{
-        level1 = new Level ("map1.txt", 11, 14);
-        level2 = new Level ("map2.txt", 0, 0);
-        level3 = new Level ("map3.txt", 0, 0);
+        level1 = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
+        level2 = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
+        level3 = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
     }
 
     @Override
@@ -161,13 +162,13 @@ public int isThisTheRightAnswer(int index) {
     @Override
     public void startMatch(int map){
         if (map==MAP1){
-            currentMatch = new Match (level1.getMap(), level1.getStartX(), level1.getStartY());
+            currentMatch = ResourceReader.readMapForModel(level1.getMap());
         }
         else if (map == MAP2){
-            currentMatch = new Match (level2.getMap(), level2.getStartX(), level2.getStartY());
+            currentMatch = ResourceReader.readMapForModel(level2.getMap());
         }
         else if (map == MAP3){
-            currentMatch = new Match (level3.getMap(), level3.getStartX(), level3.getStartY());;
+            currentMatch = ResourceReader.readMapForModel(level3.getMap());
         }
         else {
             throw new IllegalArgumentException("Tried to select nonexistent map"

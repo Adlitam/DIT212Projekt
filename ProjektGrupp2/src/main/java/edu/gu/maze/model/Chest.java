@@ -6,7 +6,7 @@ import static edu.gu.maze.util.Constants.YES;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-class Chest implements ISquare {
+public class Chest implements ISquare {
     //TODO: add constructor which distributes apples and keys randomly
     int contains = GOTKEY;
     @Override

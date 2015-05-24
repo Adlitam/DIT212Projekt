@@ -5,7 +5,7 @@ import static edu.gu.maze.util.Constants.YES;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-class Teleporter implements ISquare {
+public class Teleporter implements ISquare {
     @Override
     public int canIMoveHere() {
         return YES;
