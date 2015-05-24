@@ -16,17 +16,13 @@ public class Teleporter implements ISquare {
         return false;
     }
 
+    @Override
     public String toString(){
         return "Teleporter";
     }
 
     @Override
     public void clearWay() {
-        //do nothing
-    }
-
-    @Override
-    public void reset() {
         //do nothing
     }
 }

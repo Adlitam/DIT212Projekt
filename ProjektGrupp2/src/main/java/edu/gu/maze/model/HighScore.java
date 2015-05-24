@@ -40,6 +40,7 @@ class HighScore implements Comparable, Serializable{
         return score;
     }
     
+    @Override
     public String toString(){
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return score + "\t" + name + "\t" + f.format(date);

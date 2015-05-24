@@ -1,5 +1,4 @@
 package edu.gu.maze.model;
-import edu.gu.maze.util.Constants;
 import java.io.Serializable;
 /**
  *
@@ -18,7 +17,9 @@ public class SaveSlot implements Serializable{
         this.type = type;
     }
 
-    public HighScore addHighScore(int score, int map){
+    //Updates Player's total score, if necessary, and returns a new HighScore object
+    //for the player.
+    protected HighScore addHighScore(int score, int map){
         if (scores[map]<score) {
             totalHighScore-=scores[map];
             totalHighScore +=score;

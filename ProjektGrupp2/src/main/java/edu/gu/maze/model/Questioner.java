@@ -18,17 +18,13 @@ public class Questioner implements ISquare{
         return true;
     }
 
+    @Override
     public String toString(){
         return "Questioner";
     }
 
     @Override
     public void clearWay() {
-        //do nothing
-    }
-
-    @Override
-    public void reset() {
         //do nothing
     }
 }

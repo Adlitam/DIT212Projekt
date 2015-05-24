@@ -20,6 +20,7 @@ public class Monster implements ISquare {
         return !isHungry;
     }
 
+    @Override
     public String toString(){
         return "Monster";
     }
@@ -27,10 +28,5 @@ public class Monster implements ISquare {
     @Override
     public void clearWay() {
         isHungry=false;
-    }
-
-    @Override
-    public void reset() {
-        isHungry = true;
     }
 }

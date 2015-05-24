@@ -1,7 +1,5 @@
 package edu.gu.maze.model;
 
-import java.io.IOException;
-
 /**
  *
  * @author omega
@@ -65,8 +63,8 @@ public interface IGame {
     //Throws an exception if you try to delete a nonexistent player.
     public void deletePlayer (int Slot);
 
-    //Returns the current map
-    public Match getCurrentMap();
+    //Returns the current match
+    public Match getCurrentMatch();
     
     //Retrieve specified high scores as formatted strings.
     //Results are sorted so that highest scores come first and newer scores 

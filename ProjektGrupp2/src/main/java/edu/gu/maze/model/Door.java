@@ -19,6 +19,7 @@ public class Door implements ISquare {
         return open;
     }
 
+    @Override
     public String toString(){
         return "Door";
     }
@@ -26,10 +27,5 @@ public class Door implements ISquare {
     @Override
     public void clearWay() {
         open=true;
-    }
-
-    @Override
-    public void reset() {
-        open =false;
     }
 }

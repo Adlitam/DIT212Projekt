@@ -18,17 +18,13 @@ public class Road implements ISquare{
         return true;
     }
 
+    @Override
     public String toString(){
         return "R";
     }
 
     @Override
     public void clearWay() {
-        //do nothing
-    }
-
-    @Override
-    public void reset() {
         //do nothing
     }
 }

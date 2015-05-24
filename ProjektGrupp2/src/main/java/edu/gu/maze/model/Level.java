@@ -9,8 +9,8 @@ import java.util.Collections;
  * @author omega
  */
 public class Level implements Serializable{
-    private ArrayList<HighScore> scores = new ArrayList();
-    private String map;
+    private final ArrayList<HighScore> scores = new ArrayList();
+    private final String map;
     public Level (String map){
         this.map = map;
     }
@@ -19,7 +19,7 @@ public class Level implements Serializable{
         return map;
     }
     
-    public void addHighScore(HighScore score){
+    protected void addHighScore(HighScore score){
         scores.add(score);
         Collections.sort(scores);
         if (scores.size()>5){

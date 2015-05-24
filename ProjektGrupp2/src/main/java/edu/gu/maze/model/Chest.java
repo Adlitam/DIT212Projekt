@@ -29,10 +29,4 @@ public class Chest implements ISquare {
     public void clearWay() {
         contains = YES;
     }
-
-    @Override
-    public void reset() {
-        //TODO: use random generator
-        contains = GOTKEY;
-    }
 }

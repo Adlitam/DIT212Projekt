@@ -1,9 +1,8 @@
 package edu.gu.maze.model;
 
-
 import static edu.gu.maze.util.Constants.*;
-//import static edu.gu.maze.util.Constants.APPLE;
 import edu.gu.maze.util.ResourceReader;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.*;
@@ -14,40 +13,31 @@ import java.util.ArrayList;
  * Created by Matildaandersson on 15-04-01.
  */
 public class Game implements IGame, Serializable{
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     //DATA
     private static final long serialVersionUID = 1L;
     //TODO : Replace this with appropriate data structure of questions.
-    private Question allQuestions = new Question("What is Gilderoy Lockhart's favourite colour?",
+    private final Question allQuestions = new Question("What is Gilderoy Lockhart's favourite colour?",
             new String[]{"A. Pink", "S. Lilac", "D. Gold"}, 1);
-    private SaveSlot slot1;
-    private SaveSlot slot2;
-    private SaveSlot slot3;
-    private Level level1;
-    private Level level2;
-    private Level level3;
+    private final SaveSlot[] slots = new SaveSlot[3];
+    private final Level[] levels = new Level[3];
     ArrayList<HighScore> totalHighScores = new ArrayList();
-    //MATERIAL RELATING TO CURRENT GAME
-    //TODO: Move this to player class
-    //private transient boolean finalkey =false;
+    //MATERIAL RELATING TO CURRENT SESSION
+    //The next line is there just as a template for suppressing bugs.
+    //It will get removed before sending in the last time.
+    //@SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
     private transient Question currentQuestion;
     private SaveSlot currentPlayer;
     private transient Match currentMatch;
-
-
-    //private int apple = 0;
-    //private int key = 0;
-    //private int points = 0;
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
 
-
     public Game() throws FileNotFoundException{
-        level1 = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
-        level2 = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
-        level3 = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
+        levels[0] = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
+        levels[1] = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
+        levels[2] = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
     }
 
     @Override
@@ -91,6 +81,9 @@ public int isThisTheRightAnswer(int index) {
     }
         return 0;
 }
+
+//TODO: Decide if you'd rather use these or the same methods in Match
+// The Match object can be retrieved using getCurrentMatch() below
     @Override
     public Integer getPoints() {
         return currentMatch.getScore();
@@ -116,89 +109,43 @@ public int isThisTheRightAnswer(int index) {
 
     @Override
     public void createPlayer(int Slot, String name, int type) {
-        if (type !=MAGE && type != WARRIOR && type != THIEF){
+        if (type != MAGE && type != WARRIOR && type != THIEF) {
             throw new IllegalArgumentException("Tried to create player with nonexistent type " + type);
-        } 
-        if (Slot==SLOT1){
-            if (slot1!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot1 = new SaveSlot (name, type);
-            currentPlayer = slot1;
         }
-        else if (Slot == SLOT2){
-            if (slot2!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot2 = new SaveSlot (name, type);
-            currentPlayer = slot2;
+
+        if (slots[Slot] != null) {
+            throw new RuntimeException("Slot " + Slot + "already contains a player");
         }
-        else if (Slot == SLOT3){
-            if (slot3!=null) throw new RuntimeException("Slot " + Slot + "already contains a player");
-            slot3 = new SaveSlot (name, type);
-            currentPlayer = slot3;
-        }
-        else {
-            throw new IllegalArgumentException("Tried to create player in nonexistent slot " + Slot);
-        }
+        slots[Slot] = new SaveSlot(name, type);
+        currentPlayer = slots[Slot];
     }
 
     @Override
     public void selectPlayer(int Slot){
-        if (Slot==SLOT1 && slot1!=null){
-            currentPlayer = slot1;
-        }
-        else if (Slot == SLOT2&&slot2!=null){
-            currentPlayer = slot2;
-        }
-        else if (Slot == SLOT3&&slot3!=null){
-            currentPlayer = slot3;
-        }
+        if(slots[Slot]!=null) currentPlayer = slots[Slot];
         else {
-            if (Slot==SLOT1||Slot==SLOT2||Slot==SLOT3){
                 throw new RuntimeException ("No player found in slot " + Slot);
-            }
-            throw new IllegalArgumentException("Tried to select nonexistent player"
-                    + " with slot number " + Slot);
         }
     }
     
     @Override
     public void startMatch(int map){
-        if (map==MAP1){
-            currentMatch = ResourceReader.readMapForModel(level1.getMap());
-        }
-        else if (map == MAP2){
-            currentMatch = ResourceReader.readMapForModel(level2.getMap());
-        }
-        else if (map == MAP3){
-            currentMatch = ResourceReader.readMapForModel(level3.getMap());
-        }
-        else {
-            throw new IllegalArgumentException("Tried to select nonexistent map"
-                    + " with map number " + map);
-        }
+            currentMatch = ResourceReader.readMapForModel(levels[map].getMap());
     }
     
     @Override
     public void deletePlayer(int Slot){
-        if (Slot==SLOT1){
-            if (slot1==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
-            slot1=null;
-        }
-        else if (Slot==SLOT2){
-            if (slot1==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
-            slot2=null;
-        }
-        else if (Slot==SLOT3){
-            if (slot1==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
-            slot3=null;
-        }
-        else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
+            if (slots[Slot]==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
+            slots[Slot]=null;  
     }
 
     @Override //wait what?
-    public Match getCurrentMap() {
+    public Match getCurrentMatch() {
         return currentMatch;
     }
 
-
+//TODO: UPDATE ALL HIGHSCORES ON END OF GAME
+    @Override
     public void moveUp(){
         int i = currentMatch.moveUp();
         if (i != NO){
@@ -258,23 +205,10 @@ public int isThisTheRightAnswer(int index) {
             //send message game finished
         }
     }*/
-    
-    //this method resets all temporary variables used when playing
 
     @Override
     public String[] getHighScoresForMap(int map) {
-        if (map==MAP1){
-            return level1.getHighScores();
-        }
-        else if (map==MAP2){
-            return level2.getHighScores();
-        }
-        else if (map==MAP3){
-            return level3.getHighScores();
-        }
-        else throw new IllegalArgumentException ("Tried to obtain high scores for "
-                + "nonexisting map " + map);
-        
+        return levels[map].getHighScores();
     }
 
     @Override
@@ -289,35 +223,13 @@ public int isThisTheRightAnswer(int index) {
 
     @Override
     public int getPlayerType(int Slot) {
-        if (Slot==SLOT1){
-            if (slot1==null) return -1;
-            return slot1.type;
-        }
-        else if (Slot==SLOT2){
-            if (slot1==null) return -1;
-            return slot2.type;
-        }
-        else if (Slot==SLOT3){
-            if (slot1==null) return -1;
-            return slot3.type;
-        }
-        else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
+            if (slots[Slot]==null) return -1;
+            return slots[Slot].type;
     }
 
     @Override
     public String getPlayerName(int Slot) {
-        if (Slot==SLOT1){
-            if (slot1==null) return "";
-            return slot1.name;
-        }
-        else if (Slot==SLOT2){
-            if (slot1==null) return "";
-            return slot2.name;
-        }
-        else if (Slot==SLOT3){
-            if (slot1==null) return "";
-            return slot3.name;
-        }
-        else throw new IllegalArgumentException("Tried to delete player in slot " + Slot);
+        if (slots[Slot]==null) return "";
+            return slots[Slot].name;
     }
 }

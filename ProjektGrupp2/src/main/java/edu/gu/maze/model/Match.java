@@ -1,24 +1,17 @@
 package edu.gu.maze.model;
 
 import edu.gu.maze.util.Constants;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
 
 /**
  *
  * @author omega
  */
 public class Match implements Serializable{
-    private ISquare[][] map;
+    private final ISquare[][] map;
     
     private int x;
     private int y;
-    private int startx;
-    private int starty;
     private int apples;
     private int keys;
     private boolean finalkey = false;
@@ -28,9 +21,6 @@ public class Match implements Serializable{
         this.map = map;
         this.x = x;
         this.y = y;
-        startx=x;
-        starty=y;
-        
     }
     
     public int getX() {
@@ -49,7 +39,7 @@ public class Match implements Serializable{
         return keys;
     }
 
-    public boolean isFinalkey() {
+    public boolean getFinalkey() {
         return finalkey;
     }
 
@@ -133,6 +123,7 @@ public class Match implements Serializable{
     }
     
     
+    @Override
     public String toString(){
         String string = "";
         for (ISquare[] i : map){

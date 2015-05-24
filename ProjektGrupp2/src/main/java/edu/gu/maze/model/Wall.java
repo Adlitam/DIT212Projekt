@@ -18,17 +18,13 @@ public class Wall implements ISquare{
         return false;
     }
     
+    @Override
     public String toString(){
         return "W";
     }
 
     @Override
     public void clearWay() {
-        //do nothing
-    }
-
-    @Override
-    public void reset() {
         //do nothing
     }
 }

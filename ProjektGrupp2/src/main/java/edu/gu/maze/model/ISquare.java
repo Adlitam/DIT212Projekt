@@ -11,7 +11,6 @@ public interface ISquare {
     
     public abstract void clearWay();
 
+    @Override
     public String toString();
-    
-    public void reset();
 }
