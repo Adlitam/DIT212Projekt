@@ -2,6 +2,7 @@ package edu.gu.maze.model;
 
 import static edu.gu.maze.util.Constants.*;
 import edu.gu.maze.util.ResourceReader;
+import edu.gu.maze.util.SavedInformationHandler;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -22,19 +23,20 @@ public class Game implements IGame, Serializable{
     private final SaveSlot[] slots = new SaveSlot[3];
     private final Level[] levels = new Level[3];
     ArrayList<HighScore> totalHighScores = new ArrayList();
-    //MATERIAL RELATING TO CURRENT SESSION
+    
+//MATERIAL RELATING TO CURRENT SESSION
     //The next line is there just as a template for suppressing bugs.
     //It will get removed before sending in the last time.
     //@SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
     private transient Question currentQuestion;
-    private SaveSlot currentPlayer;
+    private transient SaveSlot currentPlayer;
     private transient Match currentMatch;
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
 
-    public Game() throws FileNotFoundException{
+    public Game(){
         levels[0] = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
         levels[1] = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
         levels[2] = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
@@ -52,7 +54,7 @@ public class Game implements IGame, Serializable{
     }
 /*
     @Override
-    //TODO: FIX THIS TO USE MESSAGES INSTEAD. ALSO REMOVE LINE IN RESET WHEN YOU DO THIS.
+    //TODO: FIX THIS TO USE MESSAGES INSTEAD. 
     public int[] isThisTheRightAnswer(int index) {
         boolean a = currentQuestion.isThisTheRightAnswer(index);
         int ans = a ? 1 : 0;
@@ -117,6 +119,7 @@ public int isThisTheRightAnswer(int index) {
             throw new RuntimeException("Slot " + Slot + "already contains a player");
         }
         slots[Slot] = new SaveSlot(name, type);
+        SavedInformationHandler.saveGame(this);
         currentPlayer = slots[Slot];
     }
 
@@ -137,14 +140,16 @@ public int isThisTheRightAnswer(int index) {
     public void deletePlayer(int Slot){
             if (slots[Slot]==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
             slots[Slot]=null;  
+            SavedInformationHandler.saveGame(this);
     }
 
-    @Override //wait what?
+    //This one isn't currently being used.
+    @Override 
     public Match getCurrentMatch() {
         return currentMatch;
     }
 
-//TODO: UPDATE ALL HIGHSCORES ON END OF GAME
+//TODO: UPDATE ALL HIGHSCORES ON END OF GAME AND CALL SAVEGAME
     @Override
     public void moveUp(){
         int i = currentMatch.moveUp();
@@ -231,5 +236,11 @@ public int isThisTheRightAnswer(int index) {
     public String getPlayerName(int Slot) {
         if (slots[Slot]==null) return "";
             return slots[Slot].name;
+    }
+    
+    @Override
+    public int getPlayerTotalScore (int Slot){
+        if (slots[Slot]==null) return -1;
+            return slots[Slot].getTotalHighScore();
     }
 }

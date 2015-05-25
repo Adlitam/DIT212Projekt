@@ -9,7 +9,7 @@ public interface IGame {
     //Returns a question
     public String getQuestion();
 
-    /*Returns an array of answers of length at least 2.
+    /*Returns an array of answers of length 3.
     Throws an exception if getQuestion() hasn't been called, or if
     isThisTheRightAnswer() has been called since the last time
     getQuestion() was called.*/
@@ -76,5 +76,8 @@ public interface IGame {
     public int getPlayerType(int Slot);
     //Returns player name or empty string if there is no player in the slot.
     public String getPlayerName(int Slot);
+    
+    //Returns a player's combined high score for all maps, or -1 if there is no player in slot.
+    public int getPlayerTotalScore (int Slot);
     
 }

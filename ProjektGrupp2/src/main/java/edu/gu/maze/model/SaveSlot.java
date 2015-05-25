@@ -17,6 +17,11 @@ public class SaveSlot implements Serializable{
         this.type = type;
     }
 
+    public int getTotalHighScore() {
+        return totalHighScore;
+    }
+
+    
     //Updates Player's total score, if necessary, and returns a new HighScore object
     //for the player.
     protected HighScore addHighScore(int score, int map){
