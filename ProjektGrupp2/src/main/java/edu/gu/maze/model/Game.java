@@ -3,16 +3,11 @@ package edu.gu.maze.model;
 import static edu.gu.maze.util.Constants.*;
 import edu.gu.maze.util.ResourceReader;
 import edu.gu.maze.util.SavedInformationHandler;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * Created by Matildaandersson on 15-04-01.
- */
 public class Game implements IGame, Serializable{
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     //DATA
@@ -23,6 +18,8 @@ public class Game implements IGame, Serializable{
     private final SaveSlot[] slots = new SaveSlot[3];
     private final Level[] levels = new Level[3];
     ArrayList<HighScore> totalHighScores = new ArrayList();
+
+    private int time;
     
 //MATERIAL RELATING TO CURRENT SESSION
     //The next line is there just as a template for suppressing bugs.
@@ -52,27 +49,7 @@ public class Game implements IGame, Serializable{
     public String[] getAnswers() {
         return currentQuestion.getAnswers();
     }
-/*
-    @Override
-    //TODO: FIX THIS TO USE MESSAGES INSTEAD. 
-    public int[] isThisTheRightAnswer(int index) {
-        boolean a = currentQuestion.isThisTheRightAnswer(index);
-        int ans = a ? 1 : 0;
-        //int apple = a ? 1 : 0;
-        //int key = a ? 1 : 0;
-        int fk = 0;
-        if (a&&!finalkey){
-            finalkey=true;
-            fk=1;
-        }
-        int points = a ? 5 : 0;
 
-        return new int[] {ans,0,0,fk,points};
-    }
-    */
-
-    // TODO om ni inte gillar den här lösningen så ta bort härifrån till
-    // Gamla lösningen är ovanför
 @Override
 public int isThisTheRightAnswer(int index) {
     boolean a = currentQuestion.isThisTheRightAnswer(index);
@@ -92,6 +69,11 @@ public int isThisTheRightAnswer(int index) {
     }
 
     @Override
+    public void setTime(int min, int sec) {
+        this.time=min*60+sec;
+    }
+
+    @Override
     public Integer getKeys() {
         return currentMatch.getKeys();
     }
@@ -100,8 +82,6 @@ public int isThisTheRightAnswer(int index) {
     public Integer getApples() {
         return currentMatch.getApples();
     }
-
-    // TODO hit
 
     private Question selectQuestion(){
         return allQuestions;
