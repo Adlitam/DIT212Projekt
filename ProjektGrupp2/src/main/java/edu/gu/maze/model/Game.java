@@ -9,6 +9,7 @@ import java.beans.PropertyChangeSupport;
 import java.io.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Matildaandersson on 15-04-01.
@@ -18,8 +19,7 @@ public class Game implements IGame, Serializable{
     //DATA
     private static final long serialVersionUID = 1L;
     //TODO : Replace this with appropriate data structure of questions.
-    private final Question allQuestions = new Question("What is Gilderoy Lockhart's favourite colour?",
-            new String[]{"A. Pink", "S. Lilac", "D. Gold"}, 1);
+    private final Question[] allQuestions = ResourceReader.readQuestions();
     private final SaveSlot[] slots = new SaveSlot[3];
     private final Level[] levels = new Level[3];
     ArrayList<HighScore> totalHighScores = new ArrayList();
@@ -104,7 +104,9 @@ public int isThisTheRightAnswer(int index) {
     // TODO hit
 
     private Question selectQuestion(){
-        return allQuestions;
+        Random gen = new Random();
+        int index = gen.nextInt(allQuestions.length);
+        return allQuestions[index];
     }
 
 
