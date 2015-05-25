@@ -26,6 +26,7 @@ public class InfoController implements PropertyChangeListener{
                 Label time = (Label) evt.getOldValue();
                 int sec = ((a++) / 60) % 60;
                 int min = ((b++) / 3600) % 60;
+                model.setTime(min,sec);
                 time.setText(String.format("%02d:%02d", min, sec));
                 break;
             case "apples":

@@ -16,19 +16,7 @@ public interface IGame {
     public String[] getAnswers();
     public void startMatch(int map);
 
-    /*This method takes an int which is an index to the array returned by getAnswers()
-    It returns an array of ints which signify, in order:
-    0 for wrong answer, 1 for correct
-    change in the number of apples
-    change in the number of keys
-    change in the number of final keys (a correct answer will provide one final key
-    if the player doesn't have it yet.
-    change in the number of points
-    A call to this method must be preceded by a call to getQuestion().
-    public int[] isThisTheRightAnswer(int index);
-    */
-
-    // return true if its true or false if its false
+    // return 1 if it is true or 0 if it is false
     // sets apple to apple + 1 if its true
     // sets key to key + 1 if its true
     // sets points to points + 1 if its true
@@ -44,6 +32,9 @@ public interface IGame {
 
     // returns the number of Points the user has
     public Integer getPoints();
+
+    // Takes the time from controller
+    public void setTime(int min, int sec);
 
     //To create a player and set him/her as current player
     //Slot may be either Constants.SLOT1, Constants.SLOT2, or Constants.SLOT3
