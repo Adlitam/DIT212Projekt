@@ -1,17 +1,47 @@
 What is Gilderoy Lockhart’s favourite colour?
-Pink
-Lilac
-Gold
-1
+ Pink
+ Lilac
+ Gold
+ 1
 
-What is Harry Potter’s middle name?
-James
-Peter
-Scorpius
-0
+ What is Harry Potter’s middle name?
+ James
+ Peter
+ Scorpius
+ 0
 
-What is PI?
-3.1415926534
-3.1415926535
-3.1415926536
-1
+ What is PI?
+ 3.1415926534
+ 3.1415926535
+ 3.1415926536
+ 1
+
+ What’s the name for excessive bodily hair growth in women?
+ Hirsutism
+ Feminization
+ Androgyny
+ 0
+
+ Which male animal becomes pregnant, rather than the female?
+ Blue-ringed octopus
+ Cockatoo
+ Seahorse
+ 2
+
+ What makes Homer so stupid in The Simpsons?
+ Genetics
+ Crayon in his nose
+ Hit on the head as a baby
+ 1
+
+ What was Osama bin Laden's code name?
+ Geronimo
+ George
+ Gregor
+ 0
+
+ What was mickey Mouse's name before it was changed to Mickey?
+ Mike
+ Miska
+ Mortimer
+ 2
