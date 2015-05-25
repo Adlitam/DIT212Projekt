@@ -3,6 +3,7 @@ package edu.gu.maze.util;
 import edu.gu.maze.model.FinalDoor;
 import edu.gu.maze.model.ISquare;
 import edu.gu.maze.model.Match;
+import edu.gu.maze.model.Question;
 import edu.gu.maze.model.Road;
 import edu.gu.maze.model.Wall;
 import java.io.File;
@@ -38,5 +39,28 @@ public class ResourceReader {
             list.add(snd.toArray(new ISquare[1]));
         }
         return new Match (list.toArray(new ISquare[1][1]), x, y);
+    }
+    
+    public static Question[] readQuestions(){
+        Scanner s;
+        try {
+        s = new Scanner(new File("src/main/resources/edu/gu/maze/util/Questions.txt"));
+        } catch (FileNotFoundException e){
+            throw new RuntimeException ("Couldn't find Question file");
+        }
+        ArrayList<Question> list = new ArrayList();
+        while (s.hasNextLine()){
+            String question;
+            do {
+                question = s.nextLine();
+            } while (question.isEmpty());
+            String[] answers = new String[3];
+            answers[0]= "A. " + s.nextLine();
+            answers[1]= "S. " + s.nextLine();
+            answers[2]= "D. " + s.nextLine();
+            int right = Integer.parseInt(s.next());
+            list.add(new Question(question, answers, right));
+        }
+        return list.toArray(new Question[1]);
     }
 }

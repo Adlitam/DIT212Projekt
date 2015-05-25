@@ -18,7 +18,7 @@ public class SavedInformationHandler {
     public static Game retrieveGame() {
         Game result;
         try {
-            FileInputStream fileIn = new FileInputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
+            FileInputStream fileIn = new FileInputStream("src/main/resources/edu/gu/maze/util/Game.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             result = (Game) in.readObject();
             in.close();
@@ -32,7 +32,7 @@ public class SavedInformationHandler {
     public static void saveGame(Game game) {
         try {
             FileOutputStream fileOut
-                    = new FileOutputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
+                    = new FileOutputStream("src/main/resources/edu/gu/maze/util/Game.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(game);
             out.close();

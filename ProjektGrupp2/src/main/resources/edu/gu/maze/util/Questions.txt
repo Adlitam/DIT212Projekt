@@ -1,0 +1,17 @@
+What is Gilderoy Lockhart’s favourite colour?
+Pink
+Lilac
+Gold
+1
+
+What is Harry Potter’s middle name?
+James
+Peter
+Scorpius
+0
+
+What is PI?
+3.1415926534
+3.1415926535
+3.1415926536
+1
