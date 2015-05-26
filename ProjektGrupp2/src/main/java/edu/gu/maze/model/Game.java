@@ -183,6 +183,9 @@ public int isThisTheRightAnswer(int index) {
             pcs.firePropertyChange(direction, "value1", "value2");
         }
         //TODO: i may be APPLE for no apples, KEY for no key, NOFINAL for no final key
+        if(i == NOFINAL){
+            pcs.firePropertyChange("NOFINAL", "value1", "value2");
+        }
         // or GOTAPPLE and GOTKEY for having received an apple or a key (from a chest).
         if (i == FINAL){
             totalScore = getPoints() + (500 - time);

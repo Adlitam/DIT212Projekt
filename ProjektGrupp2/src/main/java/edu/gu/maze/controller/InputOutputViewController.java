@@ -30,22 +30,18 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
             switch (event.getCode()) {
                 case UP:
                     model.moveUp();
-                    getQuestionAndAnswers();
                     event.consume();
                     break;
                 case DOWN:
                     model.moveDown();
-                    getQuestionAndAnswers();
                     event.consume();
                     break;
                 case LEFT:
                     model.moveLeft();
-                    getQuestionAndAnswers();
                     event.consume();
                     break;
                 case RIGHT:
                     model.moveRight();
-                    getQuestionAndAnswers();
                     event.consume();
                     break;
                 case A:
