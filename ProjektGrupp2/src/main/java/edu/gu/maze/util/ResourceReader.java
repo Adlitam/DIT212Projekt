@@ -6,8 +6,13 @@ import edu.gu.maze.model.Match;
 import edu.gu.maze.model.Question;
 import edu.gu.maze.model.Road;
 import edu.gu.maze.model.Wall;
+import edu.gu.maze.view.FinalDoorView;
+import edu.gu.maze.view.RoadView;
+import edu.gu.maze.view.WallView;
+import javafx.scene.image.ImageView;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -62,5 +67,44 @@ public class ResourceReader {
             list.add(new Question(question, answers, right));
         }
         return list.toArray(new Question[1]);
+    }
+
+    public static ImageView[][] readMapForView(String filename){
+        Scanner s = null;
+        try{
+            s = new Scanner(new File(filename));
+        }catch(IOException e){
+            System.out.println("could not read the file: " + filename + " while trying to initialize mapView.");
+            System.exit(0);
+        }
+        s.next();
+        s.next();
+        ArrayList<ImageView[]> temp1 = new ArrayList();
+        int i = 0;
+        while(s.hasNext()){
+            int j = 0;
+            ArrayList<ImageView> temp2 = new ArrayList();
+            for(char c : s.next().toCharArray()){
+                switch(c){
+                    case 'W':
+                        temp2.add(new WallView(i,j));
+                        break;
+                    case 'R':
+                        temp2.add(new RoadView(i,j));
+                        break;
+                    case 'F':
+                        temp2.add(new FinalDoorView(i,j));
+                        break;
+                    default:
+                        System.out.println("Something went wrong when reading the level map for the view.");
+                        System.exit(0);
+                }
+                j++;
+            }
+            temp1.add(temp2.toArray(new ImageView[temp2.size()]));
+            i++;
+        }
+        ImageView[][] map = temp1.toArray(new ImageView[i][temp1.size()]);
+        return map;
     }
 }

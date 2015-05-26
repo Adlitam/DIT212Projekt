@@ -65,6 +65,8 @@ public class MainController implements EventHandler<ActionEvent> {
         }
         if(b == view.getPlayButton()){
             getPlayerInfo();
+
+
             StartView startView = new StartView(stage,playerName,playerType);
             StartController startController = new StartController(model, startView, stage);
         }

@@ -5,9 +5,12 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class StartView {
@@ -15,9 +18,17 @@ public class StartView {
     private Button slot2Button = new Button();
     private Button slot3Button = new Button();
 
+    private Button deleteSlot1 = new Button("Delete Player");
+    private Button deleteSlot2 = new Button("Delete Player");
+    private Button deleteSlot3 = new Button("Delete Player");
+
+
     private Button backButton;
     private BorderPane layout;
-    private HBox hBox;
+    private HBox hBox1;
+
+    private ImageView mage,thief,warrior;
+
 
     String player1,player2,player3;
     int type1,type2,type3;
@@ -28,12 +39,13 @@ public class StartView {
         layout = new BorderPane();
         getPlayerInfo(playerName,playerType);
 
+        //--------just for the bugs
         for(String x : playerName){
 
-            System.out.print(x);
+            System.out.print(x + "\n");
 
         }
-
+        //---------------------------
 
         createBottom();
         createPane();
@@ -46,14 +58,17 @@ public class StartView {
         VBox vBox = new VBox();
         for(int i = 0; i<3; i++){
             if(i == 0){
-                createSlot(player1, slot1Button);
+                createSlot(player1, slot1Button,deleteSlot1);
+                checkImage(type1,slot1Button);
             }else if(i == 1){
-                createSlot(player2, slot2Button);
+                createSlot(player2, slot2Button,deleteSlot2);
+                checkImage(type2,slot2Button);
             }else if(i == 2){
-                createSlot(player3, slot3Button);
+                createSlot(player3, slot3Button,deleteSlot3);
+                checkImage(type3, slot3Button);
             }
 
-            vBox.getChildren().addAll(hBox);
+            vBox.getChildren().addAll(hBox1);
         }
 
 
@@ -64,8 +79,30 @@ public class StartView {
         layout.setCenter(vBox);
     }
 
-    private void checkImage(){
+    private void checkImage(int type,Button slot){
 
+        if(type == 0){
+            Image image = new Image("warrior.png");
+            warrior = new ImageView();
+            warrior.setImage(image);
+            warrior.setFitHeight(100);
+            warrior.setFitWidth(100);
+            slot.setGraphic(warrior);
+        }else if(type == 1){
+            Image image = new Image("Mage.png");
+            mage = new ImageView();
+            mage.setImage(image);
+            mage.setFitHeight(100);
+            mage.setFitWidth(100);
+            slot.setGraphic(mage);
+        }else if(type == 2){
+            Image image = new Image("thief.png");
+            thief = new ImageView();
+            thief.setImage(image);
+            thief.setFitHeight(100);
+            thief.setFitWidth(100);
+            slot.setGraphic(thief);
+        }
 
     }
 
@@ -84,14 +121,18 @@ public class StartView {
     }
 
 
-    private void createSlot(String playerName, Button slotButton){
+    private void createSlot(String playerName, Button slotButton,Button delete){
 
         Label player = new Label(playerName);
-        slotButton.setMinSize(100,100);
-        hBox = new HBox();
-        hBox.getChildren().addAll(slotButton,player);
-        hBox.setSpacing(10);
-        hBox.setAlignment(Pos.CENTER);
+        player.setFont(new Font(20));
+        slotButton.setMinSize(100, 100);
+        hBox1 = new HBox();
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(player,delete);
+        vBox.setSpacing(50);
+        hBox1.getChildren().addAll(slotButton,vBox);
+        hBox1.setSpacing(10);
+        hBox1.setAlignment(Pos.CENTER);
 
     }
 
@@ -105,11 +146,53 @@ public class StartView {
         layout.setBottom(hBoxBotton);
     }
 
+    public boolean checkSlot1(){
+        if(player1.equals("")){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean checkSlot2(){
+        if(player2.equals("")){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean checkSlot3(){
+        if(player3.equals("")){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
     public void addController(StartController c){
         slot1Button.setOnAction(c);
         slot2Button.setOnAction(c);
         slot3Button.setOnAction(c);
+        deleteSlot1.setOnAction(c);
+        deleteSlot2.setOnAction(c);
+        deleteSlot3.setOnAction(c);
         backButton.setOnAction(c);
+    }
+
+    public Button getDeleteSlot1() {
+        return deleteSlot1;
+    }
+
+    public Button getDeleteSlot2() {
+        return deleteSlot2;
+    }
+
+    public Button getDeleteSlot3() {
+        return deleteSlot3;
     }
 
     public Button getSlot1Button(){

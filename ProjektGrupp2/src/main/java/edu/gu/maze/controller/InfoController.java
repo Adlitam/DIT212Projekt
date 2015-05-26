@@ -1,16 +1,24 @@
 package edu.gu.maze.controller;
 
+import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.InfoView;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Label;
 
 public class InfoController{
+    private Game model;
+    private InfoView view;
     private int a;
     private int b;
     private AnimationTimer animationTimer;
 
     public InfoController(IGame model, InfoView view){
+        this.model = (Game) model;
+        this.view = view;
+    }
+
+    public void setAnimationTimer(){
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {

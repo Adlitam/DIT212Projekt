@@ -7,8 +7,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class GameView{
+    private InfoView infoView;
 
     public GameView(Stage s, MapView m, InfoView i1, InputOutputView i2){
+        infoView = i1;
         s.setTitle("Maze");
         BorderPane borderPane = new BorderPane();
         borderPane.setStyle("-fx-background: Black");
@@ -22,4 +24,7 @@ public class GameView{
         s.setScene(gameScene);
     }
 
+    public InfoView getInfoView(){
+        return infoView;
+    }
 }
