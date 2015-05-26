@@ -17,9 +17,10 @@ public class SavedInformationHandler {
     //If none can be found, return a new Game object.
     public static Game retrieveGame() {
         Game result;
+        ObjectInputStream in = null;
         try {
             FileInputStream fileIn = new FileInputStream("src/main/resources/edu/gu/maze/util/Game.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
+            in = new ObjectInputStream(fileIn);
             result = (Game) in.readObject();
             in.close();
             fileIn.close();

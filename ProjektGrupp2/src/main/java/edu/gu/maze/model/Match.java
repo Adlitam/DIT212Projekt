@@ -1,13 +1,14 @@
 package edu.gu.maze.model;
 
 import edu.gu.maze.util.Constants;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.Serializable;
 
 /**
  *
  * @author omega
  */
-public class Match implements Serializable{
+public class Match{
     private final ISquare[][] map;
     
     private int x;
@@ -17,7 +18,8 @@ public class Match implements Serializable{
     private boolean finalkey = false;
     private int score = 0;
     
-    public Match (ISquare[][] map, int x, int y){
+    @SuppressFBWarnings("EI_EXPOSE_REP2")
+    public Match (ISquare[][] map, int x, int y){     
         this.map = map;
         this.x = x;
         this.y = y;
@@ -56,7 +58,7 @@ public class Match implements Serializable{
                 map[y][x].clearWay();
                 return Constants.YES;
             }
-            else return Constants.NO;
+            else return Constants.APPLE;
         }
         else if (permission == Constants.KEY){
             if (keys>0) {
@@ -65,14 +67,14 @@ public class Match implements Serializable{
                 map[y][x].clearWay();
                 return Constants.YES;
             }
-            else return Constants.NO;     
+            else return Constants.KEY;     
         }
         else if (permission == Constants.FINAL){
             if (finalkey) {
                 
                 return Constants.FINAL;
             }
-            else return Constants.NO;
+            else return Constants.NOFINAL;
         }
         else if (permission == Constants.YES){
             
@@ -82,12 +84,12 @@ public class Match implements Serializable{
         else if (permission == Constants.GOTAPPLE){
             apples++;
             map[y][x].clearWay();
-            return Constants.YES;
+            return Constants.GOTAPPLE;
         }
         else if (permission == Constants.GOTKEY){
             keys++;
             map[y][x].clearWay();
-            return Constants.YES;
+            return Constants.GOTKEY;
         }
         else return Constants.NO;
     }
@@ -125,13 +127,13 @@ public class Match implements Serializable{
     
     @Override
     public String toString(){
-        String string = "";
+        StringBuilder buf = new StringBuilder();
         for (ISquare[] i : map){
             for (ISquare s : i){
-                string += s.toString();
+                buf.append(s.toString());
             }
-            string += "\n";
+            buf.append("\n");
         }
-        return string;
+        return buf.toString();
     }
 }

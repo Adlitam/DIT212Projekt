@@ -76,9 +76,6 @@ public class MapView implements PropertyChangeListener{
                 initializePlayer((String) evt.getOldValue());
                 initializeGrid();
                 break;
-            default:
-                System.out.println("reached mapView with unknown event: " + evt.getPropertyName());
-                System.exit(0);
         }
     }
 
