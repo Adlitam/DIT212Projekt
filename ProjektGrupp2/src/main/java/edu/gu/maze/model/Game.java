@@ -81,17 +81,11 @@ public int isThisTheRightAnswer(int index) {
         return gamesDone;
     }
 
-
-    /*@Override
-    public int getTotalScore() {
-        return totalScore;
-    }*/
-
     @Override
-    public void setCurrentMatchToNull() {
+    public void setGamesDoneToFalse() {
         gamesDone = false;
-        currentMatch = null;
     }
+
 
     @Override
     public Integer getKeys() {
@@ -181,17 +175,28 @@ public int isThisTheRightAnswer(int index) {
     private void move(int i , String direction){
         if (i == YES){
             pcs.firePropertyChange(direction, "value1", "value2");
+            pcs.firePropertyChange("YES", "value1", "value2");
         }
         //TODO: i may be APPLE for no apples, KEY for no key, NOFINAL for no final key
         if(i == APPLE){
             pcs.firePropertyChange("NO_APPLE", "value1", "value2");
         }
+        if(i == GOTAPPLE){
+            pcs.firePropertyChange("APPLE", "value1", "value2");
+        }
         if(i == KEY){
             pcs.firePropertyChange("NO_KEY", "value1", "value2");
+        }
+        if(i == GOTKEY){
+            pcs.firePropertyChange("KEY", "value1", "value2");
         }
         if(i == NOFINAL){
             pcs.firePropertyChange("NO_FINAL_KEY", "value1", "value2");
         }
+        if(i == QUESTIONER){
+            pcs.firePropertyChange("QUESTION", getQuestion(), getAnswers());
+        }
+
         // or GOTAPPLE and GOTKEY for having received an apple or a key (from a chest).
         if (i == FINAL){
             currentMatch.endMatch();

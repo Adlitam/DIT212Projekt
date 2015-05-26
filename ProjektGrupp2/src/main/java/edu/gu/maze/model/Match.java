@@ -15,7 +15,7 @@ public class Match{
     private int y;
     private int apples;
     private int keys;
-    private boolean finalkey = true;
+    private boolean finalkey = false;
     private int score = 0;
     private int time = 0;
     
@@ -57,7 +57,7 @@ public class Match{
                 apples--;
                 
                 map[y][x].clearWay();
-                return Constants.YES;
+                return Constants.GOTAPPLE;
             }
             else return Constants.APPLE;
         }
@@ -66,9 +66,9 @@ public class Match{
                 keys--;
                 
                 map[y][x].clearWay();
-                return Constants.YES;
+                return Constants.GOTKEY;
             }
-            else return Constants.KEY;     
+            else return Constants.KEY;
         }
         else if (permission == Constants.FINAL){
             if (finalkey) {
@@ -76,6 +76,10 @@ public class Match{
                 return Constants.FINAL;
             }
             else return Constants.NOFINAL;
+        }
+
+        else if (permission == Constants.QUESTIONER){
+            return Constants.QUESTIONER;
         }
         else if (permission == Constants.YES){
             

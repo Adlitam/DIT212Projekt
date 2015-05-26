@@ -73,6 +73,20 @@ public class InputOutputView implements PropertyChangeListener {
             case "NO_APPLE":
                 output.setText("You do not have any apples!");
                 break;
+            case "KEY":
+                output.setText("You opened the door with a key!");
+                break;
+            case "APPLE":
+                output.setText("You gave the monster an apple!");
+                break;
+            case "QUESTION":
+                String question = (String) evt.getOldValue();
+                String[] answers = (String[]) evt.getNewValue();
+                output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
+                break;
+            case "YES":
+                output.clear();
+                break;
         }
     }
 }

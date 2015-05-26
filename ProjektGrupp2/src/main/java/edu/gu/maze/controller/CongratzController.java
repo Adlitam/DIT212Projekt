@@ -41,12 +41,12 @@ public class CongratzController implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         Object b = event.getSource();
         if (b == view.getBackButton()) {
-            model.setCurrentMatchToNull();
+            model.setGamesDoneToFalse();
             MainView mainView = new MainView(stage);
             new MainController(model, mainView, stage);
         }
         if (b == view.getNextMap()) {
-            model.setCurrentMatchToNull();
+            model.setGamesDoneToFalse();
             play();
             model.startMatch(Constants.MAP2);
             infoController.setAnimationTimer();

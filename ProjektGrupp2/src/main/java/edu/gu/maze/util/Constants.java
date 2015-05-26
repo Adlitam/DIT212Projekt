@@ -41,5 +41,7 @@ public final class Constants {
     public static final int GOTAPPLE = 5;
     public static final int GOTKEY = 6;
     public static final int NOFINAL = 7;
-    
+    public static final int QUESTIONER = 8;
+
+
 }

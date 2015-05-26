@@ -39,10 +39,7 @@ public interface IGame {
     // Tells the controllers if the game is done
     public boolean gamesDone();
 
-    // Returns the total score for the map
-    //public int getTotalScore();
-
-    public void setCurrentMatchToNull();
+    public void setGamesDoneToFalse();
 
     //To create a player and set him/her as current player
     //Slot may be either Constants.SLOT1, Constants.SLOT2, or Constants.SLOT3

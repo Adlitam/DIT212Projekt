@@ -1,5 +1,6 @@
 package edu.gu.maze.model;
 
+import static edu.gu.maze.util.Constants.QUESTIONER;
 import static edu.gu.maze.util.Constants.YES;
 
 /**
@@ -7,15 +8,21 @@ import static edu.gu.maze.util.Constants.YES;
  * @author omega
  */
 public class Questioner implements ISquare{
+    boolean Asked = false;
+
     @Override
     public int canIMoveHere() {
-        return YES;
+        if(Asked){
+            return YES;
+        }else{
+            return QUESTIONER;
+        }
+
     }
 
     @Override
     public boolean okayToTeleportHere() {
-        
-        return true;
+        return Asked;
     }
 
     @Override
@@ -25,6 +32,6 @@ public class Questioner implements ISquare{
 
     @Override
     public void clearWay() {
-        //do nothing
+        Asked = true;
     }
 }

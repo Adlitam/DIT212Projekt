@@ -1,7 +1,6 @@
 package edu.gu.maze;
 
 import edu.gu.maze.controller.MainController;
-import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.util.SavedInformationHandler;
 import edu.gu.maze.view.MainView;
@@ -24,7 +23,7 @@ public final class Main extends Application {
         MainView view = new MainView(primaryStage);
 
         //mainController
-        MainController mainController = new MainController(model, view, primaryStage);
+        new MainController(model, view, primaryStage);
         //view.addPropertyChangeListener(mainController);
     }
 }
