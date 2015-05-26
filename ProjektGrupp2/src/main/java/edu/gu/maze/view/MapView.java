@@ -24,13 +24,13 @@ public class MapView implements PropertyChangeListener{
         g.setFocusTraversable(true);
     }
 
-    private void initializeGrid(){
+    private void initializeGrid(int x, int y){
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 g.add(map[i][j], j, i);
             }
         }
-        g.add(player, 11, 14);
+        g.add(player, x, y);
     }
 
     private void movePlayer(int x, int y){
@@ -74,7 +74,7 @@ public class MapView implements PropertyChangeListener{
             case "MAP_CHOSEN":
                 map = ResourceReader.readMapForView((String) evt.getOldValue());
                 initializePlayer((String) evt.getOldValue());
-                initializeGrid();
+                initializeGrid(player.getxPos(), player.getyPos());
                 break;
         }
     }
