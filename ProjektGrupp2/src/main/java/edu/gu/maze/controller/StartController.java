@@ -1,24 +1,22 @@
 package edu.gu.maze.controller;
 
 import edu.gu.maze.util.Constants;
-import edu.gu.maze.model.Game;
+
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
-/**
- * Created by Matildaandersson on 15-05-19.
- */
+
 public class StartController implements EventHandler<ActionEvent> {
     private IGame model;
     private Stage stage;
     private StartView view;
-    private Constants cons = new Constants();
+
 
     public StartController(IGame model, StartView view, Stage primaryStage){
-        this.model = (Game) model;
+        this.model = model;
         this.stage = primaryStage;
         this.view = view;
         this.view.addController(this);

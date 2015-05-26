@@ -15,12 +15,15 @@ public class HighScoreView{
 
     private Label player, score;
     private  HBox highScore;
+    String player1,player2,player3;
+    int score1,score2,score3;
 
-    public HighScoreView(Stage stage){
+    public HighScoreView(Stage stage, String[] playerName, int[] playerScore){
         stage.setTitle("Maze");
         borderPaneLayout = new BorderPane();
 
         //Create the layout
+        getPlayerInfo(playerName,playerScore);
         createList();
         createTop();
         createBackButton();
@@ -31,17 +34,30 @@ public class HighScoreView{
         Scene highScoreScene = new Scene(borderPaneLayout, 800, 620);
         stage.setScene(highScoreScene);
     }
-  public void createList(){
+
+    private void getPlayerInfo(String[] playerName, int[] playerScore){
+        //Gets the players name
+        player1 = playerName[0];
+        player2 = playerName[1];
+        player3 = playerName[2];
+
+        //gets the players score
+        score1 = playerScore[0];
+        score2 = playerScore[1];
+        score3 = playerScore[2];
+    }
+
+    private void createList(){
 
         VBox vBoxCenter = new VBox();
 
         for(int i = 0; i < 3; i++){
             if(i == 0) {
-                createLabel("player1", "score1");
+                createLabel(player1, score1);
             }else if(i == 1){
-                createLabel("player2", "score2");
+                createLabel(player2, score2);
             }else if(i == 2){
-                createLabel("player3", "score3");
+                createLabel(player3, score3);
             }
             vBoxCenter.getChildren().addAll(highScore);
 
@@ -57,11 +73,11 @@ public class HighScoreView{
 
     }
 
-    private void createLabel(String playerName, String scorePlayer){
+    private void createLabel(String playerName, int scorePlayer){
 
         player = new Label(playerName);
         player.setFont(new Font(20));
-        score = new Label(scorePlayer);
+        score = new Label("" + scorePlayer);
         score.setFont(new Font(20));
         highScore = new HBox();
         highScore.getChildren().addAll(player,score);
