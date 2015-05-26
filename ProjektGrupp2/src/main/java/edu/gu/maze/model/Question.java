@@ -4,7 +4,7 @@ import java.io.Serializable;
  *
  * @author omega
  */
-class Question implements Serializable{
+public class Question implements Serializable{
     private static final long serialVersionUID = 2L;
     private String question;
     private String [] answers;

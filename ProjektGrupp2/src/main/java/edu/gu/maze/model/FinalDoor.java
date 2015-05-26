@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package edu.gu.maze.model;
+
+import static edu.gu.maze.util.Constants.FINAL;
 
 /**
  *
@@ -14,15 +10,21 @@ public class FinalDoor implements ISquare{
 
     @Override
     public int canIMoveHere() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return FINAL;
     }
 
     @Override
     public boolean okayToTeleportHere() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
+    @Override
     public String toString(){
         return "F";
+    }
+
+    @Override
+    public void clearWay() {
+        //do nothing
     }
 }

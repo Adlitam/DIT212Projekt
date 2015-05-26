@@ -25,6 +25,7 @@ public class InfoController{
                 Label time = view.getTime();
                 int sec = ((a++) / 60) % 60;
                 int min = ((b++) / 3600) % 60;
+                model.setTime(min,sec);
                 time.setText(String.format("%02d:%02d", min, sec));
                 // calls the method getApples() in IGame 60 times/sec and updated the view
                 Label apple = view.getNrApples();

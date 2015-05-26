@@ -24,7 +24,6 @@ public class InfoView {
         right.getChildren().addAll(getAppleNode(), getKeyNode(), getPointsNode(), getTimeNode());
         right.minWidth(100);
         right.setMinWidth(100);
-
     }
 
     // The planel on the right

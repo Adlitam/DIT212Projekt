@@ -81,7 +81,7 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
                 System.out.println("Type: " + type);
                 System.out.println("Slot: " + slot);
                 model.createPlayer(slot, name, type);
-                model.selectMap(Constants.MAP1);
+                model.startMatch(Constants.MAP1);
             }else{
                 input.setPromptText("Fill in your name!!!");
             }

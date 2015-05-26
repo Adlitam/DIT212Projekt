@@ -32,3 +32,5 @@ nb-configuration.xml
 *.war
 *.ear
 
+#The game’s save file
+ProjektGrupp2/src/main/resources/edu/gu/maze/util/Game.ser

@@ -1,13 +1,15 @@
 package edu.gu.maze.model;
 
+import static edu.gu.maze.util.Constants.YES;
+
 /**
  *
  * @author omega
  */
-class Questioner implements ISquare{
+public class Questioner implements ISquare{
     @Override
     public int canIMoveHere() {
-        return 0;
+        return YES;
     }
 
     @Override
@@ -16,7 +18,13 @@ class Questioner implements ISquare{
         return true;
     }
 
+    @Override
     public String toString(){
         return "Questioner";
+    }
+
+    @Override
+    public void clearWay() {
+        //do nothing
     }
 }

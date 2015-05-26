@@ -1,7 +1,5 @@
 package edu.gu.maze.model;
 
-import java.io.IOException;
-
 /**
  *
  * @author omega
@@ -11,26 +9,14 @@ public interface IGame {
     //Returns a question
     public String getQuestion();
 
-    /*Returns an array of answers of length at least 2.
+    /*Returns an array of answers of length 3.
     Throws an exception if getQuestion() hasn't been called, or if
     isThisTheRightAnswer() has been called since the last time
     getQuestion() was called.*/
     public String[] getAnswers();
-    public void selectMap(int map);
+    public void startMatch(int map);
 
-    /*This method takes an int which is an index to the array returned by getAnswers()
-    It returns an array of ints which signify, in order:
-    0 for wrong answer, 1 for correct
-    change in the number of apples
-    change in the number of keys
-    change in the number of final keys (a correct answer will provide one final key
-    if the player doesn't have it yet.
-    change in the number of points
-    A call to this method must be preceded by a call to getQuestion().
-    public int[] isThisTheRightAnswer(int index);
-    */
-
-    // return true if its true or false if its false
+    // return 1 if it is true or 0 if it is false
     // sets apple to apple + 1 if its true
     // sets key to key + 1 if its true
     // sets points to points + 1 if its true
@@ -46,6 +32,9 @@ public interface IGame {
 
     // returns the number of Points the user has
     public Integer getPoints();
+
+    // Takes the time from controller
+    public void setTime(int min, int sec);
 
     //To create a player and set him/her as current player
     //Slot may be either Constants.SLOT1, Constants.SLOT2, or Constants.SLOT3
@@ -65,8 +54,8 @@ public interface IGame {
     //Throws an exception if you try to delete a nonexistent player.
     public void deletePlayer (int Slot);
 
-    //Returns the current map
-    public Map getCurrentMap();
+    //Returns the current match
+    public Match getCurrentMatch();
     
     //Retrieve specified high scores as formatted strings.
     //Results are sorted so that highest scores come first and newer scores 
@@ -78,5 +67,8 @@ public interface IGame {
     public int getPlayerType(int Slot);
     //Returns player name or empty string if there is no player in the slot.
     public String getPlayerName(int Slot);
+    
+    //Returns a player's combined high score for all maps, or -1 if there is no player in slot.
+    public int getPlayerTotalScore (int Slot);
     
 }
