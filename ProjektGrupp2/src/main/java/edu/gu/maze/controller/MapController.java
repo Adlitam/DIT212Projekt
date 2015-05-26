@@ -5,7 +5,6 @@ import edu.gu.maze.view.CongratzView;
 import edu.gu.maze.view.MapView;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -24,18 +23,15 @@ public class MapController implements EventHandler<KeyEvent> {
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-
                 if(model.gamesDone()){
                     animationTimer.stop();
-                    CongratzView congratzView = new CongratzView(primaryStage);
-                    new CongratzController(model,congratzView,primaryStage);
+                    CongratzView congratzView = new CongratzView(stage);
+                    new CongratzController(model, congratzView, stage);
                 }
             }
         };
         animationTimer.start();
     }
-
-
 
     @Override
     public void handle(KeyEvent event) {

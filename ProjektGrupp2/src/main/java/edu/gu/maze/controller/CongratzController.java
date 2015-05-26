@@ -20,7 +20,6 @@ public class CongratzController implements EventHandler<ActionEvent> {
         this.stage = primaryStage;
         this.view = view;
         this.view.addController(this);
-
         Label yourScore = view.getYourScore();
         yourScore.setText("Congratulations \n Your score:" + model.getPoints());
     }

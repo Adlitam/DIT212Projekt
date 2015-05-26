@@ -51,8 +51,6 @@ public class MainController implements EventHandler<ActionEvent> {
         playerType[0] = type1;
         playerType[1] = type2;
         playerType[2] = type3;
-
-
     }
 
     @Override
@@ -61,18 +59,16 @@ public class MainController implements EventHandler<ActionEvent> {
         if(b == view.getHighScoreButton()){
             getPlayerInfo();
             HighScoreView highScoreView = new HighScoreView(stage,playerName,playerScore);
-            HighScoreController highScoreController = new HighScoreController(model, highScoreView, stage);
+            new HighScoreController(model, highScoreView, stage);
         }
         if(b == view.getPlayButton()){
             getPlayerInfo();
-
-
             StartView startView = new StartView(stage,playerName,playerType);
-            StartController startController = new StartController(model, startView, stage);
+            new StartController(model, startView, stage);
         }
         if(b == view.getAboutButton()){
             AboutView aboutView = new AboutView(stage);
-            AboutController aboutController = new AboutController(model, aboutView, stage);
+            new AboutController(model, aboutView, stage);
         }
     }
 }

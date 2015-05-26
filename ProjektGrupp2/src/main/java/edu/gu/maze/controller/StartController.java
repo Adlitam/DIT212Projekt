@@ -8,9 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
-
-
-
 public class StartController implements EventHandler<ActionEvent> {
     private Game model;
     private Stage stage;
@@ -29,7 +26,6 @@ public class StartController implements EventHandler<ActionEvent> {
     }
 
     private void getPlayerInfo(){
-
         //gets the players score and adding it to an array
         int score1 = model.getPlayerTotalScore(Constants.SLOT1);
         int score2 = model.getPlayerTotalScore(Constants.SLOT2);
@@ -56,8 +52,6 @@ public class StartController implements EventHandler<ActionEvent> {
         playerType[0] = type1;
         playerType[1] = type2;
         playerType[2] = type3;
-
-
     }
 
     private void play(){
@@ -83,7 +77,7 @@ public class StartController implements EventHandler<ActionEvent> {
                 infoController.setAnimationTimer();
             }else {
                 CreatePlayerView createPlayerView1 = new CreatePlayerView(stage, Constants.SLOT1);
-                CreatePlayerController createPlayerController1 = new CreatePlayerController(model, createPlayerView1, stage);
+                new CreatePlayerController(model, createPlayerView1, stage);
             }
         }
         if(b == view.getSlot2Button()){
@@ -94,55 +88,46 @@ public class StartController implements EventHandler<ActionEvent> {
                 infoController.setAnimationTimer();
             }else {
                 CreatePlayerView createPlayerView2 = new CreatePlayerView(stage, Constants.SLOT2);
-                CreatePlayerController createPlayerController2 = new CreatePlayerController(model, createPlayerView2, stage);
+                new CreatePlayerController(model, createPlayerView2, stage);
             }
         }
         if(b == view.getSlot3Button()){
             if(view.checkSlot3()){
-
                 play();
                 model.selectPlayer(Constants.SLOT2);
                 model.startMatch(Constants.MAP1);
                 infoController.setAnimationTimer();
             }else{
                 CreatePlayerView createPlayerView3 = new CreatePlayerView(stage, Constants.SLOT3);
-                CreatePlayerController createPlayerController3 = new CreatePlayerController(model, createPlayerView3, stage);
+                new CreatePlayerController(model, createPlayerView3, stage);
             }
-
         }
         if(b == view.getBackButton()){
             MainView mainView = new MainView(stage);
-            MainController mainController = new MainController(model, mainView, stage);
+            new MainController(model, mainView, stage);
         }
-
         deletePlayer(event);
-
     }
 
     private void deletePlayer(ActionEvent event){
-
         Object b = event.getSource();
-
         if(b == view.getDeleteSlot1()){
             model.deletePlayer(Constants.SLOT1);
             getPlayerInfo();
             StartView startView = new StartView(stage,playerName,playerType);
-            StartController startController = new StartController(model, startView, stage);
+            new StartController(model, startView, stage);
         }
         if(b == view.getDeleteSlot2()){
             model.deletePlayer(Constants.SLOT2);
             getPlayerInfo();
             StartView startView = new StartView(stage,playerName,playerType);
-            StartController startController = new StartController(model, startView, stage);
+            new StartController(model, startView, stage);
         }
         if(b == view.getDeleteSlot3()){
             model.deletePlayer(Constants.SLOT3);
             getPlayerInfo();
             StartView startView = new StartView(stage,playerName,playerType);
-            StartController startController = new StartController(model, startView, stage);
+            new StartController(model, startView, stage);
         }
-
-
     }
-
 }

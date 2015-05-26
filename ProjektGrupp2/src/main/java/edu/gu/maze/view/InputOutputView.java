@@ -9,7 +9,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 

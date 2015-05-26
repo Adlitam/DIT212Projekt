@@ -24,6 +24,5 @@ public final class Main extends Application {
 
         //mainController
         new MainController(model, view, primaryStage);
-        //view.addPropertyChangeListener(mainController);
     }
 }

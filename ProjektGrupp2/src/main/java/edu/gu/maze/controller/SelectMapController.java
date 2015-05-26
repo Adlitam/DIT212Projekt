@@ -25,7 +25,7 @@ public class SelectMapController implements EventHandler<ActionEvent> {
         Object b = event.getSource();
         if(b == view.getBackButton()){
             MainView mainView = new MainView(stage);
-            MainController mainController = new MainController(model, mainView, stage);
+            new MainController(model, mainView, stage);
         }
         if(b == view.getMap1()){
             //TODO
