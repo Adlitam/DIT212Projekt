@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 public class CreatePlayerController implements EventHandler<ActionEvent> {
     private Game model;
     private CreatePlayerView view;
+    private InfoController infoController;
     private Stage stage;
     private int type;
     private MouseEventController mec;
@@ -56,7 +57,7 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
     // Starts the GameView
     private void play(){
         InfoView infoView = new InfoView();
-        new InfoController(model, infoView);
+        infoController = new InfoController(model, infoView);
         InputOutputView inputView = new InputOutputView();
         new InputOutputViewController(model, inputView, stage);
         MapView mapView = new MapView();
@@ -81,8 +82,9 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
                 System.out.println("Type: " + type);
                 System.out.println("Slot: " + slot);
                 model.createPlayer(slot, name, type);
-                model.startMatch(Constants.MAP1);
                 play();
+                model.startMatch(Constants.MAP1);
+                infoController.setAnimationTimer();
             }else{
                 input.setPromptText("Fill in your name!!!");
             }
