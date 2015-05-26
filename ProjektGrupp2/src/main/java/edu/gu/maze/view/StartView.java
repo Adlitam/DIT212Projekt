@@ -19,10 +19,22 @@ public class StartView {
     private BorderPane layout;
     private HBox hBox;
 
+    String player1,player2,player3;
+    int type1,type2,type3;
 
-    public StartView(Stage stage){
+
+    public StartView(Stage stage, String[] playerName, int[] playerType){
         stage.setTitle("Maze");
         layout = new BorderPane();
+        getPlayerInfo(playerName,playerType);
+
+        for(String x : playerName){
+
+            System.out.print(x);
+
+        }
+
+
         createBottom();
         createPane();
         layout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
@@ -34,11 +46,11 @@ public class StartView {
         VBox vBox = new VBox();
         for(int i = 0; i<3; i++){
             if(i == 0){
-                createSlot("playerName1", slot1Button);
+                createSlot(player1, slot1Button);
             }else if(i == 1){
-                createSlot("playerName2", slot2Button);
+                createSlot(player2, slot2Button);
             }else if(i == 2){
-                createSlot("playerName3", slot3Button);
+                createSlot(player3, slot3Button);
             }
 
             vBox.getChildren().addAll(hBox);
@@ -50,6 +62,25 @@ public class StartView {
         vBox.setAlignment(Pos.CENTER);
 
         layout.setCenter(vBox);
+    }
+
+    private void checkImage(){
+
+
+    }
+
+    private void getPlayerInfo(String[] playerName,int[] playerType){
+        //gets the player name
+        player1 = playerName[0];
+        player2 = playerName[1];
+        player3 = playerName[2];
+
+        //gets the player types
+        type1 = playerType[0];
+        type2 = playerType[1];
+        type3 = playerType[2];
+
+
     }
 
 
@@ -74,11 +105,62 @@ public class StartView {
         layout.setBottom(hBoxBotton);
     }
 
+    public boolean checkSlot1(){
+        if(player1.equals("")){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean checkSlot2(){
+        if(player2.equals("")){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean checkSlot3(){
+        if(player3.equals("")){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
     public void addController(StartController c){
         slot1Button.setOnAction(c);
         slot2Button.setOnAction(c);
         slot3Button.setOnAction(c);
         backButton.setOnAction(c);
+    }
+
+    public String getPlayer1() {
+        return player1;
+    }
+
+    public String getPlayer2() {
+        return player2;
+    }
+
+    public String getPlayer3() {
+        return player3;
+    }
+
+    public int getType1() {
+        return type1;
+    }
+
+    public int getType2() {
+        return type2;
+    }
+
+    public int getType3() {
+        return type3;
     }
 
     public Button getSlot1Button(){

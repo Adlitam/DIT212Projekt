@@ -13,7 +13,7 @@ public class InfoView {
     private Rectangle2D screenSize;
     private VBox right;
     private Label time;
-    private Label text;
+    private Label score;
     private Label nrKeys;
     private Label nrApples;
 
@@ -66,8 +66,8 @@ public class InfoView {
     // The label that show the current score
     private VBox getPointsNode(){
         VBox points = new VBox();
-        text = new Label("Score");
-        Label score = new Label();
+        Label text = new Label("Score");
+        score = new Label();
         score.setFont(new Font(20));
         points.getChildren().addAll(text, score);
         points.setAlignment(Pos.CENTER);
@@ -91,7 +91,7 @@ public class InfoView {
     }
 
     public Label getText(){
-        return text;
+        return score;
     }
 
     public Label getNrKeys(){
