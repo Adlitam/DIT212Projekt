@@ -36,4 +36,9 @@ public class Level implements Serializable{
         }
         return ans;
     }
+
+    @Override
+    public String toString(){
+        return map;
+    }
 }
