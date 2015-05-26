@@ -36,7 +36,13 @@ public interface IGame {
     // Takes the time from controller
     public void setTime(int min, int sec);
 
+    // Tells the controllers if the game is done
     public boolean gamesDone();
+
+    // Returns the total score for the map
+    public int getTotalScore();
+
+    public void setCurrentMatchToNull();
 
     //To create a player and set him/her as current player
     //Slot may be either Constants.SLOT1, Constants.SLOT2, or Constants.SLOT3

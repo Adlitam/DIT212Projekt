@@ -94,13 +94,9 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
     // get the Answer and print it out in the output field
     private void getQuestionAndAnswers(){
         TextArea output = view.getOutput();
-        if(model.gamesDone()){
-            output.setText("Your total score is: " + model.getPoints() + "\n You number of apple was: " + model.getApples());
-        }else {
             String question = model.getQuestion();
             String[] answers = model.getAnswers();
             output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
-        }
     }
 
 }

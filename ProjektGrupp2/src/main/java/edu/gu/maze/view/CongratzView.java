@@ -14,6 +14,7 @@ public class CongratzView {
     private BorderPane layout;
     private Button backButton;
     private Button nextMap;
+    private Label yourScore;
 
     public CongratzView(Stage stage){
 
@@ -23,7 +24,6 @@ public class CongratzView {
 
         createBottom();
         createPane();
-
         layout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
 
         Scene startScene = new Scene(layout,800,600);
@@ -32,18 +32,18 @@ public class CongratzView {
     }
 
     private void createBottom(){
-
+        HBox bottom = new HBox();
         nextMap = new Button("Next Map");
         nextMap.setPrefWidth(200);
 
         backButton = new Button("Back to start");
         backButton.setPrefWidth(200);
 
-        HBox bottom = new HBox();
-
         bottom.getChildren().addAll(backButton,nextMap);
         bottom.setAlignment(Pos.CENTER);
         bottom.setSpacing(20);
+
+        layout.setBottom(bottom);
 
 
 
@@ -52,8 +52,9 @@ public class CongratzView {
 
     private void createPane(){
 
-        Label title = new Label("Congratulations \n Your score:" );
-        title.setFont(new Font(20));
+        yourScore = new Label();
+        yourScore.setFont(new Font(20));
+        layout.setCenter(yourScore);
         //Label score = new Label();
 
 
@@ -70,5 +71,9 @@ public class CongratzView {
 
     public Button getNextMap(){
         return nextMap;
+    }
+
+    public Label getYourScore() {
+        return yourScore;
     }
 }

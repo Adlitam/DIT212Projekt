@@ -18,6 +18,7 @@ public class Game implements IGame, Serializable{
     private final SaveSlot[] slots = new SaveSlot[3];
     private final Level[] levels = new Level[3];
     ArrayList<HighScore> totalHighScores = new ArrayList();
+    private int totalScore = 0;
 
     private int time;
     private boolean gamesDone = false;
@@ -77,6 +78,18 @@ public int isThisTheRightAnswer(int index) {
     @Override
     public boolean gamesDone() {
         return gamesDone;
+    }
+
+
+    @Override
+    public int getTotalScore() {
+        return totalScore;
+    }
+
+    @Override
+    public void setCurrentMatchToNull() {
+        gamesDone = false;
+        currentMatch = null;
     }
 
     @Override
@@ -167,6 +180,7 @@ public int isThisTheRightAnswer(int index) {
             pcs.firePropertyChange(direction, "value1", "value2");
         }
         if (i == FINAL){
+            totalScore = getPoints() + (500 - time);
             //calculate final score. Communicate to view somehow.
             gamesDone=true;
         }

@@ -6,6 +6,7 @@ import edu.gu.maze.view.CongratzView;
 import edu.gu.maze.view.MainView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class CongratzController implements EventHandler<ActionEvent> {
@@ -18,14 +19,18 @@ public class CongratzController implements EventHandler<ActionEvent> {
         this.stage = primaryStage;
         this.view = view;
         this.view.addController(this);
+
+        Label yourScore = view.getYourScore();
+        yourScore.setText("Congratulations \n Your score:" + model.getTotalScore());
     }
 
     @Override
     public void handle(ActionEvent event) {
         Object b = event.getSource();
         if(b == view.getBackButton()){
+            model.setCurrentMatchToNull();
             MainView mainView = new MainView(stage);
-            MainController mainController = new MainController(model, mainView, stage);
+            new MainController(model, mainView, stage);
         }
         if(b == view.getNextMap()){
             //TODO
