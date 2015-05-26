@@ -8,6 +8,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 @SuppressFBWarnings("CD_CIRCULAR_DEPENDENCY")
@@ -19,8 +20,8 @@ public class Game implements IGame, Serializable{
     private final Question[] allQuestions = ResourceReader.readQuestions();
     private final SaveSlot[] slots = new SaveSlot[3];
     private final Level[] levels = new Level[3];
-    ArrayList<HighScore> totalHighScores = new ArrayList();
-    private int totalScore = 0;
+    ArrayList<HighScore> totalHighScores = new ArrayList<HighScore>();
+    //private int totalScore = 0;
 
     private int time;
     private boolean gamesDone = false;
@@ -32,6 +33,8 @@ public class Game implements IGame, Serializable{
     private transient SaveSlot currentPlayer;
     @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
     private transient Match currentMatch;
+    private transient int currentLevel;
+    
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
@@ -74,7 +77,7 @@ public int isThisTheRightAnswer(int index) {
 
     @Override
     public void setTime(int min, int sec) {
-        this.time=min*60+sec;
+        currentMatch.setTime(min, sec);
     }
 
     @Override
@@ -83,10 +86,10 @@ public int isThisTheRightAnswer(int index) {
     }
 
 
-    @Override
+    /*@Override
     public int getTotalScore() {
         return totalScore;
-    }
+    }*/
 
     @Override
     public void setCurrentMatchToNull() {
@@ -136,6 +139,7 @@ public int isThisTheRightAnswer(int index) {
     
     @Override
     public void startMatch(int map){
+        currentLevel = map;
         currentMatch = ResourceReader.readMapForModel(levels[map].getMap());
         pcs.firePropertyChange("MAP_CHOSEN", levels[map].getMap(), "value2");
     }
@@ -194,8 +198,11 @@ public int isThisTheRightAnswer(int index) {
         }
         // or GOTAPPLE and GOTKEY for having received an apple or a key (from a chest).
         if (i == FINAL){
-            totalScore = getPoints() + (500 - time);
-            //calculate final score. Communicate to view somehow.
+            currentMatch.endMatch();
+            int a = currentMatch.getScore();
+            HighScore score = currentPlayer.addHighScore(a, currentLevel);
+            addHighScore(score);
+            levels[currentLevel].addHighScore(score);
             gamesDone=true;
         }
     }
@@ -244,5 +251,13 @@ public int isThisTheRightAnswer(int index) {
     public int getPlayerTotalScore (int Slot){
         if (slots[Slot]==null) return -1;
             return slots[Slot].getTotalHighScore();
+    }
+    
+    private void addHighScore(HighScore score){
+        totalHighScores.add(score);
+        Collections.sort(totalHighScores);
+        if (totalHighScores.size()>5){
+            totalHighScores.remove(totalHighScores.size()-1);
+        }
     }
 }
