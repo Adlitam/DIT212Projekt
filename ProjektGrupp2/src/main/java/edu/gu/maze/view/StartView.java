@@ -11,14 +11,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class StartView {
-    private Button slot1Button;
-    private Button slot2Button;
-    private Button slot3Button;
+    private Button slot1Button = new Button();
+    private Button slot2Button = new Button();
+    private Button slot3Button = new Button();
+
     private Button backButton;
     private BorderPane layout;
-    private HBox hBox1 = new HBox();
-    private HBox hBox2 = new HBox();
-    private HBox hBox3 = new HBox();
+    private HBox hBox;
+
 
     public StartView(Stage stage){
         stage.setTitle("Maze");
@@ -31,37 +31,37 @@ public class StartView {
     }
 
     private void createPane(){
-        Label playerName1 = new Label("PlayerName1");
-        Label playerName2 = new Label("PlayerName2");
-        Label playerName3 = new Label("PlayerName3");
-
-        //First slot
-        slot1Button = new Button();
-        slot1Button.setMinSize(100,100);
-        hBox1.getChildren().addAll(slot1Button,playerName1);
-        hBox1.setSpacing(10);
-        hBox1.setAlignment(Pos.CENTER);
-
-        //Second slot
-        slot2Button = new Button();
-        slot2Button.setMinSize(100,100);
-        hBox2.getChildren().addAll(slot2Button,playerName2);
-        hBox2.setSpacing(10);
-        hBox2.setAlignment(Pos.CENTER);
-
-        //Slot 3
-        slot3Button = new Button();
-        slot3Button.setMinSize(100,100);
-        hBox3.getChildren().addAll(slot3Button,playerName3);
-        hBox3.setSpacing(10);
-        hBox3.setAlignment(Pos.CENTER);
-
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(hBox1,hBox2,hBox3);
+        for(int i = 0; i<3; i++){
+            if(i == 0){
+                createSlot("playerName1", slot1Button);
+            }else if(i == 1){
+                createSlot("playerName2", slot2Button);
+            }else if(i == 2){
+                createSlot("playerName3", slot3Button);
+            }
+
+            vBox.getChildren().addAll(hBox);
+        }
+
+
+
         vBox.setSpacing(10);
         vBox.setAlignment(Pos.CENTER);
 
         layout.setCenter(vBox);
+    }
+
+
+    private void createSlot(String playerName, Button slotButton){
+
+        Label player = new Label(playerName);
+        slotButton.setMinSize(100,100);
+        hBox = new HBox();
+        hBox.getChildren().addAll(slotButton,player);
+        hBox.setSpacing(10);
+        hBox.setAlignment(Pos.CENTER);
+
     }
 
     private void createBottom(){
