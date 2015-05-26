@@ -25,7 +25,6 @@ public class InfoController{
 
                 if(model.gamesDone()){
                     animationTimer.stop();
-                    System.out.println("hej");
                 }else {
                     // Displays the time in minutes and seconds
                     Label time = view.getTime();
