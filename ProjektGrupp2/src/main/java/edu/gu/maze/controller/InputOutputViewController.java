@@ -1,6 +1,5 @@
 package edu.gu.maze.controller;
 
-import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.InputOutputView;
 import edu.gu.maze.view.MainView;
@@ -10,18 +9,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-/**
- * Created by xiang-yu on 2015-05-26.
- */
 public class InputOutputViewController implements EventHandler<ActionEvent> {
     private IGame model;
-    private Game map;
     private Stage stage;
     private InputOutputView view;
     private KeyEventController kec;
 
     public InputOutputViewController(IGame model, InputOutputView view, Stage primaryStage){
-        this.map = (Game) model;
         this.stage = primaryStage;
         this.model = model;
         this.view = view;
@@ -33,22 +27,25 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
     private class KeyEventController implements EventHandler<KeyEvent>{
         @Override
         public void handle(KeyEvent event) {
-            Object b = event.getCode();
             switch (event.getCode()) {
                 case UP:
                     model.moveUp();
+                    getQuestionAndAnswers();
                     event.consume();
                     break;
                 case DOWN:
                     model.moveDown();
+                    getQuestionAndAnswers();
                     event.consume();
                     break;
                 case LEFT:
                     model.moveLeft();
+                    getQuestionAndAnswers();
                     event.consume();
                     break;
                 case RIGHT:
                     model.moveRight();
+                    getQuestionAndAnswers();
                     event.consume();
                     break;
                 case A:
@@ -72,7 +69,7 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
         Object b = event.getSource();
         if(b == view.getBackButton()){
             MainView mainView = new MainView(stage);
-            MainController mainController = new MainController(model, mainView, stage);
+            new MainController(model, mainView, stage);
         }
     }
 

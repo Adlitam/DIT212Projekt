@@ -30,22 +30,23 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
         ImageView temp2;
         switch(t){
             case Constants.MAGE:
-                temp1 = (ImageView) view.getWarrior();
-                temp2 = (ImageView) view.getThief();
+                temp1 = view.getWarrior();
+                temp2 = view.getThief();
                 break;
             case Constants.WARRIOR:
-                temp1 = (ImageView) view.getMage();
-                temp2 = (ImageView) view.getThief();
+                temp1 = view.getMage();
+                temp2 = view.getThief();
                 break;
             case Constants.THIEF:
-                temp1 = (ImageView) view.getMage();
-                temp2 = (ImageView) view.getWarrior();
+                temp1 = view.getMage();
+                temp2 = view.getWarrior();
                 break;
             default:
                 temp1 = null;
                 temp2 = null;
                 break;
         }
+        assert temp1 != null;
         temp1.setDisable(true);
         temp2.setDisable(true);
         temp1.setVisible(false);
@@ -55,12 +56,12 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
     // Starts the GameView
     private void play(){
         InfoView infoView = new InfoView();
-        InfoController infoController = new InfoController(model, infoView, stage);
+        new InfoController(model, infoView);
         InputOutputView inputView = new InputOutputView();
-        InputOutputViewController inputOutputViewController = new InputOutputViewController(model, inputView, stage);
+        new InputOutputViewController(model, inputView, stage);
         MapView mapView = new MapView();
         model.addPropertyChangeListener(mapView);
-        MapController mapController = new MapController(model, mapView, stage);
+        new MapController(model, mapView, stage);
         new GameView(stage, mapView, infoView, inputView);
     }
 
@@ -69,19 +70,24 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
         Object b = event.getSource();
         if(b == view.getBackButton()){
             MainView mainView = new MainView(stage);
-            MainController mainController = new MainController(model, mainView, stage);
+            new MainController(model, mainView, stage);
         }
         if(b == view.getPlayButton()){
-            TextField input = (TextField) view.getName();
+            TextField input = view.getName();
             String name = input.getText();
             if(name.length() > 0) {
-                play();
-                int slot = (int) view.getSlot();
-                System.out.println("Name: " + name);
-                System.out.println("Type: " + type);
-                System.out.println("Slot: " + slot);
-                model.createPlayer(slot, name, type);
-                model.startMatch(Constants.MAP1);
+                try {
+                    int slot = view.getSlot();
+                    System.out.println("Name: " + name);
+                    System.out.println("Type: " + type);
+                    System.out.println("Slot: " + slot);
+                    play();
+                    model.createPlayer(slot, name, type);
+                    model.startMatch(Constants.MAP1);
+
+                }catch (RuntimeException e1){
+                    System.out.println("The slot is already used");
+                }
             }else{
                 input.setPromptText("Fill in your name!!!");
             }
