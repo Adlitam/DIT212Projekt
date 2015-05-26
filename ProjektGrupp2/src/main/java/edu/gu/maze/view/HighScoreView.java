@@ -1,5 +1,6 @@
 package edu.gu.maze.view;
 
+import edu.gu.maze.controller.HighScoreController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -7,17 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-
 
 public class HighScoreView{
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
-    BorderPane borderPaneLayout;
-
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        pcs.addPropertyChangeListener(listener);
-    }
+    private Button backButton;
+    private BorderPane borderPaneLayout;
 
     public HighScoreView(Stage stage){
         stage.setTitle("Maze");
@@ -28,14 +22,12 @@ public class HighScoreView{
         createTop();
         createBackButton();
 
-
         borderPaneLayout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
 
         //Sets the scene
         Scene highScoreScene = new Scene(borderPaneLayout, 800, 620);
         stage.setScene(highScoreScene);
     }
-
 
     public void createList(){
         //Add three labels
@@ -53,7 +45,6 @@ public class HighScoreView{
         Label score3 = new Label("Score3");
         score3.setFont(new Font(20));
 
-
         HBox highScore1 = new HBox();
         highScore1.getChildren().addAll(player1,score1);
         highScore1.setSpacing(100);
@@ -70,8 +61,6 @@ public class HighScoreView{
         highScore3.setAlignment(Pos.CENTER);
         highScore3.setStyle("-fx-border-color: Black");
 
-
-
         VBox vBoxCenter = new VBox();
         //Added the labels to the HBox
         vBoxCenter.getChildren().addAll(highScore1,highScore2,highScore3);
@@ -80,13 +69,9 @@ public class HighScoreView{
         vBoxCenter.setStyle("-fx-border-color: Black");
         //Added the hBox to the layout.
         borderPaneLayout.setCenter(vBoxCenter);
-
-
     }
 
-
     public void createTop(){
-
         //The title and the font
         Label title = new Label("High Score");
         title.setFont(new Font("Cambria", 40));
@@ -96,22 +81,22 @@ public class HighScoreView{
         hBoxTop.setAlignment(Pos.CENTER);
 
         borderPaneLayout.setTop(hBoxTop);
-
     }
 
     public void createBackButton(){
-
         //Create the backbutton
         HBox hBoxlayout = new HBox();
-        Button backButton = new Button("Back to start");
+        backButton = new Button("Back to start");
         hBoxlayout.getChildren().add(backButton);
         hBoxlayout.setAlignment(Pos.CENTER);
-
-        //add a propertyChnageListner
-        backButton.setOnAction(e ->
-                pcs.firePropertyChange("backButtonH", "value1", "value2"));
         borderPaneLayout.setBottom(hBoxlayout);
-
     }
 
+    public void addController(HighScoreController c){
+        backButton.setOnAction(c);
+    }
+
+    public Button getBackButton(){
+        return backButton;
+    }
 }

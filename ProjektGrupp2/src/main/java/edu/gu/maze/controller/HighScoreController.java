@@ -1,27 +1,30 @@
 package edu.gu.maze.controller;
 
 import edu.gu.maze.model.IGame;
+import edu.gu.maze.view.HighScoreView;
 import edu.gu.maze.view.MainView;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
+public class HighScoreController implements EventHandler<ActionEvent> {
+    private IGame model;
+    private Stage stage;
+    private HighScoreView view;
 
-public class HighScoreController implements PropertyChangeListener {
-    IGame model;
-    Stage stage;
-
-    public HighScoreController(IGame model, Stage primaryStage){
+    public HighScoreController(IGame model, HighScoreView view, Stage primaryStage){
         this.stage = primaryStage;
         this.model = model;
+        this.view = view;
+        this.view.addController(this);
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        if(evt.getPropertyName().equals("backButtonH")){
+    public void handle(ActionEvent event) {
+        Object b = event.getSource();
+        if(b == view.getBackButton()){
             MainView mainView = new MainView(stage);
-            MainController mainController = new MainController(model, stage);
-            mainView.addPropertyChangeListener(mainController);
+            MainController mainController = new MainController(model, mainView, stage);
         }
     }
 }

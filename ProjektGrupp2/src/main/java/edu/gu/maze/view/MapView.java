@@ -1,28 +1,21 @@
 package edu.gu.maze.view;
 
+import edu.gu.maze.controller.MapController;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
-public class MapView1 implements PropertyChangeListener{
+public class MapView implements PropertyChangeListener{
     private GridPane g;
     private PlayerView player;
     private ImageView[][] map;
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        pcs.addPropertyChangeListener(listener);
-    }
-
-
-    public MapView1() {
+    public MapView() {
         createMapGridPane();
         map = createMapArray("map1.txt");
         initializeGrid();
@@ -87,7 +80,6 @@ public class MapView1 implements PropertyChangeListener{
         return g;
     }
 
-
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch(evt.getPropertyName()){
@@ -104,5 +96,9 @@ public class MapView1 implements PropertyChangeListener{
                 movePlayer(player.getxPos()+1,player.getyPos());
                 break;
         }
+    }
+
+    public void addController(MapController c){
+        g.setOnKeyPressed(c);
     }
 }

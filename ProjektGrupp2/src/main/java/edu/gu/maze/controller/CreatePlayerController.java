@@ -4,79 +4,48 @@ import edu.gu.maze.util.Constants;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.*;
+import javafx.event.*;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
-
-public class CreatePlayerController implements PropertyChangeListener {
-    private IGame model;
-    private Game map;
+public class CreatePlayerController implements EventHandler<ActionEvent> {
+    private Game model;
+    private CreatePlayerView view;
     private Stage stage;
     private int type;
+    private MouseEventController mec;
 
-    public CreatePlayerController(IGame model, Stage primaryStage){
-        this.map = (Game) model;
+    public CreatePlayerController(IGame model, CreatePlayerView view, Stage primaryStage){
         this.stage = primaryStage;
-        this.model = model;
+        this.model = (Game) model;
+        this.view = view;
+        mec = new MouseEventController();
+        this.view.addController(this);
     }
 
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        switch (evt.getPropertyName()) {
-            case "backButtonH":
-                // Take you back to the start stage
-                MainView mainView = new MainView(stage);
-                MainController mainController = new MainController(model, stage);
-                mainView.addPropertyChangeListener(mainController);
+    //disables the icons that were not selected and makes them invisible
+    private void disableIcons(int t){
+        ImageView temp1;
+        ImageView temp2;
+        switch(t){
+            case Constants.MAGE:
+                temp1 = (ImageView) view.getWarrior();
+                temp2 = (ImageView) view.getThief();
                 break;
-
-            case "playButton":
-                // Start the game only if you have written a name
-                TextField input = (TextField) evt.getOldValue();
-                String name = input.getText();
-                if(name.length() > 0) {
-                    play();
-                    int slot = (int) evt.getNewValue();
-
-                    System.out.println("Name: " + name);
-                    System.out.println("Type: " + type);
-                    System.out.println("Slot: " + slot);
-
-                    model.createPlayer(slot, name, type);
-                    model.selectMap(Constants.MAP1);
-                }else{
-                    input.setPromptText("Fill in your name!!!");
-                }
+            case Constants.WARRIOR:
+                temp1 = (ImageView) view.getMage();
+                temp2 = (ImageView) view.getThief();
                 break;
-
-            case "mage":
-                // Sets the type to Mage
-                removeNotSelected(evt);
-                this.type = Constants.MAGE;
+            case Constants.THIEF:
+                temp1 = (ImageView) view.getMage();
+                temp2 = (ImageView) view.getWarrior();
                 break;
-
-            case "warrior":
-                // Sets the type to Warrior
-                removeNotSelected(evt);
-                this.type = Constants.WARRIOR;
-                break;
-
-            case "thief":
-                // Sets the type to Thief
-                removeNotSelected(evt);
-                this.type = Constants.THIEF;
-                break;
-
             default:
+                temp1 = null;
+                temp2 = null;
+                break;
         }
-    }
-    // Remove and disable the two character whos not selected from the view
-    private void removeNotSelected(PropertyChangeEvent evt){
-        ImageView temp1 = (ImageView) evt.getOldValue();
-        ImageView temp2 = (ImageView) evt.getNewValue();
         temp1.setDisable(true);
         temp2.setDisable(true);
         temp1.setVisible(false);
@@ -86,14 +55,59 @@ public class CreatePlayerController implements PropertyChangeListener {
     // Starts the GameView
     private void play(){
         InfoView infoView = new InfoView();
-        InfoController infoController = new InfoController(model, stage);
-        infoView.addPropertyChangeListener(infoController);
+        InfoController infoController = new InfoController(model, infoView, stage);
         InputOutputView inputView = new InputOutputView();
-        MapView1 mapView1 = new MapView1();
-        map.addPropertyChangeListener(mapView1);
-        MapController mapController = new MapController(model, stage);
-        mapView1.addPropertyChangeListener(mapController);
-        inputView.addPropertyChangeListener(mapController);
-        new GameView(stage, mapView1, infoView, inputView);
+        InputOutputViewController inputOutputViewController = new InputOutputViewController(model, inputView, stage);
+        MapView mapView = new MapView();
+        model.addPropertyChangeListener(mapView);
+        MapController mapController = new MapController(model, mapView, stage);
+        new GameView(stage, mapView, infoView, inputView);
+    }
+
+    @Override
+    public void handle(ActionEvent event) {
+        Object b = event.getSource();
+        if(b == view.getBackButton()){
+            MainView mainView = new MainView(stage);
+            MainController mainController = new MainController(model, mainView, stage);
+        }
+        if(b == view.getPlayButton()){
+            TextField input = (TextField) view.getName();
+            String name = input.getText();
+            if(name.length() > 0) {
+                play();
+                int slot = (int) view.getSlot();
+                System.out.println("Name: " + name);
+                System.out.println("Type: " + type);
+                System.out.println("Slot: " + slot);
+                model.createPlayer(slot, name, type);
+                model.selectMap(Constants.MAP1);
+            }else{
+                input.setPromptText("Fill in your name!!!");
+            }
+        }
+    }
+    //inner class for handling MouseEvents
+    private class MouseEventController implements EventHandler<javafx.scene.input.MouseEvent>{
+        @Override
+        public void handle(javafx.scene.input.MouseEvent event) {
+            Object b = event.getSource();
+            if(b == view.getMage()){
+                type = Constants.MAGE;
+                disableIcons(type);
+            }
+            if(b == view.getWarrior()){
+                type = Constants.WARRIOR;
+                disableIcons(type);
+            }
+            if(b == view.getThief()){
+                type = Constants.THIEF;
+                disableIcons(type);
+            }
+        }
+    }
+
+    public MouseEventController getMec(){
+        return mec;
     }
 }

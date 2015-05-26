@@ -1,5 +1,6 @@
 package edu.gu.maze.view;
 
+import edu.gu.maze.controller.SelectMapController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,24 +9,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 
 public class SelectMapView {
-
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
-    Button map1;
-    Button map2;
-    Button map3;
-    BorderPane layout;
-    HBox hBox1 = new HBox();
-    HBox hBox2 = new HBox();
-    HBox hBox3 = new HBox();
-
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        pcs.addPropertyChangeListener(listener);
-    }
-
+    private Button backButton;
+    private Button map1;
+    private Button map2;
+    private Button map3;
+    private BorderPane layout;
+    private HBox hBox1 = new HBox();
+    private HBox hBox2 = new HBox();
+    private HBox hBox3 = new HBox();
 
     public SelectMapView(Stage stage){
         stage.setTitle("Maze");
@@ -57,7 +50,6 @@ public class SelectMapView {
         hBox1.getChildren().addAll(map1,playerName1);
         hBox1.setSpacing(10);
         hBox1.setAlignment(Pos.CENTER);
-        map1.setOnAction(e -> pcs.firePropertyChange("Map1","v1","v2"));
 
         //Second slot
         map2 = new Button();
@@ -65,7 +57,6 @@ public class SelectMapView {
         hBox2.getChildren().addAll(map2,playerName2);
         hBox2.setSpacing(10);
         hBox2.setAlignment(Pos.CENTER);
-        map2.setOnAction(e -> pcs.firePropertyChange("Map1","v1","v2"));
 
         //Slot 3
         map3 = new Button();
@@ -73,7 +64,6 @@ public class SelectMapView {
         hBox3.getChildren().addAll(map3,playerName3);
         hBox3.setSpacing(10);
         hBox3.setAlignment(Pos.CENTER);
-        map3.setOnAction(e -> pcs.firePropertyChange("Map1","v1","v2"));
 
 
 
@@ -93,11 +83,9 @@ public class SelectMapView {
         HBox hBoxBotton = new HBox();
 
 
-        Button backButton = new Button("Back to start");
+        backButton = new Button("Back to start");
         backButton.setPrefWidth(200);
-        backButton.setOnAction(e ->
-                        pcs.firePropertyChange("backButtonH", "value1", "value2")
-        );
+
 
         hBoxBotton.getChildren().addAll(backButton);
         hBoxBotton.setAlignment(Pos.BOTTOM_RIGHT);
@@ -108,4 +96,26 @@ public class SelectMapView {
 
     }
 
+    public void addController(SelectMapController c){
+        backButton.setOnAction(c);
+        map1.setOnAction(c);
+        map2.setOnAction(c);
+        map3.setOnAction(c);
+    }
+
+    public Button getBackButton(){
+        return backButton;
+    }
+
+    public Button getMap1(){
+        return map1;
+    }
+
+    public Button getMap2(){
+        return map2;
+    }
+
+    public Button getMap3(){
+        return map3;
+    }
 }

@@ -3,42 +3,36 @@ package edu.gu.maze.controller;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
+public class MainController implements EventHandler<ActionEvent> {
+    private Game model;
+    private Stage stage;
+    private MainView view;
 
-public class MainController implements PropertyChangeListener {
-    Game model;
-    Stage stage;
-
-    public MainController(IGame model, Stage primaryStage){
+    public MainController(IGame model, MainView view, Stage primaryStage){
         this.stage = primaryStage;
         this.model = (Game) model;
+        this.view = view;
+        this.view.addController(this);
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        switch(evt.getPropertyName()) {
-            case "highScoreButton":
-                HighScoreView highScoreView = new HighScoreView(stage);
-                HighScoreController highScoreController = new HighScoreController(model, stage);
-                highScoreView.addPropertyChangeListener(highScoreController);
-            break;
-
-            case "Play":
-                StartView startView = new StartView(stage);
-                StartController startController = new StartController(model, startView, stage);
-                startView.addPropertyChangeListener(startController);
-            break;
-
-            case "aboutbutton":
-                AboutView aboutView = new AboutView(stage);
-                AboutController aboutController = new AboutController(model, stage);
-                aboutView.addPropertyChangeListener(aboutController);
-                break;
-            default:
+    public void handle(ActionEvent event) {
+        Object b = event.getSource();
+        if(b == view.getHighScoreButton()){
+            HighScoreView highScoreView = new HighScoreView(stage);
+            HighScoreController highScoreController = new HighScoreController(model, highScoreView, stage);
         }
-
+        if(b == view.getPlayButton()){
+            StartView startView = new StartView(stage);
+            StartController startController = new StartController(model, startView, stage);
+        }
+        if(b == view.getAboutButton()){
+            AboutView aboutView = new AboutView(stage);
+            AboutController aboutController = new AboutController(model, aboutView, stage);
+        }
     }
 }

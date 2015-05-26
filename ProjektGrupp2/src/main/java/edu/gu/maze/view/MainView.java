@@ -1,5 +1,6 @@
 package edu.gu.maze.view;
 
+import edu.gu.maze.controller.MainController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -7,44 +8,31 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 
 public class MainView{
-    Stage stage;
-    Button createPlayer;
-    Button highScoreButton;
-    Button aboutButton;
-    BorderPane layout;
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
-
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        pcs.addPropertyChangeListener(listener);
-    }
+    private Stage stage;
+    private Button playButton;
+    private Button highScoreButton;
+    private Button aboutButton;
+    private BorderPane layout;
 
     public MainView(Stage primaryStage){
         stage = primaryStage;
         stage.setTitle("Maze");
-
         layout = new BorderPane();
-
         HBox top = new HBox();
-
         Label titel = new Label("Maze");
         titel.setFont(new Font(40));
-
         top.getChildren().addAll(titel);
         top.setAlignment(Pos.CENTER);
-
         layout.setTop(top);
-
 
         createPlayButton();
         createHighScoreButton();
         createAboutButton();
 
         VBox vBoxlayout = new VBox();
-        vBoxlayout.getChildren().addAll(createPlayer,highScoreButton,aboutButton);
+        vBoxlayout.getChildren().addAll(playButton,highScoreButton,aboutButton);
         vBoxlayout.setAlignment(Pos.CENTER);
         vBoxlayout.setSpacing(50);
 
@@ -56,39 +44,42 @@ public class MainView{
         stage.show();
     }
 
-
-    public void createPlayButton(){
+    private void createPlayButton(){
         //Creates the PlayButton
-        createPlayer = new Button("Play");
-        createPlayer.setPrefWidth(200);
-        createPlayer.setFont(new Font("Cambria", 20));
-        createPlayer.setOnAction(e ->
-                        pcs.firePropertyChange("Play", "value1", "value2")
-        );
-
+        playButton = new Button("Play");
+        playButton.setPrefWidth(200);
+        playButton.setFont(new Font("Cambria", 20));
     }
 
-    public void createHighScoreButton(){
-
+    private void createHighScoreButton(){
         //Creates the highscoreButton
         highScoreButton = new Button("High Score");
         highScoreButton.setPrefWidth(200);
         highScoreButton.setFont(new Font("Cambria", 20));
-        highScoreButton.setOnAction(e ->
-                        pcs.firePropertyChange("highScoreButton", "value1", "value2")
-        );
     }
 
     private void createAboutButton(){
-
         //Creats the About button
         aboutButton = new Button("About Maze");
         aboutButton.setPrefWidth(200);
         aboutButton.setFont(new Font("Cambria", 20));
-        aboutButton.setOnAction(e ->
-                pcs.firePropertyChange("aboutbutton","v1","v2"));
     }
 
+    public void addController(MainController c){
+        highScoreButton.setOnAction(c);
+        playButton.setOnAction(c);
+        aboutButton.setOnAction(c);
+    }
 
+    public Button getPlayButton(){
+        return playButton;
+    }
 
+    public Button getHighScoreButton(){
+        return highScoreButton;
+    }
+
+    public Button getAboutButton(){
+        return aboutButton;
+    }
 }

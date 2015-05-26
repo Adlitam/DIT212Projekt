@@ -1,5 +1,6 @@
 package edu.gu.maze.view;
 
+import edu.gu.maze.controller.CreatePlayerController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,23 +12,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-
 
 public class CreatePlayerView {
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
-    BorderPane borderPaneLayout;
+    private BorderPane borderPaneLayout;
     private TextField name;
     private ImageView mage;
     private ImageView thief;
     private ImageView warrior;
     private int slot;
-
-
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        pcs.addPropertyChangeListener(listener);
-    }
+    private Button playButton;
+    private Button backButton;
 
     // Put together all parts of the stage
     public CreatePlayerView(Stage stage, int slot){
@@ -39,24 +33,19 @@ public class CreatePlayerView {
         createMiddle();
         createBottom();
         Scene highScoreScene = new Scene(borderPaneLayout, 800, 620);
-
         stage.setScene(highScoreScene);
     }
 
     // Creates the top of the stage that includes a label and a TextField
     private void createTop(){
         GridPane setName = new GridPane();
-
         Label title = new Label("Write Your Name:");
         GridPane.setConstraints(title,0,0);
-
         name = new TextField();
         name.setMinWidth(400);
         GridPane.setConstraints(name,0,1);
-
         setName.getChildren().addAll(title, name);
         setName.setAlignment(Pos.CENTER);
-
         borderPaneLayout.setTop(setName);
     }
 
@@ -76,7 +65,6 @@ public class CreatePlayerView {
         mage.setImage(image);
         mage.setFitHeight(200);
         mage.setFitWidth(200);
-        mage.setOnMouseClicked(e ->  pcs.firePropertyChange("mage", warrior, thief));
         return mage;
     }
 
@@ -87,7 +75,6 @@ public class CreatePlayerView {
         warrior.setImage(image);
         warrior.setFitHeight(250);
         warrior.setFitWidth(200);
-        warrior.setOnMouseClicked(e -> pcs.firePropertyChange("warrior", mage, thief));
         return warrior;
     }
 
@@ -98,32 +85,55 @@ public class CreatePlayerView {
         thief.setImage(image);
         thief.setFitHeight(200);
         thief.setFitWidth(200);
-        thief.setOnMouseClicked(e ->
-            pcs.firePropertyChange("thief", mage, warrior)
-        );
         return thief;
     }
 
     // Creates the bottom of the stage that includes the play and back buttoms
     private void createBottom(){
         HBox playAndReturn = new HBox();
-
-        Button playButton = new Button("Play");
+        playButton = new Button("Play");
         playButton.setPrefWidth(200);
-        playButton.setOnAction(e ->
-                        pcs.firePropertyChange("playButton", name, slot)
-        );
-
-        Button backButton = new Button("Back to start");
+        backButton = new Button("Back to start");
         backButton.setPrefWidth(200);
-        backButton.setOnAction(e ->
-                pcs.firePropertyChange("backButtonH", "value1", "value2")
-        );
-
         playAndReturn.getChildren().addAll(playButton, backButton);
         playAndReturn.setAlignment(Pos.TOP_CENTER);
         playAndReturn.setSpacing(10);
-
         borderPaneLayout.setBottom(playAndReturn);
+    }
+
+    public void addController(CreatePlayerController c){
+        playButton.setOnAction(c);
+        backButton.setOnAction(c);
+        mage.setOnMouseClicked(c.getMec());
+        warrior.setOnMouseClicked(c.getMec());
+        thief.setOnMouseClicked(c.getMec());
+    }
+
+    public Button getPlayButton(){
+        return playButton;
+    }
+
+    public Button getBackButton(){
+        return backButton;
+    }
+
+    public TextField getName(){
+        return name;
+    }
+
+    public int getSlot(){
+        return slot;
+    }
+
+    public ImageView getMage(){
+        return mage;
+    }
+
+    public ImageView getWarrior(){
+        return warrior;
+    }
+
+    public ImageView getThief(){
+        return thief;
     }
 }
