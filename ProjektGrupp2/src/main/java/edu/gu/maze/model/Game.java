@@ -3,12 +3,14 @@ package edu.gu.maze.model;
 import static edu.gu.maze.util.Constants.*;
 import edu.gu.maze.util.ResourceReader;
 import edu.gu.maze.util.SavedInformationHandler;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
+@SuppressFBWarnings("CD_CIRCULAR_DEPENDENCY")
 public class Game implements IGame, Serializable{
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     //DATA
@@ -24,11 +26,11 @@ public class Game implements IGame, Serializable{
     private boolean gamesDone = false;
     
 //MATERIAL RELATING TO CURRENT SESSION
-    //The next line is there just as a template for suppressing bugs.
-    //It will get removed before sending in the last time.
-    //@SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
+    @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
     private transient Question currentQuestion;
+    @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
     private transient SaveSlot currentPlayer;
+    @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
     private transient Match currentMatch;
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -177,9 +179,11 @@ public int isThisTheRightAnswer(int index) {
     }
 
     private void move(int i , String direction){
-        if (i != NO){
+        if (i == YES){
             pcs.firePropertyChange(direction, "value1", "value2");
         }
+        //TODO: i may be APPLE for no apples, KEY for no key, NOFINAL for no final key
+        // or GOTAPPLE and GOTKEY for having received an apple or a key (from a chest).
         if (i == FINAL){
             totalScore = getPoints() + (500 - time);
             //calculate final score. Communicate to view somehow.

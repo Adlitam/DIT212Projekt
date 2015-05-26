@@ -16,7 +16,7 @@ public class Question implements Serializable{
         if (a.length<2) 
             throw new IllegalArgumentException ("Attempted to initialize a Question with"
                 + "fewer than two answers.");
-        answers = a;
+        answers = a.clone();
         if (r<0|| r>= a.length) 
             throw new IllegalArgumentException ("Attempted to initialize a Question with"
                 + "bad argument for rightAnswer: " + r);
@@ -26,7 +26,7 @@ public class Question implements Serializable{
         return question;
     }
     public String[] getAnswers(){
-        return answers;
+        return answers.clone();
     }
     public boolean isThisTheRightAnswer(int i){
         if (i<0|| i>= answers.length) throw new IllegalArgumentException ("The argument to isThisTheRightAnswer"

@@ -10,6 +10,7 @@ import edu.gu.maze.view.FinalDoorView;
 import edu.gu.maze.view.RoadView;
 import edu.gu.maze.view.WallView;
 import javafx.scene.image.ImageView;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,12 +23,13 @@ import java.util.Scanner;
  */
 public class ResourceReader {
     //for usage, see test file
+    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     public static Match readMapForModel(String filename){
         Scanner s;
         try {
         s = new Scanner(new File(filename));
         } catch (FileNotFoundException e){
-            throw new RuntimeException ("Couldn't find file " + filename);
+            throw new RuntimeException ("Couldn't find Question file");
         }
         //The first line in the file should contain the starting x and y positions
         int x = Integer.parseInt(s.next());
@@ -46,9 +48,11 @@ public class ResourceReader {
         return new Match (list.toArray(new ISquare[1][1]), x, y);
     }
     
+    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     public static Question[] readQuestions(){
         Scanner s;
         try {
+            
         s = new Scanner(new File("src/main/resources/edu/gu/maze/util/Questions.txt"));
         } catch (FileNotFoundException e){
             throw new RuntimeException ("Couldn't find Question file");
