@@ -15,7 +15,7 @@ public class Match{
     private int y;
     private int apples;
     private int keys;
-    private boolean finalkey = false;
+    private boolean finalkey = true;
     private int score = 0;
     
     @SuppressFBWarnings("EI_EXPOSE_REP2")
