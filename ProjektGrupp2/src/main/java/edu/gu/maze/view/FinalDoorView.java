@@ -10,7 +10,7 @@ public class FinalDoorView extends ImageView{
     public FinalDoorView(int x, int y){
         this.xPos = x;
         this.yPos = y;
-        Image image = new Image("road.jpg");
+        Image image = new Image("FinalDoor.png");
         setImage(image);
         setFitWidth(30);
         setFitHeight(30);
