@@ -115,7 +115,8 @@ public int isThisTheRightAnswer(int index) {
     
     @Override
     public void startMatch(int map){
-            currentMatch = ResourceReader.readMapForModel(levels[map].getMap());
+        currentMatch = ResourceReader.readMapForModel(levels[map].getMap());
+        pcs.firePropertyChange("MAP_CHOSEN", levels[map].getMap(), "value2");
     }
     
     @Override
