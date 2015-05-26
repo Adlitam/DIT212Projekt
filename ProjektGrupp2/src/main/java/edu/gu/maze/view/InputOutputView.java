@@ -64,8 +64,14 @@ public class InputOutputView implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch(evt.getPropertyName()){
-            case "NOFINAL":
+            case "NO_FINAL_KEY":
                 output.setText("You do not have a final door key!");
+                break;
+            case "NO_KEY":
+                output.setText("You do not have a door key!");
+                break;
+            case "NO_APPLE":
+                output.setText("You do not have any apples!");
                 break;
         }
     }
