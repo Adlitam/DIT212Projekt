@@ -16,14 +16,10 @@ public class Game implements IGame, Serializable{
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     //DATA
     private static final long serialVersionUID = 1L;
-    //TODO : Replace this with appropriate data structure of questions.
     private final Question[] allQuestions = ResourceReader.readQuestions();
     private final SaveSlot[] slots = new SaveSlot[3];
     private final Level[] levels = new Level[3];
     ArrayList<HighScore> totalHighScores = new ArrayList<HighScore>();
-    //private int totalScore = 0;
-
-    private int time;
     private boolean gamesDone = false;
     
 //MATERIAL RELATING TO CURRENT SESSION

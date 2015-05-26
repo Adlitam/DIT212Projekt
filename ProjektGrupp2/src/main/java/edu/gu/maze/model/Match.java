@@ -143,6 +143,6 @@ public class Match{
     }
     
     protected void endMatch(){
-        score += Math.max(500, time);
+        score += Math.max(0, 500-time);
     }
 }
