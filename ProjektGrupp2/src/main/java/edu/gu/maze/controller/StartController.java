@@ -2,7 +2,6 @@ package edu.gu.maze.controller;
 
 import edu.gu.maze.model.Game;
 import edu.gu.maze.util.Constants;
-
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.*;
 import javafx.event.ActionEvent;
@@ -14,7 +13,7 @@ public class StartController implements EventHandler<ActionEvent> {
     private Game model;
     private Stage stage;
     private StartView view;
-
+    private InfoController infoController;
 
     public StartController(IGame model, StartView view, Stage primaryStage){
         this.model = (Game) model;
@@ -25,7 +24,7 @@ public class StartController implements EventHandler<ActionEvent> {
 
     private void play(){
         InfoView infoView = new InfoView();
-        new InfoController(model, infoView);
+        infoController = new InfoController(model, infoView);
         InputOutputView inputView = new InputOutputView();
         new InputOutputViewController(model, inputView, stage);
         MapView mapView = new MapView();
@@ -39,9 +38,9 @@ public class StartController implements EventHandler<ActionEvent> {
         Object b = event.getSource();
         if(b == view.getSlot1Button()){
             if(view.checkSlot1()){
-
-                model.startMatch(Constants.MAP1);
                 play();
+                model.startMatch(Constants.MAP1);
+                infoController.setAnimationTimer();
             }else {
                 CreatePlayerView createPlayerView1 = new CreatePlayerView(stage, Constants.SLOT1);
                 CreatePlayerController createPlayerController1 = new CreatePlayerController(model, createPlayerView1, stage);
@@ -49,10 +48,9 @@ public class StartController implements EventHandler<ActionEvent> {
         }
         if(b == view.getSlot2Button()){
             if(view.checkSlot2()){
-
-                model.startMatch(Constants.MAP1);
                 play();
-
+                model.startMatch(Constants.MAP1);
+                infoController.setAnimationTimer();
             }else {
                 CreatePlayerView createPlayerView2 = new CreatePlayerView(stage, Constants.SLOT2);
                 CreatePlayerController createPlayerController2 = new CreatePlayerController(model, createPlayerView2, stage);
@@ -60,9 +58,9 @@ public class StartController implements EventHandler<ActionEvent> {
         }
         if(b == view.getSlot3Button()){
             if(view.checkSlot3()){
-                
-                model.startMatch(Constants.MAP1);
                 play();
+                model.startMatch(Constants.MAP1);
+                infoController.setAnimationTimer();
             }else{
                 CreatePlayerView createPlayerView3 = new CreatePlayerView(stage, Constants.SLOT3);
                 CreatePlayerController createPlayerController3 = new CreatePlayerController(model, createPlayerView3, stage);
