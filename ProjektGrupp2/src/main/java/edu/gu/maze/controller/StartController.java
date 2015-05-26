@@ -67,6 +67,7 @@ public class StartController implements EventHandler<ActionEvent> {
         new InputOutputViewController(model, inputView, stage);
         MapView mapView = new MapView();
         model.addPropertyChangeListener(mapView);
+        model.addPropertyChangeListener(inputView);
         new MapController(model, mapView, stage);
         new GameView(stage, mapView, infoView, inputView);
     }

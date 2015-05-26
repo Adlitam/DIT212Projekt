@@ -9,9 +9,7 @@ import edu.gu.maze.model.Question;
 import edu.gu.maze.model.Questioner;
 import edu.gu.maze.model.Road;
 import edu.gu.maze.model.Wall;
-import edu.gu.maze.view.FinalDoorView;
-import edu.gu.maze.view.RoadView;
-import edu.gu.maze.view.WallView;
+import edu.gu.maze.view.*;
 import javafx.scene.image.ImageView;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.File;
@@ -104,8 +102,17 @@ public class ResourceReader {
                     case 'F':
                         temp2.add(new FinalDoorView(i,j));
                         break;
+                    case 'D':
+                        temp2.add(new DoorView(i,j));
+                        break;
+                    case 'M':
+                        temp2.add(new MonsterView(i,j));
+                        break;
+                    case 'Q':
+                        temp2.add(new QuestionerView(i,j));
+                        break;
                     default:
-                        System.out.println("Something went wrong when reading the level map for the view.");
+                        System.out.println("Arrggghhh! Something went wrong when reading the level map for the view.");
                         System.exit(0);
                 }
                 j++;

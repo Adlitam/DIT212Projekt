@@ -10,7 +10,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 
-public class InputOutputView{
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public class InputOutputView implements PropertyChangeListener {
     private VBox inputAndReturnAndOutput;
     private TextArea output;
     private Rectangle2D screenSize;
@@ -56,5 +59,20 @@ public class InputOutputView{
 
     public TextArea getOutput(){
         return output;
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        switch(evt.getPropertyName()){
+            case "NO_FINAL_KEY":
+                output.setText("You do not have a final door key!");
+                break;
+            case "NO_KEY":
+                output.setText("You do not have a door key!");
+                break;
+            case "NO_APPLE":
+                output.setText("You do not have any apples!");
+                break;
+        }
     }
 }

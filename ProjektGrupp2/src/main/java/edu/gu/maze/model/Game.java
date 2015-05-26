@@ -187,6 +187,15 @@ public int isThisTheRightAnswer(int index) {
             pcs.firePropertyChange(direction, "value1", "value2");
         }
         //TODO: i may be APPLE for no apples, KEY for no key, NOFINAL for no final key
+        if(i == APPLE){
+            pcs.firePropertyChange("NO_APPLE", "value1", "value2");
+        }
+        if(i == KEY){
+            pcs.firePropertyChange("NO_KEY", "value1", "value2");
+        }
+        if(i == NOFINAL){
+            pcs.firePropertyChange("NO_FINAL_KEY", "value1", "value2");
+        }
         // or GOTAPPLE and GOTKEY for having received an apple or a key (from a chest).
         if (i == FINAL){
             currentMatch.endMatch();
