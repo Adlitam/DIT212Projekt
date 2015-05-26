@@ -22,7 +22,7 @@ public class CongratzController implements EventHandler<ActionEvent> {
         this.view.addController(this);
 
         Label yourScore = view.getYourScore();
-        yourScore.setText("Congratulations \n Your score:" + model.getTotalScore());
+        yourScore.setText("Congratulations \n Your score:" + model.getPoints());
     }
 
     private void play(){

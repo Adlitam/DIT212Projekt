@@ -40,7 +40,7 @@ public interface IGame {
     public boolean gamesDone();
 
     // Returns the total score for the map
-    public int getTotalScore();
+    //public int getTotalScore();
 
     public void setCurrentMatchToNull();
 

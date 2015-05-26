@@ -78,6 +78,7 @@ public class StartController implements EventHandler<ActionEvent> {
         if(b == view.getSlot1Button()){
             if(view.checkSlot1()){
                 play();
+                model.selectPlayer(Constants.SLOT1);
                 model.startMatch(Constants.MAP1);
                 infoController.setAnimationTimer();
             }else {
@@ -88,6 +89,7 @@ public class StartController implements EventHandler<ActionEvent> {
         if(b == view.getSlot2Button()){
             if(view.checkSlot2()){
                 play();
+                model.selectPlayer(Constants.SLOT2);
                 model.startMatch(Constants.MAP1);
                 infoController.setAnimationTimer();
             }else {
@@ -99,6 +101,7 @@ public class StartController implements EventHandler<ActionEvent> {
             if(view.checkSlot3()){
 
                 play();
+                model.selectPlayer(Constants.SLOT2);
                 model.startMatch(Constants.MAP1);
                 infoController.setAnimationTimer();
             }else{

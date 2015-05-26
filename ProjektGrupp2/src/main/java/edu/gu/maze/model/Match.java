@@ -17,6 +17,7 @@ public class Match{
     private int keys;
     private boolean finalkey = true;
     private int score = 0;
+    private int time = 0;
     
     @SuppressFBWarnings("EI_EXPOSE_REP2")
     public Match (ISquare[][] map, int x, int y){     
@@ -135,5 +136,13 @@ public class Match{
             buf.append("\n");
         }
         return buf.toString();
+    }
+    
+    protected void setTime(int min, int sec){
+        time=min*60+sec;
+    }
+    
+    protected void endMatch(){
+        score += Math.max(0, 500-time);
     }
 }
