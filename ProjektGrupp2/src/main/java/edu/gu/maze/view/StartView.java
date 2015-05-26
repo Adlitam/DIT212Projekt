@@ -105,11 +105,62 @@ public class StartView {
         layout.setBottom(hBoxBotton);
     }
 
+    public boolean checkSlot1(){
+        if(player1.equals("")){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean checkSlot2(){
+        if(player2.equals("")){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean checkSlot3(){
+        if(player3.equals("")){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
     public void addController(StartController c){
         slot1Button.setOnAction(c);
         slot2Button.setOnAction(c);
         slot3Button.setOnAction(c);
         backButton.setOnAction(c);
+    }
+
+    public String getPlayer1() {
+        return player1;
+    }
+
+    public String getPlayer2() {
+        return player2;
+    }
+
+    public String getPlayer3() {
+        return player3;
+    }
+
+    public int getType1() {
+        return type1;
+    }
+
+    public int getType2() {
+        return type2;
+    }
+
+    public int getType3() {
+        return type3;
     }
 
     public Button getSlot1Button(){

@@ -1,5 +1,6 @@
 package edu.gu.maze.controller;
 
+import edu.gu.maze.model.Game;
 import edu.gu.maze.util.Constants;
 
 import edu.gu.maze.model.IGame;
@@ -10,32 +11,63 @@ import javafx.stage.Stage;
 
 
 public class StartController implements EventHandler<ActionEvent> {
-    private IGame model;
+    private Game model;
     private Stage stage;
     private StartView view;
 
 
     public StartController(IGame model, StartView view, Stage primaryStage){
-        this.model = model;
+        this.model = (Game) model;
         this.stage = primaryStage;
         this.view = view;
         this.view.addController(this);
+    }
+
+    private void play(){
+        InfoView infoView = new InfoView();
+        new InfoController(model, infoView);
+        InputOutputView inputView = new InputOutputView();
+        new InputOutputViewController(model, inputView, stage);
+        MapView mapView = new MapView();
+        model.addPropertyChangeListener(mapView);
+        new MapController(model, mapView, stage);
+        new GameView(stage, mapView, infoView, inputView);
     }
 
     @Override
     public void handle(ActionEvent event) {
         Object b = event.getSource();
         if(b == view.getSlot1Button()){
-            CreatePlayerView startView1 = new CreatePlayerView(stage, Constants.SLOT1);
-            CreatePlayerController createPlayerController1 = new CreatePlayerController(model, startView1, stage);
+            if(view.checkSlot1()){
+
+                model.startMatch(Constants.MAP1);
+                play();
+            }else {
+                CreatePlayerView createPlayerView1 = new CreatePlayerView(stage, Constants.SLOT1);
+                CreatePlayerController createPlayerController1 = new CreatePlayerController(model, createPlayerView1, stage);
+            }
         }
         if(b == view.getSlot2Button()){
-            CreatePlayerView startView2 = new CreatePlayerView(stage, Constants.SLOT2);
-            CreatePlayerController createPlayerController2 = new CreatePlayerController(model, startView2, stage);
+            if(view.checkSlot2()){
+
+                model.startMatch(Constants.MAP1);
+                play();
+
+            }else {
+                CreatePlayerView createPlayerView2 = new CreatePlayerView(stage, Constants.SLOT2);
+                CreatePlayerController createPlayerController2 = new CreatePlayerController(model, createPlayerView2, stage);
+            }
         }
         if(b == view.getSlot3Button()){
-            CreatePlayerView startView3 = new CreatePlayerView(stage, Constants.SLOT3);
-            CreatePlayerController createPlayerController3 = new CreatePlayerController(model, startView3, stage);
+            if(view.checkSlot3()){
+                
+                model.startMatch(Constants.MAP1);
+                play();
+            }else{
+                CreatePlayerView createPlayerView3 = new CreatePlayerView(stage, Constants.SLOT3);
+                CreatePlayerController createPlayerController3 = new CreatePlayerController(model, createPlayerView3, stage);
+            }
+
         }
         if(b == view.getBackButton()){
             MainView mainView = new MainView(stage);
