@@ -10,6 +10,8 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 
+
+
 public class StartController implements EventHandler<ActionEvent> {
     private Game model;
     private Stage stage;
@@ -60,7 +62,7 @@ public class StartController implements EventHandler<ActionEvent> {
         }
         if(b == view.getSlot3Button()){
             if(view.checkSlot3()){
-                
+
                 model.startMatch(Constants.MAP1);
                 play();
             }else{
@@ -73,5 +75,27 @@ public class StartController implements EventHandler<ActionEvent> {
             MainView mainView = new MainView(stage);
             MainController mainController = new MainController(model, mainView, stage);
         }
+
+        deletePlayer(event);
+
     }
+
+    private void deletePlayer(ActionEvent event){
+
+        Object b = event.getSource();
+
+        if(b == view.getDeleteSlot1()){
+            model.deletePlayer(Constants.SLOT1);
+            
+        }
+        if(b == view.getDeleteSlot2()){
+            model.deletePlayer(Constants.SLOT2);
+        }
+        if(b == view.getDeleteSlot3()){
+            model.deletePlayer(Constants.SLOT3);
+        }
+
+
+    }
+
 }
