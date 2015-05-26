@@ -39,8 +39,8 @@ public class Game implements IGame, Serializable{
 
     public Game(){
         levels[0] = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
-        levels[1] = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
-        levels[2] = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
+        levels[1] = new Level ("src/main/resources/edu/gu/maze/util/Level2.txt");
+        levels[2] = new Level ("src/main/resources/edu/gu/maze/util/Level3.txt");
     }
 
     @Override
