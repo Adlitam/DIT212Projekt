@@ -76,18 +76,13 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
             TextField input = view.getName();
             String name = input.getText();
             if(name.length() > 0) {
-                try {
-                    int slot = view.getSlot();
-                    System.out.println("Name: " + name);
-                    System.out.println("Type: " + type);
-                    System.out.println("Slot: " + slot);
-                    play();
-                    model.createPlayer(slot, name, type);
-                    model.startMatch(Constants.MAP1);
-
-                }catch (RuntimeException e1){
-                    System.out.println("The slot is already used");
-                }
+                int slot = view.getSlot();
+                System.out.println("Name: " + name);
+                System.out.println("Type: " + type);
+                System.out.println("Slot: " + slot);
+                model.createPlayer(slot, name, type);
+                model.startMatch(Constants.MAP1);
+                play();
             }else{
                 input.setPromptText("Fill in your name!!!");
             }

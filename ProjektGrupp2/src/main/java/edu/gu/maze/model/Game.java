@@ -20,6 +20,7 @@ public class Game implements IGame, Serializable{
     ArrayList<HighScore> totalHighScores = new ArrayList();
 
     private int time;
+    private boolean gamesDone = false;
     
 //MATERIAL RELATING TO CURRENT SESSION
     //The next line is there just as a template for suppressing bugs.
@@ -71,6 +72,11 @@ public int isThisTheRightAnswer(int index) {
     @Override
     public void setTime(int min, int sec) {
         this.time=min*60+sec;
+    }
+
+    @Override
+    public boolean gamesDone() {
+        return gamesDone;
     }
 
     @Override
@@ -135,48 +141,34 @@ public int isThisTheRightAnswer(int index) {
     @Override
     public void moveUp(){
         int i = currentMatch.moveUp();
-        if (i != NO){
-            pcs.firePropertyChange("UP", "value1", "value2");
-        }
-        if (i == FINAL){
-            //calculate final score. Communicate to view somehow.
-            currentMatch = null;
-        }
+        move(i, "UP");
     }
     
     @Override
     public void moveDown(){
         int i = currentMatch.moveDown();
-        if (i != NO){
-            pcs.firePropertyChange("DOWN", "value1", "value2");
-        }
-        if (i == FINAL){
-            //calculate final score. Communicate to view somehow.
-            currentMatch = null;
-        }
+        move(i, "DOWN");
     }
     
     @Override
     public void moveLeft(){
         int i = currentMatch.moveLeft();
-        if (i != NO){
-            pcs.firePropertyChange("LEFT", "value1", "value2");
-        }
-        if (i == FINAL){
-            //calculate final score. Communicate to view somehow.
-            currentMatch = null;
-        }
+        move(i, "LEFT");
     }
     
     @Override
     public void moveRight(){
         int i = currentMatch.moveRight();
+        move(i, "RIGHT");
+    }
+
+    private void move(int i , String direction){
         if (i != NO){
-            pcs.firePropertyChange("RIGHT", "value1", "value2");
+            pcs.firePropertyChange(direction, "value1", "value2");
         }
         if (i == FINAL){
             //calculate final score. Communicate to view somehow.
-            currentMatch = null;
+            gamesDone=true;
         }
     }
     

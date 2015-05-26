@@ -36,6 +36,8 @@ public interface IGame {
     // Takes the time from controller
     public void setTime(int min, int sec);
 
+    public boolean gamesDone();
+
     //To create a player and set him/her as current player
     //Slot may be either Constants.SLOT1, Constants.SLOT2, or Constants.SLOT3
     //Type has possible values Constants.MAGE, Constants.WARRIOR, and Constants.THIEF
