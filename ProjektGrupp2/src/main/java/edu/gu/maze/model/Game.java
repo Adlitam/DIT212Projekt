@@ -217,8 +217,8 @@ public int isThisTheRightAnswer(int index) {
             int a = currentMatch.getScore();
             HighScore score = currentPlayer.addHighScore(a, currentLevel);
             addHighScore(score);
-            //levels[currentLevel].addHighScore(score);
             gamesDone=true;
+            SavedInformationHandler.saveGame(this);
             pcs.firePropertyChange("GAMESDONE", "value1", "value2");
         }
     }

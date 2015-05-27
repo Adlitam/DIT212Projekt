@@ -19,6 +19,7 @@ public class TotalScoreView {
 
     BorderPane layput;
     Button backButton;
+    //A list of highscore and playername, date .
     String[] score;
 
     public TotalScoreView(Stage stage, String[] score){
@@ -33,6 +34,7 @@ public class TotalScoreView {
         createBackButton();
         createTop();
 
+        //sets the background onthe the scene
         layput.setStyle("-fx-background-image: url(\"highscore.jpg\");");
 
         //Sets the scene
@@ -40,11 +42,13 @@ public class TotalScoreView {
         stage.setScene(highScoreScene);
     }
 
+    //shows the list with all highscore for every player that
+    //have played the game
     private void createList(){
         VBox vBox = new VBox();
         Label player;
+
         for(String x : score){
-            System.out.print(x);
             player = new Label(x);
             player.setFont(new Font(20));
             vBox.getChildren().addAll(player);
@@ -57,6 +61,7 @@ public class TotalScoreView {
 
     }
 
+    //Shows the title of the stage
     private void createTop(){
 
         Label title = new Label("High Score");
@@ -69,6 +74,7 @@ public class TotalScoreView {
 
     }
 
+    //Sets the backbutton on the bottom of the stage
     private void createBackButton(){
 
         backButton = new Button("Back to start");
@@ -80,12 +86,13 @@ public class TotalScoreView {
 
     }
 
-
+    //Adding the event to the backbutton
     public void addController(TotalScoreController c){
         backButton.setOnAction(c);
 
     }
 
+    //Returns the backbutton
     public Button getBackButton() {
         return backButton;
     }

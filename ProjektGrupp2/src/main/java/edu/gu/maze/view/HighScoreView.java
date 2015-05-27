@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import javax.xml.soap.Text;
 
-@SuppressFBWarnings("LSC_LITERAL_STRING_COMPARISON")
+
 public class HighScoreView{
     private Button backButton,totalScoreButton;
     private BorderPane borderPaneLayout;
@@ -33,10 +33,8 @@ public class HighScoreView{
         createTop();
         createBotton();
 
+        //Sets the background
         borderPaneLayout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
-
-
-
 
         //Sets the scene
         Scene highScoreScene = new Scene(borderPaneLayout, 800, 620);
@@ -55,10 +53,12 @@ public class HighScoreView{
         score3 = playerScore[2];
     }
 
+    @SuppressFBWarnings("LSC_LITERAL_STRING_COMPARISON")
     private void createList(){
 
         VBox vBoxCenter = new VBox();
 
+        //creates a list for every slot with the total score
         for(int i = 0; i < 3; i++){
             if(i == 0) {
                 if(!player1.equals("")) {
@@ -85,7 +85,7 @@ public class HighScoreView{
 
 
         vBoxCenter.setAlignment(Pos.CENTER);
-      vBoxCenter.setSpacing(100);
+        vBoxCenter.setSpacing(100);
         vBoxCenter.setStyle("-fx-border-color: Black");
         //Added the hBox to the layout.
         borderPaneLayout.setCenter(vBoxCenter);
@@ -93,9 +93,8 @@ public class HighScoreView{
 
     }
 
+    //Create one panel for the score with the player name and the scores for ever slot
     private void createLabel(String playerName, int scorePlayer){
-
-
 
             player = new Label(playerName);
             player.setFont(new Font("Verdana", 40));
@@ -110,6 +109,7 @@ public class HighScoreView{
 
     }
 
+    //Creates a empty panel if the slot is empty
     private void createEmptyLabel(){
         player = new Label();
         player.setFont(new Font("Verdana", 40));
@@ -148,12 +148,13 @@ public class HighScoreView{
 
     }
 
-
+    //Adding the event on the buttons
     public void addController(HighScoreController c){
         backButton.setOnAction(c);
         totalScoreButton.setOnAction(c);
     }
 
+    //returns the buttons
     public Button getBackButton(){
         return backButton;
     }
