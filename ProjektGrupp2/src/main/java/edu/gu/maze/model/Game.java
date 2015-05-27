@@ -63,6 +63,7 @@ public int isThisTheRightAnswer(int index) {
         currentMatch.correctAnswer();
         return 1;
     }
+        currentMatch.wrongtAnswer();
         return 0;
 }
 

@@ -78,21 +78,12 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
         TextArea output = view.getOutput();
         try {
             if (model.isThisTheRightAnswer(i) == 1) {
-                output.setText("Correct answer!! \n Your earned: \n 5 Points \n 1 Key \n 1 Apple");
+                output.setText("Correct answer!! \nYour earned: \n5 Points \n1 Key \n 1Apple");
             } else {
-                output.setText("Wrong answer!!");
+                output.setText("Wrong answer!! \nYou lost 5 points");
             }
         }catch(NullPointerException e){
             System.out.println("You gave an answer without any question");
         }
     }
-
-    // get the Answer and print it out in the output field
-    private void getQuestionAndAnswers(){
-        TextArea output = view.getOutput();
-            String question = model.getQuestion();
-            String[] answers = model.getAnswers();
-            output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
-    }
-
 }
