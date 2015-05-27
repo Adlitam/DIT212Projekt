@@ -70,6 +70,7 @@ public class ResourceReader {
         return list.toArray(new Question[1]);
     }
 
+    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     public static ImageView[][] readMapForView(String filename){
         Scanner s = null;
         try{
