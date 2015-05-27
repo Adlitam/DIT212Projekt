@@ -11,11 +11,6 @@ public class Chest implements ISquare {
     }
 
     @Override
-    public boolean okayToTeleportHere() {
-        return open;
-    }
-
-    @Override
     public String toString(){
         return "Chest";
     }

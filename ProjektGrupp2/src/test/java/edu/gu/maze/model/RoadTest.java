@@ -14,10 +14,6 @@ public class RoadTest {
         assertTrue(road.canIMoveHere() == Constants.YES);
     }
 
-    @Test
-    public void testOkayToTeleportHere() {
-        assertTrue(road.okayToTeleportHere());
-    }
 
     // Test if no errors occurs when calling ClearWay()
     @Test

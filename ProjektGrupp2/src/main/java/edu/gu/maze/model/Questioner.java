@@ -14,11 +14,6 @@ public class Questioner implements ISquare{
     }
 
     @Override
-    public boolean okayToTeleportHere() {
-        return true;
-    }
-
-    @Override
     public String toString(){
         return "Questioner";
     }

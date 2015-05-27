@@ -13,11 +13,6 @@ public class Wall implements ISquare{
         return NO;
     }
 
-    @Override
-    public boolean okayToTeleportHere() {
-        return false;
-    }
-
     //this method should not be implemented since it's violating interface segregation principle but I don't know how to fix it.
     @Override
     public void clearWay() {
