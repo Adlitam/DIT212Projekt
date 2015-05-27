@@ -20,6 +20,8 @@ public class Game implements IGame, Serializable{
     private final SaveSlot[] slots = new SaveSlot[3];
     private final Level[] levels = new Level[3];
     ArrayList<HighScore> totalHighScores = new ArrayList<HighScore>();
+
+    // Sets to True if the game is done so the Controllers know when to end all Animation timers
     private boolean gamesDone = false;
     
 //MATERIAL RELATING TO CURRENT SESSION
@@ -65,6 +67,7 @@ public int isThisTheRightAnswer(int index) {
 }
 
 //TODO: Decide if you'd rather use these or the same methods in Match
+// TODO: My precious rows
 // The Match object can be retrieved using getCurrentMatch() below
     @Override
     public Integer getPoints() {
@@ -173,31 +176,43 @@ public int isThisTheRightAnswer(int index) {
     }
 
     private void move(int i , String direction){
+
         if (i == YES){
             pcs.firePropertyChange(direction, "value1", "value2");
             pcs.firePropertyChange("YES", "value1", "value2");
         }
-        //TODO: i may be APPLE for no apples, KEY for no key, NOFINAL for no final key
+
+        // Tells the view that the model dont have any appels
         if(i == APPLE){
             pcs.firePropertyChange("NO_APPLE", "value1", "value2");
         }
+
+        // Tells the view that the model have appels
         if(i == GOTAPPLE){
             pcs.firePropertyChange("APPLE", "value1", "value2");
         }
+
+        // Tells the view that the model dont have any keys
         if(i == KEY){
             pcs.firePropertyChange("NO_KEY", "value1", "value2");
         }
+
+        // Tells the view that the model have keys
         if(i == GOTKEY){
             pcs.firePropertyChange("KEY", "value1", "value2");
         }
+
+        // Tells the view that the model dont have the Final key
         if(i == NOFINAL){
             pcs.firePropertyChange("NO_FINAL_KEY", "value1", "value2");
         }
+
+        // Tells the view to print out a question and all the possibly answers
         if(i == QUESTIONER){
             pcs.firePropertyChange("QUESTION", getQuestion(), getAnswers());
         }
 
-        // or GOTAPPLE and GOTKEY for having received an apple or a key (from a chest).
+        // TODO or GOTAPPLE and GOTKEY for having received an apple or a key (from a chest).
         if (i == FINAL){
             currentMatch.endMatch();
             int a = currentMatch.getScore();
@@ -207,19 +222,6 @@ public int isThisTheRightAnswer(int index) {
             gamesDone=true;
         }
     }
-    
-    /*private void sendMessages(int what){
-        if (what==APPLE){
-            //TODO send message apples-1 and monster not hungry
-        }
-        else if (what==KEY){
-            //send message key-1 and door open
-        }
-        else if (what==FINAL){
-            reset();
-            //send message game finished
-        }
-    }*/
 
     @Override
     public String[] getHighScoresForMap(int map) {

@@ -23,6 +23,8 @@ public class InfoController{
             @Override
             public void handle(long now) {
 
+                // Stop the timer if the game is done
+                // else shows the updated time,apple,key and score
                 if(model.gamesDone()){
                     animationTimer.stop();
                 }else {

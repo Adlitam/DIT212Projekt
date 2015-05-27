@@ -52,6 +52,9 @@ public class Match{
     
     private int moveTo (int x, int y){
         int permission = map[y][x].canIMoveHere();
+
+        // If you have any apple you give the apple and say that you can move here
+        // else it says that you can not move here
         if (permission == Constants.APPLE){
             if (apples>0) {
                 apples--;
@@ -61,6 +64,9 @@ public class Match{
             }
             else return Constants.APPLE;
         }
+
+        // If you have any key you usa a key and say that you can move here
+        // else it says that you can not move here
         else if (permission == Constants.KEY){
             if (keys>0) {
                 keys--;
@@ -70,6 +76,9 @@ public class Match{
             }
             else return Constants.KEY;
         }
+
+        // If you have the final key you use the final and say that you can move here
+        // else it says that you can not move here
         else if (permission == Constants.FINAL){
             if (finalkey) {
                 
@@ -78,6 +87,7 @@ public class Match{
             else return Constants.NOFINAL;
         }
 
+        // Tells you that you met a Questioner and do nothing else
         else if (permission == Constants.QUESTIONER){
             return Constants.QUESTIONER;
         }
