@@ -1,6 +1,7 @@
 package edu.gu.maze.view;
 
 import edu.gu.maze.controller.HighScoreController;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import javafx.stage.Stage;
 
 import javax.xml.soap.Text;
 
+@SuppressFBWarnings("LSC_LITERAL_STRING_COMPARISON")
 public class HighScoreView{
     private Button backButton,totalScoreButton;
     private BorderPane borderPaneLayout;
