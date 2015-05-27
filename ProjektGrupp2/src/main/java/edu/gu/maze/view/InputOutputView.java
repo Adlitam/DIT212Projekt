@@ -64,13 +64,13 @@ public class InputOutputView implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         switch(evt.getPropertyName()){
             case "NO_FINAL_KEY":
-                output.setText("You do not have a final door key!");
+                output.setText("The door is locked");
                 break;
             case "NO_KEY":
-                output.setText("You do not have a door key!");
+                output.setText("The door is locked");
                 break;
             case "NO_APPLE":
-                output.setText("You do not have any apples!");
+                output.setText("GIVE ME AN APPLE ARRRRRGG!!!!! \n\n\n The monster took 5 points ");
                 break;
             case "KEY":
                 output.setText("You opened the door with a key!");
@@ -84,7 +84,7 @@ public class InputOutputView implements PropertyChangeListener {
                 output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
                 break;
             case "CHEST":
-                output.setText("You opened a chest and looted it! \n You found: \n 10 points \n 1 apple \n 1 key");
+                output.setText("You opened a chest and looted it! \nYou found: \n10 points \n1 apple \n1 key");
                 break;
             case "YES":
                 output.clear();

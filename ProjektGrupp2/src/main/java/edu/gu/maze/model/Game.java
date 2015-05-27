@@ -31,6 +31,7 @@ public class Game implements IGame, Serializable{
     private transient SaveSlot currentPlayer;
     @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
     private transient Match currentMatch;
+    @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
     private transient int currentLevel;
     
 
@@ -63,6 +64,7 @@ public int isThisTheRightAnswer(int index) {
         currentMatch.correctAnswer();
         return 1;
     }
+        currentMatch.wrongtAnswer();
         return 0;
 }
 

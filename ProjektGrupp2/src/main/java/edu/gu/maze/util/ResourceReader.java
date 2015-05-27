@@ -54,7 +54,7 @@ public class ResourceReader {
         } catch (FileNotFoundException e){
             throw new RuntimeException ("Couldn't find Question file");
         }
-        ArrayList<Question> list = new ArrayList();
+        ArrayList<Question> list = new ArrayList<Question>();
         while (s.hasNextLine()){
             String question;
             do {

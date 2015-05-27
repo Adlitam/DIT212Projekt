@@ -2,7 +2,6 @@ package edu.gu.maze.model;
 
 import edu.gu.maze.util.Constants;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import java.io.Serializable;
 
 /**
  *
@@ -62,7 +61,10 @@ public class Match{
                 map[y][x].clearWay();
                 return Constants.GOTAPPLE;
             }
-            else return Constants.APPLE;
+            else{
+                score -= 5;
+                return Constants.APPLE;
+            }
         }
 
         // If you have any key you usa a key and say that you can move here
@@ -80,7 +82,7 @@ public class Match{
         else if (permission == Constants.CHEST){
             keys++;
             apples++;
-            score = score + 10;
+            score += 10;
             map[y][x].clearWay();
         return Constants.CHEST;
         }
@@ -145,6 +147,10 @@ public class Match{
         keys++;
         score+=5;
             finalkey =true;
+    }
+
+    protected void wrongtAnswer(){
+        score-=5;
     }
     
     

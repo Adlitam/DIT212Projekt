@@ -8,8 +8,8 @@ import java.util.Date;
  *
  * @author omega
  */
-class HighScore implements Comparable, Serializable{
-
+class HighScore implements Comparable<HighScore>, Serializable{
+    private static final long serialVersionUID = 7L;
     private final int score;
     private final String name;
     private final Date date;
@@ -24,10 +24,7 @@ class HighScore implements Comparable, Serializable{
     //CompareTo returns  negative number if this object comes before the argument
     // and a positive one if this object comes after the other object.
     @Override
-    public int compareTo(Object obj){
-        if (!(obj instanceof HighScore))
-            throw new ClassCastException();
-        HighScore h = (HighScore) obj;
+    public int compareTo(HighScore h){
         if (score>h.score) return -1;
         if (score<h.score) return 1;
         //i has a value less than 0 if this Date is before the Date argument; 
