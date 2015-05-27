@@ -77,7 +77,7 @@ public class ResourceReader {
             s = new Scanner(new File(filename));
         }catch(IOException e){
             System.out.println("could not read the file: " + filename + " while trying to initialize mapView.");
-            System.exit(0);
+            throw new RuntimeException ("could not read the file: " + filename + " while trying to initialize mapView.");
         }
         s.next();
         s.next();
@@ -114,7 +114,6 @@ public class ResourceReader {
                         //break;
                     default:
                         System.out.println("Arrggghhh! Something went wrong when reading the level map for the view.");
-                        System.exit(0);
                 }
                 j++;
             }
