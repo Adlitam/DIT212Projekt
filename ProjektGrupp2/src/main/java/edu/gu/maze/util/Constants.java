@@ -18,14 +18,14 @@ public final class Constants {
     public static final int MAGE = 1;
     public static final int THIEF = 2;
     
-    //These, as well as the variables above, denote map squares
+   /* //These, as well as the variables above, denote map squares
     public static final int ROAD = 3;
     public static final int WALL = 4;
     public static final int CHEST = 5;
     public static final int DOOR = 6;
     public static final int MONSTER = 7;
     public static final int TELEPORTER = 8;
-    
+    */
     
     //Map variable to retrieve high scores, and to select maps.
     public static final int MAP1=0;
@@ -42,6 +42,6 @@ public final class Constants {
     public static final int GOTKEY = 6;
     public static final int NOFINAL = 7;
     public static final int QUESTIONER = 8;
-
+    public static final int CHEST = 9;
 
 }

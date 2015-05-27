@@ -1,14 +1,6 @@
 package edu.gu.maze.util;
 
-import edu.gu.maze.model.Door;
-import edu.gu.maze.model.FinalDoor;
-import edu.gu.maze.model.ISquare;
-import edu.gu.maze.model.Match;
-import edu.gu.maze.model.Monster;
-import edu.gu.maze.model.Question;
-import edu.gu.maze.model.Questioner;
-import edu.gu.maze.model.Road;
-import edu.gu.maze.model.Wall;
+import edu.gu.maze.model.*;
 import edu.gu.maze.view.*;
 import javafx.scene.image.ImageView;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -44,6 +36,7 @@ public class ResourceReader {
                 else if (c=='D')snd.add(new Door());
                 else if (c=='Q')snd.add(new Questioner());
                 else if (c=='M')snd.add(new Monster());
+                else if (c=='C')snd.add(new Chest());
                 else snd.add(new Road());
             }
             list.add(snd.toArray(new ISquare[1]));
@@ -110,6 +103,9 @@ public class ResourceReader {
                         break;
                     case 'Q':
                         temp2.add(new QuestionerView(i,j));
+                        break;
+                    case 'C':
+                        temp2.add(new ChestView(i,j));
                         break;
                     default:
                         System.out.println("Arrggghhh! Something went wrong when reading the level map for the view.");

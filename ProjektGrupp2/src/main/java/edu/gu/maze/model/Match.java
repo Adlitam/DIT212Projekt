@@ -77,6 +77,14 @@ public class Match{
             else return Constants.KEY;
         }
 
+        else if (permission == Constants.CHEST){
+            keys++;
+            apples++;
+            score = score + 10;
+            map[y][x].clearWay();
+        return Constants.CHEST;
+        }
+
         // If you have the final key you use the final and say that you can move here
         // else it says that you can not move here
         else if (permission == Constants.FINAL){

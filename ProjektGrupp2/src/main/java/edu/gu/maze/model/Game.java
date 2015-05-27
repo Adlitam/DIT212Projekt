@@ -212,6 +212,11 @@ public int isThisTheRightAnswer(int index) {
             pcs.firePropertyChange("QUESTION", getQuestion(), getAnswers());
         }
 
+        // Tells the view that the player opened a chest
+        if(i == CHEST){
+            pcs.firePropertyChange("CHEST", "value1", "value2");
+        }
+
         // TODO or GOTAPPLE and GOTKEY for having received an apple or a key (from a chest).
         if (i == FINAL){
             currentMatch.endMatch();

@@ -83,6 +83,9 @@ public class InputOutputView implements PropertyChangeListener {
                 String[] answers = (String[]) evt.getNewValue();
                 output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
                 break;
+            case "CHEST":
+                output.setText("You opened a chest and looted it! \n You found: \n 10 points \n 1 apple \n 1 key");
+                break;
             case "YES":
                 output.clear();
                 break;
