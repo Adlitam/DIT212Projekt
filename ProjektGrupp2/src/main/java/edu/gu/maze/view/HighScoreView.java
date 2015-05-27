@@ -12,13 +12,14 @@ import javafx.stage.Stage;
 import javax.xml.soap.Text;
 
 public class HighScoreView{
-    private Button backButton;
+    private Button backButton,totalScoreButton;
     private BorderPane borderPaneLayout;
 
     private Label player, score;
     private  HBox highScore;
     String player1,player2,player3;
     int score1,score2,score3;
+    HBox hBoxlayout = new HBox();
 
     public HighScoreView(Stage stage, String[] playerName, int[] playerScore){
         stage.setTitle("Maze");
@@ -28,9 +29,12 @@ public class HighScoreView{
         getPlayerInfo(playerName,playerScore);
         createList();
         createTop();
-        createBackButton();
+        createBotton();
 
         borderPaneLayout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
+
+
+
 
         //Sets the scene
         Scene highScoreScene = new Scene(borderPaneLayout, 800, 620);
@@ -119,7 +123,7 @@ public class HighScoreView{
 
     public void createTop(){
         //The title and the font
-        Label title = new Label("High Score");
+        Label title = new Label("TotalScore for every slot.");
         title.setFont(new Font("Cambria", 40));
 
         HBox hBoxTop = new HBox();
@@ -129,20 +133,30 @@ public class HighScoreView{
         borderPaneLayout.setTop(hBoxTop);
     }
 
-    public void createBackButton(){
-        //Create the backbutton
-        HBox hBoxlayout = new HBox();
+    public void createBotton(){
+        //Create the botton
+
         backButton = new Button("Back to start");
-        hBoxlayout.getChildren().add(backButton);
+        totalScoreButton = new Button("HighScore");
+        hBoxlayout.getChildren().addAll(backButton, totalScoreButton);
         hBoxlayout.setAlignment(Pos.CENTER);
+        hBoxlayout.setSpacing(50);
         borderPaneLayout.setBottom(hBoxlayout);
+
+
     }
+
 
     public void addController(HighScoreController c){
         backButton.setOnAction(c);
+        totalScoreButton.setOnAction(c);
     }
 
     public Button getBackButton(){
         return backButton;
+    }
+
+    public Button getTotalScoreButton() {
+        return totalScoreButton;
     }
 }
