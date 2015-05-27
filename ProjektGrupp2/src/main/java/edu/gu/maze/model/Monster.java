@@ -6,7 +6,7 @@ import static edu.gu.maze.util.Constants.YES;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class Monster implements ISquare {
+public class Monster implements ISquare, ISquareSuppl {
     private boolean isHungry=true;
 
     @Override

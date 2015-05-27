@@ -7,11 +7,10 @@ import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class MapController implements EventHandler<KeyEvent>{
+public class MapController implements EventHandler<KeyEvent> {
     private IGame model;
     private Stage stage;
     private MapView view;
@@ -22,7 +21,6 @@ public class MapController implements EventHandler<KeyEvent>{
         this.model = model;
         this.view = view;
         this.view.addController(this);
-
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {

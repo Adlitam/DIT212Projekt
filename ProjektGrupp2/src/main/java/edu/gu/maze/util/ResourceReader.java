@@ -37,6 +37,7 @@ public class ResourceReader {
                 else if (c=='Q')snd.add(new Questioner());
                 else if (c=='M')snd.add(new Monster());
                 else if (c=='C')snd.add(new Chest());
+                else if (c=='T')snd.add(new Teleporter());
                 else snd.add(new Road());
             }
             list.add(snd.toArray(new ISquare[1]));
@@ -106,6 +107,9 @@ public class ResourceReader {
                         break;
                     case 'C':
                         temp2.add(new ChestView(i,j));
+                        break;
+                    case 'T':
+                        temp2.add(new TeleporterView(i,j));
                         break;
                     default:
                         System.out.println("Arrggghhh! Something went wrong when reading the level map for the view.");

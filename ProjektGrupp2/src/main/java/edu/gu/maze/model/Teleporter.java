@@ -20,9 +20,4 @@ public class Teleporter implements ISquare {
     public String toString(){
         return "Teleporter";
     }
-
-    @Override
-    public void clearWay() {
-        //do nothing
-    }
 }
