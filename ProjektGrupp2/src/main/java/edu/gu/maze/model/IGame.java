@@ -14,7 +14,6 @@ public interface IGame {
     isThisTheRightAnswer() has been called since the last time
     getQuestion() was called.*/
     String[] getAnswers();
-    void startMatch(int map);
 
     // return 1 if it is true or 0 if it is false
     // sets apple to apple + 1 if its true
@@ -24,7 +23,8 @@ public interface IGame {
     // if the player doesn't have it yet.
     int isThisTheRightAnswer(int index);
 
-    // returns the number of Apples the user has
+    void startMatch(int map);    
+// returns the number of Apples the user has
     Integer getApples();
 
     // returns the number of Keys the user has
@@ -65,7 +65,7 @@ public interface IGame {
     void deletePlayer (int Slot);
 
     //Returns the current match
-    Match getCurrentMatch();
+    //Match getCurrentMatch();
     
     //Retrieve specified high scores as formatted strings.
     //Results are sorted so that highest scores come first and newer scores 
