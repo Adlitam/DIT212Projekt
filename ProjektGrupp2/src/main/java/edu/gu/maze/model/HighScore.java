@@ -1,5 +1,6 @@
 package edu.gu.maze.model;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,6 +24,8 @@ class HighScore implements Comparable<HighScore>, Serializable{
     
     //CompareTo returns  negative number if this object comes before the argument
     // and a positive one if this object comes after the other object.
+    //We are not going to use equals anyway.
+    @SuppressFBWarnings("EQ_COMPARETO_USE_OBJECT_EQUALS")
     @Override
     public int compareTo(HighScore h){
         if (score>h.score) return -1;
@@ -30,7 +33,8 @@ class HighScore implements Comparable<HighScore>, Serializable{
         //i has a value less than 0 if this Date is before the Date argument; 
         //and a value greater than 0 if this Date is after the Date argument
         int i = date.compareTo(h.date);
-        return -i;
+        if (i<0) return 1;
+        return -1;
     }
     
     public int getScore(){
