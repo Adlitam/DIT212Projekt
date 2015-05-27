@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import edu.gu.maze.util.Constants;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -173,10 +175,10 @@ public class GameTest {
     @Test
     public void testGamesDone(){
         boolean bool = instance.gamesDone();
-        assertTrue(bool == true | bool == false);
+        assertTrue(bool | !bool);
     }
 
-    /*
+
     @Test
     public void testNoUnexpectedErrorsinPlayerSelection(){
         //Run this in debug mode to check actual values
@@ -185,7 +187,7 @@ public class GameTest {
         instance.deletePlayer(Constants.SLOT1);
         instance.createPlayer(Constants.SLOT1, "Harry Potter", Constants.MAGE);
     }
-    */
+
 
     @Test
     public void testSerialization(){
@@ -204,23 +206,20 @@ public class GameTest {
         {
             i.printStackTrace();
         }
-        Game returned;
         try
         {
             FileInputStream fileIn = new FileInputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            returned = (Game) in.readObject();
+            in.readObject();
             in.close();
             fileIn.close();
         }catch(IOException i)
         {
             i.printStackTrace();
-            return;
         }catch(ClassNotFoundException c)
         {
             System.out.println("Class not found");
             c.printStackTrace();
-            return;
         }
     }
 }
