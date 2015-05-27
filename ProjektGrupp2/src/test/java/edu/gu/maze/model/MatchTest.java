@@ -11,7 +11,7 @@ import org.junit.Test;
  * @author omega
  */
 public class MatchTest {
-    Match map;
+    Match match;
     HighScore score1, score2, score3, score4, score5, score6;
     //pubMatchTestTest() {
     //}
@@ -31,6 +31,52 @@ public class MatchTest {
     @After
     public void tearDown() {
     }
+
+    // Test CorrectAnswer(), getApples(), getKeys() and getScore() ;
+    @Test
+    public void testCorrectAnswer(){
+        match = new Match(new ISquare[10][10],6,6);
+        match.correctAnswer();
+        int apples = match.getApples();
+        assertTrue(apples == 1);
+        int keys = match.getKeys();
+        assertTrue(keys==1);
+        int score = match.getScore();
+        assertTrue(score==5);
+    }
+
+    // Test wrongAnswer(), getApples(), getKeys() and getScore();
+    @Test
+    public void testWrongAnswer(){
+        match = new Match(new ISquare[10][10],6,6);
+        match.wrongAnswer();
+        int apples = match.getApples();
+        assertTrue(apples == 0);
+        int keys = match.getKeys();
+        assertTrue(keys==0);
+        int score = match.getScore();
+        assertTrue(score==-5);
+    }
+
+    // Test no error in setTime()
+    @Test
+    public void testSetTime(){
+        match = new Match(new ISquare[10][10],6,6);
+        match.setTime(10,10);
+    }
+
+    // Test no error in endMatch()
+    @Test
+    public void testEndMatch(){
+        match = new Match(new ISquare[10][10],6,6);
+        match.endMatch();
+    }
+
+
+
+
+
+
 
     /**
      * Test of addHighScore method, of class Map.

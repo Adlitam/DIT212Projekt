@@ -149,7 +149,7 @@ public class Match{
             finalkey =true;
     }
 
-    protected void wrongtAnswer(){
+    protected void wrongAnswer(){
         score-=5;
     }
     
