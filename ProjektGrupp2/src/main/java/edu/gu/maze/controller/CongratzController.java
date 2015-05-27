@@ -24,6 +24,7 @@ public class CongratzController implements EventHandler<ActionEvent> {
         yourScore.setText("Congratulations \n Your score:" + model.getPoints());
     }
 
+    //initializes all the views and controllers needed for the actual gameplay view.
     private void play(){
         InfoView infoView = new InfoView();
         infoController = new InfoController(model, infoView);
@@ -36,6 +37,7 @@ public class CongratzController implements EventHandler<ActionEvent> {
         new GameView(stage, mapView, infoView, inputView);
     }
 
+    //handle method for when the player presses the back to start button and the next map button.
     @Override
     public void handle(ActionEvent event) {
         Object b = event.getSource();

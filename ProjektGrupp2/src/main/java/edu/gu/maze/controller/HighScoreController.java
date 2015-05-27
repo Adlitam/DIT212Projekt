@@ -21,6 +21,7 @@ public class HighScoreController implements EventHandler<ActionEvent> {
         this.view.addController(this);
     }
 
+    //handle method for when the player presses the back to start button and total score Button.
     @Override
     public void handle(ActionEvent event) {
         Object b = event.getSource();

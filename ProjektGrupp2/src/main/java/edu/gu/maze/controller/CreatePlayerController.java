@@ -54,7 +54,7 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
         temp2.setVisible(false);
     }
 
-    // Starts the GameView
+    //initializes all the views and controllers needed for the actual gameplay view.
     private void play(){
         InfoView infoView = new InfoView();
         infoController = new InfoController(model, infoView);
@@ -67,6 +67,7 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
         new GameView(stage, mapView, infoView, inputView);
     }
 
+    //handle method for when the player presses the back to start button and play button.
     @Override
     public void handle(ActionEvent event) {
         Object b = event.getSource();
@@ -111,6 +112,7 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
         }
     }
 
+    //method to get an instance of the inner class, MouseEventController.
     public MouseEventController getMec(){
         return mec;
     }

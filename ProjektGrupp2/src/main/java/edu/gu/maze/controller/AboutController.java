@@ -20,6 +20,7 @@ public class AboutController implements EventHandler<ActionEvent> {
         this.view.addController(this);
     }
 
+    //handle method for when the player presses the back to start button.
     @Override
     public void handle(ActionEvent event) {
         Object b = event.getSource();

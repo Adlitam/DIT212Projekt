@@ -7,8 +7,6 @@ import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 public class MapController implements EventHandler<KeyEvent> {
     private IGame model;
@@ -34,6 +32,7 @@ public class MapController implements EventHandler<KeyEvent> {
         animationTimer.start();
     }
 
+    //handle method for when the player presses the UP, DOWN, LEFT and RIGHT arrow keys.
     @Override
     public void handle(KeyEvent event) {
         switch (event.getCode()) {

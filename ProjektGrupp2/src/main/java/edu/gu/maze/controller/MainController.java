@@ -53,6 +53,7 @@ public class MainController implements EventHandler<ActionEvent> {
         playerType[2] = type3;
     }
 
+    //handle method for when the player presses the highScoreButton, playButton and aboutButton.
     @Override
     public void handle(ActionEvent event) {
         Object b = event.getSource();

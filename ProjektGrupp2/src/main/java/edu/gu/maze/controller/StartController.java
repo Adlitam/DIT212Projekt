@@ -54,6 +54,7 @@ public class StartController implements EventHandler<ActionEvent> {
         playerType[2] = type3;
     }
 
+    //initializes all the views and controllers needed for the actual gameplay view.
     private void play(){
         InfoView infoView = new InfoView();
         infoController = new InfoController(model, infoView);
@@ -66,6 +67,7 @@ public class StartController implements EventHandler<ActionEvent> {
         new GameView(stage, mapView, infoView, inputView);
     }
 
+    //handle method for when the player presses the different slots and the back to start button.
     @Override
     public void handle(ActionEvent event) {
         Object b = event.getSource();

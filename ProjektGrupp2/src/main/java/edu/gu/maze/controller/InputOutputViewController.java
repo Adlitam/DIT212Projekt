@@ -61,6 +61,7 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
         }
     }
 
+    //handle method for when the player presses the back to start button.
     @Override
     public void handle(ActionEvent event) {
         Object b = event.getSource();
@@ -70,6 +71,7 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
         }
     }
 
+    //method to get an instance of the inner class, KeyEventController.
     public KeyEventController getKec(){
         return kec;
     }

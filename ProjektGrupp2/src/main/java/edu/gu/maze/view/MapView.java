@@ -63,6 +63,7 @@ public class MapView implements PropertyChangeListener{
         player = new PlayerView(x, y, type);
     }
 
+    //listening on the model for changes
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch(evt.getPropertyName()){
@@ -87,6 +88,7 @@ public class MapView implements PropertyChangeListener{
         }
     }
 
+    //adds a controller for the GridPane, g.
     public void addController(MapController c){
         g.setOnKeyPressed(c);
     }
