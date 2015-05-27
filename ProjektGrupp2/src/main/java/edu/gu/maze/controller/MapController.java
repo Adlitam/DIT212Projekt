@@ -8,7 +8,10 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-public class MapController implements EventHandler<KeyEvent> {
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public class MapController implements EventHandler<KeyEvent>{
     private IGame model;
     private Stage stage;
     private MapView view;

@@ -225,6 +225,7 @@ public int isThisTheRightAnswer(int index) {
             addHighScore(score);
             levels[currentLevel].addHighScore(score);
             gamesDone=true;
+            pcs.firePropertyChange("GAMESDONE", "value1", "value2");
         }
     }
 

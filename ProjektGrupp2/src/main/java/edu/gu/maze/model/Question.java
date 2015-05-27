@@ -10,16 +10,16 @@ public class Question implements Serializable{
     private String [] answers;
     private int rightAnswer;
     public Question(String q, String[] a, int r){
-        if (q==null || a==null) 
+        if (q==null || a==null)
             throw new NullPointerException("Tried to initialize Question object with null");
         question = q;
         if (a.length<2) 
             throw new IllegalArgumentException ("Attempted to initialize a Question with"
-                + "fewer than two answers.");
+                + " fewer than two answers.");
         answers = a.clone();
         if (r<0|| r>= a.length) 
             throw new IllegalArgumentException ("Attempted to initialize a Question with"
-                + "bad argument for rightAnswer: " + r);
+                + " bad argument for rightAnswer: " + r);
         rightAnswer = r;
     }
     public String getQuestion(){
