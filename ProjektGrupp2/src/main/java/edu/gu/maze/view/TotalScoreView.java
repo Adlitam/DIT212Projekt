@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -29,6 +30,7 @@ public class TotalScoreView {
         this.score = score;
 
 
+
         //Create the layout
         createList();
         createBackButton();
@@ -47,14 +49,22 @@ public class TotalScoreView {
     private void createList(){
         VBox vBox = new VBox();
         Label player;
-
-        for(String x : score){
-            player = new Label(x);
+        if(score.length == 0){
+           player = new Label("The highscore is empty");
+            player.setTextFill(Paint.valueOf("Red"));
             player.setFont(new Font(20));
             vBox.getChildren().addAll(player);
             vBox.setAlignment(Pos.CENTER);
             vBox.setSpacing(20);
+        }else{
+            for(String x : score){
+                player = new Label(x);
+                player.setFont(new Font(20));
+                vBox.getChildren().addAll(player);
+                vBox.setAlignment(Pos.CENTER);
+                vBox.setSpacing(20);
 
+            }
         }
 
         layput.setCenter(vBox);

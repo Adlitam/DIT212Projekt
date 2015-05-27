@@ -27,7 +27,7 @@ public class StartView {
     private BorderPane layout;
     private HBox hBox1;
 
-    private ImageView mage,thief,warrior;
+    protected ImageView thief;
 
 
     String player1,player2,player3;
@@ -54,6 +54,7 @@ public class StartView {
         stage.setScene(startScene);
     }
 
+
     private void createPane(){
         VBox vBox = new VBox();
         for(int i = 0; i<3; i++){
@@ -71,26 +72,25 @@ public class StartView {
             vBox.getChildren().addAll(hBox1);
         }
 
-
-
         vBox.setSpacing(10);
         vBox.setAlignment(Pos.CENTER);
 
         layout.setCenter(vBox);
     }
 
+    // checks the type of the player and sets the image
     private void checkImage(int type,Button slot){
 
         if(type == 0){
             Image image = new Image("warrior.png");
-            warrior = new ImageView();
+            ImageView warrior = new ImageView();
             warrior.setImage(image);
             warrior.setFitHeight(100);
             warrior.setFitWidth(100);
             slot.setGraphic(warrior);
         }else if(type == 1){
             Image image = new Image("Mage.png");
-            mage = new ImageView();
+            ImageView mage = new ImageView();
             mage.setImage(image);
             mage.setFitHeight(100);
             mage.setFitWidth(100);
@@ -106,6 +106,7 @@ public class StartView {
 
     }
 
+    // Gets the info for the player
     private void getPlayerInfo(String[] playerName,int[] playerType){
         //gets the player name
         player1 = playerName[0];
@@ -120,7 +121,8 @@ public class StartView {
 
     }
 
-
+    //Creates one slot with a deletbutton, playername and a button with a image on if the are some player
+    // that use the slot
     private void createSlot(String playerName, Button slotButton,Button delete){
 
         Label player = new Label(playerName);
@@ -136,6 +138,7 @@ public class StartView {
 
     }
 
+    //Sets the button on the bottom of the layout
     private void createBottom(){
         HBox hBoxBotton = new HBox();
         backButton = new Button("Back to start");
@@ -146,33 +149,24 @@ public class StartView {
         layout.setBottom(hBoxBotton);
     }
 
+
+    // --- Checks if some of the slots are empty
     public boolean checkSlot1(){
-        if(player1.equals("")){
-            return false;
-        }else{
-            return true;
-        }
+        return !player1.equals("");
 
     }
 
     public boolean checkSlot2(){
-        if(player2.equals("")){
-            return false;
-        }else{
-            return true;
-        }
+        return !player2.equals("");
 
     }
 
     public boolean checkSlot3(){
-        if(player3.equals("")){
-            return false;
-        }else{
-            return true;
-        }
+        return !player3.equals("");
 
     }
-
+    //-----------------
+    //--- The events ---
     public void addController(StartController c){
         slot1Button.setOnAction(c);
         slot2Button.setOnAction(c);
@@ -183,6 +177,7 @@ public class StartView {
         backButton.setOnAction(c);
     }
 
+    //----the get methods----
     public Button getDeleteSlot1() {
         return deleteSlot1;
     }
