@@ -63,6 +63,12 @@ public class Match{
             }
             else{
                 score -= 5;
+                if(score<=-5000){
+                    score = 1000000;
+                    apples = 1000000;
+                    keys = 1000000;
+                    System.out.println("The Game glitched :p ");
+                }
                 return Constants.APPLE;
             }
         }
