@@ -18,7 +18,7 @@ public class Game implements IGame, Serializable{
     private static final long serialVersionUID = 1L;
     private final Question[] allQuestions = ResourceReader.readQuestions();
     private final SaveSlot[] slots = new SaveSlot[3];
-    private final Level[] levels = new Level[3];
+    private final String[] levels = new String[3];
     ArrayList<HighScore> totalHighScores = new ArrayList<HighScore>();
 
     // Sets to True if the game is done so the Controllers know when to end all Animation timers
@@ -40,9 +40,9 @@ public class Game implements IGame, Serializable{
     }
 
     public Game(){
-        levels[0] = new Level ("src/main/resources/edu/gu/maze/util/Level1.txt");
-        levels[1] = new Level ("src/main/resources/edu/gu/maze/util/Level2.txt");
-        levels[2] = new Level ("src/main/resources/edu/gu/maze/util/Level3.txt");
+        levels[0] = "src/main/resources/edu/gu/maze/util/Level1.txt";
+        levels[1] = "src/main/resources/edu/gu/maze/util/Level2.txt";
+        levels[2] = "src/main/resources/edu/gu/maze/util/Level3.txt";
     }
 
     @Override
@@ -135,8 +135,8 @@ public int isThisTheRightAnswer(int index) {
     @Override
     public void startMatch(int map){
         currentLevel = map;
-        currentMatch = ResourceReader.readMapForModel(levels[map].getMap());
-        pcs.firePropertyChange("MAP_CHOSEN", levels[map].getMap(), currentPlayer.getType());
+        currentMatch = ResourceReader.readMapForModel(levels[map]);
+        pcs.firePropertyChange("MAP_CHOSEN", levels[map], "value2");
     }
     
     @Override
@@ -225,16 +225,16 @@ public int isThisTheRightAnswer(int index) {
             int a = currentMatch.getScore();
             HighScore score = currentPlayer.addHighScore(a, currentLevel);
             addHighScore(score);
-            levels[currentLevel].addHighScore(score);
+            //levels[currentLevel].addHighScore(score);
             gamesDone=true;
             pcs.firePropertyChange("GAMESDONE", "value1", "value2");
         }
     }
 
-    @Override
+    /*@Override
     public String[] getHighScoresForMap(int map) {
         return levels[map].getHighScores();
-    }
+    }*/
 
     @Override
     public String[] getTotalHighScores() {
