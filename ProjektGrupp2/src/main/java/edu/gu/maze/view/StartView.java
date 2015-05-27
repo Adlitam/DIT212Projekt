@@ -35,6 +35,7 @@ public class StartView {
 
 
     public StartView(Stage stage, String[] playerName, int[] playerType){
+
         stage.setTitle("Maze");
         layout = new BorderPane();
         getPlayerInfo(playerName,playerType);
@@ -56,8 +57,11 @@ public class StartView {
 
 
     private void createPane(){
+
         VBox vBox = new VBox();
+
         for(int i = 0; i<3; i++){
+
             if(i == 0){
                 createSlot(player1, slot1Button,deleteSlot1);
                 checkImage(type1,slot1Button);
@@ -88,14 +92,18 @@ public class StartView {
             warrior.setFitHeight(100);
             warrior.setFitWidth(100);
             slot.setGraphic(warrior);
+
         }else if(type == 1){
+
             Image image = new Image("Mage.png");
             ImageView mage = new ImageView();
             mage.setImage(image);
             mage.setFitHeight(100);
             mage.setFitWidth(100);
             slot.setGraphic(mage);
+
         }else if(type == 2){
+
             Image image = new Image("thief.png");
             thief = new ImageView();
             thief.setImage(image);
@@ -108,6 +116,7 @@ public class StartView {
 
     // Gets the info for the player
     private void getPlayerInfo(String[] playerName,int[] playerType){
+
         //gets the player name
         player1 = playerName[0];
         player2 = playerName[1];
@@ -140,6 +149,7 @@ public class StartView {
 
     //Sets the button on the bottom of the layout
     private void createBottom(){
+
         HBox hBoxBotton = new HBox();
         backButton = new Button("Back to start");
         backButton.setPrefWidth(200);
@@ -168,6 +178,7 @@ public class StartView {
     //-----------------
     //--- The events ---
     public void addController(StartController c){
+
         slot1Button.setOnAction(c);
         slot2Button.setOnAction(c);
         slot3Button.setOnAction(c);

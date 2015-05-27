@@ -24,6 +24,7 @@ public class HighScoreView{
     HBox hBoxlayout = new HBox();
 
     public HighScoreView(Stage stage, String[] playerName, int[] playerScore){
+        
         stage.setTitle("Maze");
         borderPaneLayout = new BorderPane();
 
@@ -60,6 +61,7 @@ public class HighScoreView{
 
         //creates a list for every slot with the total score
         for(int i = 0; i < 3; i++){
+
             if(i == 0) {
                 if(!player1.equals("")) {
                     createLabel(player1, score1);
@@ -79,6 +81,7 @@ public class HighScoreView{
                     createEmptyLabel();
                 }
             }
+
             vBoxCenter.getChildren().addAll(highScore);
 
        }
@@ -111,6 +114,7 @@ public class HighScoreView{
 
     //Creates a empty panel if the slot is empty
     private void createEmptyLabel(){
+
         player = new Label();
         player.setFont(new Font("Verdana", 40));
         score = new Label();

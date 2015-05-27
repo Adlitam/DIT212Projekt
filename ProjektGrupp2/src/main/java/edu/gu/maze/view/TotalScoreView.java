@@ -50,14 +50,18 @@ public class TotalScoreView {
         VBox vBox = new VBox();
         Label player;
         if(score.length == 0){
+
            player = new Label("The highscore is empty");
             player.setTextFill(Paint.valueOf("Red"));
             player.setFont(new Font(20));
             vBox.getChildren().addAll(player);
             vBox.setAlignment(Pos.CENTER);
             vBox.setSpacing(20);
+
         }else{
+
             for(String x : score){
+
                 player = new Label(x);
                 player.setFont(new Font(20));
                 vBox.getChildren().addAll(player);
