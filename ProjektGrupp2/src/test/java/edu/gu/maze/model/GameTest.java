@@ -17,23 +17,23 @@ import org.junit.Test;
  * @author omega
  */
 public class GameTest {
-    Game instance;
+    Game instance = new Game();
     public GameTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         //instance = new Game();
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -41,86 +41,116 @@ public class GameTest {
     /**
      * Test of getQuestion method, of class Game.
      */
-    //TODO: Test what happens with unexpected input.
-    //@Test
+
+    // Test if you get a question when using getQuestion
+    @Test
     public void testGetQuestion() {
-        //TODO: update this when Game is updated to have several questions.
-        System.out.println("getQuestion");
-        String expResult = "What is Gilderoy Lockhart's favourite colour?";
-        String result = instance.getQuestion();
-        assertEquals(expResult, result);
+        String question = instance.getQuestion();
+        assertTrue(question != null);
     }
 
     /**
      * Test of getAnswers method, of class Game.
      */
-    //@Test
+
+    // Test if you get 3 possibly answers when using getAnswers();
+    @Test
     public void testGetAnswers() {
-        //TODO: update this when Game is updated to have several questions.
-        System.out.println("getAnswers");
         instance.getQuestion();
-        String[] expResult = new String[]{"Pink", "Lilac", "Gold"};
         String[] result = instance.getAnswers();
-        assertArrayEquals(expResult, result);
+        int length = result.length;
+        assertTrue(length == 3);
     }
-    
-    //Checking behaviour when getQuestion() has not been called.
-    //@Test (expected = NullPointerException.class)
+
+    // Checking behaviour when getQuestion() has not been called.
+    @Test (expected = NullPointerException.class)
     public void testGetAnswers2(){
         instance.getAnswers();
     }
-    //Checking behaviour when isThisTheRightAnswer() has been called.
-    //@Test (expected = NullPointerException.class)
+
+    // Checking behaviour when isThisTheRightAnswer() has been called.
+    @Test (expected = NullPointerException.class)
     public void testGetAnswers3(){
+        instance.startMatch(0);
         instance.getQuestion();
         instance.isThisTheRightAnswer(0);
         instance.getAnswers();
     }
-    
+
 
     /**
      * Test of isThisTheRightAnswer method, of class Game.
      */
-    //Testing with the correct input
-    //@Test
+
+    // Testing calling isThisTheRightAnswer without a question
+    @Test (expected = NullPointerException.class)
     public void testIsThisTheRightAnswer() {
-        System.out.println("isThisTheRightAnswer");
-        instance.getQuestion();
-        int[] expResult = new int[] {1,1,1,5};
-        int correct = instance.isThisTheRightAnswer(1);
-        int apple = instance.getApples();
-        int key = instance.getKeys();
-        int points = instance.getKeys();
-        int[] result = new int[] {correct,apple,key,points};
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        instance.startMatch(0);
+        instance.isThisTheRightAnswer(0);
     }
-    //Testing with the wrong input
-    //@Test
+
+    // Testing with the not available answer
+    @Test (expected = IllegalArgumentException.class)
     public void testIsThisTheRightAnswer2(){
         instance.getQuestion();
+        instance.getAnswers();
+        instance.isThisTheRightAnswer(3);
+    }
 
-        //int[] expResult = new int[] {0,0,0,0,0};
-        //int[] result = instance.isThisTheRightAnswer(2);
-        //assertArrayEquals(expResult, result);
-    }
-    
-    //Test with nonexistent answer
-    //@Test (expected = IllegalArgumentException.class)
+    // Test with a answer between 0 and 2
+    @Test
     public void testIsThisTheRightAnswer3(){
+        instance.createPlayer(0, "bla", 0);
+        instance.startMatch(0);
         instance.getQuestion();
-        instance.isThisTheRightAnswer(5);
+        instance.getAnswers();
+        int answer1 = instance.isThisTheRightAnswer(0);
+        assertTrue(answer1 == 1 | answer1==0);
+        instance.getQuestion();
+        instance.getAnswers();
+        int answer2 = instance.isThisTheRightAnswer(1);
+        assertTrue(answer2 == 1 | answer2==0);
+        instance.getQuestion();
+        instance.getAnswers();
+        int answer3 = instance.isThisTheRightAnswer(2);
+        assertTrue(answer3 == 1 | answer3 == 0);
     }
-    //Calling the method twice in a row
-    //@Test (expected = NullPointerException.class)
+
+
+    // Calling the method twice in a row
+    @Test (expected = NullPointerException.class)
     public void testIsThisTheRightAnswer4(){
+        instance.startMatch(0);
         instance.getQuestion();
         instance.isThisTheRightAnswer(1);
         instance.isThisTheRightAnswer(2);
     }
+
+    // Test if no error when using setTime()
+    @Test
+    public void testSetTime(){
+        instance.createPlayer(0, "bla", 0);
+        instance.startMatch(0);
+        instance.setTime(1,4);
+    }
+
+    // Test setGamesDoneToFalse()
+    @Test
+    public void testSetGamesDoneToFalse(){
+        instance.setGamesDoneToFalse();
+        boolean bool = instance.gamesDone();
+        assertTrue(!bool);
+    }
+
+    // Test gamesDone()
+    @Test
+    public void testGamesDone(){
+        boolean bool = instance.gamesDone();
+        assertTrue(bool == true | bool == false);
+    }
+
     /*
-    //@Test 
+    @Test
     public void testNoUnexpectedErrorsinPlayerSelection(){
         //Run this in debug mode to check actual values
         instance.createPlayer(Constants.SLOT1, "Harry Potter", Constants.MAGE);
@@ -129,41 +159,41 @@ public class GameTest {
         instance.createPlayer(Constants.SLOT1, "Harry Potter", Constants.MAGE);
     }
     */
-    
+
     @Test
     public void testSerialization(){
         Game game = new Game();
         game.createPlayer(0, "Harry", 0);
         try
-      {
-         FileOutputStream fileOut =
-         new FileOutputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
-         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-         out.writeObject(game);
-         out.close();
-         fileOut.close();
-         System.out.printf("Serialized data is saved.");
-      }catch(IOException i)
-      {
-          i.printStackTrace();
-      }
-      Game returned;
-      try
-      {
-         FileInputStream fileIn = new FileInputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
-         ObjectInputStream in = new ObjectInputStream(fileIn);
-         returned = (Game) in.readObject();
-         in.close();
-         fileIn.close();
-      }catch(IOException i)
-      {
-         i.printStackTrace();
-         return;
-      }catch(ClassNotFoundException c)
-      {
-         System.out.println("Class not found");
-         c.printStackTrace();
-         return;
-      }
+        {
+            FileOutputStream fileOut =
+                    new FileOutputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(game);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved.");
+        }catch(IOException i)
+        {
+            i.printStackTrace();
+        }
+        Game returned;
+        try
+        {
+            FileInputStream fileIn = new FileInputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            returned = (Game) in.readObject();
+            in.close();
+            fileIn.close();
+        }catch(IOException i)
+        {
+            i.printStackTrace();
+            return;
+        }catch(ClassNotFoundException c)
+        {
+            System.out.println("Class not found");
+            c.printStackTrace();
+            return;
+        }
     }
 }
