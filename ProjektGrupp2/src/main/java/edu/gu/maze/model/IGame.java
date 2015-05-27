@@ -70,7 +70,7 @@ public interface IGame {
     //Retrieve specified high scores as formatted strings.
     //Results are sorted so that highest scores come first and newer scores 
     //before older ones.
-    String[] getHighScoresForMap (int map);
+    //String[] getHighScoresForMap (int map);
     String[] getTotalHighScores();
     
     // returns the type of the player in slot, or -1 if there is no player in the slot.

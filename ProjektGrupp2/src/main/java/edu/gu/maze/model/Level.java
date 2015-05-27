@@ -7,8 +7,9 @@ import java.util.Collections;
 /**
  *
  * @author omega
- */
+*/
 public class Level implements Serializable{
+ /*
     private static final long serialVersionUID = 6L;
     private final ArrayList<HighScore> scores = new ArrayList<HighScore>();
     private final String map;
@@ -40,5 +41,5 @@ public class Level implements Serializable{
     @Override
     public String toString(){
         return map;
-    }
+    }*/
 }
