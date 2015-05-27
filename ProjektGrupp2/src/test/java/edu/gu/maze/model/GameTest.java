@@ -142,6 +142,33 @@ public class GameTest {
         assertTrue(!bool);
     }
 
+    // Test if you have a valid number of Apples
+    @Test
+    public void testGetApples() {
+        instance.createPlayer(0, "bla", 0);
+        instance.startMatch(0);
+        int apples = instance.getApples();
+        assertTrue(apples >= 0);
+    }
+
+    // Test if you have a valid number of Keys
+    @Test
+    public void testGetKeys() {
+        instance.createPlayer(0, "bla", 0);
+        instance.startMatch(0);
+        int keys = instance.getKeys();
+        assertTrue(keys >= 0);
+
+    }
+
+    // Test no errors
+    @Test
+    public void testGetPoints() {
+        instance.createPlayer(0, "bla", 0);
+        instance.startMatch(0);
+        instance.getPoints();
+    }
+
     // Test gamesDone()
     @Test
     public void testGamesDone(){
