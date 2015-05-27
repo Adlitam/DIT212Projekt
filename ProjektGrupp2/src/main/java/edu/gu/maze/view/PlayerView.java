@@ -25,7 +25,6 @@ public class PlayerView extends ImageView{
                 System.out.println("Arrggh! something went wrong when " +
                         "initializing playerView. Type should be 0, 1 or 2, " +
                         "but is: " + type);
-                System.exit(0);
         }
         setImage(image);
         setFitWidth(30);

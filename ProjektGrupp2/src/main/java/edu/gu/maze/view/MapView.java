@@ -49,7 +49,6 @@ public class MapView implements PropertyChangeListener{
             s = new Scanner(new File(filename));
         }catch(IOException e){
             System.out.println("could not read the file: " + filename + " while trying to initialize player in view.");
-            System.exit(0);
         }
         int x = Integer.parseInt(s.next());
         int y = Integer.parseInt(s.next());
@@ -76,6 +75,7 @@ public class MapView implements PropertyChangeListener{
                 initializePlayer((String) evt.getOldValue(), (int) evt.getNewValue());
                 initializeGrid(player.getxPos(), player.getyPos());
                 break;
+            default:
         }
     }
 

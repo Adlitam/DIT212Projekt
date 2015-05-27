@@ -136,7 +136,7 @@ public int isThisTheRightAnswer(int index) {
     public void startMatch(int map){
         currentLevel = map;
         currentMatch = ResourceReader.readMapForModel(levels[map]);
-        pcs.firePropertyChange("MAP_CHOSEN", levels[map], "value2");
+        pcs.firePropertyChange("MAP_CHOSEN", levels[map], currentPlayer.getType());
     }
     
     @Override
