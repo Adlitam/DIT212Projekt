@@ -11,7 +11,8 @@ public class FinalDoorTest {
 
     @Test
     public void testCanIMoveHere() {
-        assertTrue(fDoor.canIMoveHere() == Constants.FINAL);
+        boolean bool = fDoor.canIMoveHere() == Constants.FINAL;
+        assertTrue(bool);
     }
 
     // Test if no error
@@ -23,7 +24,8 @@ public class FinalDoorTest {
     @Test
     public void testToString() {
         String fD = fDoor.toString();
-        assertTrue(fD.equals("F"));
+        boolean bool = fD.equals("F");
+        assertTrue(bool);
     }
 
 }

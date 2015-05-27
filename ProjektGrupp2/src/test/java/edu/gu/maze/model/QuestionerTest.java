@@ -11,7 +11,8 @@ public class QuestionerTest {
 
     @Test
     public void testCanIMoveHere() {
-        assertTrue(quest.canIMoveHere() == Constants.QUESTIONER);
+        boolean bool = quest.canIMoveHere() == Constants.QUESTIONER;
+        assertTrue(bool);
     }
 
     // Test if no errors occurs when calling ClearWay()
@@ -23,7 +24,8 @@ public class QuestionerTest {
     @Test
     public void testToString() {
         String Q = quest.toString();
-        assertTrue(Q.equals("Questioner"));
+        boolean bool = Q.equals("Questioner");
+        assertTrue(bool);
     }
 
 

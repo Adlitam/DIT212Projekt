@@ -10,20 +10,23 @@ public class ChestTest {
 
     @Test
     public void testCanIMoveHere() {
-        assertTrue(chest.canIMoveHere() == Constants.CHEST);
+        boolean bool = chest.canIMoveHere() == Constants.CHEST;
+        assertTrue(bool);
     }
 
     // Test if the Chest is open after calling ClearWay()
     @Test
     public void testClearWay() {
         chest.clearWay();
-        assertTrue(chest.canIMoveHere() == Constants.YES);
+        boolean bool = chest.canIMoveHere() == Constants.YES;
+        assertTrue(bool);
     }
 
     @Test
     public void testToString() {
         String C = chest.toString();
-        assertTrue(C.equals("Chest"));
+        boolean bool = C.equals("Chest");
+        assertTrue(bool);
     }
 
 

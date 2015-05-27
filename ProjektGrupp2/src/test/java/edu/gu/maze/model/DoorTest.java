@@ -11,19 +11,22 @@ public class DoorTest {
 
     @Test
     public void testCanIMoveHere() {
-        assertTrue(door.canIMoveHere() == Constants.KEY);
+        boolean bool = door.canIMoveHere() == Constants.KEY;
+        assertTrue(bool);
     }
 
     // Test if the door is open after calling ClearWay()
     @Test
     public void testClearWay() {
         door.clearWay();
-        assertTrue(door.canIMoveHere() == Constants.YES);
+        boolean bool = door.canIMoveHere() == Constants.YES;
+        assertTrue(bool);
     }
 
     @Test
     public void testToString() {
         String D = door.toString();
-        assertTrue(D.equals("Door"));
+        boolean bool = D.equals("Door");
+        assertTrue(bool);
     }
 }

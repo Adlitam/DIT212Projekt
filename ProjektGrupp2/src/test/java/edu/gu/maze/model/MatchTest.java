@@ -38,11 +38,14 @@ public class MatchTest {
         match = new Match(new ISquare[10][10],6,6);
         match.correctAnswer();
         int apples = match.getApples();
-        assertTrue(apples == 1);
+        boolean bool1 = apples == 1;
+        assertTrue(bool1);
         int keys = match.getKeys();
-        assertTrue(keys==1);
+        boolean bool2 = keys==1;
+        assertTrue(bool2);
         int score = match.getScore();
-        assertTrue(score==5);
+        boolean bool3 = score==5;
+        assertTrue(bool3);
     }
 
     // Test wrongAnswer(), getApples(), getKeys() and getScore();
@@ -51,11 +54,14 @@ public class MatchTest {
         match = new Match(new ISquare[10][10],6,6);
         match.wrongAnswer();
         int apples = match.getApples();
-        assertTrue(apples == 0);
+        boolean bool1 = apples == 0;
+        assertTrue(bool1);
         int keys = match.getKeys();
-        assertTrue(keys==0);
+        boolean bool2 = keys==0;
+        assertTrue(bool2);
         int score = match.getScore();
-        assertTrue(score==-5);
+        boolean bool3 = score==-5;
+        assertTrue(bool3);
     }
 
     // Test no error in setTime()

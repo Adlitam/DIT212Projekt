@@ -11,7 +11,8 @@ public class RoadTest {
 
     @Test
     public void testCanIMoveHere() {
-        assertTrue(road.canIMoveHere() == Constants.YES);
+        boolean bool = road.canIMoveHere() == Constants.YES;
+        assertTrue(bool);
     }
 
 
@@ -24,6 +25,7 @@ public class RoadTest {
     @Test
     public void testToString() {
         String R = road.toString();
-        assertTrue(R.equals("R"));
+        boolean bool = R.equals("R");
+        assertTrue(bool);
     }
 }

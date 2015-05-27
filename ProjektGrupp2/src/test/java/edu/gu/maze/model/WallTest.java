@@ -10,7 +10,8 @@ public class WallTest {
 
     @Test
     public void testCanIMoveHere() {
-        assertTrue(wall.canIMoveHere() == Constants.NO);
+        boolean bool = wall.canIMoveHere() == Constants.NO;
+        assertTrue(bool);
     }
 
     // Test if no errors occurs when calling ClearWay()
@@ -22,6 +23,7 @@ public class WallTest {
     @Test
     public void testToString() {
         String W = wall.toString();
-        assertTrue(W.equals("W"));
+        boolean bool = W.equals("W");
+        assertTrue(bool);
     }
 }

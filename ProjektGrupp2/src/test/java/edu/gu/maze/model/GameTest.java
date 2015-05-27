@@ -48,7 +48,8 @@ public class GameTest {
     @Test
     public void testGetQuestion() {
         String question = instance.getQuestion();
-        assertTrue(question != null);
+        boolean bool = question != null;
+        assertTrue(bool);
     }
 
     /**
@@ -61,7 +62,8 @@ public class GameTest {
         instance.getQuestion();
         String[] result = instance.getAnswers();
         int length = result.length;
-        assertTrue(length == 3);
+        boolean bool = length == 3;
+        assertTrue(bool);
     }
 
     // Checking behaviour when getQuestion() has not been called.
@@ -107,15 +109,18 @@ public class GameTest {
         instance.getQuestion();
         instance.getAnswers();
         int answer1 = instance.isThisTheRightAnswer(0);
-        assertTrue(answer1 == 1 | answer1==0);
+        boolean bool1 = answer1 == 1 | answer1==0;
+        assertTrue(bool1);
         instance.getQuestion();
         instance.getAnswers();
         int answer2 = instance.isThisTheRightAnswer(1);
-        assertTrue(answer2 == 1 | answer2==0);
+        boolean bool2 = answer2 == 1 | answer2==0;
+        assertTrue(bool2);
         instance.getQuestion();
         instance.getAnswers();
         int answer3 = instance.isThisTheRightAnswer(2);
-        assertTrue(answer3 == 1 | answer3 == 0);
+        boolean bool3 = answer3 == 1 | answer3 == 0;
+        assertTrue(bool3);
     }
 
 
@@ -150,7 +155,8 @@ public class GameTest {
         instance.createPlayer(0, "bla", 0);
         instance.startMatch(0);
         int apples = instance.getApples();
-        assertTrue(apples >= 0);
+        boolean bool = apples >= 0;
+        assertTrue(bool);
     }
 
     // Test if you have a valid number of Keys
@@ -159,7 +165,8 @@ public class GameTest {
         instance.createPlayer(0, "bla", 0);
         instance.startMatch(0);
         int keys = instance.getKeys();
-        assertTrue(keys >= 0);
+        boolean bool = keys >= 0;
+        assertTrue(bool);
 
     }
 
@@ -174,8 +181,9 @@ public class GameTest {
     // Test gamesDone()
     @Test
     public void testGamesDone(){
-        boolean bool = instance.gamesDone();
-        assertTrue(bool | !bool);
+        boolean bool1 = instance.gamesDone();
+        boolean bool2 = bool1 | !bool1;
+        assertTrue(bool2);
     }
 
 

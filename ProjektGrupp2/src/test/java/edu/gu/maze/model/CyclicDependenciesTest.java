@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CyclicDependenciesTest {
+
 	private JDepend jdepend;
 
 	@Before
@@ -20,4 +21,5 @@ public class CyclicDependenciesTest {
 		jdepend.analyze();
 		Assert.assertFalse(jdepend.containsCycles());
 	}
+
 }

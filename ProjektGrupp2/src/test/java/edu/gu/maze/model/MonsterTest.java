@@ -10,20 +10,23 @@ public class MonsterTest {
 
     @Test
     public void testCanIMoveHere() {
-        assertTrue(monster.canIMoveHere() == Constants.APPLE);
+        boolean bool = monster.canIMoveHere() == Constants.APPLE;
+        assertTrue(bool);
     }
 
     // Test if the Monster is not hungry after calling ClearWay()
     @Test
     public void testClearWay() {
         monster.clearWay();
-        assertTrue(monster.canIMoveHere() == Constants.YES);
+        boolean bool =monster.canIMoveHere() == Constants.YES;
+        assertTrue(bool);
     }
 
     @Test
     public void testToString() {
         String M = monster.toString();
-        assertTrue(M.equals("Monster"));
+        boolean bool = M.equals("Monster");
+        assertTrue(bool);
     }
 
 }

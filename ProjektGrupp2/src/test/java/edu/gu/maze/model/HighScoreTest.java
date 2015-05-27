@@ -1,9 +1,8 @@
 package edu.gu.maze.model;
 
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
+
 
 /**
  *
@@ -11,17 +10,6 @@ import static org.junit.Assert.*;
  */
 public class HighScoreTest {
     
-    public HighScoreTest() {
-    }
-    
-    @Before
-    public void setUp() {
-        HighScore one = new HighScore("Harry", 10);
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of compareTo method, of class HighScore.
@@ -33,8 +21,10 @@ public class HighScoreTest {
         HighScore two = new HighScore("Harry", 11);
         int i = one.compareTo(two);
         int j = two.compareTo(one);
-        assert (i==1);
-        assert (j==-1);
+        boolean bool1 =i==1;
+        boolean bool2 =j==-1;
+        assert (bool1);
+        assert (bool2);
     }
     
     //Same score, different time
@@ -46,8 +36,11 @@ public class HighScoreTest {
         int i = one.compareTo(two);
         int j = two.compareTo(one);
         System.out.println(i);
-        assert (i>0);
-        assert (j<0);
+
+        boolean bool1 = i>0;
+        boolean bool2 = j<0;
+        assert (bool1);
+        assert (bool2);
     }
     
 }
