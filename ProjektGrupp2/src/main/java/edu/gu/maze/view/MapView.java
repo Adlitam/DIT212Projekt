@@ -43,7 +43,7 @@ public class MapView implements PropertyChangeListener{
         return g;
     }
 
-    private void initializePlayer(String filename){
+    private void initializePlayer(String filename, int type){
         Scanner s = null;
         try{
             s = new Scanner(new File(filename));
@@ -53,7 +53,7 @@ public class MapView implements PropertyChangeListener{
         }
         int x = Integer.parseInt(s.next());
         int y = Integer.parseInt(s.next());
-        player = new PlayerView(x,y);
+        player = new PlayerView(x, y, type);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class MapView implements PropertyChangeListener{
                 break;
             case "MAP_CHOSEN":
                 map = ResourceReader.readMapForView((String) evt.getOldValue());
-                initializePlayer((String) evt.getOldValue());
+                initializePlayer((String) evt.getOldValue(), (int) evt.getNewValue());
                 initializeGrid(player.getxPos(), player.getyPos());
                 break;
         }

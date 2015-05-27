@@ -32,5 +32,8 @@ public class SaveSlot implements Serializable{
         }
         return new HighScore(name, totalHighScore);
     }
-    
+
+    protected int getType(){
+        return type;
+    }
 }
