@@ -27,9 +27,9 @@ public class ResourceReader {
         //The first line in the file should contain the starting x and y positions
         int x = Integer.parseInt(s.next());
         int y = Integer.parseInt(s.next());
-        ArrayList<ISquare[]> list = new ArrayList<ISquare[]>();
+        ArrayList<ISquare[]> list = new ArrayList<>();
         while(s.hasNext()){
-            ArrayList<ISquare> snd = new ArrayList<ISquare>();
+            ArrayList<ISquare> snd = new ArrayList<>();
             for (char c : s.next().toCharArray()){
                 if (c=='W') snd.add(new Wall());   
                 else if (c=='F')snd.add(new FinalDoor());
@@ -37,7 +37,7 @@ public class ResourceReader {
                 else if (c=='Q')snd.add(new Questioner());
                 else if (c=='M')snd.add(new Monster());
                 else if (c=='C')snd.add(new Chest());
-                else if (c=='T')snd.add(new Teleporter());
+                //else if (c=='T')snd.add(new Teleporter());
                 else snd.add(new Road());
             }
             list.add(snd.toArray(new ISquare[1]));
@@ -70,13 +70,14 @@ public class ResourceReader {
         return list.toArray(new Question[1]);
     }
 
+    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     public static ImageView[][] readMapForView(String filename){
         Scanner s = null;
         try{
             s = new Scanner(new File(filename));
         }catch(IOException e){
             System.out.println("could not read the file: " + filename + " while trying to initialize mapView.");
-            System.exit(0);
+            throw new RuntimeException ("could not read the file: " + filename + " while trying to initialize mapView.");
         }
         s.next();
         s.next();
@@ -108,12 +109,11 @@ public class ResourceReader {
                     case 'C':
                         temp2.add(new ChestView(i,j));
                         break;
-                    case 'T':
-                        temp2.add(new TeleporterView(i,j));
-                        break;
+                    //case 'T':
+                      //  temp2.add(new TeleporterView(i,j));
+                        //break;
                     default:
                         System.out.println("Arrggghhh! Something went wrong when reading the level map for the view.");
-                        System.exit(0);
                 }
                 j++;
             }

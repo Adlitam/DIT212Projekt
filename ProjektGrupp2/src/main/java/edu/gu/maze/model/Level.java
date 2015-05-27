@@ -1,14 +1,14 @@
 package edu.gu.maze.model;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
+//import java.io.Serializable;
+//import java.util.ArrayList;
+//import java.util.Collections;
 
 /**
  *
  * @author omega
 */
-public class Level implements Serializable{
+//public class Level implements Serializable{
  /*
     private static final long serialVersionUID = 6L;
     private final ArrayList<HighScore> scores = new ArrayList<HighScore>();
@@ -42,4 +42,4 @@ public class Level implements Serializable{
     public String toString(){
         return map;
     }*/
-}
+//}

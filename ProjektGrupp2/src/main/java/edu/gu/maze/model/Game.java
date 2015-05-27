@@ -68,9 +68,7 @@ public int isThisTheRightAnswer(int index) {
         return 0;
 }
 
-//TODO: Decide if you'd rather use these or the same methods in Match
 // TODO: My precious rows
-// The Match object can be retrieved using getCurrentMatch() below
     @Override
     public Integer getPoints() {
         return currentMatch.getScore();
@@ -144,12 +142,6 @@ public int isThisTheRightAnswer(int index) {
             if (slots[Slot]==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
             slots[Slot]=null;  
             SavedInformationHandler.saveGame(this);
-    }
-
-    //This one isn't currently being used.
-    @Override 
-    public Match getCurrentMatch() {
-        return currentMatch;
     }
 
 //TODO: UPDATE ALL HIGHSCORES ON END OF GAME AND CALL SAVEGAME

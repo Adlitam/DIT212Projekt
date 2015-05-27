@@ -2,6 +2,7 @@ package edu.gu.maze.view;
 
 import edu.gu.maze.controller.MapController;
 import edu.gu.maze.util.ResourceReader;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import java.beans.PropertyChangeEvent;
@@ -43,6 +44,7 @@ public class MapView implements PropertyChangeListener{
         return g;
     }
 
+    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     private void initializePlayer(String filename, int type){
         Scanner s = null;
         try{
