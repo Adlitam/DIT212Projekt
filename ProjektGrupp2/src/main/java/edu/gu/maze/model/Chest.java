@@ -2,7 +2,7 @@ package edu.gu.maze.model;
 
 import static edu.gu.maze.util.Constants.*;
 
-public class Chest implements ISquare, ISquareSuppl {
+public class Chest implements ISquare {
     private boolean open = false;
     @Override
     public int canIMoveHere() {

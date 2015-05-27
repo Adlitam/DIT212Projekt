@@ -9,6 +9,8 @@ public interface ISquare {
 
     boolean okayToTeleportHere();
 
+    void clearWay();
+
     @Override
     String toString();
 }

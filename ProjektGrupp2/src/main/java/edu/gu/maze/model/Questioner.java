@@ -7,7 +7,7 @@ import static edu.gu.maze.util.Constants.YES;
  *
  * @author omega
  */
-public class Questioner implements ISquare, ISquareSuppl{
+public class Questioner implements ISquare{
     boolean Asked = false;
 
     @Override

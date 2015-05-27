@@ -18,6 +18,12 @@ public class FinalDoor implements ISquare{
         return false;
     }
 
+    //this method should not be implemented since it's violating interface segregation principle but I don't know how to fix it.
+    @Override
+    public void clearWay() {
+        //do nothing
+    }
+
     @Override
     public String toString(){
         return "F";

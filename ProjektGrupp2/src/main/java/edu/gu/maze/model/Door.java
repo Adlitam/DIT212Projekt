@@ -6,7 +6,7 @@ import static edu.gu.maze.util.Constants.YES;
 /**
  * Created by Matildaandersson on 15-04-01.
  */
-public class Door implements ISquare, ISquareSuppl {
+public class Door implements ISquare {
     private boolean open = false;
     @Override
     public int canIMoveHere() {
