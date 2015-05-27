@@ -20,11 +20,13 @@ public class MapView implements PropertyChangeListener{
         createMapGridPane();
     }
 
+    //initializes the GridPane, g.
     private void createMapGridPane(){
         g = new GridPane();
         g.setFocusTraversable(true);
     }
 
+    //inserts all the ImageViews the GridPane from the two-dimensional-ImageView-array, map.
     private void initializeGrid(int x, int y){
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
@@ -34,17 +36,21 @@ public class MapView implements PropertyChangeListener{
         g.add(player, x, y);
     }
 
+    //move the PlayerView, player, on the GridPane, g.
     private void movePlayer(int x, int y){
         player.update(x,y);
         g.getChildren().remove(player);
         g.add(player, x, y);
     }
 
+    //returns the GridPane, g.
     public GridPane getMap(){
         return g;
     }
 
-    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
+    //initializes the PlayerView, player, with it's positions, which it gets from the
+    //current level-text file that the model is using.
+    @SuppressFBWarnings({"DM_DEFAULT_ENCODING", "NP_NULL_ON_SOME_PATH_EXCEPTION"})
     private void initializePlayer(String filename, int type){
         Scanner s = null;
         try{

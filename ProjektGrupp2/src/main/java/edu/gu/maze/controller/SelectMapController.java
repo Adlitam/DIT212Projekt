@@ -27,14 +27,5 @@ public class SelectMapController implements EventHandler<ActionEvent> {
             MainView mainView = new MainView(stage);
             new MainController(model, mainView, stage);
         }
-        if(b == view.getMap1()){
-            //TODO
-        }
-        if(b == view.getMap2()){
-            //TODO
-        }
-        if(b == view.getMap3()){
-            //TODO
-        }
     }
 }
