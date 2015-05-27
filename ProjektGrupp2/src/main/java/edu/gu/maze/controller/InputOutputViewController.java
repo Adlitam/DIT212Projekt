@@ -56,6 +56,7 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
                     checkAnswer(2);
                     event.consume();
                     break;
+                default:
             }
         }
     }

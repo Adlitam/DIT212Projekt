@@ -67,7 +67,7 @@ public class InputOutputView implements PropertyChangeListener {
                 output.setText("The door is locked");
                 break;
             case "NO_KEY":
-                output.setText("The door is locked");
+                output.setText("The final door is locked");
                 break;
             case "NO_APPLE":
                 output.setText("GIVE ME AN APPLE ARRRRRGG!!!!! \n\n\n The monster took 5 points ");
@@ -89,6 +89,7 @@ public class InputOutputView implements PropertyChangeListener {
             case "YES":
                 output.clear();
                 break;
+            default:
         }
     }
 }
