@@ -15,15 +15,7 @@ public class FinalDoorView extends ImageView{
         setFitWidth(30);
         setFitHeight(30);
     }
-/* TODO
-    public int getXValue(){
-        return xPos;
-    }
 
-    public int getYValue(){
-        return yPos;
-    }
-*/
     @Override
     public String toString(){
         return "FinalDoorView, xPos = " + xPos + " yPos = " + yPos;

@@ -1,7 +1,7 @@
 package edu.gu.maze.view;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+        import javafx.scene.image.Image;
+        import javafx.scene.image.ImageView;
 
 public class DoorView extends ImageView {
     private final int xPos;
