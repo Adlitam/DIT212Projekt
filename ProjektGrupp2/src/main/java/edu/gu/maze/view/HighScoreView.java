@@ -9,6 +9,8 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import javax.xml.soap.Text;
+
 public class HighScoreView{
     private Button backButton;
     private BorderPane borderPaneLayout;
@@ -53,11 +55,23 @@ public class HighScoreView{
 
         for(int i = 0; i < 3; i++){
             if(i == 0) {
-                createLabel(player1, score1);
+                if(!player1.equals("")) {
+                    createLabel(player1, score1);
+                }else{
+                    createEmptyLabel();
+                }
             }else if(i == 1){
-                createLabel(player2, score2);
+                if(!player2.equals("")) {
+                    createLabel(player2, score2);
+                }else{
+                    createEmptyLabel();
+                }
             }else if(i == 2){
-                createLabel(player3, score3);
+                if(!player3.equals("")) {
+                    createLabel(player3, score3);
+                }else{
+                    createEmptyLabel();
+                }
             }
             vBoxCenter.getChildren().addAll(highScore);
 
@@ -75,16 +89,31 @@ public class HighScoreView{
 
     private void createLabel(String playerName, int scorePlayer){
 
-        player = new Label(playerName);
-        player.setFont(new Font(20));
-        score = new Label("" + scorePlayer);
-        score.setFont(new Font(20));
+
+
+            player = new Label(playerName);
+            player.setFont(new Font("Verdana", 40));
+            score = new Label("" + scorePlayer);
+            score.setFont(new Font("Verdana", 40));
+            highScore = new HBox();
+            highScore.getChildren().addAll(player, score);
+            highScore.setSpacing(100);
+            highScore.setAlignment(Pos.CENTER);
+            highScore.setStyle("-fx-border-color: Black");
+
+
+    }
+
+    private void createEmptyLabel(){
+        player = new Label();
+        player.setFont(new Font("Verdana", 40));
+        score = new Label();
+        score.setFont(new Font("Verdana", 40));
         highScore = new HBox();
-        highScore.getChildren().addAll(player,score);
+        highScore.getChildren().addAll(player, score);
         highScore.setSpacing(100);
         highScore.setAlignment(Pos.CENTER);
         highScore.setStyle("-fx-border-color: Black");
-
 
     }
 

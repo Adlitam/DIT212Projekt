@@ -8,8 +8,6 @@ public interface ISquare {
     int canIMoveHere();
 
     boolean okayToTeleportHere();
-    
-    void clearWay();
 
     @Override
     String toString();

@@ -22,9 +22,4 @@ public class FinalDoor implements ISquare{
     public String toString(){
         return "F";
     }
-
-    @Override
-    public void clearWay() {
-        //do nothing
-    }
 }

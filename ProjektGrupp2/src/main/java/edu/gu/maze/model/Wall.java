@@ -22,9 +22,4 @@ public class Wall implements ISquare{
     public String toString(){
         return "W";
     }
-
-    @Override
-    public void clearWay() {
-        //do nothing
-    }
 }
