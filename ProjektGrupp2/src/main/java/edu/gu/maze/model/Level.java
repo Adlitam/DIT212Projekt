@@ -10,7 +10,7 @@ import java.util.Collections;
  */
 public class Level implements Serializable{
     private static final long serialVersionUID = 6L;
-    private final ArrayList<HighScore> scores = new ArrayList();
+    private final ArrayList<HighScore> scores = new ArrayList<HighScore>();
     private final String map;
     public Level (String map){
         this.map = map;

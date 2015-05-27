@@ -5,12 +5,12 @@ package edu.gu.maze.model;
  */
 public interface ISquare {
 
-    public abstract int canIMoveHere();
+    int canIMoveHere();
 
-    public abstract boolean okayToTeleportHere();
+    boolean okayToTeleportHere();
     
-    public abstract void clearWay();
+    void clearWay();
 
     @Override
-    public String toString();
+    String toString();
 }
