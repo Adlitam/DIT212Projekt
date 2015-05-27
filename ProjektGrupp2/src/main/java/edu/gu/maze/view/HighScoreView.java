@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import javax.xml.soap.Text;
 
-@SuppressFBWarnings("LSC_LITERAL_STRING_COMPARISON")
+
 public class HighScoreView{
     private Button backButton,totalScoreButton;
     private BorderPane borderPaneLayout;
@@ -55,6 +55,7 @@ public class HighScoreView{
         score3 = playerScore[2];
     }
 
+    @SuppressFBWarnings("LSC_LITERAL_STRING_COMPARISON")
     private void createList(){
 
         VBox vBoxCenter = new VBox();
