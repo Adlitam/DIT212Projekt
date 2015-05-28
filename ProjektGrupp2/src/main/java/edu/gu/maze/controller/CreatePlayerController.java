@@ -61,11 +61,11 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
 
     //initializes all the views and controllers needed for the actual gameplay view.
     private void play(){
-        InfoView infoView = new InfoView();
+        final InfoView infoView = new InfoView();
         infoController = new InfoController(model, infoView);
-        InputOutputView inputView = new InputOutputView();
+        final InputOutputView inputView = new InputOutputView();
         new InputOutputViewController(model, inputView, stage);
-        MapView mapView = new MapView();
+        final MapView mapView = new MapView();
         model.addPropertyChangeListener(mapView);
         model.addPropertyChangeListener(inputView);
         new MapController(model, mapView, stage);
@@ -75,20 +75,18 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
     //handle method for when the player presses the back to start button and play button.
     @Override
     public void handle(ActionEvent event) {
-        Object b = event.getSource();
+        final Object b = event.getSource();
         if(b == view.getBackButton()){
-            MainView mainView = new MainView(stage);
+            final MainView mainView = new MainView(stage);
             new MainController(model, mainView, stage);
         }
         if(b == view.getPlayButton()){
-            TextField input = view.getName();
-            String name = input.getText();
+            final TextField input = view.getName();
+            final String name = input.getText();
             SavedInformationHandler.saveGame(model);
             if(name.length() > 0) {
-                int slot = view.getSlot();
-                System.out.println("Name: " + name);
-                System.out.println("Type: " + type);
-                System.out.println("Slot: " + slot);
+                final int slot = view.getSlot();
+
                 model.createPlayer(slot, name, type);
                 play();
                 model.startMatch(Constants.MAP1);
@@ -102,7 +100,7 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
     private class MouseEventController implements EventHandler<javafx.scene.input.MouseEvent>{
         @Override
         public void handle(javafx.scene.input.MouseEvent event) {
-            Object b = event.getSource();
+            final Object b = event.getSource();
             if(b == view.getMage()){
                 type = Constants.MAGE;
                 disableIcons(type);

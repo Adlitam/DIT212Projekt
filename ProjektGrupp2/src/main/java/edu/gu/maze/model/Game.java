@@ -42,7 +42,6 @@ public class Game implements IGame, Serializable{
 
     public Game(){
         levels[0] = getClass().getResource("Level1.txt").toString();
-        System.out.println(levels[0]);
         levels[1] = getClass().getResource("Level2.txt").toString();
         levels[2] = getClass().getResource("Level3.txt").toString();
     }
@@ -121,7 +120,7 @@ public int isThisTheRightAnswer(int index) {
         }
 
         slots[slot] = new SaveSlot(name, type);
-        
+
         currentPlayer = slots[slot];
 
     }
