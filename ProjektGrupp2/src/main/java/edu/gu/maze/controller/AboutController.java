@@ -17,7 +17,7 @@ public class AboutController implements EventHandler<ActionEvent> {
         this.model = (Game) model;
         this.stage = primaryStage;
         this.view = view;
-        this.view.addController(this);
+        this.view.getBackButton().setOnAction(this);
     }
 
     //handle method for when the player presses the back to start button.

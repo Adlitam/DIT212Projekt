@@ -54,10 +54,6 @@ public class AboutView {
         layout.setBottom(bottom);
     }
 
-    public void addController(AboutController c){
-        backButton.setOnAction(c);
-    }
-
     public Button getBackButton(){
         return backButton;
     }

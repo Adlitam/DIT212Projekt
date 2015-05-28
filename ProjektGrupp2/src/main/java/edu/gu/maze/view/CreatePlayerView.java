@@ -101,14 +101,6 @@ public class CreatePlayerView {
         borderPaneLayout.setBottom(playAndReturn);
     }
 
-    public void addController(CreatePlayerController c){
-        playButton.setOnAction(c);
-        backButton.setOnAction(c);
-        mage.setOnMouseClicked(c.getMec());
-        warrior.setOnMouseClicked(c.getMec());
-        thief.setOnMouseClicked(c.getMec());
-    }
-
     public Button getPlayButton(){
         return playButton;
     }

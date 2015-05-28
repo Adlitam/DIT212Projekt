@@ -20,7 +20,9 @@ public class MainController implements EventHandler<ActionEvent> {
         this.stage = primaryStage;
         this.model = (Game) model;
         this.view = view;
-        this.view.addController(this);
+        this.view.getAboutButton().setOnAction(this);
+        this.view.getHighScoreButton().setOnAction(this);
+        this.view.getPlayButton().setOnAction(this);
     }
 
     private void getPlayerInfo(){

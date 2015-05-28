@@ -22,7 +22,11 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
         this.model = (Game) model;
         this.view = view;
         mec = new MouseEventController();
-        this.view.addController(this);
+        this.view.getBackButton().setOnAction(this);
+        this.view.getPlayButton().setOnAction(this);
+        this.view.getWarrior().setOnMouseClicked(mec);
+        this.view.getMage().setOnMouseClicked(mec);
+        this.view.getThief().setOnMouseClicked(mec);
     }
 
     //disables the icons that were not selected and makes them invisible

@@ -19,7 +19,8 @@ public class CongratzController implements EventHandler<ActionEvent> {
         this.model = (Game) model;
         this.stage = primaryStage;
         this.view = view;
-        this.view.addController(this);
+        this.view.getBackButton().setOnAction(this);
+        this.view.getNextMap().setOnAction(this);
         Label yourScore = view.getYourScore();
         yourScore.setText("Congratulations \n Your score:" + model.getPoints());
     }
