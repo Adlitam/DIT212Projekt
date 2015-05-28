@@ -12,16 +12,15 @@ import javafx.stage.Stage;
  */
 public class TotalScoreController implements EventHandler<ActionEvent> {
 
-    private IGame model;
+    private final IGame model;
     private Stage stage;
-    private TotalScoreView view;
+    private final TotalScoreView view;
 
     public TotalScoreController(IGame model, TotalScoreView view, Stage primaryStage){
         this.stage = primaryStage;
         this.model = model;
         this.view = view;
-        this.view.addController(this);
-
+        this.view.getBackButton().setOnAction(this);
     }
 
     //handle method for when the player presses the back to start button.

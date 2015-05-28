@@ -100,12 +100,6 @@ public class TotalScoreView {
 
     }
 
-    //Adding the event to the backbutton
-    public void addController(TotalScoreController c){
-        backButton.setOnAction(c);
-
-    }
-
     //Returns the backbutton
     public Button getBackButton() {
         return backButton;

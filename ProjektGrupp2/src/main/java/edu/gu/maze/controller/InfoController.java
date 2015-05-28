@@ -7,8 +7,8 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.control.Label;
 
 public class InfoController{
-    private Game model;
-    private InfoView view;
+    private final Game model;
+    private final InfoView view;
     private int a;
     private int b;
     private AnimationTimer animationTimer;
@@ -25,7 +25,7 @@ public class InfoController{
 
                 // Stop the timer if the game is done
                 // else shows the updated time,apple,key and score
-                if(model.gamesDone()){
+                if(model.isTheGameDone()){
                     animationTimer.stop();
                 }else {
                     // Displays the time in minutes and seconds

@@ -10,8 +10,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class CreatePlayerController implements EventHandler<ActionEvent> {
-    private Game model;
-    private CreatePlayerView view;
+    private final Game model;
+    private final CreatePlayerView view;
     private InfoController infoController;
     private Stage stage;
     private int type;
@@ -22,7 +22,11 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
         this.model = (Game) model;
         this.view = view;
         mec = new MouseEventController();
-        this.view.addController(this);
+        this.view.getBackButton().setOnAction(this);
+        this.view.getPlayButton().setOnAction(this);
+        this.view.getWarrior().setOnMouseClicked(mec);
+        this.view.getMage().setOnMouseClicked(mec);
+        this.view.getThief().setOnMouseClicked(mec);
     }
 
     //disables the icons that were not selected and makes them invisible
@@ -110,10 +114,5 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
                 disableIcons(type);
             }
         }
-    }
-
-    //method to get an instance of the inner class, MouseEventController.
-    public MouseEventController getMec(){
-        return mec;
     }
 }

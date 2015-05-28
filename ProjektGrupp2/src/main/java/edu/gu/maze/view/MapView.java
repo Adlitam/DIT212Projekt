@@ -87,9 +87,4 @@ public class MapView implements PropertyChangeListener{
             default:
         }
     }
-
-    //adds a controller for the GridPane, g.
-    public void addController(MapController c){
-        g.setOnKeyPressed(c);
-    }
 }

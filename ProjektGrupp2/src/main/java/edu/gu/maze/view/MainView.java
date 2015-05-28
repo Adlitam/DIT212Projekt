@@ -65,12 +65,6 @@ public class MainView{
         aboutButton.setFont(new Font("Cambria", 20));
     }
 
-    public void addController(MainController c){
-        highScoreButton.setOnAction(c);
-        playButton.setOnAction(c);
-        aboutButton.setOnAction(c);
-    }
-
     public Button getPlayButton(){
         return playButton;
     }

@@ -9,15 +9,15 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 public class AboutController implements EventHandler<ActionEvent> {
-    private Game model;
+    private final Game model;
     private Stage stage;
-    private AboutView view;
+    private final AboutView view;
 
     public AboutController(IGame model, AboutView view, Stage primaryStage){
         this.model = (Game) model;
         this.stage = primaryStage;
         this.view = view;
-        this.view.addController(this);
+        this.view.getBackButton().setOnAction(this);
     }
 
     //handle method for when the player presses the back to start button.

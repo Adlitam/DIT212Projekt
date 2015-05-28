@@ -10,16 +10,17 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class CongratzController implements EventHandler<ActionEvent> {
-    private Game model;
+    private final Game model;
     private Stage stage;
-    private CongratzView view;
+    private final CongratzView view;
     private InfoController infoController;
 
     public CongratzController(IGame model, CongratzView view, Stage primaryStage){
         this.model = (Game) model;
         this.stage = primaryStage;
         this.view = view;
-        this.view.addController(this);
+        this.view.getBackButton().setOnAction(this);
+        this.view.getNextMap().setOnAction(this);
         Label yourScore = view.getYourScore();
         yourScore.setText("Congratulations \n Your score:" + model.getPoints());
     }

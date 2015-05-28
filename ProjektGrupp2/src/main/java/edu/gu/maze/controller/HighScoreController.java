@@ -9,16 +9,17 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 public class HighScoreController implements EventHandler<ActionEvent> {
-    private IGame model;
+    private final IGame model;
     private Stage stage;
-    private HighScoreView view;
-    String[] score;
+    private final HighScoreView view;
+    private String[] score;
 
     public HighScoreController(IGame model, HighScoreView view, Stage primaryStage){
         this.stage = primaryStage;
         this.model = model;
         this.view = view;
-        this.view.addController(this);
+        this.view.getBackButton().setOnAction(this);
+        this.view.getTotalScoreButton().setOnAction(this);
     }
 
     //handle method for when the player presses the back to start button and total score Button.

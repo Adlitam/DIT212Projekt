@@ -96,13 +96,6 @@ public class SelectMapView {
 
     }
 
-    public void addController(SelectMapController c){
-        backButton.setOnAction(c);
-        map1.setOnAction(c);
-        map2.setOnAction(c);
-        map3.setOnAction(c);
-    }
-
     public Button getBackButton(){
         return backButton;
     }

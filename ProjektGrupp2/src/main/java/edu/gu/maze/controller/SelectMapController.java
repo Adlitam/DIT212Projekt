@@ -9,15 +9,18 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 public class SelectMapController implements EventHandler<ActionEvent> {
-    private Game model;
+    private final Game model;
     private Stage stage;
-    private SelectMapView view;
+    private final SelectMapView view;
 
     public SelectMapController(IGame model, SelectMapView view, Stage primaryStage){
         this.model = (Game) model;
         this.stage = primaryStage;
         this.view = view;
-        this.view.addController(this);
+        this.view.getBackButton().setOnAction(this);
+        this.view.getMap1().setOnAction(this);
+        this.view.getMap2().setOnAction(this);
+        this.view.getMap3().setOnAction(this);
     }
 
     @Override

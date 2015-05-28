@@ -9,20 +9,20 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class MapController implements EventHandler<KeyEvent> {
-    private IGame model;
+    private final IGame model;
     private Stage stage;
-    private MapView view;
+    private final MapView view;
     private AnimationTimer animationTimer;
 
     public MapController(IGame model, MapView view, Stage primaryStage){
         this.stage = primaryStage;
         this.model = model;
         this.view = view;
-        this.view.addController(this);
+        this.view.getMap().setOnKeyPressed(this);
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if(model.gamesDone()){
+                if(model.isTheGameDone()){
                     animationTimer.stop();
                     CongratzView congratzView = new CongratzView(stage);
                     new CongratzController(model, congratzView, stage);

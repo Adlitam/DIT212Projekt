@@ -60,11 +60,6 @@ public class CongratzView {
 
     }
 
-    public void addController(CongratzController c){
-        backButton.setOnAction(c);
-        nextMap.setOnAction(c);
-    }
-
     public Button getBackButton(){
         return backButton;
     }

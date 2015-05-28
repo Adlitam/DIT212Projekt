@@ -47,11 +47,6 @@ public class InputOutputView implements PropertyChangeListener {
         return inputAndReturnAndOutput;
     }
 
-    public void addController(InputOutputViewController c){
-        backButton.setOnAction(c);
-        output.setOnKeyPressed(c.getKec());
-    }
-
     public Button getBackButton(){
         return backButton;
     }
