@@ -145,7 +145,7 @@ public class GameTest {
     @Test
     public void testSetGamesDoneToFalse(){
         instance.setGamesDoneToFalse();
-        boolean bool = instance.gamesDone();
+        boolean bool = instance.isTheGameDone();
         assertTrue(!bool);
     }
 
@@ -181,7 +181,7 @@ public class GameTest {
     // Test gamesDone()
     @Test
     public void testGamesDone(){
-        boolean bool1 = instance.gamesDone();
+        boolean bool1 = instance.isTheGameDone();
         boolean bool2 = bool1 | !bool1;
         assertTrue(bool2);
     }

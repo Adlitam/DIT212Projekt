@@ -22,7 +22,7 @@ public class MapController implements EventHandler<KeyEvent> {
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if(model.gamesDone()){
+                if(model.isTheGameDone()){
                     animationTimer.stop();
                     CongratzView congratzView = new CongratzView(stage);
                     new CongratzController(model, congratzView, stage);

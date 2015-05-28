@@ -9,6 +9,7 @@ import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 @SuppressFBWarnings("CD_CIRCULAR_DEPENDENCY")
@@ -19,10 +20,10 @@ public class Game implements IGame, Serializable{
     private final Question[] allQuestions = ResourceReader.readQuestions();
     private final SaveSlot[] slots = new SaveSlot[3];
     private final String[] levels = new String[3];
-    ArrayList<HighScore> totalHighScores = new ArrayList<HighScore>();
+    private final List<HighScore> totalHighScores = new ArrayList<HighScore>();
 
     // Sets to True if the game is done so the Controllers know when to end all Animation timers
-    private boolean gamesDone = false;
+    private boolean gamesDone;
     
 //MATERIAL RELATING TO CURRENT SESSION
     @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
@@ -58,7 +59,7 @@ public class Game implements IGame, Serializable{
 
 @Override
 public int isThisTheRightAnswer(int index) {
-    boolean a = currentQuestion.isThisTheRightAnswer(index);
+    final boolean a = currentQuestion.isThisTheRightAnswer(index);
     currentQuestion = null;
     if(a){
         currentMatch.correctAnswer();
@@ -80,7 +81,7 @@ public int isThisTheRightAnswer(int index) {
     }
 
     @Override
-    public boolean gamesDone() {
+    public boolean isTheGameDone() {
         return gamesDone;
     }
 
@@ -101,32 +102,34 @@ public int isThisTheRightAnswer(int index) {
     }
 
     private Question selectQuestion(){
-        Random gen = new Random();
-        int index = gen.nextInt(allQuestions.length);
+        final Random gen = new Random();
+        final int index = gen.nextInt(allQuestions.length);
         return allQuestions[index];
     }
 
 
 
     @Override
-    public void createPlayer(int Slot, String name, int type) {
+    public void createPlayer(int slot, String name, int type) {
         if (type != MAGE && type != WARRIOR && type != THIEF) {
             throw new IllegalArgumentException("Tried to create player with nonexistent type " + type);
         }
 
-        if (slots[Slot] != null) {
-            throw new RuntimeException("Slot " + Slot + "already contains a player");
+        if (slots[slot] != null) {
+            throw new RuntimeException("Slot " + slot + "already contains a player");
         }
-        slots[Slot] = new SaveSlot(name, type);
+        slots[slot] = new SaveSlot(name, type);
         SavedInformationHandler.saveGame(this);
-        currentPlayer = slots[Slot];
+        currentPlayer = slots[slot];
     }
 
     @Override
-    public void selectPlayer(int Slot){
-        if(slots[Slot]!=null) currentPlayer = slots[Slot];
+    public void selectPlayer(int slot){
+        if(slots[slot]==null) {
+            throw new RuntimeException ("No player found in slot " + slot);
+        }
         else {
-                throw new RuntimeException ("No player found in slot " + Slot);
+            currentPlayer = slots[slot];       
         }
     }
     
