@@ -2,8 +2,7 @@ package edu.gu.maze.model;
 
 import edu.gu.maze.util.Constants;
 import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class QuestionerTest {
 
@@ -11,8 +10,7 @@ public class QuestionerTest {
 
     @Test
     public void testCanIMoveHere() {
-        boolean bool = quest.canIMoveHere() == Constants.QUESTIONER;
-        assertTrue(bool);
+        assertEquals(Constants.QUESTIONER,quest.canIMoveHere());
     }
 
     // Test if no errors occurs when calling ClearWay()
@@ -24,8 +22,7 @@ public class QuestionerTest {
     @Test
     public void testToString() {
         String Q = quest.toString();
-        boolean bool = Q.equals("Questioner");
-        assertTrue(bool);
+        assertEquals("Questioner",Q);
     }
 
 

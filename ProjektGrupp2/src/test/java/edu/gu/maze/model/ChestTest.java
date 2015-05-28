@@ -3,6 +3,7 @@ package edu.gu.maze.model;
 import edu.gu.maze.util.Constants;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ChestTest {
@@ -10,23 +11,20 @@ public class ChestTest {
 
     @Test
     public void testCanIMoveHere() {
-        boolean bool = chest.canIMoveHere() == Constants.CHEST;
-        assertTrue(bool);
+        assertEquals(Constants.CHEST,chest.canIMoveHere());
     }
 
     // Test if the Chest is open after calling ClearWay()
     @Test
     public void testClearWay() {
         chest.clearWay();
-        boolean bool = chest.canIMoveHere() == Constants.YES;
-        assertTrue(bool);
+        assertEquals(Constants.YES,chest.canIMoveHere());
     }
 
     @Test
     public void testToString() {
         String C = chest.toString();
-        boolean bool = C.equals("Chest");
-        assertTrue(bool);
+        assertEquals("Chest",C);
     }
 
 

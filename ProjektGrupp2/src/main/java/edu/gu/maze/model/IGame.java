@@ -37,7 +37,7 @@ public interface IGame {
     void setTime(int min, int sec);
 
     // Tells the controllers if the game is done
-    boolean gamesDone();
+    boolean isTheGameDone();
 
     void setGamesDoneToFalse();
 

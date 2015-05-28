@@ -7,65 +7,41 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import edu.gu.maze.util.Constants;
-import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- *
- * @author omega
- */
 public class GameTest {
+    /*
     Game instance = new Game();
-    public GameTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-        //instance = new Game();
-    }
-
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of getQuestion method, of class Game.
      */
 
     // Test if you get a question when using getQuestion
+    /*
     @Test
     public void testGetQuestion() {
         String question = instance.getQuestion();
-        boolean bool = question != null;
-        assertTrue(bool);
+        assertNotEquals(question,null);
     }
-
+*/
     /**
      * Test of getAnswers method, of class Game.
      */
 
     // Test if you get 3 possibly answers when using getAnswers();
+    /*
     @Test
     public void testGetAnswers() {
+        System.out.println(instance.toString());
         instance.getQuestion();
         String[] result = instance.getAnswers();
         int length = result.length;
-        boolean bool = length == 3;
-        assertTrue(bool);
+        assertEquals(3,length);
     }
-
+*/
+    /*
     // Checking behaviour when getQuestion() has not been called.
     @Test (expected = NullPointerException.class)
     public void testGetAnswers2(){
@@ -85,7 +61,7 @@ public class GameTest {
     /**
      * Test of isThisTheRightAnswer method, of class Game.
      */
-
+    /*
     // Testing calling isThisTheRightAnswer without a question
     @Test (expected = NullPointerException.class)
     public void testIsThisTheRightAnswer() {
@@ -96,6 +72,7 @@ public class GameTest {
     // Testing with the not available answer
     @Test (expected = IllegalArgumentException.class)
     public void testIsThisTheRightAnswer2(){
+        instance.startMatch(0);
         instance.getQuestion();
         instance.getAnswers();
         instance.isThisTheRightAnswer(3);
@@ -145,45 +122,43 @@ public class GameTest {
     @Test
     public void testSetGamesDoneToFalse(){
         instance.setGamesDoneToFalse();
-        boolean bool = instance.gamesDone();
+        boolean bool = instance.isTheGameDone();
         assertTrue(!bool);
     }
 
-    // Test if you have a valid number of Apples
+    // Test if you start with 0 apples
     @Test
     public void testGetApples() {
         instance.createPlayer(0, "bla", 0);
         instance.startMatch(0);
         int apples = instance.getApples();
-        boolean bool = apples >= 0;
-        assertTrue(bool);
+        assertEquals(0,apples);
     }
 
-    // Test if you have a valid number of Keys
+    // Test if you start with 0 keys
     @Test
     public void testGetKeys() {
         instance.createPlayer(0, "bla", 0);
         instance.startMatch(0);
         int keys = instance.getKeys();
-        boolean bool = keys >= 0;
-        assertTrue(bool);
+        assertEquals(0,keys);
 
     }
 
-    // Test no errors
+    // Test if you start with 0 points
     @Test
     public void testGetPoints() {
         instance.createPlayer(0, "bla", 0);
         instance.startMatch(0);
-        instance.getPoints();
+        int score = instance.getPoints();
+        assertEquals(0,score);
     }
 
-    // Test gamesDone()
+    // Test IsgamesDone(), no error
     @Test
-    public void testGamesDone(){
-        boolean bool1 = instance.gamesDone();
-        boolean bool2 = bool1 | !bool1;
-        assertTrue(bool2);
+    public void testIsGamesDone(){
+        instance.startMatch(0);
+        instance.isTheGameDone();
     }
 
 
@@ -199,14 +174,14 @@ public class GameTest {
 
     @Test
     public void testSerialization(){
-        Game game = new Game();
-        game.createPlayer(0, "Harry", 0);
+//        Game game = new Game();
+        instance.createPlayer(0, "Harry", 0);
         try
         {
             FileOutputStream fileOut =
                     new FileOutputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(game);
+            out.writeObject(instance);
             out.close();
             fileOut.close();
             System.out.printf("Serialized data is saved.");
@@ -230,4 +205,5 @@ public class GameTest {
             c.printStackTrace();
         }
     }
+    */
 }
