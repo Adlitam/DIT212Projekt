@@ -1,10 +1,13 @@
 package edu.gu.maze.model;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.IllegalFormatException;
 
 import edu.gu.maze.util.Constants;
 import static org.junit.Assert.*;
@@ -224,12 +227,61 @@ public class GameTest {
         instance.createPlayer(0,"Glenn",0);
         instance.deletePlayer(0);
     }
-    
+
     // Test if no user exist, errors
     @Test  (expected = RuntimeException.class)
     public void testDeletePlayer2(){
         instance.deletePlayer(0);
     }
+
+    // Test if the slot is used by another player
+    @Test  (expected = RuntimeException.class)
+    public void testCreatePlayer(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.createPlayer(0,"Tobias",0);
+    }
+
+    // Test if the not a valid type of character
+    @Test  (expected = IllegalArgumentException.class)
+    public void testCreatePlayer2(){
+        instance.createPlayer(0,"Glenn",3);
+    }
+
+    @Test // No errors
+    public void testAddPropertyChangeListener(){
+        instance.addPropertyChangeListener(evt -> {});
+    }
+
+    @Test // No errors
+    public void testMoveUp(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(0);
+        instance.moveUp();
+    }
+
+    @Test // No errors
+    public void testMoveDown(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(0);
+        instance.moveDown();
+    }
+
+    @Test // No errors
+    public void testMoveRight(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(0);
+        instance.moveRight();
+    }
+
+    @Test // No errors
+    public void testMoveLeft(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(0);
+        instance.moveLeft();
+    }
+
+
+
 
 
 
