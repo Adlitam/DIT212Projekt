@@ -1,10 +1,12 @@
 package edu.gu.maze.controller;
 
 import edu.gu.maze.model.IGame;
+import edu.gu.maze.util.ResourceReader;
 import edu.gu.maze.view.CongratzView;
 import edu.gu.maze.view.MapView;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -19,6 +21,7 @@ public class MapController implements EventHandler<KeyEvent> {
         this.model = model;
         this.view = view;
         this.view.getMap().setOnKeyPressed(this);
+        //ImageView[][] map = ResourceReader.readMapForView((String) evt.getOldValue());
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
