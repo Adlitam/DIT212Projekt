@@ -174,8 +174,8 @@ public class Match{
     @Override
     public String toString(){
         final StringBuilder buf = new StringBuilder();
-        for (ISquare[] i : map){
-            for (ISquare s : i){
+        for (final ISquare[] i : map){
+            for (final ISquare s : i){
                 buf.append(s.toString());
             }
             buf.append('\n');

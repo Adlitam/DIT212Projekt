@@ -1,6 +1,6 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.controller.StartController;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,17 +14,17 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class StartView {
-    private Button slot1Button = new Button();
-    private Button slot2Button = new Button();
-    private Button slot3Button = new Button();
+    private final Button slot1Button = new Button();
+    private final Button slot2Button = new Button();
+    private final Button slot3Button = new Button();
 
-    private Button deleteSlot1 = new Button("Delete Player");
-    private Button deleteSlot2 = new Button("Delete Player");
-    private Button deleteSlot3 = new Button("Delete Player");
+    private final Button deleteSlot1 = new Button("Delete Player");
+    private final Button deleteSlot2 = new Button("Delete Player");
+    private final Button deleteSlot3 = new Button("Delete Player");
 
 
     private Button backButton;
-    private BorderPane layout;
+    private final BorderPane layout;
     private HBox hBox1;
 
     protected ImageView thief;
@@ -40,25 +40,19 @@ public class StartView {
         layout = new BorderPane();
         getPlayerInfo(playerName,playerType);
 
-        //--------just for the bugs
-        for(String x : playerName){
 
-            System.out.print(x + "\n");
-
-        }
-        //---------------------------
 
         createBottom();
         createPane();
         layout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
-        Scene startScene = new Scene(layout,800,600);
+        final Scene startScene = new Scene(layout,800,600);
         stage.setScene(startScene);
     }
 
 
     private void createPane(){
 
-        VBox vBox = new VBox();
+        final VBox vBox = new VBox();
 
         for(int i = 0; i<3; i++){
 
@@ -86,7 +80,7 @@ public class StartView {
     private void checkImage(int type,Button slot){
 
         if(type == 0){
-            Image image = new Image("warrior.png");
+            final Image image = new Image("warrior.png");
             ImageView warrior = new ImageView();
             warrior.setImage(image);
             warrior.setFitHeight(100);
@@ -95,7 +89,7 @@ public class StartView {
 
         }else if(type == 1){
 
-            Image image = new Image("Mage.png");
+            final Image image = new Image("Mage.png");
             ImageView mage = new ImageView();
             mage.setImage(image);
             mage.setFitHeight(100);
@@ -104,7 +98,7 @@ public class StartView {
 
         }else if(type == 2){
 
-            Image image = new Image("thief.png");
+            final Image image = new Image("thief.png");
             thief = new ImageView();
             thief.setImage(image);
             thief.setFitHeight(100);
@@ -134,11 +128,11 @@ public class StartView {
     // that use the slot
     private void createSlot(String playerName, Button slotButton,Button delete){
 
-        Label player = new Label(playerName);
+        final Label player = new Label(playerName);
         player.setFont(new Font(20));
         slotButton.setMinSize(100, 100);
         hBox1 = new HBox();
-        VBox vBox = new VBox();
+        final VBox vBox = new VBox();
         vBox.getChildren().addAll(player,delete);
         vBox.setSpacing(50);
         hBox1.getChildren().addAll(slotButton,vBox);
@@ -150,7 +144,7 @@ public class StartView {
     //Sets the button on the bottom of the layout
     private void createBottom(){
 
-        HBox hBoxBotton = new HBox();
+        final HBox hBoxBotton = new HBox();
         backButton = new Button("Back to start");
         backButton.setPrefWidth(200);
         hBoxBotton.getChildren().addAll(backButton);

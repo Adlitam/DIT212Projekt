@@ -8,9 +8,10 @@ public class MonsterView extends ImageView {
     private final int yPos;
 
     public MonsterView(int x, int y){
+        super();
         this.xPos = x;
         this.yPos = y;
-        Image image = new Image("Monster.png");
+        final Image image = new Image("Monster.png");
         setImage(image);
         setFitWidth(30);
         setFitHeight(30);

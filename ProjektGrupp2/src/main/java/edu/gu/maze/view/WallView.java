@@ -9,9 +9,10 @@ public class WallView extends ImageView {
     private final int yPos;
 
     public WallView(int x, int y){
+        super();
         this.xPos = x;
         this.yPos = y;
-        Image image = new Image("wall2.jpg");
+        final Image image = new Image("wall2.jpg");
         setImage(image);
         setFitWidth(30);
         setFitHeight(30);

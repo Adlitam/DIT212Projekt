@@ -8,9 +8,10 @@ public class QuestionerView extends ImageView{
     private final int yPos;
 
     public QuestionerView(int x, int y){
+        super();
         this.xPos = x;
         this.yPos = y;
-        Image image = new Image("Questioner.png");
+        final Image image = new Image("Questioner.png");
         setImage(image);
         setFitWidth(30);
         setFitHeight(30);

@@ -8,6 +8,7 @@ public class PlayerView extends ImageView{
     private int yPos;
 
     public PlayerView(int x, int y, int type){
+        super();
         xPos = x;
         yPos = y;
         Image image = null;
@@ -22,9 +23,7 @@ public class PlayerView extends ImageView{
                 image = new Image("thief.png");
                 break;
             default:
-                System.out.println("Arrggh! something went wrong when " +
-                        "initializing playerView. Type should be 0, 1 or 2, " +
-                        "but is: " + type);
+                break;
         }
         setImage(image);
         setFitWidth(30);

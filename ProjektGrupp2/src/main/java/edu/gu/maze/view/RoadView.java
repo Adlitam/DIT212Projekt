@@ -8,9 +8,10 @@ public class RoadView extends ImageView {
     private final int yPos;
 
     public RoadView(int x, int y){
+        super();
         this.xPos = x;
         this.yPos = y;
-        Image image = new Image("road.jpg");
+        final Image image = new Image("road.jpg");
         setImage(image);
         setFitWidth(30);
         setFitHeight(30);

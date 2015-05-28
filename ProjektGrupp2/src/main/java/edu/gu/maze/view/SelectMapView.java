@@ -1,6 +1,6 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.controller.SelectMapController;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,10 +15,10 @@ public class SelectMapView {
     private Button map1;
     private Button map2;
     private Button map3;
-    private BorderPane layout;
-    private HBox hBox1 = new HBox();
-    private HBox hBox2 = new HBox();
-    private HBox hBox3 = new HBox();
+    private final BorderPane layout;
+    private final HBox hBox1 = new HBox();
+    private final HBox hBox2 = new HBox();
+    private final HBox hBox3 = new HBox();
 
     public SelectMapView(Stage stage){
         stage.setTitle("Maze");
@@ -30,7 +30,7 @@ public class SelectMapView {
 
         layout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
 
-        Scene startScene = new Scene(layout,800,600);
+        final Scene startScene = new Scene(layout,800,600);
         stage.setScene(startScene);
 
     }
@@ -40,9 +40,9 @@ public class SelectMapView {
 
 
 
-        Label playerName1 = new Label("Map 1");
-        Label playerName2 = new Label("Map 2");
-        Label playerName3 = new Label("Map 3");
+        final Label playerName1 = new Label("Map 1");
+        final Label playerName2 = new Label("Map 2");
+        final Label playerName3 = new Label("Map 3");
 
         //First slot
         map1 = new Button();
@@ -67,7 +67,7 @@ public class SelectMapView {
 
 
 
-        VBox vBox = new VBox();
+        final VBox vBox = new VBox();
         vBox.getChildren().addAll(hBox1,hBox2,hBox3);
         vBox.setSpacing(10);
         vBox.setAlignment(Pos.CENTER);
@@ -80,7 +80,7 @@ public class SelectMapView {
 
 
     private void createBottom(){
-        HBox hBoxBotton = new HBox();
+        final HBox hBoxBotton = new HBox();
 
 
         backButton = new Button("Back to start");
