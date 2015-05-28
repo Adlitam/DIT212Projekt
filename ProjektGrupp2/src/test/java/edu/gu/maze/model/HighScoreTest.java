@@ -3,11 +3,10 @@ package edu.gu.maze.model;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-/**
- *
- * @author omega
- */
+
 public class HighScoreTest {
     
 
@@ -21,26 +20,10 @@ public class HighScoreTest {
         HighScore two = new HighScore("Harry", 11);
         int i = one.compareTo(two);
         int j = two.compareTo(one);
-        boolean bool1 =i==1;
-        boolean bool2 =j==-1;
-        assert (bool1);
-        assert (bool2);
-    }
-    
-    //Same score, different time
-    @Test
-    public void testCompareTo2() throws InterruptedException{
-        HighScore one = new HighScore("Draco", 10);
-        Thread.sleep(5000);
-        HighScore two = new HighScore("Harry", 10);
-        int i = one.compareTo(two);
-        int j = two.compareTo(one);
-        System.out.println(i);
+        assertEquals(1,i);
+        assertEquals(-1,j);
 
-        boolean bool1 = i>0;
-        boolean bool2 = j<0;
-        assert (bool1);
-        assert (bool2);
     }
+
     
 }

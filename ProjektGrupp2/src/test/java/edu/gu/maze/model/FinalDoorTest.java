@@ -3,7 +3,7 @@ package edu.gu.maze.model;
 import edu.gu.maze.util.Constants;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class FinalDoorTest {
 
@@ -11,8 +11,7 @@ public class FinalDoorTest {
 
     @Test
     public void testCanIMoveHere() {
-        boolean bool = fDoor.canIMoveHere() == Constants.FINAL;
-        assertTrue(bool);
+        assertEquals(Constants.FINAL,fDoor.canIMoveHere());
     }
 
     // Test if no error
@@ -24,8 +23,7 @@ public class FinalDoorTest {
     @Test
     public void testToString() {
         String fD = fDoor.toString();
-        boolean bool = fD.equals("F");
-        assertTrue(bool);
+        assertEquals("F",fD);
     }
 
 }

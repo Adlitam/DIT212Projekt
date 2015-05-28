@@ -7,38 +7,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import edu.gu.maze.util.Constants;
-import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- *
- * @author omega
- */
 public class GameTest {
     Game instance = new Game();
-    public GameTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-        //instance = new Game();
-    }
-
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of getQuestion method, of class Game.
@@ -48,8 +21,7 @@ public class GameTest {
     @Test
     public void testGetQuestion() {
         String question = instance.getQuestion();
-        boolean bool = question != null;
-        assertTrue(bool);
+        assertNotEquals(question,null);
     }
 
     /**
@@ -62,8 +34,7 @@ public class GameTest {
         instance.getQuestion();
         String[] result = instance.getAnswers();
         int length = result.length;
-        boolean bool = length == 3;
-        assertTrue(bool);
+        assertEquals(3,length);
     }
 
     // Checking behaviour when getQuestion() has not been called.
@@ -149,41 +120,39 @@ public class GameTest {
         assertTrue(!bool);
     }
 
-    // Test if you have a valid number of Apples
+    // Test if you start with 0 apples
     @Test
     public void testGetApples() {
         instance.createPlayer(0, "bla", 0);
         instance.startMatch(0);
         int apples = instance.getApples();
-        boolean bool = apples >= 0;
-        assertTrue(bool);
+        assertEquals(0,apples);
     }
 
-    // Test if you have a valid number of Keys
+    // Test if you start with 0 keys
     @Test
     public void testGetKeys() {
         instance.createPlayer(0, "bla", 0);
         instance.startMatch(0);
         int keys = instance.getKeys();
-        boolean bool = keys >= 0;
-        assertTrue(bool);
+        assertEquals(0,keys);
 
     }
 
-    // Test no errors
+    // Test if you start with 0 points
     @Test
     public void testGetPoints() {
         instance.createPlayer(0, "bla", 0);
         instance.startMatch(0);
-        instance.getPoints();
+        int score = instance.getPoints();
+        assertEquals(0,score);
     }
 
-    // Test gamesDone()
+    // Test gamesDone(), no error
     @Test
     public void testGamesDone(){
-        boolean bool1 = instance.gamesDone();
-        boolean bool2 = bool1 | !bool1;
-        assertTrue(bool2);
+        instance.gamesDone();
+
     }
 
 
