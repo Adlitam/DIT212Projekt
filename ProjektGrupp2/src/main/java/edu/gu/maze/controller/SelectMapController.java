@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class SelectMapController implements EventHandler<ActionEvent> {
     private final Game model;
-    private Stage stage;
+    private final Stage stage;
     private final SelectMapView view;
 
     public SelectMapController(IGame model, SelectMapView view, Stage primaryStage){
@@ -25,9 +25,9 @@ public class SelectMapController implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        Object b = event.getSource();
+        final Object b = event.getSource();
         if(b == view.getBackButton()){
-            MainView mainView = new MainView(stage);
+            final MainView mainView = new MainView(stage);
             new MainController(model, mainView, stage);
         }
     }

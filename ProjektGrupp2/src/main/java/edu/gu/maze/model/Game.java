@@ -2,7 +2,6 @@ package edu.gu.maze.model;
 
 import static edu.gu.maze.util.Constants.*;
 import edu.gu.maze.util.ResourceReader;
-import edu.gu.maze.util.SavedInformationHandler;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

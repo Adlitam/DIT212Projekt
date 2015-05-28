@@ -1,6 +1,5 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.controller.InputOutputViewController;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
