@@ -11,8 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class CreatePlayerController implements EventHandler<ActionEvent> {
-    private Game model;
-    private CreatePlayerView view;
+    private final Game model;
+    private final CreatePlayerView view;
     private InfoController infoController;
     private Stage stage;
     private int type;

@@ -9,25 +9,19 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 public class StartController implements EventHandler<ActionEvent> {
-    private Game model;
+    private final Game model;
     private Stage stage;
-    private StartView view;
+    private final StartView view;
     private InfoController infoController;
-    String[] playerName = new String[3];
-    int[] playerType = new int[3];
-    int[] playerScore = new int[3];
+    private String[] playerName = new String[3];
+    private int[] playerType = new int[3];
+    private int[] playerScore = new int[3];
 
     public StartController(IGame model, StartView view, Stage primaryStage){
         this.model = (Game) model;
         this.stage = primaryStage;
         this.view = view;
-        this.view.getBackButton().setOnAction(this);
-        this.view.getSlot1Button().setOnAction(this);
-        this.view.getSlot2Button().setOnAction(this);
-        this.view.getSlot3Button().setOnAction(this);
-        this.view.getDeleteSlot1().setOnAction(this);
-        this.view.getDeleteSlot2().setOnAction(this);
-        this.view.getDeleteSlot3().setOnAction(this);
+        setControllers();
         getPlayerInfo();
     }
 
@@ -58,6 +52,17 @@ public class StartController implements EventHandler<ActionEvent> {
         playerType[0] = type1;
         playerType[1] = type2;
         playerType[2] = type3;
+    }
+
+    //sets all the listeners on the view
+    private void setControllers(){
+        this.view.getBackButton().setOnAction(this);
+        this.view.getSlot1Button().setOnAction(this);
+        this.view.getSlot2Button().setOnAction(this);
+        this.view.getSlot3Button().setOnAction(this);
+        this.view.getDeleteSlot1().setOnAction(this);
+        this.view.getDeleteSlot2().setOnAction(this);
+        this.view.getDeleteSlot3().setOnAction(this);
     }
 
     //initializes all the views and controllers needed for the actual gameplay view.
