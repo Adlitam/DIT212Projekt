@@ -1,6 +1,6 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.controller.MainController;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,18 +10,18 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class MainView{
-    private Stage stage;
+
     private Button playButton;
     private Button highScoreButton;
     private Button aboutButton;
-    private BorderPane layout;
+
 
     public MainView(Stage primaryStage){
-        stage = primaryStage;
-        stage.setTitle("Maze");
+        final BorderPane layout;
+        primaryStage.setTitle("Maze");
         layout = new BorderPane();
-        HBox top = new HBox();
-        Label titel = new Label("Maze");
+        final HBox top = new HBox();
+        final Label titel = new Label("Maze");
         titel.setFont(new Font(40));
         top.getChildren().addAll(titel);
         top.setAlignment(Pos.CENTER);
@@ -31,17 +31,17 @@ public class MainView{
         createHighScoreButton();
         createAboutButton();
 
-        VBox vBoxlayout = new VBox();
+        final VBox vBoxlayout = new VBox();
         vBoxlayout.getChildren().addAll(playButton,highScoreButton,aboutButton);
         vBoxlayout.setAlignment(Pos.CENTER);
         vBoxlayout.setSpacing(50);
 
         layout.setCenter(vBoxlayout);
         layout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
-        Scene mainScene = new Scene(layout, 800, 600);
+        final Scene mainScene = new Scene(layout, 800, 600);
         //stage.setResizable(false);
-        stage.setScene(mainScene);
-        stage.show();
+        primaryStage.setScene(mainScene);
+        primaryStage.show();
     }
 
     private void createPlayButton(){

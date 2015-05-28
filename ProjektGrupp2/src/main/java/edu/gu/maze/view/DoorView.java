@@ -8,9 +8,10 @@ public class DoorView extends ImageView {
     private final int yPos;
 
     public DoorView(int x, int y){
+        super();
         this.xPos = x;
         this.yPos = y;
-        Image image = new Image("Door.png");
+        final Image image = new Image("Door.png");
         setImage(image);
         setFitWidth(30);
         setFitHeight(30);

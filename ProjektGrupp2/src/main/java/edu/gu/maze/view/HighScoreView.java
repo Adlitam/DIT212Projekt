@@ -1,6 +1,6 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.controller.HighScoreController;
+
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,7 +10,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import javax.xml.soap.Text;
+
 
 
 public class HighScoreView{
