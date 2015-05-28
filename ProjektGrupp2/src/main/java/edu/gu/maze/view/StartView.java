@@ -175,18 +175,6 @@ public class StartView {
         return !player3.equals("");
 
     }
-    //-----------------
-    //--- The events ---
-    public void addController(StartController c){
-
-        slot1Button.setOnAction(c);
-        slot2Button.setOnAction(c);
-        slot3Button.setOnAction(c);
-        deleteSlot1.setOnAction(c);
-        deleteSlot2.setOnAction(c);
-        deleteSlot3.setOnAction(c);
-        backButton.setOnAction(c);
-    }
 
     //----the get methods----
     public Button getDeleteSlot1() {

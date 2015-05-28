@@ -21,7 +21,13 @@ public class StartController implements EventHandler<ActionEvent> {
         this.model = (Game) model;
         this.stage = primaryStage;
         this.view = view;
-        this.view.addController(this);
+        this.view.getBackButton().setOnAction(this);
+        this.view.getSlot1Button().setOnAction(this);
+        this.view.getSlot2Button().setOnAction(this);
+        this.view.getSlot3Button().setOnAction(this);
+        this.view.getDeleteSlot1().setOnAction(this);
+        this.view.getDeleteSlot2().setOnAction(this);
+        this.view.getDeleteSlot3().setOnAction(this);
         getPlayerInfo();
     }
 

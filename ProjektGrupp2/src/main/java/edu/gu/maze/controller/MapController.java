@@ -18,7 +18,7 @@ public class MapController implements EventHandler<KeyEvent> {
         this.stage = primaryStage;
         this.model = model;
         this.view = view;
-        this.view.addController(this);
+        this.view.getMap().setOnKeyPressed(this);
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
