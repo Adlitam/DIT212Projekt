@@ -5,7 +5,7 @@ package edu.gu.maze.util;
  * @author omega
  */
 public final class Constants {
-    //These variables denote acceptable input for the variables to the methods
+    //These variablpes denote acceptable input for the variables to the methods
     //mentioned below. No other input will be accepted for that variable.
     
     //Slot variable in createPlayer() and selectPlayer() in IGame. 

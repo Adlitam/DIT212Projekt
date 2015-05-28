@@ -24,7 +24,7 @@ public class HighScoreView{
     HBox hBoxlayout = new HBox();
 
     public HighScoreView(Stage stage, String[] playerName, int[] playerScore){
-        
+
         stage.setTitle("Maze");
         borderPaneLayout = new BorderPane();
 
