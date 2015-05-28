@@ -24,6 +24,12 @@ public class MapController implements EventHandler<KeyEvent> {
         this.view = view;
         this.view.getMap().setOnKeyPressed(this);
         //ImageView[][] map = ResourceReader.readMapForView((String) evt.getOldValue());
+
+        initializeTimer();
+    }
+
+    //initializes the AnimationTimer that check if a player has finished a map and then creates a CongratzView.
+    private void initializeTimer(){
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {

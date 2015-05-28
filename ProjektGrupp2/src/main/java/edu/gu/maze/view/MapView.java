@@ -1,6 +1,5 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.controller.MapController;
 import edu.gu.maze.util.ResourceReader;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import javafx.scene.image.ImageView;
