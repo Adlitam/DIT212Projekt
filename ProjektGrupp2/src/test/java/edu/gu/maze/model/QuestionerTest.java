@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class QuestionerTest {
 
-    Questioner quest = new Questioner();
+    private final Questioner quest = new Questioner();
 
     @Test
     public void testCanIMoveHere() {
@@ -21,7 +21,7 @@ public class QuestionerTest {
 
     @Test
     public void testToString() {
-        String Q = quest.toString();
+        final String Q = quest.toString();
         assertEquals("Questioner",Q);
     }
 

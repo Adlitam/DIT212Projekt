@@ -7,22 +7,22 @@ import static org.junit.Assert.assertEquals;
 
 public class FinalDoorTest {
 
-    FinalDoor fDoor = new FinalDoor();
+    private final FinalDoor finalDoor = new FinalDoor();
 
     @Test
     public void testCanIMoveHere() {
-        assertEquals(Constants.FINAL,fDoor.canIMoveHere());
+        assertEquals(Constants.FINAL,finalDoor.canIMoveHere());
     }
 
     // Test if no error
     @Test
     public void testClearWay() {
-        fDoor.clearWay();
+        finalDoor.clearWay();
     }
 
     @Test
     public void testToString() {
-        String fD = fDoor.toString();
+        final String fD = finalDoor.toString();
         assertEquals("F",fD);
     }
 

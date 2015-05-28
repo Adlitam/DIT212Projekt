@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class MonsterTest {
-    Monster monster = new Monster();
+    final private Monster monster = new Monster();
 
     @Test
     public void testCanIMoveHere() {
@@ -21,7 +21,7 @@ public class MonsterTest {
 
     @Test
     public void testToString() {
-        String M = monster.toString();
+        final String M = monster.toString();
         assertEquals("Monster",M);
     }
 

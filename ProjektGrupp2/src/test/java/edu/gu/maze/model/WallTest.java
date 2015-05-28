@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class WallTest {
-    Wall wall = new Wall();
+    final private Wall wall = new Wall();
 
     @Test
     public void testCanIMoveHere() {
@@ -21,7 +21,7 @@ public class WallTest {
 
     @Test
     public void testToString() {
-        String W = wall.toString();
+        final String W = wall.toString();
         assertEquals("W",W);
     }
 }

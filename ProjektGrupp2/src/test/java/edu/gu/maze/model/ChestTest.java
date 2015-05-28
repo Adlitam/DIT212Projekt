@@ -4,10 +4,9 @@ import edu.gu.maze.util.Constants;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class ChestTest {
-    Chest chest = new Chest();
+   final private Chest chest = new Chest();
 
     @Test
     public void testCanIMoveHere() {
@@ -23,7 +22,7 @@ public class ChestTest {
 
     @Test
     public void testToString() {
-        String C = chest.toString();
+        final String C = chest.toString();
         assertEquals("Chest",C);
     }
 

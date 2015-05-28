@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class RoadTest {
-    Road road = new Road();
+    final private Road road = new Road();
 
     @Test
     public void testCanIMoveHere() {
@@ -23,7 +23,7 @@ public class RoadTest {
 
     @Test
     public void testToString() {
-        String R = road.toString();
+        final String R = road.toString();
         assertEquals("R",R);
     }
 }

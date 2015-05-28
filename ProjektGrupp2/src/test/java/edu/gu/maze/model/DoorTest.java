@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DoorTest {
 
-    Door door = new Door();
+    final Door door = new Door();
 
     @Test
     public void testCanIMoveHere() {
@@ -23,7 +23,7 @@ public class DoorTest {
 
     @Test
     public void testToString() {
-        String D = door.toString();
+        final String D = door.toString();
         assertEquals("Door",D);
     }
 }

@@ -12,7 +12,7 @@ import org.junit.Test;
 
 public class GameTest {
 
-    Game instance = new Game();
+    private final Game instance = new Game();
 
     /**
      * Test of getQuestion method, of class Game.
@@ -22,7 +22,7 @@ public class GameTest {
 
     @Test
     public void testGetQuestion() {
-        String question = instance.getQuestion();
+       final String question = instance.getQuestion();
         assertNotEquals(question,null);
     }
 
@@ -34,10 +34,9 @@ public class GameTest {
 
     @Test
     public void testGetAnswers() {
-        System.out.println(instance.toString());
         instance.getQuestion();
-        String[] result = instance.getAnswers();
-        int length = result.length;
+        final String[] result = instance.getAnswers();
+        final int length = result.length;
         assertEquals(3,length);
     }
 
@@ -84,18 +83,18 @@ public class GameTest {
         instance.startMatch(0);
         instance.getQuestion();
         instance.getAnswers();
-        int answer1 = instance.isThisTheRightAnswer(0);
-        boolean bool1 = answer1 == 1 | answer1==0;
+        final int answer1 = instance.isThisTheRightAnswer(0);
+        final boolean bool1 = answer1 == 1 | answer1==0;
         assertTrue(bool1);
         instance.getQuestion();
         instance.getAnswers();
-        int answer2 = instance.isThisTheRightAnswer(1);
-        boolean bool2 = answer2 == 1 | answer2==0;
+        final int answer2 = instance.isThisTheRightAnswer(1);
+        final boolean bool2 = answer2 == 1 | answer2==0;
         assertTrue(bool2);
         instance.getQuestion();
         instance.getAnswers();
-        int answer3 = instance.isThisTheRightAnswer(2);
-        boolean bool3 = answer3 == 1 | answer3 == 0;
+        final int answer3 = instance.isThisTheRightAnswer(2);
+        final boolean bool3 = answer3 == 1 | answer3 == 0;
         assertTrue(bool3);
     }
 
@@ -121,7 +120,7 @@ public class GameTest {
     @Test
     public void testSetGamesDoneToFalse(){
         instance.setGamesDoneToFalse();
-        boolean bool = instance.isTheGameDone();
+        final boolean bool = instance.isTheGameDone();
         assertTrue(!bool);
     }
 
@@ -130,7 +129,7 @@ public class GameTest {
     public void testGetApples() {
         instance.createPlayer(0, "bla", 0);
         instance.startMatch(0);
-        int apples = instance.getApples();
+        final int apples = instance.getApples();
         assertEquals(0,apples);
     }
 
@@ -139,7 +138,7 @@ public class GameTest {
     public void testGetKeys() {
         instance.createPlayer(0, "bla", 0);
         instance.startMatch(0);
-        int keys = instance.getKeys();
+        final int keys = instance.getKeys();
         assertEquals(0,keys);
 
     }
@@ -149,7 +148,7 @@ public class GameTest {
     public void testGetPoints() {
         instance.createPlayer(0, "bla", 0);
         instance.startMatch(0);
-        int score = instance.getPoints();
+        final int score = instance.getPoints();
         assertEquals(0,score);
     }
 
@@ -176,31 +175,26 @@ public class GameTest {
         instance.createPlayer(0, "Harry", 0);
         try
         {
-            FileOutputStream fileOut =
+            final FileOutputStream fileOut =
                     new FileOutputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(instance);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved.");
         }catch(IOException i)
         {
             i.printStackTrace();
         }
         try
         {
-            FileInputStream fileIn = new FileInputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
+            final FileInputStream fileIn = new FileInputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
+            final ObjectInputStream in = new ObjectInputStream(fileIn);
             in.readObject();
             in.close();
             fileIn.close();
-        }catch(IOException i)
+        }catch(IOException | ClassNotFoundException i)
         {
             i.printStackTrace();
-        }catch(ClassNotFoundException c)
-        {
-            System.out.println("Class not found");
-            c.printStackTrace();
         }
     }
 
