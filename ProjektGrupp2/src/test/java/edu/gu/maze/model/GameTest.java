@@ -280,6 +280,65 @@ public class GameTest {
         instance.moveLeft();
     }
 
+    @Test // No errors
+    public void testOpenChest(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(2);
+        instance.moveUp();
+    }
+    @Test // No errors
+    public void testLootChest(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(2);
+        instance.moveUp();
+        instance.moveUp();
+    }
+
+    @Test // No errors
+    public void testHungryMonster(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(2);
+        instance.moveDown();
+    }
+
+    @Test // No errors
+         public void testNotHungryMonster(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(2);
+        instance.setKeysApplesScoreFinalKey();
+        instance.moveDown();
+    }
+
+    @Test // No errors
+    public void testClosedDoor(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(2);
+        instance.moveRight();
+    }
+
+    @Test // No errors
+         public void testOpenDoor(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(2);
+        instance.setKeysApplesScoreFinalKey();
+        instance.moveRight();
+    }
+
+    @Test // No errors
+    public void testQuestioner(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(2);
+        instance.moveLeft();
+    }
+
+
+
+
+
+
+
+
+
 
 
 

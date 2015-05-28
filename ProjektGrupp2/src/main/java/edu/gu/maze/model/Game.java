@@ -105,6 +105,9 @@ public int isThisTheRightAnswer(int index) {
         return currentMatch.getApples();
     }
 
+    // Used in GameTest.java
+    protected void setKeysApplesScoreFinalKey(){currentMatch.correctAnswer();}
+
     private Question selectQuestion(){
         final Random gen = new Random();
         final int index = gen.nextInt(allQuestions.length);
