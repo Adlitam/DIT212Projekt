@@ -54,6 +54,7 @@ public class ResourceReader {
             String question;
             do {
                 question = s.nextLine();
+                
             } while (question.isEmpty());
             String[] answers = new String[3];
             answers[0]= "A. " + s.nextLine();
@@ -71,8 +72,7 @@ public class ResourceReader {
         try{
             s = new Scanner(new File(filename));
         }catch(IOException e){
-            System.out.println("could not read the file: " + filename + " while trying to initialize mapView.");
-            throw new RuntimeException ("could not read the file: " + filename + " while trying to initialize mapView.");
+            System.err.println("could not read the file: " + filename + " while trying to initialize mapView.");
         }
         s.next();
         s.next();

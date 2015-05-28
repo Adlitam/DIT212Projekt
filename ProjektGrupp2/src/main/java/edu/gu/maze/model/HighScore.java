@@ -23,8 +23,6 @@ class HighScore implements Comparable<HighScore>, Serializable{
         date = new Date();
     }
     
-    //CompareTo returns  negative number if this object comes before the argument
-    // and a positive one if this object comes after the other object.
     //We are not going to use equals anyway.
     @SuppressFBWarnings("EQ_COMPARETO_USE_OBJECT_EQUALS")
     @Override
@@ -35,13 +33,9 @@ class HighScore implements Comparable<HighScore>, Serializable{
         if (score<h.score) {
             return 1;
         }
-        //i has a value less than 0 if this Date is before the Date argument; 
-        //and a value greater than 0 if this Date is after the Date argument
         final int i = date.compareTo(h.date);
-        if (i<0) {
-            return 1;
-        }
-        return -1;
+        
+        return (i<0) ? 1:-1;
     }
     
     public int getScore(){

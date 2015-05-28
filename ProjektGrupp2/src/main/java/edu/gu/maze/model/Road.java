@@ -19,8 +19,8 @@ public class Road implements ISquare{
         //do nothing
     }
 
-    @Override
-    public String toString(){
-        return "R";
-    }
+    //@Override
+    //public String toString(){
+      //  return "R";
+    //}
 }
