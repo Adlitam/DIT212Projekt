@@ -9,10 +9,10 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 public class HighScoreController implements EventHandler<ActionEvent> {
-    private IGame model;
+    private final IGame model;
     private Stage stage;
-    private HighScoreView view;
-    String[] score;
+    private final HighScoreView view;
+    private String[] score;
 
     public HighScoreController(IGame model, HighScoreView view, Stage primaryStage){
         this.stage = primaryStage;

@@ -10,9 +10,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class InputOutputViewController implements EventHandler<ActionEvent> {
-    private IGame model;
+    private final IGame model;
     private Stage stage;
-    private InputOutputView view;
+    private final InputOutputView view;
     private KeyEventController kec;
 
     public InputOutputViewController(IGame model, InputOutputView view, Stage primaryStage){

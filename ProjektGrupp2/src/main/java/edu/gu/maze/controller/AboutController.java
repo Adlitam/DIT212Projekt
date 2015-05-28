@@ -9,9 +9,9 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 public class AboutController implements EventHandler<ActionEvent> {
-    private Game model;
+    private final Game model;
     private Stage stage;
-    private AboutView view;
+    private final AboutView view;
 
     public AboutController(IGame model, AboutView view, Stage primaryStage){
         this.model = (Game) model;

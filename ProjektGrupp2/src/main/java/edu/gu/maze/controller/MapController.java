@@ -9,9 +9,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class MapController implements EventHandler<KeyEvent> {
-    private IGame model;
+    private final IGame model;
     private Stage stage;
-    private MapView view;
+    private final MapView view;
     private AnimationTimer animationTimer;
 
     public MapController(IGame model, MapView view, Stage primaryStage){

@@ -7,8 +7,8 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.control.Label;
 
 public class InfoController{
-    private Game model;
-    private InfoView view;
+    private final Game model;
+    private final InfoView view;
     private int a;
     private int b;
     private AnimationTimer animationTimer;

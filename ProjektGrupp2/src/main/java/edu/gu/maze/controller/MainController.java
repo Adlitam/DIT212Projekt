@@ -9,12 +9,12 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 public class MainController implements EventHandler<ActionEvent> {
-    private Game model;
+    private final Game model;
     private Stage stage;
-    private MainView view;
-    String[] playerName = new String[3];
-    int[] playerType = new int[3];
-    int[] playerScore = new int[3];
+    private final MainView view;
+    private String[] playerName = new String[3];
+    private int[] playerType = new int[3];
+    private int[] playerScore = new int[3];
 
     public MainController(IGame model, MainView view, Stage primaryStage){
         this.stage = primaryStage;

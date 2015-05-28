@@ -10,9 +10,9 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class CongratzController implements EventHandler<ActionEvent> {
-    private Game model;
+    private final Game model;
     private Stage stage;
-    private CongratzView view;
+    private final CongratzView view;
     private InfoController infoController;
 
     public CongratzController(IGame model, CongratzView view, Stage primaryStage){
