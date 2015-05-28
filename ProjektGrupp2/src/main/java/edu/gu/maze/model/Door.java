@@ -7,16 +7,13 @@ public class Door implements ISquare {
     private boolean open;
     @Override
     public int canIMoveHere() {
-        if (open) {
-            return YES;
-        }
-        return KEY;
+        return open ? YES:KEY;
     }
 
-    @Override
-    public String toString(){
-        return "Door";
-    }
+    //@Override
+    //public String toString(){
+      //  return "Door";
+    //}
 
     @Override
     public void clearWay() {

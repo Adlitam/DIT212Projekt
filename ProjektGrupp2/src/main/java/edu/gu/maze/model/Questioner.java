@@ -10,13 +10,12 @@ public class Questioner implements ISquare{
     @Override
     public int canIMoveHere() {
             return QUESTIONER;
-
     }
 
-    @Override
-    public String toString(){
-        return "Questioner";
-    }
+    //@Override
+    //public String toString(){
+      //  return "Questioner";
+    //}
 
     @Override
     public void clearWay() {

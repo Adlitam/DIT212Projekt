@@ -54,6 +54,7 @@ public class ResourceReader {
             String question;
             do {
                 question = s.nextLine();
+                
             } while (question.isEmpty());
             String[] answers = new String[3];
             answers[0]= "A. " + s.nextLine();

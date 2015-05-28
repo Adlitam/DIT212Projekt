@@ -7,8 +7,7 @@ import java.io.Serializable;
 public class SaveSlot implements Serializable{
     private static final long serialVersionUID = 3L;
     protected final String name;
-    private final int type;
-    
+    private final int type;  
     private int[] scores = new int[3];
     private int totalHighScore;
 

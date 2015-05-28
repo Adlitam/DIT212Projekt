@@ -1,5 +1,6 @@
 package edu.gu.maze.model;
 import java.io.Serializable;
+import java.util.Arrays;
 /**
  *
  * @author omega
@@ -18,19 +19,23 @@ public class Question implements Serializable{
             throw new IllegalArgumentException ("Attempted to initialize a Question with"
                 + " fewer than two answers.");
         }
-        answers = a.clone();
+        answers = Arrays.copyOf(a, a.length);
         if (r<0|| r>= a.length) {
             throw new IllegalArgumentException ("Attempted to initialize a Question with"
                 + " bad argument for rightAnswer: " + r);
         }
         rightAnswer = r;
     }
+    
     public String getQuestion(){
+        System.out.println(quest);
         return quest;
     }
+    
     public String[] getAnswers(){
-        return answers.clone();
+        return Arrays.copyOf(answers, answers.length);
     }
+    
     public boolean isThisTheRightAnswer(int i){
         if (i<0|| i>= answers.length) {
             throw new IllegalArgumentException ("The argument to isThisTheRightAnswer"

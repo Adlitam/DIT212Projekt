@@ -9,16 +9,12 @@ public class Monster implements ISquare {
     @Override
     public int canIMoveHere() {
         return isHungry ? APPLE:YES;
-        //if (isHungry) {
-          //  return APPLE;
-        //}
-        //return YES;
     }
 
-    @Override
-    public String toString(){
-        return "Monster";
-    }
+    //@Override
+    //public String toString(){
+      //  return "Monster";
+    //}
 
     @Override
     public void clearWay() {
