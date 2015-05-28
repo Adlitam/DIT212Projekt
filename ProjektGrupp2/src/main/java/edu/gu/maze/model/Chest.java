@@ -3,11 +3,13 @@ package edu.gu.maze.model;
 import static edu.gu.maze.util.Constants.*;
 
 public class Chest implements ISquare {
-    private boolean open = false;
+    private boolean open;
     @Override
     public int canIMoveHere() {
-        if (open) return YES;
-        else return CHEST;
+        if (open) {
+            return YES;
+        }
+        return CHEST;
     }
 
     @Override

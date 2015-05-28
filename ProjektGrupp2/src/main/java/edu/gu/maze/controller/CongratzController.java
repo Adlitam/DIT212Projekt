@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class CongratzController implements EventHandler<ActionEvent> {
     private final Game model;
-    private Stage stage;
+    private final Stage stage;
     private final CongratzView view;
     private InfoController infoController;
 
@@ -21,17 +21,17 @@ public class CongratzController implements EventHandler<ActionEvent> {
         this.view = view;
         this.view.getBackButton().setOnAction(this);
         this.view.getNextMap().setOnAction(this);
-        Label yourScore = view.getYourScore();
+        final Label yourScore = view.getYourScore();
         yourScore.setText("Congratulations \n Your score:" + model.getPoints());
     }
 
     //initializes all the views and controllers needed for the actual gameplay view.
     private void play(){
-        InfoView infoView = new InfoView();
+        final InfoView infoView = new InfoView();
         infoController = new InfoController(model, infoView);
-        InputOutputView inputView = new InputOutputView();
+        final InputOutputView inputView = new InputOutputView();
         new InputOutputViewController(model, inputView, stage);
-        MapView mapView = new MapView();
+        final MapView mapView = new MapView();
         model.addPropertyChangeListener(mapView);
         model.addPropertyChangeListener(inputView);
         new MapController(model, mapView, stage);
@@ -41,10 +41,10 @@ public class CongratzController implements EventHandler<ActionEvent> {
     //handle method for when the player presses the back to start button and the next map button.
     @Override
     public void handle(ActionEvent event) {
-        Object b = event.getSource();
+        final Object b = event.getSource();
         if (b == view.getBackButton()) {
             model.setGamesDoneToFalse();
-            MainView mainView = new MainView(stage);
+            final MainView mainView = new MainView(stage);
             new MainController(model, mainView, stage);
         }
         if (b == view.getNextMap()) {

@@ -3,15 +3,14 @@ package edu.gu.maze.model;
 import edu.gu.maze.util.Constants;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class WallTest {
     Wall wall = new Wall();
 
     @Test
     public void testCanIMoveHere() {
-        boolean bool = wall.canIMoveHere() == Constants.NO;
-        assertTrue(bool);
+        assertEquals(Constants.NO,wall.canIMoveHere());
     }
 
     // Test if no errors occurs when calling ClearWay()
@@ -23,7 +22,6 @@ public class WallTest {
     @Test
     public void testToString() {
         String W = wall.toString();
-        boolean bool = W.equals("W");
-        assertTrue(bool);
+        assertEquals("W",W);
     }
 }

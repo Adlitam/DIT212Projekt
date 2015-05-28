@@ -4,15 +4,14 @@ package edu.gu.maze.model;
 import edu.gu.maze.util.Constants;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class RoadTest {
     Road road = new Road();
 
     @Test
     public void testCanIMoveHere() {
-        boolean bool = road.canIMoveHere() == Constants.YES;
-        assertTrue(bool);
+        assertEquals(Constants.YES,road.canIMoveHere());
     }
 
 
@@ -25,7 +24,6 @@ public class RoadTest {
     @Test
     public void testToString() {
         String R = road.toString();
-        boolean bool = R.equals("R");
-        assertTrue(bool);
+        assertEquals("R",R);
     }
 }

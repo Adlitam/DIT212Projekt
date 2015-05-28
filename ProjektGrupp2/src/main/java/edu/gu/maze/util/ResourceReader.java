@@ -44,7 +44,7 @@ public class ResourceReader {
     public static Question[] readQuestions(){
         Scanner s;
         try {
-            
+            //TODO getClass.getResources edu/...
         s = new Scanner(new File("src/main/resources/edu/gu/maze/util/Questions.txt"));
         } catch (FileNotFoundException e){
             throw new RuntimeException ("Couldn't find Question file");

@@ -14,13 +14,13 @@ public final class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
 
         //model
-        IGame model = SavedInformationHandler.retrieveGame();
+        final IGame model = SavedInformationHandler.retrieveGame();
 
         //view
-        MainView view = new MainView(primaryStage);
+        final MainView view = new MainView(primaryStage);
 
         //mainController
         new MainController(model, view, primaryStage);
