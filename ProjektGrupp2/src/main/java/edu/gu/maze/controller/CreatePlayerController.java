@@ -3,6 +3,7 @@ package edu.gu.maze.controller;
 import edu.gu.maze.util.Constants;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
+import edu.gu.maze.util.SavedInformationHandler;
 import edu.gu.maze.view.*;
 import javafx.event.*;
 import javafx.scene.control.TextField;
@@ -82,6 +83,7 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
         if(b == view.getPlayButton()){
             TextField input = view.getName();
             String name = input.getText();
+            SavedInformationHandler.saveGame(model);
             if(name.length() > 0) {
                 int slot = view.getSlot();
                 System.out.println("Name: " + name);

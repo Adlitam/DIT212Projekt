@@ -1,6 +1,8 @@
 package edu.gu.maze.controller;
 
+import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
+import edu.gu.maze.util.SavedInformationHandler;
 import edu.gu.maze.view.CongratzView;
 import edu.gu.maze.view.MapView;
 import javafx.animation.AnimationTimer;
@@ -24,6 +26,7 @@ public class MapController implements EventHandler<KeyEvent> {
             public void handle(long now) {
                 if(model.gamesDone()){
                     animationTimer.stop();
+                    SavedInformationHandler.saveGame((Game) model);
                     CongratzView congratzView = new CongratzView(stage);
                     new CongratzController(model, congratzView, stage);
                 }

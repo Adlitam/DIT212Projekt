@@ -118,7 +118,7 @@ public int isThisTheRightAnswer(int index) {
             throw new RuntimeException("Slot " + Slot + "already contains a player");
         }
         slots[Slot] = new SaveSlot(name, type);
-        SavedInformationHandler.saveGame(this);
+
         currentPlayer = slots[Slot];
     }
 
@@ -141,7 +141,7 @@ public int isThisTheRightAnswer(int index) {
     public void deletePlayer(int Slot){
             if (slots[Slot]==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
             slots[Slot]=null;  
-            SavedInformationHandler.saveGame(this);
+
     }
 
 //TODO: UPDATE ALL HIGHSCORES ON END OF GAME AND CALL SAVEGAME
@@ -218,7 +218,7 @@ public int isThisTheRightAnswer(int index) {
             HighScore score = currentPlayer.addHighScore(a, currentLevel);
             addHighScore(score);
             gamesDone=true;
-            SavedInformationHandler.saveGame(this);
+            
             pcs.firePropertyChange("GAMESDONE", "value1", "value2");
         }
     }
