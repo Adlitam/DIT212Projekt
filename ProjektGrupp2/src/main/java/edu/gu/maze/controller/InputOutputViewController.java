@@ -11,15 +11,14 @@ import javafx.stage.Stage;
 
 public class InputOutputViewController implements EventHandler<ActionEvent> {
     private final IGame model;
-    private Stage stage;
+    private final Stage stage;
     private final InputOutputView view;
-    private KeyEventController kec;
 
     public InputOutputViewController(IGame model, InputOutputView view, Stage primaryStage){
         this.stage = primaryStage;
         this.model = model;
         this.view = view;
-        kec = new KeyEventController();
+        KeyEventController kec = new KeyEventController();
         this.view.getBackButton().setOnAction(this);
         this.view.getOutput().setOnKeyPressed(kec);
     }
@@ -65,29 +64,21 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
     //handle method for when the player presses the back to start button.
     @Override
     public void handle(ActionEvent event) {
-        Object b = event.getSource();
+        final Object b = event.getSource();
         if(b == view.getBackButton()){
-            MainView mainView = new MainView(stage);
+            final MainView mainView = new MainView(stage);
             new MainController(model, mainView, stage);
         }
     }
 
-    //method to get an instance of the inner class, KeyEventController.
-    public KeyEventController getKec(){
-        return kec;
-    }
-
     // Check if it is the right answer
     private void checkAnswer(int i){
-        TextArea output = view.getOutput();
-        try {
+        final TextArea output = view.getOutput();
+
             if (model.isThisTheRightAnswer(i) == 1) {
                 output.setText("Correct answer!! \nYou earned: \n5 Points \n1 Key \n1 Apple");
             } else {
                 output.setText("Wrong answer!! \nYou lost 5 points");
             }
-        }catch(NullPointerException e){
-            System.out.println("You gave an answer without any question");
-        }
     }
 }
