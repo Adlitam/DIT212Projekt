@@ -4,14 +4,12 @@ package edu.gu.maze.model;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 
 public class HighScoreTest {
     
 
-    /**
-     * Test of compareTo method, of class HighScore.
-     */
     //Different scores
     @Test
     public void testCompareTo() {
@@ -23,6 +21,26 @@ public class HighScoreTest {
         assertEquals(-1,j);
 
     }
+
+    @Test
+    public void testGetScore(){
+        final HighScore high = new HighScore("Harry", 12);
+        final int score = high.getScore();
+        assertEquals(12,score);
+
+
+    }
+
+    @Test
+    public void testToString(){
+        final HighScore high = new HighScore("Harry", 12);
+        final String test = high.toString();
+        assertNotEquals(null, test);
+
+
+    }
+
+
 
     
 }
