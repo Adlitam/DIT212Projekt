@@ -331,6 +331,27 @@ public class GameTest {
         instance.moveLeft();
     }
 
+    @Test // No errors
+    public void testNoFinalKey(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(2);
+        instance.moveUp();
+        instance.moveUp();
+        instance.moveUp();
+        instance.moveLeft();
+    }
+
+    @Test // No errors
+    public void testFinalKey(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(2);
+        instance.setKeysApplesScoreFinalKey();
+        instance.moveUp();
+        instance.moveUp();
+        instance.moveUp();
+        instance.moveLeft();
+    }
+
 
 
 

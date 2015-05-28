@@ -60,7 +60,7 @@ public class CongratzController implements EventHandler<ActionEvent> {
             //new MapController(model, mapView, stage);
             new GameView(stage, mapView, infoView, inputView);
 
-            model.startMatch(Constants.MAP2);
+            model.startMatch(Constants.MAP3);
             infoController.setAnimationTimer();
             new MapController(model, mapView, stage);
         }
