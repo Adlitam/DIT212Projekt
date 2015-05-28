@@ -40,9 +40,9 @@ public class Game implements IGame, Serializable{
     }
 
     public Game(){
-        levels[0] = "src/main/resources/edu/gu/maze/util/Level1.txt";
-        levels[1] = "src/main/resources/edu/gu/maze/util/Level2.txt";
-        levels[2] = "src/main/resources/edu/gu/maze/util/Level3.txt";
+        levels[0] = getClass().getResource("Level1.txt").toString();
+        levels[1] = getClass().getResource("Level2.txt").toString();
+        levels[2] = getClass().getResource("Level3.txt").toString();
     }
 
     @Override
