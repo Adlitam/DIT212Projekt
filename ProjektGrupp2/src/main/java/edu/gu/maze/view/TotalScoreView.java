@@ -1,7 +1,5 @@
 package edu.gu.maze.view;
 
-
-import edu.gu.maze.controller.TotalScoreController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,23 +11,18 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-/**
- * Created by Matildaandersson on 15-05-27.
- */
 public class TotalScoreView {
 
-    BorderPane layput;
-    Button backButton;
+    private final BorderPane layput;
+    private Button backButton;
     //A list of highscore and playername, date .
-    String[] score;
+    private final String[] score;
 
     public TotalScoreView(Stage stage, String[] score){
         stage.setTitle("Maze");
         layput = new BorderPane();
 
         this.score = score;
-
-
 
         //Create the layout
         createList();
@@ -40,14 +33,14 @@ public class TotalScoreView {
         layput.setStyle("-fx-background-image: url(\"highscore.jpg\");");
 
         //Sets the scene
-        Scene highScoreScene = new Scene(layput, 800, 620);
+        final Scene highScoreScene = new Scene(layput, 800, 620);
         stage.setScene(highScoreScene);
     }
 
     //shows the list with all highscore for every player that
     //have played the game
     private void createList(){
-        VBox vBox = new VBox();
+        final VBox vBox = new VBox();
         Label player;
         if(score.length == 0){
 
@@ -60,7 +53,7 @@ public class TotalScoreView {
 
         }else{
 
-            for(String x : score){
+            for(final String x : score){
 
                 player = new Label(x);
                 player.setFont(new Font(20));
@@ -78,9 +71,9 @@ public class TotalScoreView {
     //Shows the title of the stage
     private void createTop(){
 
-        Label title = new Label("High Score");
+        final Label title = new Label("High Score");
         title.setFont(new Font(40));
-        HBox hBox = new HBox();
+        final HBox hBox = new HBox();
         hBox.getChildren().addAll(title);
         hBox.setAlignment(Pos.CENTER);
         layput.setTop(hBox);
@@ -92,7 +85,7 @@ public class TotalScoreView {
     private void createBackButton(){
 
         backButton = new Button("Back to start");
-        HBox hBox = new HBox();
+        final HBox hBox = new HBox();
         hBox.getChildren().addAll(backButton);
         hBox.setAlignment(Pos.CENTER);
         layput.setBottom(hBox);
