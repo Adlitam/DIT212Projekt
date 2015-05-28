@@ -6,14 +6,14 @@ import java.io.Serializable;
  */
 public class Question implements Serializable{
     private static final long serialVersionUID = 2L;
-    private final String question;
+    private final String quest;
     private final String [] answers;
     private final int rightAnswer;
     public Question(String q, String[] a, int r){
         if (q==null || a==null){
             throw new IllegalArgumentException("Tried to initialize Question object with null");
         }
-        question = q;
+        quest = q;
         if (a.length<2) {
             throw new IllegalArgumentException ("Attempted to initialize a Question with"
                 + " fewer than two answers.");
@@ -26,7 +26,7 @@ public class Question implements Serializable{
         rightAnswer = r;
     }
     public String getQuestion(){
-        return question;
+        return quest;
     }
     public String[] getAnswers(){
         return answers.clone();
