@@ -23,7 +23,7 @@ public interface IGame {
     // if the player doesn't have it yet.
     int isThisTheRightAnswer(int index);
 
-    void startMatch(int map);    
+    void startMatch(int map);
 // returns the number of Apples the user has
     Integer getApples();
 

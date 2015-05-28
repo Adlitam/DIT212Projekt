@@ -105,7 +105,7 @@ public class ResourceReader {
                         temp2.add(new ChestView(i,j));
                         break;
                     default:
-                        System.out.println("Arrggghhh! Something went wrong when reading the level map for the view.");
+                        System.err.println("Arrggghhh! Something went wrong when reading the level map for the view.");
                 }
                 j++;
             }

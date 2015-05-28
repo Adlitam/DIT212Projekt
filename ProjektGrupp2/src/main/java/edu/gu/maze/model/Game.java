@@ -41,10 +41,13 @@ public class Game implements IGame, Serializable{
     }
 
     public Game(){
-        levels[0] = getClass().getResource("Level1.txt").toString();
-        System.out.println(levels[0]);
-        levels[1] = getClass().getResource("Level2.txt").toString();
-        levels[2] = getClass().getResource("Level3.txt").toString();
+        levels[0] = "src/main/resources/edu/gu/maze/util/Level1.txt";
+        levels[1] = "src/main/resources/edu/gu/maze/util/Level2.txt";
+        levels[2] = "src/main/resources/edu/gu/maze/util/Level3.txt";
+        //System.out.println("levels[2] = getClass().getResource(Level3.txt).toString(); contains: " + getClass().getResource("Level3.txt").toString());
+        //levels[0] = getClass().getResource("Level1.txt").toString();
+        //levels[1] = getClass().getResource("Level2.txt").toString();
+        //levels[2] = getClass().getResource("Level3.txt").toString();
     }
 
     @Override
@@ -119,9 +122,11 @@ public int isThisTheRightAnswer(int index) {
         if (slots[slot] != null) {
             throw new RuntimeException("Slot " + slot + "already contains a player");
         }
+
         slots[slot] = new SaveSlot(name, type);
-        SavedInformationHandler.saveGame(this);
+        
         currentPlayer = slots[slot];
+
     }
 
     @Override
@@ -140,14 +145,14 @@ public int isThisTheRightAnswer(int index) {
         currentMatch = ResourceReader.readMapForModel(levels[map]);
         pcs.firePropertyChange("MAP_CHOSEN", levels[map], currentPlayer.getType());
     }
-    
+
     @Override
-    public void deletePlayer(int slot){
-            if (slots[slot]==null) {
-                throw new RuntimeException("Slot " + slot + "is already empty.");
+
+    public void deletePlayer(int Slot){
+            if (slots[Slot]==null) {
+                throw new RuntimeException("Slot " + Slot + "is already empty.");
             }
-            slots[slot]=null;  
-            SavedInformationHandler.saveGame(this);
+            slots[Slot]=null;  
     }
 
 //TODO: UPDATE ALL HIGHSCORES ON END OF GAME AND CALL SAVEGAME
@@ -224,7 +229,7 @@ public int isThisTheRightAnswer(int index) {
             final HighScore score = currentPlayer.addHighScore(a, currentLevel);
             addHighScore(score);
             gamesDone=true;
-            SavedInformationHandler.saveGame(this);
+
             pcs.firePropertyChange("GAMESDONE", "value1", "value2");
         }
     }
@@ -273,6 +278,11 @@ public int isThisTheRightAnswer(int index) {
         Collections.sort(totalHighScores);
         if (totalHighScores.size()>5){
             totalHighScores.remove(totalHighScores.size()-1);
-        }
+
+    }
+    }
+
+    public String getCurrentMapFilePath(){
+        return levels[currentLevel];
     }
 }
