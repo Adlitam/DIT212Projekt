@@ -142,34 +142,36 @@ public int isThisTheRightAnswer(int index) {
     }
     
     @Override
-    public void deletePlayer(int Slot){
-            if (slots[Slot]==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
-            slots[Slot]=null;  
+    public void deletePlayer(int slot){
+            if (slots[slot]==null) {
+                throw new RuntimeException("Slot " + slot + "is already empty.");
+            }
+            slots[slot]=null;  
             SavedInformationHandler.saveGame(this);
     }
 
 //TODO: UPDATE ALL HIGHSCORES ON END OF GAME AND CALL SAVEGAME
     @Override
     public void moveUp(){
-        int i = currentMatch.moveUp();
+        final int i = currentMatch.moveUp();
         move(i, "UP");
     }
     
     @Override
     public void moveDown(){
-        int i = currentMatch.moveDown();
+        final int i = currentMatch.moveDown();
         move(i, "DOWN");
     }
     
     @Override
     public void moveLeft(){
-        int i = currentMatch.moveLeft();
+        final int i = currentMatch.moveLeft();
         move(i, "LEFT");
     }
     
     @Override
     public void moveRight(){
-        int i = currentMatch.moveRight();
+        final int i = currentMatch.moveRight();
         move(i, "RIGHT");
     }
 
@@ -218,8 +220,8 @@ public int isThisTheRightAnswer(int index) {
         // TODO or GOTAPPLE and GOTKEY for having received an apple or a key (from a chest).
         if (i == FINAL){
             currentMatch.endMatch();
-            int a = currentMatch.getScore();
-            HighScore score = currentPlayer.addHighScore(a, currentLevel);
+            final int a = currentMatch.getScore();
+            final HighScore score = currentPlayer.addHighScore(a, currentLevel);
             addHighScore(score);
             gamesDone=true;
             SavedInformationHandler.saveGame(this);
@@ -234,7 +236,7 @@ public int isThisTheRightAnswer(int index) {
 
     @Override
     public String[] getTotalHighScores() {
-        int a = totalHighScores.size();
+        final int a = totalHighScores.size();
         String[] ans = new String[a];
         for (int i=0; i<a; i++){
             ans[i]=totalHighScores.get(i).toString();
@@ -243,21 +245,27 @@ public int isThisTheRightAnswer(int index) {
     }
 
     @Override
-    public int getPlayerType(int Slot) {
-            if (slots[Slot]==null) return -1;
-            return slots[Slot].type;
+    public int getPlayerType(int slot) {
+            if (slots[slot]==null) {
+                return -1;
+            }
+            return slots[slot].getType();
     }
 
     @Override
-    public String getPlayerName(int Slot) {
-        if (slots[Slot]==null) return "";
-            return slots[Slot].name;
+    public String getPlayerName(int slot) {
+        if (slots[slot]==null) {
+            return "";
+        }
+            return slots[slot].name;
     }
     
     @Override
-    public int getPlayerTotalScore (int Slot){
-        if (slots[Slot]==null) return -1;
-            return slots[Slot].getTotalHighScore();
+    public int getPlayerTotalScore (int slot){
+        if (slots[slot]==null) {
+            return -1;
+        }
+            return slots[slot].getTotalHighScore();
     }
     
     private void addHighScore(HighScore score){

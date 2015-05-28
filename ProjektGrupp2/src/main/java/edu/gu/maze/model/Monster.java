@@ -8,8 +8,11 @@ public class Monster implements ISquare {
 
     @Override
     public int canIMoveHere() {
-        if (isHungry) return APPLE;
-        else return YES;
+        return isHungry ? APPLE:YES;
+        //if (isHungry) {
+          //  return APPLE;
+        //}
+        //return YES;
     }
 
     @Override
