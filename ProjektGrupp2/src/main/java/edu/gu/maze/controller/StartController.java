@@ -57,7 +57,7 @@ public class StartController implements EventHandler<ActionEvent> {
     }
 
     //initializes all the views and controllers needed for the actual gameplay view.
-    private void play(){
+    /*private void play(){
         final InfoView infoView = new InfoView();
         infoController = new InfoController(model, infoView);
         final InputOutputView inputView = new InputOutputView();
@@ -67,7 +67,7 @@ public class StartController implements EventHandler<ActionEvent> {
         model.addPropertyChangeListener(inputView);
         new MapController(model, mapView, stage);
         new GameView(stage, mapView, infoView, inputView);
-    }
+    }*/
 
     //handle method for when the player presses the different slots and the back to start button.
     @Override
@@ -75,9 +75,20 @@ public class StartController implements EventHandler<ActionEvent> {
         final Object b = event.getSource();
         if(b == view.getSlot1Button()){
             if(view.checkSlot1()){
-                play();
+                //play();
+                final InfoView infoView = new InfoView();
+                infoController = new InfoController(model, infoView);
+                final InputOutputView inputView = new InputOutputView();
+                new InputOutputViewController(model, inputView, stage);
+                final MapView mapView = new MapView();
+                model.addPropertyChangeListener(mapView);
+                model.addPropertyChangeListener(inputView);
+                //new MapController(model, mapView, stage);
+                new GameView(stage, mapView, infoView, inputView);
+
                 model.selectPlayer(Constants.SLOT1);
                 model.startMatch(Constants.MAP1);
+                new MapController(model, mapView, stage);
                 infoController.setAnimationTimer();
             }else {
                 final CreatePlayerView createPlayerView1 = new CreatePlayerView(stage, Constants.SLOT1);
@@ -86,9 +97,20 @@ public class StartController implements EventHandler<ActionEvent> {
         }
         if(b == view.getSlot2Button()){
             if(view.checkSlot2()){
-                play();
+                //play();
+                final InfoView infoView = new InfoView();
+                infoController = new InfoController(model, infoView);
+                final InputOutputView inputView = new InputOutputView();
+                new InputOutputViewController(model, inputView, stage);
+                final MapView mapView = new MapView();
+                model.addPropertyChangeListener(mapView);
+                model.addPropertyChangeListener(inputView);
+                //new MapController(model, mapView, stage);
+                new GameView(stage, mapView, infoView, inputView);
+
                 model.selectPlayer(Constants.SLOT2);
                 model.startMatch(Constants.MAP1);
+                new MapController(model, mapView, stage);
                 infoController.setAnimationTimer();
             }else {
                 final CreatePlayerView createPlayerView2 = new CreatePlayerView(stage, Constants.SLOT2);
@@ -97,9 +119,20 @@ public class StartController implements EventHandler<ActionEvent> {
         }
         if(b == view.getSlot3Button()){
             if(view.checkSlot3()){
-                play();
+                //play();
+                final InfoView infoView = new InfoView();
+                infoController = new InfoController(model, infoView);
+                final InputOutputView inputView = new InputOutputView();
+                new InputOutputViewController(model, inputView, stage);
+                final MapView mapView = new MapView();
+                model.addPropertyChangeListener(mapView);
+                model.addPropertyChangeListener(inputView);
+                //new MapController(model, mapView, stage);
+                new GameView(stage, mapView, infoView, inputView);
+
                 model.selectPlayer(Constants.SLOT2);
                 model.startMatch(Constants.MAP1);
+                new MapController(model, mapView, stage);
                 infoController.setAnimationTimer();
             }else{
                 final CreatePlayerView createPlayerView3 = new CreatePlayerView(stage, Constants.SLOT3);

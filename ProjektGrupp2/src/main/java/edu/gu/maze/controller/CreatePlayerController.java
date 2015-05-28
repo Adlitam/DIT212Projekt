@@ -60,7 +60,7 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
     }
 
     //initializes all the views and controllers needed for the actual gameplay view.
-    private void play(){
+    /*private void play(){
         final InfoView infoView = new InfoView();
         infoController = new InfoController(model, infoView);
         final InputOutputView inputView = new InputOutputView();
@@ -70,7 +70,7 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
         model.addPropertyChangeListener(inputView);
         new MapController(model, mapView, stage);
         new GameView(stage, mapView, infoView, inputView);
-    }
+    }*/
 
     //handle method for when the player presses the back to start button and play button.
     @Override
@@ -86,10 +86,20 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
             SavedInformationHandler.saveGame(model);
             if(name.length() > 0) {
                 final int slot = view.getSlot();
-
                 model.createPlayer(slot, name, type);
-                play();
+                //play();
+                final InfoView infoView = new InfoView();
+                infoController = new InfoController(model, infoView);
+                final InputOutputView inputView = new InputOutputView();
+                new InputOutputViewController(model, inputView, stage);
+                final MapView mapView = new MapView();
+                model.addPropertyChangeListener(mapView);
+                model.addPropertyChangeListener(inputView);
+                //new MapController(model, mapView, stage);
+                new GameView(stage, mapView, infoView, inputView);
+
                 model.startMatch(Constants.MAP1);
+                new MapController(model, mapView, stage);
                 infoController.setAnimationTimer();
             }else{
                 input.setPromptText("Fill in your name!!!");
