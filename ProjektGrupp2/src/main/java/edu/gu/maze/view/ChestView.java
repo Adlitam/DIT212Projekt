@@ -8,9 +8,10 @@ public class ChestView extends ImageView {
     private final int yPos;
 
     public ChestView(int x, int y){
+        super();
         this.xPos = x;
         this.yPos = y;
-        Image image = new Image("Chest.png");
+        final Image image = new Image("Chest.png");
         setImage(image);
         setFitWidth(30);
         setFitHeight(30);

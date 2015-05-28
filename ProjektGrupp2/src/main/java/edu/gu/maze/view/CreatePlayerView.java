@@ -1,6 +1,6 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.controller.CreatePlayerController;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,12 +14,12 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class CreatePlayerView {
-    private BorderPane borderPaneLayout;
+    private final BorderPane borderPaneLayout;
     private TextField name;
     private ImageView mage;
     private ImageView thief;
     private ImageView warrior;
-    private int slot;
+    private final int slot;
     private Button playButton;
     private Button backButton;
 
@@ -32,14 +32,14 @@ public class CreatePlayerView {
         createTop();
         createMiddle();
         createBottom();
-        Scene highScoreScene = new Scene(borderPaneLayout, 800, 620);
+        final Scene highScoreScene = new Scene(borderPaneLayout, 800, 620);
         stage.setScene(highScoreScene);
     }
 
     // Creates the top of the stage that includes a label and a TextField
     private void createTop(){
-        GridPane setName = new GridPane();
-        Label title = new Label("Write Your Name:");
+        final GridPane setName = new GridPane();
+        final Label title = new Label("Write Your Name:");
         GridPane.setConstraints(title,0,0);
         name = new TextField();
         name.setMinWidth(400);
@@ -51,7 +51,7 @@ public class CreatePlayerView {
 
     // Creates the center of the stage that includes all the Character pictures
     private void createMiddle(){
-        HBox chooseCharacter = new HBox();
+        final HBox chooseCharacter = new HBox();
         chooseCharacter.getChildren().addAll(getMageNode(),getWarriorNode(),getThiefNode());
         chooseCharacter.setAlignment(Pos.CENTER);
         chooseCharacter.setSpacing(20);
@@ -60,7 +60,7 @@ public class CreatePlayerView {
 
     // Creates the Mage picture and sends away a event if you click on it
     private ImageView getMageNode(){
-        Image image = new Image("Mage.png");
+        final Image image = new Image("Mage.png");
         mage = new ImageView();
         mage.setImage(image);
         mage.setFitHeight(200);
@@ -70,7 +70,7 @@ public class CreatePlayerView {
 
     // Creates the Warrior picture and sends away a event if you click on it
     private ImageView getWarriorNode(){
-        Image image = new Image("warrior.png");
+        final Image image = new Image("warrior.png");
         warrior = new ImageView();
         warrior.setImage(image);
         warrior.setFitHeight(250);
@@ -80,7 +80,7 @@ public class CreatePlayerView {
 
     // Creates the Thief picture and sends away a event if you click on it
     private ImageView getThiefNode(){
-        Image image = new Image("thief.png");
+        final Image image = new Image("thief.png");
         thief = new ImageView();
         thief.setImage(image);
         thief.setFitHeight(200);
@@ -90,7 +90,7 @@ public class CreatePlayerView {
 
     // Creates the bottom of the stage that includes the play and back buttoms
     private void createBottom(){
-        HBox playAndReturn = new HBox();
+        final HBox playAndReturn = new HBox();
         playButton = new Button("Play");
         playButton.setPrefWidth(200);
         backButton = new Button("Back to start");

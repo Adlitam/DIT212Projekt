@@ -12,19 +12,17 @@ public class GameView{
     public GameView(Stage s, MapView m, InfoView i1, InputOutputView i2){
         infoView = i1;
         s.setTitle("Maze");
-        BorderPane borderPane = new BorderPane();
+        final BorderPane borderPane = new BorderPane();
         borderPane.setStyle("-fx-background: Black");
-        GridPane map = m.getMap();
-        VBox info = i1.getInfoView();
+        final GridPane map = m.getMap();
+        final VBox info = i1.getInfoView();
         VBox inputAndReturnAndOutput = i2.getInputView();
         borderPane.setCenter(map);
         borderPane.setRight(info);
         borderPane.setBottom(inputAndReturnAndOutput);
-        Scene gameScene = new Scene(borderPane, 800, 620);
+        final Scene gameScene = new Scene(borderPane, 800, 620);
         s.setScene(gameScene);
     }
 
-    public InfoView getInfoView(){
-        return infoView;
-    }
+
 }

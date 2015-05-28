@@ -10,8 +10,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Screen;
 
 public class InfoView {
-    private Rectangle2D screenSize;
-    private VBox right;
+    private final Rectangle2D screenSize;
+    private final VBox right;
     private Label time;
     private Label score;
     private Label nrKeys;
@@ -33,9 +33,9 @@ public class InfoView {
 
     // The label that show the current amount of apples that the player has
     private VBox getAppleNode(){
-        VBox appleBox = new VBox();
-        Image image = new Image("apple.png");
-        ImageView apple = new ImageView();
+        final VBox appleBox = new VBox();
+        final Image image = new Image("apple.png");
+        final ImageView apple = new ImageView();
         apple.setImage(image);
         apple.setFitHeight(75);
         apple.setFitWidth(75);
@@ -49,9 +49,9 @@ public class InfoView {
     }
     // The label that show the current amount of keys that the player has
     private VBox getKeyNode(){
-        VBox keyBox = new VBox();
-        Image image = new Image("key.png");
-        ImageView key = new ImageView();
+        final VBox keyBox = new VBox();
+        final Image image = new Image("key.png");
+        final ImageView key = new ImageView();
         key.setImage(image);
         key.setFitHeight(75);
         key.setFitWidth(75);
@@ -65,8 +65,8 @@ public class InfoView {
     }
     // The label that show the current score
     private VBox getPointsNode(){
-        VBox points = new VBox();
-        Label text = new Label("Score");
+        final VBox points = new VBox();
+        final Label text = new Label("Score");
         score = new Label();
         score.setFont(new Font(20));
         points.getChildren().addAll(text, score);

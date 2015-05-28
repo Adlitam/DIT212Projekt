@@ -11,7 +11,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
-
 public class HighScoreView{
     private Button backButton,totalScoreButton;
     private final BorderPane borderPaneLayout;

@@ -12,13 +12,13 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class InputOutputView implements PropertyChangeListener {
-    private VBox inputAndReturnAndOutput;
+    private final VBox inputAndReturnAndOutput;
     private TextArea output;
-    private Rectangle2D screenSize;
+    private final Rectangle2D screenSize;
     private Button backButton;
 
     public InputOutputView() {
-        HBox inputAndReturn = new HBox();
+        final HBox inputAndReturn = new HBox();
         inputAndReturnAndOutput = new VBox();
         screenSize = Screen.getPrimary().getVisualBounds();
         backButton();
@@ -73,8 +73,8 @@ public class InputOutputView implements PropertyChangeListener {
                 output.setText("You gave the monster an apple!");
                 break;
             case "QUESTION":
-                String question = (String) evt.getOldValue();
-                String[] answers = (String[]) evt.getNewValue();
+                final String question = (String) evt.getOldValue();
+                final String[] answers = (String[]) evt.getNewValue();
                 output.setText(question + "\n" + answers[0] + "  " + answers[1] + "  " + answers[2]);
                 break;
             case "CHEST":

@@ -1,6 +1,6 @@
 package edu.gu.maze.view;
 
-import edu.gu.maze.controller.CongratzController;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class CongratzView {
-    private BorderPane layout;
+    private final BorderPane layout;
     private Button backButton;
     private Button nextMap;
     private Label yourScore;
@@ -26,13 +26,13 @@ public class CongratzView {
         createPane();
         layout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
 
-        Scene startScene = new Scene(layout,800,600);
+        final Scene startScene = new Scene(layout,800,600);
         stage.setScene(startScene);
 
     }
 
     private void createBottom(){
-        HBox bottom = new HBox();
+        final HBox bottom = new HBox();
         nextMap = new Button("Next Map");
         nextMap.setPrefWidth(200);
 
