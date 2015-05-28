@@ -6,11 +6,11 @@ import java.io.Serializable;
  */
 public class SaveSlot implements Serializable{
     private static final long serialVersionUID = 3L;
-    final String name;
-    final int type;
+    protected final String name;
+    private final int type;
     
-    int[] scores = new int[3];
-    private int totalHighScore = 0;
+    private int[] scores = new int[3];
+    private int totalHighScore;
 
     public SaveSlot (String name, int type){
         this.name = name;

@@ -2,6 +2,7 @@ package edu.gu.maze.model;
 
 import edu.gu.maze.util.Constants;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import java.util.Arrays;
 
 /**
  *
@@ -14,13 +15,13 @@ public class Match{
     private int y;
     private int apples;
     private int keys;
-    private boolean finalkey = false;
-    private int score = 0;
-    private int time = 0;
+    private boolean finalkey;
+    private int score;
+    private int time;
     
     @SuppressFBWarnings("EI_EXPOSE_REP2")
     public Match (ISquare[][] map, int x, int y){     
-        this.map = map;
+        this.map = Arrays.copyOf(map, map.length);
         this.x = x;
         this.y = y;
     }
@@ -41,7 +42,8 @@ public class Match{
         return keys;
     }
 
-    public boolean getFinalkey() {
+    //absurd name, but PMD likes it this way
+    public boolean isFinalkey() {
         return finalkey;
     }
 
@@ -50,7 +52,7 @@ public class Match{
     }
     
     private int moveTo (int x, int y){
-        int permission = map[y][x].canIMoveHere();
+        final int permission = map[y][x].canIMoveHere();
 
         // If you have any apple you give the apple and say that you can move here
         // else it says that you can not move here
@@ -67,7 +69,8 @@ public class Match{
                     score = 1000000;
                     apples = 1000000;
                     keys = 1000000;
-                    System.out.println("The Game glitched :p ");
+//PMD doesn't like this, either.                    
+//System.out.println("The Game glitched :p ");
                 }
                 return Constants.APPLE;
             }
@@ -82,7 +85,7 @@ public class Match{
                 map[y][x].clearWay();
                 return Constants.GOTKEY;
             }
-            else return Constants.KEY;
+            return Constants.KEY;
         }
 
         else if (permission == Constants.CHEST){
@@ -100,7 +103,7 @@ public class Match{
                 
                 return Constants.FINAL;
             }
-            else return Constants.NOFINAL;
+            return Constants.NOFINAL;
         }
 
         // Tells you that you met a Questioner and do nothing else
@@ -122,29 +125,37 @@ public class Match{
             map[y][x].clearWay();
             return Constants.GOTKEY;
         }
-        else return Constants.NO;
+        return Constants.NO;
     }
     
     protected int moveUp(){
-        int permission = moveTo(x, y-1);
-        if (permission == Constants.YES) y--;
+        final int permission = moveTo(x, y-1);
+        if (permission == Constants.YES) {
+            y--;
+        }
         return permission;
     }
     
     protected int moveDown(){
-        int permission = moveTo(x, y+1);
-        if (permission == Constants.YES) y++;
+        final int permission = moveTo(x, y+1);
+        if (permission == Constants.YES) {
+            y++;
+        }
         return permission;
     }
     
     protected int moveRight(){
-        int permission = moveTo(x+1, y);
-        if (permission == Constants.YES) x++;
+        final int permission = moveTo(x+1, y);
+        if (permission == Constants.YES) {
+            x++;
+        }
         return permission;
     }
     protected int moveLeft(){
-        int permission = moveTo(x-1, y);
-        if (permission == Constants.YES) x--;
+        final int permission = moveTo(x-1, y);
+        if (permission == Constants.YES) {
+            x--;
+        }
         return permission;
     }
     
@@ -162,12 +173,12 @@ public class Match{
     
     @Override
     public String toString(){
-        StringBuilder buf = new StringBuilder();
+        final StringBuilder buf = new StringBuilder();
         for (ISquare[] i : map){
             for (ISquare s : i){
                 buf.append(s.toString());
             }
-            buf.append("\n");
+            buf.append('\n');
         }
         return buf.toString();
     }

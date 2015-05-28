@@ -4,6 +4,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  *
@@ -28,12 +29,18 @@ class HighScore implements Comparable<HighScore>, Serializable{
     @SuppressFBWarnings("EQ_COMPARETO_USE_OBJECT_EQUALS")
     @Override
     public int compareTo(HighScore h){
-        if (score>h.score) return -1;
-        if (score<h.score) return 1;
+        if (score>h.score) {
+            return -1;
+        }
+        if (score<h.score) {
+            return 1;
+        }
         //i has a value less than 0 if this Date is before the Date argument; 
         //and a value greater than 0 if this Date is after the Date argument
-        int i = date.compareTo(h.date);
-        if (i<0) return 1;
+        final int i = date.compareTo(h.date);
+        if (i<0) {
+            return 1;
+        }
         return -1;
     }
     
@@ -43,7 +50,7 @@ class HighScore implements Comparable<HighScore>, Serializable{
     
     @Override
     public String toString(){
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        final SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
         return score + "\t" + name + "\t" + f.format(date);
     }
 }

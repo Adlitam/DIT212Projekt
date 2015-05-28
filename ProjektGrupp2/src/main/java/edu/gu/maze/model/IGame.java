@@ -52,7 +52,7 @@ public interface IGame {
     //NEW: Throws an exception at any attempt to create a player in a slot that is
     //already occupied.
 
-    void createPlayer(int Slot, String name, int type);
+    void createPlayer(int slot, String name, int type);
     //select existing player
 
     //public abstract void addRoadsToMap();
@@ -60,9 +60,9 @@ public interface IGame {
     void moveDown();
     void moveLeft();
     void moveRight();
-    void selectPlayer (int Slot);
+    void selectPlayer (int slot);
     //Throws an exception if you try to delete a nonexistent player.
-    void deletePlayer (int Slot);
+    void deletePlayer (int slot);
 
     //Returns the current match
     //Match getCurrentMatch();
@@ -74,11 +74,11 @@ public interface IGame {
     String[] getTotalHighScores();
     
     // returns the type of the player in slot, or -1 if there is no player in the slot.
-    int getPlayerType(int Slot);
+    int getPlayerType(int slot);
     //Returns player name or empty string if there is no player in the slot.
-    String getPlayerName(int Slot);
+    String getPlayerName(int slot);
     
     //Returns a player's combined high score for all maps, or -1 if there is no player in slot.
-    int getPlayerTotalScore (int Slot);
+    int getPlayerTotalScore (int slot);
     
 }
