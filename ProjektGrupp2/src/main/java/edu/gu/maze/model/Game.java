@@ -73,7 +73,6 @@ public int isThisTheRightAnswer(int index) {
         return 0;
 }
 
-// TODO: My precious rows
     @Override
     public Integer getPoints() {
         return currentMatch.getScore();
@@ -158,7 +157,6 @@ public int isThisTheRightAnswer(int index) {
             slots[Slot]=null;  
     }
 
-//TODO: UPDATE ALL HIGHSCORES ON END OF GAME AND CALL SAVEGAME
     @Override
     public void moveUp(){
         final int i = currentMatch.moveUp();
@@ -225,7 +223,6 @@ public int isThisTheRightAnswer(int index) {
             pcs.firePropertyChange("CHEST", "value1", "value2");
         }
 
-        // TODO or GOTAPPLE and GOTKEY for having received an apple or a key (from a chest).
         if (i == FINAL){
             currentMatch.endMatch();
             final int a = currentMatch.getScore();
@@ -234,11 +231,6 @@ public int isThisTheRightAnswer(int index) {
             gamesDone=true;
         }
     }
-
-    /*@Override
-    public String[] getHighScoresForMap(int map) {
-        return levels[map].getHighScores();
-    }*/
 
     @Override
     public String[] getTotalHighScores() {
@@ -279,11 +271,11 @@ public int isThisTheRightAnswer(int index) {
         Collections.sort(totalHighScores);
         if (totalHighScores.size()>5){
             totalHighScores.remove(totalHighScores.size()-1);
-
+        }
     }
-    }
-
+/* TODO ???
     public String getCurrentMapFilePath(){
         return levels[currentLevel];
     }
+    */
 }

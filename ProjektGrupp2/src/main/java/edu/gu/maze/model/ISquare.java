@@ -9,6 +9,4 @@ public interface ISquare {
 
     void clearWay();
 
-    @Override
-    String toString();
 }

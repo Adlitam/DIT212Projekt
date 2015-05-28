@@ -2,10 +2,6 @@ package edu.gu.maze.model;
 
 import static edu.gu.maze.util.Constants.NO;
 
-/**
- *
- * @author omega
- */
 public class Wall implements ISquare{
 
     @Override
@@ -19,8 +15,4 @@ public class Wall implements ISquare{
         //do nothing
     }
 
-    @Override
-    public String toString(){
-        return "W";
-    }
 }

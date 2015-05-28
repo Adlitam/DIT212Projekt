@@ -1,40 +1,26 @@
 package edu.gu.maze.model;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.IllegalFormatException;
-
 import edu.gu.maze.util.Constants;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class GameTest {
-
     private final Game instance = new Game();
 
-    /**
-     * Test of getQuestion method, of class Game.
-     */
-
     // Test if you get a question when using getQuestion
-
     @Test
     public void testGetQuestion() {
        final String question = instance.getQuestion();
         assertNotEquals(question,null);
     }
 
-    /**
-     * Test of getAnswers method, of class Game.
-     */
-
     // Test if you get 3 possibly answers when using getAnswers();
-
     @Test
     public void testGetAnswers() {
         instance.getQuestion();
@@ -58,11 +44,6 @@ public class GameTest {
         instance.isThisTheRightAnswer(0);
         instance.getAnswers();
     }
-
-
-    /**
-     * Test of isThisTheRightAnswer method, of class Game.
-     */
 
     // Testing calling isThisTheRightAnswer without a question
     @Test (expected = NullPointerException.class)
@@ -207,9 +188,11 @@ public class GameTest {
 
     @Test // Test if no user in the slot
     public void testGetPlayerTotalScore2(){
-       final int highscore = instance.getPlayerType(0);
+       final int highscore = instance.getPlayerTotalScore(0);
         assertEquals(-1,highscore);
     }
+
+
 
     @Test // Test if user exist, no errors
     public void testSelectPlayer(){
@@ -352,18 +335,37 @@ public class GameTest {
         instance.moveLeft();
     }
 
+    @Test // No errors
+         public void testGetTotalHighScores(){
+        final String[] a = instance.getTotalHighScores();
+        final int b = a.length;
+        assertEquals(0,b);
+    }
 
+    @Test // No errors
+    public void testGetTotalHighScores2(){
+        helptestGetTotalHighScores2();
+        helptestGetTotalHighScores2();
+        helptestGetTotalHighScores2();
+        helptestGetTotalHighScores2();
+        helptestGetTotalHighScores2();
+        helptestGetTotalHighScores2();
 
+        final String[] a = instance.getTotalHighScores();
+        final int b = a.length;
+        assertEquals(5,b);
+    }
 
-
-
-
-
-
-
-
-
-
+    private void helptestGetTotalHighScores2(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.startMatch(2);
+        instance.setKeysApplesScoreFinalKey();
+        instance.moveUp();
+        instance.moveUp();
+        instance.moveUp();
+        instance.moveLeft();
+        instance.deletePlayer(0);
+    }
 
     @Test
     public void testSerialization(){
