@@ -152,12 +152,6 @@ public class HighScoreView{
 
     }
 
-    //Adding the event on the buttons
-    public void addController(HighScoreController c){
-        backButton.setOnAction(c);
-        totalScoreButton.setOnAction(c);
-    }
-
     //returns the buttons
     public Button getBackButton(){
         return backButton;

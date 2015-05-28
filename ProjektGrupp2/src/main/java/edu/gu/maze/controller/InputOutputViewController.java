@@ -20,7 +20,8 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
         this.model = model;
         this.view = view;
         kec = new KeyEventController();
-        this.view.addController(this);
+        this.view.getBackButton().setOnAction(this);
+        this.view.getOutput().setOnKeyPressed(kec);
     }
 
     //inner class for handling KeyEvents
