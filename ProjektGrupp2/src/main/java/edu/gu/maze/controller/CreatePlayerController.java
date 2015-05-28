@@ -14,15 +14,15 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
     private final Game model;
     private final CreatePlayerView view;
     private InfoController infoController;
-    private Stage stage;
+    private final Stage stage;
     private int type;
-    private MouseEventController mec;
+
 
     public CreatePlayerController(IGame model, CreatePlayerView view, Stage primaryStage){
         this.stage = primaryStage;
         this.model = (Game) model;
         this.view = view;
-        mec = new MouseEventController();
+        final MouseEventController mec = new MouseEventController();
         this.view.getBackButton().setOnAction(this);
         this.view.getPlayButton().setOnAction(this);
         this.view.getWarrior().setOnMouseClicked(mec);

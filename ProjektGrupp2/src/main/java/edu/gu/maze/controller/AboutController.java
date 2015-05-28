@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class AboutController implements EventHandler<ActionEvent> {
     private final Game model;
-    private Stage stage;
+    private final Stage stage;
     private final AboutView view;
 
     public AboutController(IGame model, AboutView view, Stage primaryStage){
@@ -23,9 +23,9 @@ public class AboutController implements EventHandler<ActionEvent> {
     //handle method for when the player presses the back to start button.
     @Override
     public void handle(ActionEvent event) {
-        Object b = event.getSource();
+        final Object b = event.getSource();
         if(b == view.getBackButton()){
-            MainView mainView = new MainView(stage);
+            final MainView mainView = new MainView(stage);
             new MainController(model, mainView, stage);
         }
     }

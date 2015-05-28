@@ -136,7 +136,7 @@ public int isThisTheRightAnswer(int index) {
         currentMatch = ResourceReader.readMapForModel(levels[map]);
         pcs.firePropertyChange("MAP_CHOSEN", levels[map], currentPlayer.getType());
     }
-    
+
     @Override
     public void deletePlayer(int Slot){
             if (slots[Slot]==null) throw new RuntimeException("Slot " + Slot + "is already empty.");
@@ -218,7 +218,7 @@ public int isThisTheRightAnswer(int index) {
             HighScore score = currentPlayer.addHighScore(a, currentLevel);
             addHighScore(score);
             gamesDone=true;
-            
+
             pcs.firePropertyChange("GAMESDONE", "value1", "value2");
         }
     }
@@ -261,6 +261,7 @@ public int isThisTheRightAnswer(int index) {
         Collections.sort(totalHighScores);
         if (totalHighScores.size()>5){
             totalHighScores.remove(totalHighScores.size()-1);
-        }
+
+    }
     }
 }
