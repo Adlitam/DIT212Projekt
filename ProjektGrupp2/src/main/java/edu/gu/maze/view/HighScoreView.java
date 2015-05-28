@@ -11,17 +11,16 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
-
-
 public class HighScoreView{
     private Button backButton,totalScoreButton;
-    private BorderPane borderPaneLayout;
+    private final BorderPane borderPaneLayout;
+    private final String font = "Verdana";
 
     private Label player, score;
     private  HBox highScore;
-    String player1,player2,player3;
-    int score1,score2,score3;
-    HBox hBoxlayout = new HBox();
+    private String player1,player2,player3;
+    private int score1,score2,score3;
+    private final HBox hBoxlayout = new HBox();
 
     public HighScoreView(Stage stage, String[] playerName, int[] playerScore){
 
@@ -38,7 +37,7 @@ public class HighScoreView{
         borderPaneLayout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
 
         //Sets the scene
-        Scene highScoreScene = new Scene(borderPaneLayout, 800, 620);
+        final Scene highScoreScene = new Scene(borderPaneLayout, 800, 620);
         stage.setScene(highScoreScene);
     }
 
@@ -57,28 +56,28 @@ public class HighScoreView{
     @SuppressFBWarnings("LSC_LITERAL_STRING_COMPARISON")
     private void createList(){
 
-        VBox vBoxCenter = new VBox();
+        final VBox vBoxCenter = new VBox();
 
         //creates a list for every slot with the total score
         for(int i = 0; i < 3; i++){
 
             if(i == 0) {
-                if(!player1.equals("")) {
-                    createLabel(player1, score1);
-                }else{
+                if("".equals(player1)) {
                     createEmptyLabel();
+                }else{
+                    createLabel(player1, score1);
                 }
             }else if(i == 1){
-                if(!player2.equals("")) {
-                    createLabel(player2, score2);
-                }else{
+                if("".equals(player2)) {
                     createEmptyLabel();
+                }else{
+                    createLabel(player2, score2);
                 }
             }else if(i == 2){
-                if(!player3.equals("")) {
-                    createLabel(player3, score3);
-                }else{
+                if("".equals(player3)) {
                     createEmptyLabel();
+                }else{
+                    createLabel(player3, score3);
                 }
             }
 
@@ -97,12 +96,12 @@ public class HighScoreView{
     }
 
     //Create one panel for the score with the player name and the scores for ever slot
-    private void createLabel(String playerName, int scorePlayer){
+    private void createLabel(String playerName, Integer scorePlayer){
 
             player = new Label(playerName);
-            player.setFont(new Font("Verdana", 40));
-            score = new Label("" + scorePlayer);
-            score.setFont(new Font("Verdana", 40));
+            player.setFont(new Font(font, 40));
+            score = new Label(scorePlayer.toString());
+            score.setFont(new Font(font, 40));
             highScore = new HBox();
             highScore.getChildren().addAll(player, score);
             highScore.setSpacing(100);
@@ -116,9 +115,9 @@ public class HighScoreView{
     private void createEmptyLabel(){
 
         player = new Label();
-        player.setFont(new Font("Verdana", 40));
+        player.setFont(new Font(font, 40));
         score = new Label();
-        score.setFont(new Font("Verdana", 40));
+        score.setFont(new Font(font, 40));
         highScore = new HBox();
         highScore.getChildren().addAll(player, score);
         highScore.setSpacing(100);
@@ -129,10 +128,10 @@ public class HighScoreView{
 
     public void createTop(){
         //The title and the font
-        Label title = new Label("TotalScore for every slot.");
+        final Label title = new Label("TotalScore for every slot.");
         title.setFont(new Font("Cambria", 40));
 
-        HBox hBoxTop = new HBox();
+        final HBox hBoxTop = new HBox();
         hBoxTop.getChildren().addAll(title);
         hBoxTop.setAlignment(Pos.CENTER);
 
