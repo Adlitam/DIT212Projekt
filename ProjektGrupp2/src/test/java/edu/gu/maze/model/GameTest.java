@@ -168,6 +168,70 @@ public class GameTest {
         instance.createPlayer(Constants.SLOT1, "Harry Potter", Constants.MAGE);
     }
 
+    @Test
+    public void testGetPlayerName(){
+        instance.createPlayer(0,"Glenn",0);
+        final String name = instance.getPlayerName(0);
+        assertEquals("Glenn",name);
+    }
+
+    @Test // Test if no user in the slot
+    public void testGetPlayerName2(){
+        final String name = instance.getPlayerName(0);
+        assertEquals("",name);
+    }
+
+    @Test
+    public void testGetPlayerType(){
+        instance.createPlayer(0,"Glenn",0);
+        final int type = instance.getPlayerType(0);
+        assertEquals(0,type);
+    }
+
+    @Test // Test if no user in the slot
+    public void testGetPlayerType2(){
+        final int type = instance.getPlayerType(0);
+        assertEquals(-1,type);
+    }
+
+
+    @Test // Test if the player sget 0 points when starting the game
+    public void testGetPlayerTotalScore(){
+        instance.createPlayer(0,"Glenn",0);
+        final int highscore = instance.getPlayerTotalScore(0);
+        assertEquals(0,highscore);
+    }
+
+    @Test // Test if no user in the slot
+    public void testGetPlayerTotalScore2(){
+       final int highscore = instance.getPlayerType(0);
+        assertEquals(-1,highscore);
+    }
+
+    @Test // Test if user exist, no errors
+    public void testSelectPlayer(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.selectPlayer(0);
+    }
+    // Test if no user exist, errors
+    @Test  (expected = RuntimeException.class)
+    public void testSelectPlayer2(){
+        instance.selectPlayer(0);
+    }
+
+    @Test // Test if user exist, no errors
+    public void testDeletePlayer(){
+        instance.createPlayer(0,"Glenn",0);
+        instance.deletePlayer(0);
+    }
+    
+    // Test if no user exist, errors
+    @Test  (expected = RuntimeException.class)
+    public void testDeletePlayer2(){
+        instance.deletePlayer(0);
+    }
+
+
 
     @Test
     public void testSerialization(){

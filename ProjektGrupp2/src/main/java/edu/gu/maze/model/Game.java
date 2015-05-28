@@ -63,7 +63,7 @@ public class Game implements IGame, Serializable{
 
 @Override
 public int isThisTheRightAnswer(int index) {
-    final boolean a = currentQuestion.isThisTheRightAnswer(index);
+    boolean a = currentQuestion.isThisTheRightAnswer(index);
     currentQuestion = null;
     if(a){
         currentMatch.correctAnswer();
@@ -229,8 +229,6 @@ public int isThisTheRightAnswer(int index) {
             final HighScore score = currentPlayer.addHighScore(a, currentLevel);
             addHighScore(score);
             gamesDone=true;
-
-            pcs.firePropertyChange("GAMESDONE", "value1", "value2");
         }
     }
 
