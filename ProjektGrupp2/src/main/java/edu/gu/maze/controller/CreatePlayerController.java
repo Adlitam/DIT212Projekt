@@ -115,9 +115,4 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
             }
         }
     }
-
-    //method to get an instance of the inner class, MouseEventController.
-    public MouseEventController getMec(){
-        return mec;
-    }
 }
