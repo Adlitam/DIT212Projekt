@@ -10,10 +10,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author omega
- */
 public class ResourceReader {
     //for usage, see test file
     @SuppressFBWarnings("DM_DEFAULT_ENCODING")

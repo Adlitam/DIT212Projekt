@@ -3,6 +3,7 @@
 	 xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd"
 	 xsi:noNamespaceSchemaLocation="http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
 	<rule ref="rulesets/internal/all-java.xml">
+		<exclude name="CommentRequired"/>
 		<exclude name="AvoidCatchingGenericException" />
 		<exclude name="AvoidFinalLocalVariable" />
 		<exclude name="AvoidLiteralsInIfCondition" />
@@ -25,7 +26,7 @@
 		<exclude name="SingularField" />
 		<exclude name="UnusedPrivateField" />
 		<exclude name="UseConcurrentHashMap" />
-		<exclude name="UseSingleton" />
+		<exclude name="UseUtilityClass" />
 	</rule>
 	<rule ref="rulesets/java/controversial.xml/DataflowAnomalyAnalysis">
 		<properties>
@@ -44,7 +45,7 @@
 			<property name="violationSuppressXPath" value="../../..[Annotation//Name[(@Image='Getter') or (@Image='Setter')]]" />
 		</properties>
 	</rule>
-	<rule ref="rulesets/internal/all-java.xml/UseSingleton">
+	<rule ref="rulesets/internal/all-java.xml/UseUtilityClass">
 		<!-- Project Lombok -->
 		<properties>
 			<property name="violationSuppressXPath" value="../..[Annotation//Name[(@Image='NoArgsConstructor') or  (@Image='RequiredArgsConstructor')  (@Image='AllArgsConstructor')]]" />
