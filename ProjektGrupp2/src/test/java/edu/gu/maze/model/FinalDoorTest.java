@@ -20,10 +20,5 @@ public class FinalDoorTest {
         finalDoor.clearWay();
     }
 
-    @Test
-    public void testToString() {
-        final String fD = finalDoor.toString();
-        assertEquals("F",fD);
-    }
 
 }

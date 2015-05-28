@@ -21,9 +21,5 @@ public class DoorTest {
         assertEquals(Constants.YES,door.canIMoveHere());
     }
 
-    @Test
-    public void testToString() {
-        final String D = door.toString();
-        assertEquals("Door",D);
-    }
+
 }

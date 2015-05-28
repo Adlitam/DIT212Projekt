@@ -19,11 +19,7 @@ public class QuestionerTest {
         quest.clearWay();
     }
 
-    @Test
-    public void testToString() {
-        final String Q = quest.toString();
-        assertEquals("Questioner",Q);
-    }
+
 
 
 }

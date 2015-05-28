@@ -19,9 +19,6 @@ public class WallTest {
         wall.clearWay();
     }
 
-    @Test
-    public void testToString() {
-        final String W = wall.toString();
-        assertEquals("W",W);
-    }
+
+
 }

@@ -19,10 +19,6 @@ public class MonsterTest {
         assertEquals(Constants.YES,monster.canIMoveHere());
     }
 
-    @Test
-    public void testToString() {
-        final String M = monster.toString();
-        assertEquals("Monster",M);
-    }
+
 
 }

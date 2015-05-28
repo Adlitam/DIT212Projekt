@@ -20,11 +20,6 @@ public class ChestTest {
         assertEquals(Constants.YES,chest.canIMoveHere());
     }
 
-    @Test
-    public void testToString() {
-        final String C = chest.toString();
-        assertEquals("Chest",C);
-    }
 
 
 }

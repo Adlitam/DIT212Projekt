@@ -21,9 +21,5 @@ public class RoadTest {
         road.clearWay();
     }
 
-    @Test
-    public void testToString() {
-        final String R = road.toString();
-        assertEquals("R",R);
-    }
+
 }
