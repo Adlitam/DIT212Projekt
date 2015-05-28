@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class GameTest {
-    /*
+
     Game instance = new Game();
 
     /**
@@ -19,19 +19,19 @@ public class GameTest {
      */
 
     // Test if you get a question when using getQuestion
-    /*
+
     @Test
     public void testGetQuestion() {
         String question = instance.getQuestion();
         assertNotEquals(question,null);
     }
-*/
+
     /**
      * Test of getAnswers method, of class Game.
      */
 
     // Test if you get 3 possibly answers when using getAnswers();
-    /*
+
     @Test
     public void testGetAnswers() {
         System.out.println(instance.toString());
@@ -40,8 +40,8 @@ public class GameTest {
         int length = result.length;
         assertEquals(3,length);
     }
-*/
-    /*
+
+
     // Checking behaviour when getQuestion() has not been called.
     @Test (expected = NullPointerException.class)
     public void testGetAnswers2(){
@@ -61,7 +61,7 @@ public class GameTest {
     /**
      * Test of isThisTheRightAnswer method, of class Game.
      */
-    /*
+
     // Testing calling isThisTheRightAnswer without a question
     @Test (expected = NullPointerException.class)
     public void testIsThisTheRightAnswer() {
@@ -72,7 +72,6 @@ public class GameTest {
     // Testing with the not available answer
     @Test (expected = IllegalArgumentException.class)
     public void testIsThisTheRightAnswer2(){
-        instance.startMatch(0);
         instance.getQuestion();
         instance.getAnswers();
         instance.isThisTheRightAnswer(3);
@@ -157,7 +156,6 @@ public class GameTest {
     // Test IsgamesDone(), no error
     @Test
     public void testIsGamesDone(){
-        instance.startMatch(0);
         instance.isTheGameDone();
     }
 
@@ -205,5 +203,5 @@ public class GameTest {
             c.printStackTrace();
         }
     }
-    */
+
 }
