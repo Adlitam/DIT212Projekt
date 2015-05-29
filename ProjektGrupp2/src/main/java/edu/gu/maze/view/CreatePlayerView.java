@@ -37,7 +37,7 @@ public class CreatePlayerView {
     }
 
     // Creates the top of the stage that includes a label and a TextField
-    private void createTop(){
+    private final void createTop(){
         final GridPane setName = new GridPane();
         final Label title = new Label("Write Your Name:");
         GridPane.setConstraints(title,0,0);
@@ -50,7 +50,7 @@ public class CreatePlayerView {
     }
 
     // Creates the center of the stage that includes all the Character pictures
-    private void createMiddle(){
+    private final void createMiddle(){
         final HBox chooseCharacter = new HBox();
         chooseCharacter.getChildren().addAll(getMageNode(),getWarriorNode(),getThiefNode());
         chooseCharacter.setAlignment(Pos.CENTER);
@@ -59,7 +59,7 @@ public class CreatePlayerView {
     }
 
     // Creates the Mage picture and sends away a event if you click on it
-    private ImageView getMageNode(){
+    private final ImageView getMageNode(){
         final Image image = new Image("Mage.png");
         mage = new ImageView();
         mage.setImage(image);
@@ -69,7 +69,7 @@ public class CreatePlayerView {
     }
 
     // Creates the Warrior picture and sends away a event if you click on it
-    private ImageView getWarriorNode(){
+    private final ImageView getWarriorNode(){
         final Image image = new Image("warrior.png");
         warrior = new ImageView();
         warrior.setImage(image);
@@ -79,7 +79,7 @@ public class CreatePlayerView {
     }
 
     // Creates the Thief picture and sends away a event if you click on it
-    private ImageView getThiefNode(){
+    private final ImageView getThiefNode(){
         final Image image = new Image("thief.png");
         thief = new ImageView();
         thief.setImage(image);
@@ -89,7 +89,7 @@ public class CreatePlayerView {
     }
 
     // Creates the bottom of the stage that includes the play and back buttoms
-    private void createBottom(){
+    private final void createBottom(){
         final HBox playAndReturn = new HBox();
         playButton = new Button("Play");
         playButton.setPrefWidth(200);

@@ -44,21 +44,21 @@ public class MainView{
         primaryStage.show();
     }
 
-    private void createPlayButton(){
+    private final void createPlayButton(){
         //Creates the PlayButton
         playButton = new Button("Play");
         playButton.setPrefWidth(200);
         playButton.setFont(new Font("Cambria", 20));
     }
 
-    private void createHighScoreButton(){
+    private final void createHighScoreButton(){
         //Creates the highscoreButton
         highScoreButton = new Button("High Score");
         highScoreButton.setPrefWidth(200);
         highScoreButton.setFont(new Font("Cambria", 20));
     }
 
-    private void createAboutButton(){
+    private final void createAboutButton(){
         //Creats the About button
         aboutButton = new Button("About Maze");
         aboutButton.setPrefWidth(200);

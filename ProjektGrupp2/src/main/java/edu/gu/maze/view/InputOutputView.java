@@ -28,12 +28,12 @@ public class InputOutputView implements PropertyChangeListener {
         inputAndReturnAndOutput.getChildren().addAll(output, inputAndReturn);
     }
 
-    private void backButton(){
+    private final void backButton(){
         backButton = new Button("Back to start");
         backButton.setMinWidth(100);
     }
 
-    private void outputArea(){
+    private final void outputArea(){
         output = new TextArea();
         output.setPrefSize(screenSize.getWidth(),90);
         output.setEditable(false);

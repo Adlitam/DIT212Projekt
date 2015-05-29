@@ -57,6 +57,7 @@ public class MapView implements PropertyChangeListener{
         }catch(IOException e){
             System.err.println("could not read the file: " + filename + " while trying to initialize player in view.");
         }
+        assert s != null;
         int x = Integer.parseInt(s.next());
         int y = Integer.parseInt(s.next());
         player = new PlayerView(x, y, type);

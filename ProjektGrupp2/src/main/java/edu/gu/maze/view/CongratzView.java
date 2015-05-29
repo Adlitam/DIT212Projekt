@@ -31,7 +31,7 @@ public class CongratzView {
 
     }
 
-    private void createBottom(){
+    private final void createBottom(){
         final HBox bottom = new HBox();
         nextMap = new Button("Next Map");
         nextMap.setPrefWidth(200);
@@ -50,7 +50,7 @@ public class CongratzView {
 
     }
 
-    private void createPane(){
+    private final void createPane(){
 
         yourScore = new Label();
         yourScore.setFont(new Font(20));

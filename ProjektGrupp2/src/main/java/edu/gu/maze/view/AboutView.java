@@ -36,14 +36,14 @@ public class AboutView {
         stage.setScene(startScene);
     }
 
-    private void createCenter(){
+    private final void createCenter(){
         final Label about = new Label("Created by: \n\n Matilda Andersson \n Karin Wibergh \n Johan Ärlebrandt \n Jonathan Johansson");
         about.setStyle("-fx-background-color: white");
         about.setFont(new Font(20));
         layout.setCenter(about);
     }
 
-    private void createBottom(){
+    private final void createBottom(){
         backButton = new Button("Back to start");
         backButton.setPrefWidth(200);
         final HBox bottom = new HBox();

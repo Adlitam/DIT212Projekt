@@ -33,7 +33,7 @@ public class InfoView {
     }
 
     // The label that show the current amount of apples that the player has
-    private VBox getAppleNode(){
+    private final VBox getAppleNode(){
         final VBox appleBox = new VBox();
         final Image image = new Image("apple.png");
         final ImageView apple = new ImageView();
@@ -49,7 +49,7 @@ public class InfoView {
         return appleBox;
     }
     // The label that show the current amount of keys that the player has
-    private VBox getKeyNode(){
+    private final VBox getKeyNode(){
         final VBox keyBox = new VBox();
         final Image image = new Image("key.png");
         final ImageView key = new ImageView();
@@ -65,7 +65,7 @@ public class InfoView {
         return keyBox;
     }
     // The label that show the current score
-    private VBox getPointsNode(){
+    private final VBox getPointsNode(){
         final VBox points = new VBox();
         final Label text = new Label("Score");
         score = new Label();
@@ -78,7 +78,7 @@ public class InfoView {
     }
 
     //The Time label that show the current time
-    private Label getTimeNode(){
+    private final Label getTimeNode(){
         time = new Label();
         time.setFont(new Font(20));
         time.setAlignment(Pos.CENTER);
