@@ -16,7 +16,7 @@ public class Game implements IGame, Serializable{
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     //DATA
     private static final long serialVersionUID = 1L;
-    private final Question[] allQuestions = ResourceReader.readQuestions();
+    private transient Question[] allQuestions = ResourceReader.readQuestions();
     private final SaveSlot[] slots = new SaveSlot[3];
     private final String[] levels = new String[3];
     private final List<HighScore> totalHighScores = new ArrayList<HighScore>();
@@ -35,6 +35,10 @@ public class Game implements IGame, Serializable{
     @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
     private transient int currentLevel;
     
+    private Object readResolve() {
+        allQuestions = ResourceReader.readQuestions();
+        return this;
+    }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
@@ -54,7 +58,7 @@ public class Game implements IGame, Serializable{
     @Override
     public String getQuestion() {
         currentQuestion = selectQuestion();
-        return currentQuestion.getQuestion();
+        return currentQuestion.getQ();
     }
 
     @Override

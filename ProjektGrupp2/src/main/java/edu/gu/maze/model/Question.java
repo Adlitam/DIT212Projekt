@@ -1,20 +1,18 @@
 package edu.gu.maze.model;
-import java.io.Serializable;
 import java.util.Arrays;
 /**
  *
  * @author omega
  */
-public class Question implements Serializable{
-    private static final long serialVersionUID = 2L;
-    private final String quest;
+public class Question{
+    private final String q;
     private final String [] answers;
     private final int rightAnswer;
     public Question(String q, String[] a, int r){
         if (q==null || a==null){
             throw new IllegalArgumentException("Tried to initialize Question object with null");
         }
-        quest = q;
+        this.q = q;
         if (a.length<2) {
             throw new IllegalArgumentException ("Attempted to initialize a Question with"
                 + " fewer than two answers.");
@@ -27,9 +25,8 @@ public class Question implements Serializable{
         rightAnswer = r;
     }
     
-    public String getQuestion(){
-        System.out.println(quest);
-        return quest;
+    public String getQ(){
+        return q;
     }
     
     public String[] getAnswers(){
