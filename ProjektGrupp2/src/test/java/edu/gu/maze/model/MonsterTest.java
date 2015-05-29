@@ -18,7 +18,4 @@ public class MonsterTest {
         monster.clearWay();
         assertEquals(Constants.YES,monster.canIMoveHere());
     }
-
-
-
 }

@@ -18,8 +18,4 @@ public class QuestionerTest {
     public void testClearWay() {
         quest.clearWay();
     }
-
-
-
-
 }

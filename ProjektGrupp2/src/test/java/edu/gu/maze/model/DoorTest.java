@@ -20,6 +20,4 @@ public class DoorTest {
         door.clearWay();
         assertEquals(Constants.YES,door.canIMoveHere());
     }
-
-
 }

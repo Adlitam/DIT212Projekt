@@ -19,7 +19,4 @@ public class ChestTest {
         chest.clearWay();
         assertEquals(Constants.YES,chest.canIMoveHere());
     }
-
-
-
 }

@@ -19,6 +19,4 @@ public class FinalDoorTest {
     public void testClearWay() {
         finalDoor.clearWay();
     }
-
-
 }

@@ -6,7 +6,12 @@ import org.junit.Test;
 
 
 public class MatchTest {
-    final private Match match = new Match(new ISquare[10][10],6,6);
+    ISquare[][] squares = {{new Wall(), new FinalDoor(), new Wall()},
+            {new Wall(), new Chest(), new Wall()},
+            {new Questioner(), new Road(), new Monster()},
+            {new Wall(), new Door(), new Wall()}
+    };
+    final private Match match = new Match(squares, 1, 2);
 
 
     // Test CorrectAnswer(), getApples(), getKeys() and getScore() ;
@@ -39,12 +44,45 @@ public class MatchTest {
         match.setTime(10,10);
     }
 
-    // Test no error in endMatch()
+    @Test
+    public void testGetX() {
+        assertEquals(match.getX(), 1);
+
+    }
+
+    @Test
+    public void testGetY() {
+        assertEquals(match.getY(), 2);
+
+    }
+    
+    @Test
+    public void testIsFinalKey(){
+        assertFalse(match.isFinalKey());
+        match.correctAnswer();
+        assertTrue(match.isFinalKey());
+    }
+    
     @Test
     public void testEndMatch(){
         match.endMatch();
+        assertEquals(500, match.getScore());
     }
-
-
     
+    @Test
+    public void testMoveOntoMonsterWithoutApple(){
+        
+    }
+    
+    public void testMoveOntoMonsterWithApple(){
+        
+    }
+    
+    public void testMoveOntoDoorWithoutKey(){
+        
+    }
+    
+    public void testMoveOntoDoorWithKey(){
+        
+    }
 }

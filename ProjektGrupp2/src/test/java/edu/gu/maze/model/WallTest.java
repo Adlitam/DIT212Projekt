@@ -18,7 +18,4 @@ public class WallTest {
     public void testClearWay() {
         wall.clearWay();
     }
-
-
-
 }

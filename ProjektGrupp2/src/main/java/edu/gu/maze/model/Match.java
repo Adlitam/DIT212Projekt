@@ -43,7 +43,7 @@ public class Match {
     }
 
     //absurd name, but PMD likes it this way
-    public boolean isFinalkey() {
+    public boolean isFinalKey() {
         return finalkey;
     }
 
@@ -102,15 +102,15 @@ public class Match {
         } else if (permission == Constants.YES) {
             map[y][x].clearWay();
             return Constants.YES;
-        } else if (permission == Constants.GOTAPPLE) {
-            apples++;
-            map[y][x].clearWay();
-            return Constants.GOTAPPLE;
-        } else if (permission == Constants.GOTKEY) {
-            keys++;
-            map[y][x].clearWay();
-            return Constants.GOTKEY;
-        }
+        } //else if (permission == Constants.GOTAPPLE) {
+            //apples++;
+            //map[y][x].clearWay();
+            //return Constants.GOTAPPLE;
+        //} else if (permission == Constants.GOTKEY) {
+          //  keys++;
+            //map[y][x].clearWay();
+            //return Constants.GOTKEY;
+        //}
         return Constants.NO;
     }
 

@@ -20,6 +20,4 @@ public class RoadTest {
     public void testClearWay() {
         road.clearWay();
     }
-
-
 }
