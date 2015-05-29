@@ -16,7 +16,7 @@ public class InfoView {
     private Label score;
     private Label nrKeys;
     private Label nrApples;
-    private final String fx = "-fx-border-color:";
+    private final static String fx = "-fx-border-color:";
 
     // Put together all Nodes in the VBox
     public InfoView(){

@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class HighScoreView{
     private Button backButton,totalScoreButton;
     private final BorderPane borderPaneLayout;
-    private final String font = "Verdana";
+    private final static String font = "Verdana";
 
     private Label player, score;
     private  HBox highScore;
@@ -41,7 +41,7 @@ public class HighScoreView{
         stage.setScene(highScoreScene);
     }
 
-    private void getPlayerInfo(String[] playerName, int[] playerScore){
+    private final void getPlayerInfo(String[] playerName, int[] playerScore){
         //Gets the players name
         player1 = playerName[0];
         player2 = playerName[1];
@@ -54,7 +54,7 @@ public class HighScoreView{
     }
 
     @SuppressFBWarnings("LSC_LITERAL_STRING_COMPARISON")
-    private void createList(){
+    private final void createList(){
 
         final VBox vBoxCenter = new VBox();
 
@@ -96,7 +96,7 @@ public class HighScoreView{
     }
 
     //Create one panel for the score with the player name and the scores for ever slot
-    private void createLabel(String playerName, Integer scorePlayer){
+    private final void createLabel(String playerName, Integer scorePlayer){
 
             player = new Label(playerName);
             player.setFont(new Font(font, 40));
@@ -112,7 +112,7 @@ public class HighScoreView{
     }
 
     //Creates a empty panel if the slot is empty
-    private void createEmptyLabel(){
+    private final void createEmptyLabel(){
 
         player = new Label();
         player.setFont(new Font(font, 40));
@@ -126,7 +126,7 @@ public class HighScoreView{
 
     }
 
-    public void createTop(){
+    public final void createTop(){
         //The title and the font
         final Label title = new Label("TotalScore for every slot.");
         title.setFont(new Font("Cambria", 40));
@@ -138,7 +138,7 @@ public class HighScoreView{
         borderPaneLayout.setTop(hBoxTop);
     }
 
-    public void createBotton(){
+    public final void createBotton(){
         //Create the botton
 
         backButton = new Button("Back to start");

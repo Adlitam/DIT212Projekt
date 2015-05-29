@@ -156,17 +156,17 @@ public class StartView {
 
     // --- Checks if some of the slots are empty
     public boolean checkSlot1(){
-        return !player1.equals("");
+        return !"".equals(player1);
 
     }
 
     public boolean checkSlot2(){
-        return !player2.equals("");
+        return !"".equals(player2);
 
     }
 
     public boolean checkSlot3(){
-        return !player3.equals("");
+        return !"".equals(player3);
 
     }
 

@@ -18,7 +18,7 @@ public class TotalScoreView {
     //A list of highscore and playername, date .
     private final String[] score;
 
-    public TotalScoreView(Stage stage, String[] score){
+    public TotalScoreView(Stage stage, String... score){
         stage.setTitle("Maze");
         layput = new BorderPane();
 
