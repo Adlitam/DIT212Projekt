@@ -85,9 +85,9 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
             final String name = input.getText();
             SavedInformationHandler.saveGame(model);
             if(name.length() > 0) {
+                model.setStopLoops(false);
                 final int slot = view.getSlot();
                 model.createPlayer(slot, name, type);
-                //play();
                 final InfoView infoView = new InfoView();
                 infoController = new InfoController(model, infoView);
                 final InputOutputView inputView = new InputOutputView();
@@ -95,7 +95,6 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
                 final MapView mapView = new MapView();
                 model.addPropertyChangeListener(mapView);
                 model.addPropertyChangeListener(inputView);
-                //new MapController(model, mapView, stage);
                 new GameView(stage, mapView, infoView, inputView);
 
                 model.startMatch(Constants.MAP1);

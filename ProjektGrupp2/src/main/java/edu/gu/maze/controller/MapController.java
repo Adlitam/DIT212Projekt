@@ -33,11 +33,13 @@ public class MapController implements EventHandler<KeyEvent> {
         animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if(model.isTheGameDone()){
+                if(model.getStopLoops()){
                     animationTimer.stop();
-                    SavedInformationHandler.saveGame((Game) model);
-                    CongratzView congratzView = new CongratzView(stage);
-                    new CongratzController(model, congratzView, stage);
+                    if(model.isTheGameDone()) {
+                        SavedInformationHandler.saveGame((Game) model);
+                        CongratzView congratzView = new CongratzView(stage);
+                        new CongratzController(model, congratzView, stage);
+                    }
                 }
             }
         };

@@ -66,6 +66,7 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         final Object b = event.getSource();
         if(b == view.getBackButton()){
+            model.setStopLoops(true);
             final MainView mainView = new MainView(stage);
             new MainController(model, mainView, stage);
         }
@@ -81,7 +82,7 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
                 output.setText("Wrong answer!! \nYou lost 5 points");
             }
         }catch (NullPointerException e){
-            System.err.print("Error");
+            System.err.print("You tried to asnwer a question without any questions!");
         }
     }
 }

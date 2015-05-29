@@ -39,6 +39,10 @@ public interface IGame {
     // Tells the controllers if the game is done
     boolean isTheGameDone();
 
+    // Tells the controllers to stop all loop
+    void setStopLoops(boolean bool);
+    boolean getStopLoops();
+
     void setGamesDoneToFalse();
 
     // Returns the total score for the map

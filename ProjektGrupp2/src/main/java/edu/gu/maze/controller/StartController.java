@@ -75,7 +75,7 @@ public class StartController implements EventHandler<ActionEvent> {
         final Object b = event.getSource();
         if(b == view.getSlot1Button()){
             if(view.checkSlot1()){
-                //play();
+                 model.setStopLoops(false);
                 final InfoView infoView = new InfoView();
                 infoController = new InfoController(model, infoView);
                 final InputOutputView inputView = new InputOutputView();

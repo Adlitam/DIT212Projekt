@@ -356,6 +356,18 @@ public class GameTest {
         assertEquals(5,b);
     }
 
+
+    @Test // No errors
+    public void testsetStopLoops(){
+        instance.setStopLoops(true);
+        instance.setStopLoops(false);
+    }
+
+    @Test // No errors
+    public void testGetStopLoops(){
+        instance.getStopLoops();
+    }
+
     private void helptestGetTotalHighScores2(){
         instance.createPlayer(0,"Glenn",0);
         instance.startMatch(2);

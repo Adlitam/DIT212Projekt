@@ -49,7 +49,7 @@ public class CongratzController implements EventHandler<ActionEvent> {
         }
         if (b == view.getNextMap()) {
             model.setGamesDoneToFalse();
-            //play();
+            model.setStopLoops(false);
             final InfoView infoView = new InfoView();
             infoController = new InfoController(model, infoView);
             final InputOutputView inputView = new InputOutputView();
@@ -57,10 +57,8 @@ public class CongratzController implements EventHandler<ActionEvent> {
             final MapView mapView = new MapView();
             model.addPropertyChangeListener(mapView);
             model.addPropertyChangeListener(inputView);
-            //new MapController(model, mapView, stage);
             new GameView(stage, mapView, infoView, inputView);
-
-            model.startMatch(Constants.MAP3);
+            model.startMatch(Constants.MAP2);
             infoController.setAnimationTimer();
             new MapController(model, mapView, stage);
         }

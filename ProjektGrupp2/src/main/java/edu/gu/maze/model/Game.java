@@ -23,6 +23,7 @@ public class Game implements IGame, Serializable{
 
     // Sets to True if the game is done so the Controllers know when to end all Animation timers
     private boolean gamesDone;
+    private boolean stopLoops;
     
 //MATERIAL RELATING TO CURRENT SESSION
     @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
@@ -87,6 +88,17 @@ public int isThisTheRightAnswer(int index) {
     public boolean isTheGameDone() {
         return gamesDone;
     }
+
+    @Override
+    public void setStopLoops(boolean bool) {
+        stopLoops=bool;
+    }
+
+    @Override
+    public boolean getStopLoops() {
+        return stopLoops;
+    }
+
 
     @Override
     public void setGamesDoneToFalse() {
@@ -228,6 +240,7 @@ public int isThisTheRightAnswer(int index) {
             final int a = currentMatch.getScore();
             final HighScore score = currentPlayer.addHighScore(a, currentLevel);
             addHighScore(score);
+            stopLoops = true;
             gamesDone=true;
         }
     }
