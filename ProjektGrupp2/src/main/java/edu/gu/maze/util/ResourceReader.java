@@ -10,8 +10,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ResourceReader {
+public final class ResourceReader {
     //for usage, see test file
+    private ResourceReader(){}
+    
     @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     public static Match readMapForModel(String filename){
         Scanner s;
@@ -27,13 +29,27 @@ public class ResourceReader {
         while(s.hasNext()){
             ArrayList<ISquare> snd = new ArrayList<>();
             for (final char c : s.next().toCharArray()){
-                if (c=='W') snd.add(new Wall());   
-                else if (c=='F')snd.add(new FinalDoor());
-                else if (c=='D')snd.add(new Door());
-                else if (c=='Q')snd.add(new Questioner());
-                else if (c=='M')snd.add(new Monster());
-                else if (c=='C')snd.add(new Chest());
-                else snd.add(new Road());
+                if (c=='W') {
+                    snd.add(new Wall());
+                }   
+                else if (c=='F'){
+                    snd.add(new FinalDoor());
+                }
+                else if (c=='D'){
+                    snd.add(new Door());
+                }
+                else if (c=='Q'){
+                    snd.add(new Questioner());
+                }
+                else if (c=='M'){
+                    snd.add(new Monster());
+                }
+                else if (c=='C'){
+                    snd.add(new Chest());
+                }
+                else {
+                    snd.add(new Road());
+                }
             }
             list.add(snd.toArray(new ISquare[1]));
         }

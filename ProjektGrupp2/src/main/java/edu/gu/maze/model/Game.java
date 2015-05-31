@@ -197,35 +197,36 @@ public int isThisTheRightAnswer(int index) {
     }
 
     private void move(int i , String direction){
-
+        final String v = "value1";
+        final String w = "value2";
         if (i == YES){
-            pcs.firePropertyChange(direction, "value1", "value2");
-            pcs.firePropertyChange("YES", "value1", "value2");
+            pcs.firePropertyChange(direction, v, w);
+            pcs.firePropertyChange("YES", v, w);
         }
 
         // Tells the view that the model dont have any apples
         if(i == APPLE){
-            pcs.firePropertyChange("NO_APPLE", "value1", "value2");
+            pcs.firePropertyChange("NO_APPLE", v, w);
         }
 
         // Tells the view that the model have apples
         if(i == GOTAPPLE){
-            pcs.firePropertyChange("APPLE", "value1", "value2");
+            pcs.firePropertyChange("APPLE", v, w);
         }
 
         // Tells the view that the model dont have any keys
         if(i == KEY){
-            pcs.firePropertyChange("NO_KEY", "value1", "value2");
+            pcs.firePropertyChange("NO_KEY", v, w);
         }
 
         // Tells the view that the model have keys
         if(i == GOTKEY){
-            pcs.firePropertyChange("KEY", "value1", "value2");
+            pcs.firePropertyChange("KEY", v, w);
         }
 
         // Tells the view that the model dont have the Final key
         if(i == NOFINAL){
-            pcs.firePropertyChange("NO_FINAL_KEY", "value1", "value2");
+            pcs.firePropertyChange("NO_FINAL_KEY", v, w);
         }
 
         // Tells the view to print out a question and all the possibly answers
@@ -235,7 +236,7 @@ public int isThisTheRightAnswer(int index) {
 
         // Tells the view that the player opened a chest
         if(i == CHEST){
-            pcs.firePropertyChange("CHEST", "value1", "value2");
+            pcs.firePropertyChange("CHEST", v, w);
         }
 
         if (i == FINAL){

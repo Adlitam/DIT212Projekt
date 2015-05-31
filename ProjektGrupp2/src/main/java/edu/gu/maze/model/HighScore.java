@@ -35,7 +35,7 @@ class HighScore implements Comparable<HighScore>, Serializable{
         }
         final int i = date.compareTo(h.date);
         
-        return (i<0) ? 1:-1;
+        return i<0 ? 1:-1;
     }
     
     public int getScore(){
