@@ -27,27 +27,27 @@ public class HighScoreView{
         stage.setTitle("Maze");
         borderPaneLayout = new BorderPane();
 
-        //Create the layout
+
         getPlayerInfo(playerName,playerScore);
         createList();
         createTop();
         createBotton();
 
-        //Sets the background
+
         borderPaneLayout.setStyle("-fx-background-image: url(\"highscore.jpg\");");
 
-        //Sets the scene
+
         final Scene highScoreScene = new Scene(borderPaneLayout, 800, 620);
         stage.setScene(highScoreScene);
     }
 
     private final void getPlayerInfo(String[] playerName, int[] playerScore){
-        //Gets the players name
+
         player1 = playerName[0];
         player2 = playerName[1];
         player3 = playerName[2];
 
-        //gets the players score
+
         score1 = playerScore[0];
         score2 = playerScore[1];
         score3 = playerScore[2];
@@ -89,7 +89,7 @@ public class HighScoreView{
         vBoxCenter.setAlignment(Pos.CENTER);
         vBoxCenter.setSpacing(100);
         vBoxCenter.setStyle("-fx-border-color: Black");
-        //Added the hBox to the layout.
+
         borderPaneLayout.setCenter(vBoxCenter);
 
 
@@ -127,7 +127,7 @@ public class HighScoreView{
     }
 
     public final void createTop(){
-        //The title and the font
+
         final Label title = new Label("TotalScore for every slot.");
         title.setFont(new Font("Cambria", 40));
 
@@ -151,7 +151,7 @@ public class HighScoreView{
 
     }
 
-    //returns the buttons
+
     public Button getBackButton(){
         return backButton;
     }

@@ -84,7 +84,7 @@ public class StartController implements EventHandler<ActionEvent> {
         }
         if(b == view.getSlot2Button()){
             if(view.checkSlot2()){
-                //play();
+
                 final InfoView infoView = new InfoView();
                 infoController = new InfoController(model, infoView);
                 final InputOutputView inputView = new InputOutputView();
@@ -104,7 +104,6 @@ public class StartController implements EventHandler<ActionEvent> {
         }
         if(b == view.getSlot3Button()){
             if(view.checkSlot3()){
-                //play();
                 final InfoView infoView = new InfoView();
                 infoController = new InfoController(model, infoView);
                 final InputOutputView inputView = new InputOutputView();
@@ -129,6 +128,7 @@ public class StartController implements EventHandler<ActionEvent> {
         deletePlayer(event);
     }
 
+    //Extra method for the handle
     private void deletePlayer(ActionEvent event){
         final Object b = event.getSource();
         if(b == view.getDeleteSlot1()){

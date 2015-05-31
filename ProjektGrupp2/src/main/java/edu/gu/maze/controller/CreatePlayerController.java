@@ -15,7 +15,7 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
     private final Stage stage;
     private final CreatePlayerView view;
 
-    //private InputOutputViewController inputOutputViewController;
+
 
     private int type;
 

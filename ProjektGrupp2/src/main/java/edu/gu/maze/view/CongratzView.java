@@ -55,7 +55,7 @@ public class CongratzView {
         yourScore = new Label();
         yourScore.setFont(new Font(20));
         layout.setCenter(yourScore);
-        //Label score = new Label();
+
 
 
     }

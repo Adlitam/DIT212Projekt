@@ -40,7 +40,7 @@ public class MapView implements PropertyChangeListener{
         g.add(player, x, y);
     }
 
-    //Returns the GridPane, g.
+
     public GridPane getMap(){
         return g;
     }
