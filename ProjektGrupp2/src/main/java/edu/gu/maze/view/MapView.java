@@ -17,13 +17,12 @@ public class MapView implements PropertyChangeListener{
         inUse = true;
     }
 
-    //Initializes the GridPane, g.
     private void createMapGridPane(){
         g = new GridPane();
         g.setFocusTraversable(true);
     }
 
-    //Inserts all the ImageViews the GridPane from the two-dimensional-ImageView-array, map.
+    //Inserts all the ImageViews into the GridPane from the two-dimensional-ImageView-array, map.
     public void initializeGrid(int x, int y){
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
@@ -33,7 +32,6 @@ public class MapView implements PropertyChangeListener{
         g.add(player, x, y);
     }
 
-    //Move the PlayerView, player, on the GridPane, g.
     private void movePlayer(int x, int y){
         player.update(x,y);
         g.getChildren().remove(player);
@@ -46,12 +44,11 @@ public class MapView implements PropertyChangeListener{
     }
 
     //Initializes the PlayerView, player, with it's positions and the image
-    // associated with the type of character the player has chosen.
+    //associated with the type of character the player has chosen.
     public void initializePlayer(int x, int y, int type){
         player = new PlayerView(x, y, type);
     }
 
-    //Listening on the model for changes
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(inUse){
@@ -73,7 +70,6 @@ public class MapView implements PropertyChangeListener{
         }
     }
 
-    //Sets the ImageView[][] map variable.
     public void setMap(ImageView[][] map){
         this.map = Arrays.copyOf(map, map.length);
     }

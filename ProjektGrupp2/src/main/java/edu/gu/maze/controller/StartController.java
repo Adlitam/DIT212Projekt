@@ -3,6 +3,7 @@ package edu.gu.maze.controller;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.util.Constants;
 import edu.gu.maze.model.IGame;
+import edu.gu.maze.util.ResourceReader;
 import edu.gu.maze.view.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -74,7 +75,8 @@ public class StartController implements EventHandler<ActionEvent> {
                 model.addPropertyChangeListener(inputView);
                 new GameView(stage, mapView, infoView, inputView);
                 model.selectPlayer(Constants.SLOT1);
-                model.startMatch(Constants.MAP1);
+                model.setCurrentLevel(Constants.MAP1);
+                model.setCurrentMatch(ResourceReader.readMapForModel(model.getCurrentMapFilePath()));
                 new MapController(model, mapView, stage);
                 infoController.setAnimationTimer();
             }else {
@@ -94,7 +96,8 @@ public class StartController implements EventHandler<ActionEvent> {
                 model.addPropertyChangeListener(inputView);
                 new GameView(stage, mapView, infoView, inputView);
                 model.selectPlayer(Constants.SLOT2);
-                model.startMatch(Constants.MAP1);
+                model.setCurrentLevel(Constants.MAP1);
+                model.setCurrentMatch(ResourceReader.readMapForModel(model.getCurrentMapFilePath()));
                 new MapController(model, mapView, stage);
                 infoController.setAnimationTimer();
             }else {
@@ -113,7 +116,8 @@ public class StartController implements EventHandler<ActionEvent> {
                 model.addPropertyChangeListener(inputView);
                 new GameView(stage, mapView, infoView, inputView);
                 model.selectPlayer(Constants.SLOT2);
-                model.startMatch(Constants.MAP1);
+                model.setCurrentLevel(Constants.MAP1);
+                model.setCurrentMatch(ResourceReader.readMapForModel(model.getCurrentMapFilePath()));
                 new MapController(model, mapView, stage);
                 infoController.setAnimationTimer();
             }else{

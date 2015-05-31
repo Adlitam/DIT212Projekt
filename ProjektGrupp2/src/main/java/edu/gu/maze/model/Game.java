@@ -156,12 +156,6 @@ public int isThisTheRightAnswer(int index) {
             currentPlayer = slots[slot];       
         }
     }
-    
-    @Override
-    public void startMatch(int map){
-        currentLevel = map;
-        currentMatch = ResourceReader.readMapForModel(levels[map]);
-    }
 
     @Override
 
@@ -298,12 +292,17 @@ public int isThisTheRightAnswer(int index) {
     }
 
     @Override
+    public void setCurrentLevel(int map){
+        currentLevel = map;
+    }
+
+    @Override
     public String getCurrentMapFilePath(){
         return levels[currentLevel];
     }
-    
-    //TODO: this isn't used.
-    //public int getCurrentLevel(){
-    //    return currentLevel;
-    //}
+
+    @Override
+    public void setCurrentMatch(Match m){
+        currentMatch = m;
+    }
 }

@@ -45,7 +45,7 @@ public class MapController implements EventHandler<KeyEvent> {
         animationTimer.start();
     }
 
-    //handle method for when the player presses the UP, DOWN, LEFT and RIGHT arrow keys.
+    //Administer the appropriate action in the model whenever the player presses the UP, DOWN, LEFT and RIGHT arrow keys.
     @Override
     public void handle(KeyEvent event) {
         switch (event.getCode()) {
@@ -69,13 +69,14 @@ public class MapController implements EventHandler<KeyEvent> {
         }
     }
 
-    //Initializes the mapView that the MapController is associated with.
+    //Initializes the GridPane in the mapView that the MapController is associated with,
+    //with the type of character and starting positions for the character.
     private void initializeMap(){
         view.setMap(ResourceReader.readMapForView(model.getCurrentMapFilePath()));
-        this.view.initializePlayer(ResourceReader.getPlayerViewStartX(model.getCurrentMapFilePath()),
-                ResourceReader.getPlayerViewStartY(model.getCurrentMapFilePath()),
-                model.getPlayerType());
-        this.view.initializeGrid(ResourceReader.getPlayerViewStartX(model.getCurrentMapFilePath()),
-                ResourceReader.getPlayerViewStartY(model.getCurrentMapFilePath()));
+        final int startX = ResourceReader.getPlayerViewStartX(model.getCurrentMapFilePath());
+        final int startY = ResourceReader.getPlayerViewStartY(model.getCurrentMapFilePath());
+        final int type = model.getPlayerType();
+        this.view.initializePlayer(startX, startY, type);
+        this.view.initializeGrid(startX, startY);
     }
 }

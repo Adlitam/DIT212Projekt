@@ -23,7 +23,7 @@ public interface IGame {
     // if the player doesn't have it yet.
     int isThisTheRightAnswer(int index);
 
-    void startMatch(int map);
+    //void startMatch(int map);
     // returns the number of Apples the user has
     Integer getApples();
 
@@ -79,10 +79,7 @@ public interface IGame {
     //Returns a player's combined high score for all maps, or -1 if there is no player in slot.
     int getPlayerTotalScore (int slot);
 
-    //Returns the path for the current map used by the model.
     String getCurrentMapFilePath();
-
-    //Returns the current level/map.
-    //TODO: This isn't used.
-    //public int getCurrentLevel();
+    void setCurrentMatch(Match m);
+    void setCurrentLevel(int map);
 }

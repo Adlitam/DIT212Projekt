@@ -3,6 +3,7 @@ package edu.gu.maze.controller;
 import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.util.Constants;
+import edu.gu.maze.util.ResourceReader;
 import edu.gu.maze.view.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,7 +44,8 @@ public class CongratzController implements EventHandler<ActionEvent> {
         mapView = new MapView();
         model.addPropertyChangeListener(mapView);
         new GameView(stage, mapView, infoView, inputView);
-        model.startMatch(Constants.MAP2);
+        model.setCurrentLevel(Constants.MAP2);
+        model.setCurrentMatch(ResourceReader.readMapForModel(model.getCurrentMapFilePath()));
         infoController.setAnimationTimer();
         new MapController(model, mapView, stage);
     }

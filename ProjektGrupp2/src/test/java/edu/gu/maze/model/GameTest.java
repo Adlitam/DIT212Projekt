@@ -10,6 +10,8 @@ import edu.gu.maze.util.Constants;
 import static edu.gu.maze.util.Constants.MAGE;
 import static edu.gu.maze.util.Constants.MAP1;
 import static org.junit.Assert.*;
+
+import edu.gu.maze.util.ResourceReader;
 import org.junit.Test;
 
 public class GameTest {
@@ -41,7 +43,8 @@ public class GameTest {
     // Checking behaviour when isThisTheRightAnswer() has been called.
     @Test (expected = NullPointerException.class)
     public void testGetAnswers3(){
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.getQuestion();
         instance.isThisTheRightAnswer(0);
         instance.getAnswers();
@@ -50,7 +53,8 @@ public class GameTest {
     // Testing calling isThisTheRightAnswer without a question
     @Test (expected = NullPointerException.class)
     public void testIsThisTheRightAnswer() {
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.isThisTheRightAnswer(0);
     }
 
@@ -66,7 +70,8 @@ public class GameTest {
     @Test
     public void testIsThisTheRightAnswer3(){
         instance.createPlayer(0, "bla", 0);
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.getQuestion();
         instance.getAnswers();
         final int answer1 = instance.isThisTheRightAnswer(0);
@@ -88,7 +93,8 @@ public class GameTest {
     // Calling the method twice in a row
     @Test (expected = NullPointerException.class)
     public void testIsThisTheRightAnswer4(){
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.getQuestion();
         instance.isThisTheRightAnswer(1);
         instance.isThisTheRightAnswer(2);
@@ -98,7 +104,8 @@ public class GameTest {
     @Test
     public void testSetTime(){
         instance.createPlayer(0, "bla", 0);
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.setTime(1,4);
     }
 
@@ -114,7 +121,8 @@ public class GameTest {
     @Test
     public void testGetApples() {
         instance.createPlayer(0, "bla", 0);
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         final int apples = instance.getApples();
         assertEquals(0,apples);
     }
@@ -123,7 +131,8 @@ public class GameTest {
     @Test
     public void testGetKeys() {
         instance.createPlayer(0, "bla", 0);
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         final int keys = instance.getKeys();
         assertEquals(0,keys);
 
@@ -133,7 +142,8 @@ public class GameTest {
     @Test
     public void testGetPoints() {
         instance.createPlayer(0, "bla", 0);
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         final int score = instance.getPoints();
         assertEquals(0,score);
     }
@@ -246,41 +256,47 @@ public class GameTest {
     @Test // No errors
     public void testMoveUp(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.moveUp();
     }
 
     @Test // No errors
     public void testMoveDown(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.moveDown();
     }
 
     @Test // No errors
     public void testMoveRight(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.moveRight();
     }
 
     @Test // No errors
     public void testMoveLeft(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(0);
+        instance.setCurrentLevel(0);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.moveLeft();
     }
 
     @Test // No errors
     public void testOpenChest(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(2);
+        instance.setCurrentLevel(2);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.moveUp();
     }
     @Test // No errors
     public void testLootChest(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(2);
+        instance.setCurrentLevel(2);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.moveUp();
         instance.moveUp();
     }
@@ -288,14 +304,16 @@ public class GameTest {
     @Test // No errors
     public void testHungryMonster(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(2);
+        instance.setCurrentLevel(2);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.moveDown();
     }
 
     @Test // No errors
          public void testNotHungryMonster(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(2);
+        instance.setCurrentLevel(2);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.setKeysApplesScoreFinalKey();
         instance.moveDown();
     }
@@ -303,14 +321,16 @@ public class GameTest {
     @Test // No errors
     public void testClosedDoor(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(2);
+        instance.setCurrentLevel(2);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.moveRight();
     }
 
     @Test // No errors
          public void testOpenDoor(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(2);
+        instance.setCurrentLevel(2);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.setKeysApplesScoreFinalKey();
         instance.moveRight();
     }
@@ -318,14 +338,16 @@ public class GameTest {
     @Test // No errors
     public void testQuestioner(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(2);
+        instance.setCurrentLevel(2);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.moveLeft();
     }
 
     @Test // No errors
     public void testNoFinalKey(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(2);
+        instance.setCurrentLevel(2);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.moveUp();
         instance.moveUp();
         instance.moveUp();
@@ -335,7 +357,8 @@ public class GameTest {
     @Test // No errors
     public void testFinalKey(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(2);
+        instance.setCurrentLevel(2);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.setKeysApplesScoreFinalKey();
         instance.moveUp();
         instance.moveUp();
@@ -378,7 +401,8 @@ public class GameTest {
 
     private void helptestGetTotalHighScores2(){
         instance.createPlayer(0,"Glenn",0);
-        instance.startMatch(2);
+        instance.setCurrentLevel(2);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         instance.setKeysApplesScoreFinalKey();
         instance.moveUp();
         instance.moveUp();
@@ -419,7 +443,8 @@ public class GameTest {
     @Test
     public void testGetCurrentMapFilePath(){
         instance.createPlayer(0, "Harry Potter", MAGE);
-        instance.startMatch(MAP1);
+        instance.setCurrentLevel(MAP1);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
         final String expected = "src/main/resources/edu/gu/maze/util/Level1.txt";
         assertEquals(expected, instance.getCurrentMapFilePath());
     }

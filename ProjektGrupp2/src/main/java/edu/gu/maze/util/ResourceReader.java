@@ -82,8 +82,6 @@ public final class ResourceReader {
         return list.toArray(new Question[1]);
     }
 
-    //Method for getting the current map from the level.txt file specified and
-    //returning it as a two-dimensional ImageView array.
     @SuppressFBWarnings({"DM_DEFAULT_ENCODING", "NP_NULL_ON_SOME_PATH_EXCEPTION"})
     public static ImageView[][] readMapForView(String filename){
         Scanner s = null;
@@ -133,7 +131,6 @@ public final class ResourceReader {
         return temp1.toArray(new ImageView[i][temp1.size()]);
     }
 
-    //Method for getting the starting x-position for the current map from the level.txt file.
     @SuppressFBWarnings({"DM_DEFAULT_ENCODING", "NP_NULL_ON_SOME_PATH_EXCEPTION"})
     public static int getPlayerViewStartX(String filename){
         Scanner s = null;
@@ -145,7 +142,6 @@ public final class ResourceReader {
         return Integer.parseInt(s.next());
     }
 
-    //Method for getting the starting y-position for the current map from the level.txt file.
     @SuppressFBWarnings({"DM_DEFAULT_ENCODING", "NP_NULL_ON_SOME_PATH_EXCEPTION"})
     public static int getPlayerViewStartY(String filename){
         Scanner s = null;
