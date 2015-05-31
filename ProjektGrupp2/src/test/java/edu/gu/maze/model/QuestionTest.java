@@ -10,9 +10,9 @@ import static org.junit.Assert.*;
  */
 public class QuestionTest {
     public Question question;
-    public final String q = "I'm a question.";
+    public final static String q = "I'm a question.";
     public final String[] answers = {"Answer 1", "Answer2", "Answer3"};
-    public final int rightAnswer = 1;
+    public final static int rightAnswer = 1;
     @Test
     //Also tests the getters
     public void createQuestionWithProperValues(){

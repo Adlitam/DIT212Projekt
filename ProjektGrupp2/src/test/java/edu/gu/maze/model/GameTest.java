@@ -107,7 +107,7 @@ public class GameTest {
     public void testSetGamesDoneToFalse(){
         instance.setGamesDoneToFalse();
         final boolean bool = instance.isTheGameDone();
-        assertTrue(!bool);
+        assert(!bool);
     }
 
     // Test if you start with 0 apples
@@ -148,10 +148,10 @@ public class GameTest {
     @Test
     public void testNoUnexpectedErrorsinPlayerSelection(){
         //Run this in debug mode to check actual values
-        instance.createPlayer(Constants.SLOT1, "Harry Potter", Constants.MAGE);
+        instance.createPlayer(Constants.SLOT1, "Harry Potter", MAGE);
         instance.selectPlayer(Constants.SLOT1);
         instance.deletePlayer(Constants.SLOT1);
-        instance.createPlayer(Constants.SLOT1, "Harry Potter", Constants.MAGE);
+        instance.createPlayer(Constants.SLOT1, "Harry Potter", MAGE);
     }
 
     @Test
@@ -395,7 +395,7 @@ public class GameTest {
         {
             final FileOutputStream fileOut =
                     new FileOutputStream("src/main/resources/edu/gu/maze/util/gameTest.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            final ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(instance);
             out.close();
             fileOut.close();

@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DoorTest {
 
-    final Door door = new Door();
+    private final Door door = new Door();
 
     @Test
     public void testCanIMoveHere() {

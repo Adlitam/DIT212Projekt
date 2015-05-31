@@ -1,23 +1,18 @@
 package edu.gu.maze.model;
 
 
-import static edu.gu.maze.util.Constants.APPLE;
-import static edu.gu.maze.util.Constants.CHEST;
-import static edu.gu.maze.util.Constants.GOTAPPLE;
-import static edu.gu.maze.util.Constants.GOTKEY;
-import static edu.gu.maze.util.Constants.KEY;
-import static edu.gu.maze.util.Constants.YES;
+import static edu.gu.maze.util.Constants.*;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
 
 public class MatchTest {
-    ISquare[][] squares = {{new Wall(), new FinalDoor(), new Wall()},
+    private ISquare[][] squares = {{new Wall(), new FinalDoor(), new Wall()},
             {new Wall(), new Door(), new Wall()},
             {new Questioner(), new Road(), new Monster()},
             {new Wall(), new Chest(), new Wall()}
     };
-    final private Match match = new Match(squares, 1, 2);
+    private final Match match = new Match(squares, 1, 2);
 
 
     // Test CorrectAnswer(), getApples(), getKeys() and getScore() ;
@@ -120,9 +115,6 @@ public class MatchTest {
         for (int i =0; i<1000; i++){
             match.moveRight();
         }
-        System.out.println(match.getScore());
-        System.out.println(match.getApples());
-        System.out.println(match.getKeys());
         assertTrue (match.getScore() == 1000000 && match.getApples()==1000000 && match.getKeys()==1000000);
     }
 }
