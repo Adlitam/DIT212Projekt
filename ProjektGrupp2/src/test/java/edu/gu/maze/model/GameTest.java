@@ -448,6 +448,19 @@ public class GameTest {
         final String expected = "src/main/resources/edu/gu/maze/util/Level1.txt";
         assertEquals(expected, instance.getCurrentMapFilePath());
     }
+
+    @Test
+    public void testSetCurrentLevel(){
+        instance.createPlayer(0, "Harry Potter", MAGE);
+        instance.setCurrentLevel(MAP1);
+    }
+
+    @Test
+    public void testSetCurrentMatch(){
+        instance.createPlayer(0, "Harry Potter", MAGE);
+        instance.setCurrentLevel(MAP1);
+        instance.setCurrentMatch(ResourceReader.readMapForModel(instance.getCurrentMapFilePath()));
+    }
     
     /*@Test
     public void testGetCurrentLevel(){
