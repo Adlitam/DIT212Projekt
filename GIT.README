@@ -1,0 +1,2 @@
+We have a problem with the game keep getting slower and slower. All the views and controllers that are supposed to have been garbage collected are still there, and piling up.
+We have added a temporary solution for the mapView reading part, but still at loss with the unused reference variables not being garbage collected.
