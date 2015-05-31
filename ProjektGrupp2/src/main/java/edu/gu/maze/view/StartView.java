@@ -30,11 +30,11 @@ public class StartView {
     protected ImageView thief;
 
 
-    String player1,player2,player3;
-    int type1,type2,type3;
+    private String player1,player2,player3;
+    private int type1,type2,type3;
 
 
-    public StartView(Stage stage, String[] playerName, int[] playerType){
+    public StartView(String[] playerName, int[] playerType, Stage stage){
 
         stage.setTitle("Maze");
         layout = new BorderPane();
@@ -81,7 +81,7 @@ public class StartView {
 
         if(type == 0){
             final Image image = new Image("warrior.png");
-            ImageView warrior = new ImageView();
+            final ImageView warrior = new ImageView();
             warrior.setImage(image);
             warrior.setFitHeight(100);
             warrior.setFitWidth(100);
@@ -90,7 +90,7 @@ public class StartView {
         }else if(type == 1){
 
             final Image image = new Image("Mage.png");
-            ImageView mage = new ImageView();
+            final ImageView mage = new ImageView();
             mage.setImage(image);
             mage.setFitHeight(100);
             mage.setFitWidth(100);

@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class HighScoreView{
     private Button backButton,totalScoreButton;
     private final BorderPane borderPaneLayout;
-    private final static String font = "Verdana";
+    private final static String FONT = "Verdana";
 
     private Label player, score;
     private  HBox highScore;
@@ -22,7 +22,7 @@ public class HighScoreView{
     private int score1,score2,score3;
     private final HBox hBoxlayout = new HBox();
 
-    public HighScoreView(Stage stage, String[] playerName, int[] playerScore){
+    public HighScoreView(String[] playerName, int[] playerScore, Stage stage){
 
         stage.setTitle("Maze");
         borderPaneLayout = new BorderPane();
@@ -99,9 +99,9 @@ public class HighScoreView{
     private final void createLabel(String playerName, Integer scorePlayer){
 
             player = new Label(playerName);
-            player.setFont(new Font(font, 40));
+            player.setFont(new Font(FONT, 40));
             score = new Label(scorePlayer.toString());
-            score.setFont(new Font(font, 40));
+            score.setFont(new Font(FONT, 40));
             highScore = new HBox();
             highScore.getChildren().addAll(player, score);
             highScore.setSpacing(100);
@@ -115,9 +115,9 @@ public class HighScoreView{
     private final void createEmptyLabel(){
 
         player = new Label();
-        player.setFont(new Font(font, 40));
+        player.setFont(new Font(FONT, 40));
         score = new Label();
-        score.setFont(new Font(font, 40));
+        score.setFont(new Font(FONT, 40));
         highScore = new HBox();
         highScore.getChildren().addAll(player, score);
         highScore.setSpacing(100);

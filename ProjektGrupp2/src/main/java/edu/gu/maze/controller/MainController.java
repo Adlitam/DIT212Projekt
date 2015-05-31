@@ -61,12 +61,12 @@ public class MainController implements EventHandler<ActionEvent> {
         final Object b = event.getSource();
         if(b == view.getHighScoreButton()){
             getPlayerInfo();
-            final HighScoreView highScoreView = new HighScoreView(stage,playerName,playerScore);
+            final HighScoreView highScoreView = new HighScoreView(playerName,playerScore, stage);
             new HighScoreController(model, highScoreView, stage);
         }
         if(b == view.getPlayButton()){
             getPlayerInfo();
-            final StartView startView = new StartView(stage,playerName,playerType);
+            final StartView startView = new StartView(playerName,playerType, stage);
             new StartController(model, startView, stage);
         }
         if(b == view.getAboutButton()){

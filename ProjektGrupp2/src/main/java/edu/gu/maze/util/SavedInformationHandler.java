@@ -11,15 +11,16 @@ import java.io.ObjectOutputStream;
  *
  * @author omega
  */
-public class SavedInformationHandler {
+public final class SavedInformationHandler {
 
+    private SavedInformationHandler(){}
     //Retrieve saved state, if any.
     //If none can be found, return a new Game object.
     public static Game retrieveGame() {
         Game result;
         ObjectInputStream in = null;
         try {
-            FileInputStream fileIn = new FileInputStream("src/main/resources/edu/gu/maze/util/Game.ser");
+            final FileInputStream fileIn = new FileInputStream("src/main/resources/edu/gu/maze/util/Game.ser");
             in = new ObjectInputStream(fileIn);
             result = (Game) in.readObject();
             in.close();
@@ -32,9 +33,9 @@ public class SavedInformationHandler {
     
     public static void saveGame(Game game) {
         try {
-            FileOutputStream fileOut
+            final FileOutputStream fileOut
                     = new FileOutputStream("src/main/resources/edu/gu/maze/util/Game.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            final ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(game);
             out.close();
             fileOut.close();

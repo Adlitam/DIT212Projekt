@@ -145,19 +145,19 @@ public class StartController implements EventHandler<ActionEvent> {
         if(b == view.getDeleteSlot1()){
             model.deletePlayer(Constants.SLOT1);
             getPlayerInfo();
-            final StartView startView = new StartView(stage,playerName,playerType);
+            final StartView startView = new StartView(playerName,playerType, stage);
             new StartController(model, startView, stage);
         }
         if(b == view.getDeleteSlot2()){
             model.deletePlayer(Constants.SLOT2);
             getPlayerInfo();
-            final StartView startView = new StartView(stage,playerName,playerType);
+            final StartView startView = new StartView(playerName,playerType, stage);
             new StartController(model, startView, stage);
         }
         if(b == view.getDeleteSlot3()){
             model.deletePlayer(Constants.SLOT3);
             getPlayerInfo();
-            final StartView startView = new StartView(stage,playerName,playerType);
+            final StartView startView = new StartView(playerName,playerType, stage);
             new StartController(model, startView, stage);
         }
     }

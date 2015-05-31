@@ -16,7 +16,7 @@ public class InfoView {
     private Label score;
     private Label nrKeys;
     private Label nrApples;
-    private final static String fx = "-fx-border-color:";
+    private final static String FX = "-fx-border-color:";
 
     // Put together all Nodes in the VBox
     public InfoView(){
@@ -44,7 +44,7 @@ public class InfoView {
         nrApples.setFont(new Font(20));
         appleBox.getChildren().addAll(apple,nrApples);
         appleBox.setPrefSize(100,(screenSize.getHeight()-100)/4);
-        appleBox.setStyle(fx + " white;");
+        appleBox.setStyle(FX + " white;");
         appleBox.setAlignment(Pos.CENTER);
         return appleBox;
     }
@@ -60,7 +60,7 @@ public class InfoView {
         nrKeys.setFont(new Font(20));
         keyBox.getChildren().addAll(key,nrKeys);
         keyBox.setPrefSize(100, (screenSize.getHeight() - 100) / 4);
-        keyBox.setStyle(fx + "white;");
+        keyBox.setStyle(FX + "white;");
         keyBox.setAlignment(Pos.CENTER);
         return keyBox;
     }
@@ -73,7 +73,7 @@ public class InfoView {
         points.getChildren().addAll(text, score);
         points.setAlignment(Pos.CENTER);
         points.setPrefSize(100, (screenSize.getHeight()-100)/4);
-        points.setStyle(fx + "white;");
+        points.setStyle(FX + "white;");
         return points;
     }
 
@@ -83,7 +83,7 @@ public class InfoView {
         time.setFont(new Font(20));
         time.setAlignment(Pos.CENTER);
         time.setPrefSize(100,(screenSize.getHeight()-100)/4);
-        time.setStyle(fx + "white;");
+        time.setStyle(FX + "white;");
         return time;
     }
 

@@ -21,14 +21,14 @@ public class InputOutputView implements PropertyChangeListener {
         final HBox inputAndReturn = new HBox();
         inputAndReturnAndOutput = new VBox();
         screenSize = Screen.getPrimary().getVisualBounds();
-        backButton();
+        makeBackButton();
         outputArea();
         inputAndReturn.getChildren().addAll(backButton);
         inputAndReturn.setAlignment(Pos.BOTTOM_RIGHT);
         inputAndReturnAndOutput.getChildren().addAll(output, inputAndReturn);
     }
 
-    private final void backButton(){
+    private final void makeBackButton(){
         backButton = new Button("Back to start");
         backButton.setMinWidth(100);
     }

@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Arrays;
 
 public class MapView implements PropertyChangeListener{
     private GridPane g;
@@ -74,7 +75,7 @@ public class MapView implements PropertyChangeListener{
 
     //Sets the ImageView[][] map variable.
     public void setMap(ImageView[][] map){
-        this.map = map;
+        this.map = Arrays.copyOf(map, map.length);
     }
 
     //temporary solution that inactivates the mapView.
