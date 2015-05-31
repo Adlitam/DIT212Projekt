@@ -56,18 +56,7 @@ public class StartController implements EventHandler<ActionEvent> {
         this.view.getDeleteSlot3().setOnAction(this);
     }
 
-    //initializes all the views and controllers needed for the actual gameplay view.
-    /*private void play(){
-        final InfoView infoView = new InfoView();
-        infoController = new InfoController(model, infoView);
-        final InputOutputView inputView = new InputOutputView();
-        new InputOutputViewController(model, inputView, stage);
-        final MapView mapView = new MapView();
-        model.addPropertyChangeListener(mapView);
-        model.addPropertyChangeListener(inputView);
-        new MapController(model, mapView, stage);
-        new GameView(stage, mapView, infoView, inputView);
-    }*/
+
 
     //handle method for when the player presses the different slots and the back to start button.
     @Override
