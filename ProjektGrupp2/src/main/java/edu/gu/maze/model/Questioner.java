@@ -12,11 +12,6 @@ public class Questioner implements ISquare{
             return QUESTIONER;
     }
 
-    //@Override
-    //public String toString(){
-      //  return "Questioner";
-    //}
-
     @Override
     public void clearWay() {
         //do nothing

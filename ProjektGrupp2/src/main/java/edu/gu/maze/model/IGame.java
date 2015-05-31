@@ -24,7 +24,7 @@ public interface IGame {
     int isThisTheRightAnswer(int index);
 
     void startMatch(int map);
-// returns the number of Apples the user has
+    // returns the number of Apples the user has
     Integer getApples();
 
     // returns the number of Keys the user has
@@ -45,11 +45,6 @@ public interface IGame {
 
     void setGamesDoneToFalse();
 
-    // Returns the total score for the map
-    //public int getTotalScore();
-
-    //void setCurrentMatchToNull();
-
     //To create a player and set him/her as current player
     //Slot may be either Constants.SLOT1, Constants.SLOT2, or Constants.SLOT3
     //Type has possible values Constants.MAGE, Constants.WARRIOR, and Constants.THIEF
@@ -58,23 +53,19 @@ public interface IGame {
 
     void createPlayer(int slot, String name, int type);
     //select existing player
-
-    //public abstract void addRoadsToMap();
+    void selectPlayer (int slot);
+    
     void moveUp();
     void moveDown();
     void moveLeft();
     void moveRight();
-    void selectPlayer (int slot);
+    
     //Throws an exception if you try to delete a nonexistent player.
     void deletePlayer (int slot);
 
-    //Returns the current match
-    //Match getCurrentMatch();
-    
     //Retrieve specified high scores as formatted strings.
     //Results are sorted so that highest scores come first and newer scores 
     //before older ones.
-    //String[] getHighScoresForMap (int map);
     String[] getTotalHighScores();
     
     // returns the type of the player in slot, or -1 if there is no player in the slot.
@@ -92,5 +83,6 @@ public interface IGame {
     String getCurrentMapFilePath();
 
     //Returns the current level/map.
-    public int getCurrentLevel();
+    //TODO: This isn't used.
+    //public int getCurrentLevel();
 }

@@ -58,10 +58,10 @@ public class InputOutputView implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         switch(evt.getPropertyName()){
             case "NO_FINAL_KEY":
-                output.setText("The door is locked");
+                output.setText("The final door is locked");
                 break;
             case "NO_KEY":
-                output.setText("The final door is locked");
+                output.setText("The door is locked");
                 break;
             case "NO_APPLE":
                 output.setText("GIVE ME AN APPLE ARRRRRGG!!!!! \n\n\n The monster took 5 points ");

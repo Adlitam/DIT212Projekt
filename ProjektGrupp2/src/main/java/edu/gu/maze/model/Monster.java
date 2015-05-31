@@ -10,12 +10,7 @@ public class Monster implements ISquare {
     public int canIMoveHere() {
         return isHungry ? APPLE:YES;
     }
-
-    //@Override
-    //public String toString(){
-      //  return "Monster";
-    //}
-
+   
     @Override
     public void clearWay() {
         isHungry=false;

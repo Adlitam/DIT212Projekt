@@ -18,9 +18,4 @@ public class Road implements ISquare{
     public void clearWay() {
         //do nothing
     }
-
-    //@Override
-    //public String toString(){
-      //  return "R";
-    //}
 }

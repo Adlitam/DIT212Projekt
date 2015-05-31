@@ -102,15 +102,7 @@ public class Match {
         } else if (permission == Constants.YES) {
             map[y][x].clearWay();
             return Constants.YES;
-        } //else if (permission == Constants.GOTAPPLE) {
-            //apples++;
-            //map[y][x].clearWay();
-            //return Constants.GOTAPPLE;
-        //} else if (permission == Constants.GOTKEY) {
-          //  keys++;
-            //map[y][x].clearWay();
-            //return Constants.GOTKEY;
-        //}
+        }
         return Constants.NO;
     }
 
@@ -156,8 +148,6 @@ public class Match {
     protected void wrongAnswer() {
         score -= 5;
     }
-
-
 
     protected void setTime(int min, int sec) {
         time = min * 60 + sec;

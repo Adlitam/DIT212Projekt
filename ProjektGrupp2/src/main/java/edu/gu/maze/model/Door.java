@@ -10,11 +10,6 @@ public class Door implements ISquare {
         return open ? YES:KEY;
     }
 
-    //@Override
-    //public String toString(){
-      //  return "Door";
-    //}
-
     @Override
     public void clearWay() {
         open=true;

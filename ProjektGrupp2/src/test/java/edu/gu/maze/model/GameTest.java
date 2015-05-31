@@ -424,11 +424,11 @@ public class GameTest {
         assertEquals(expected, instance.getCurrentMapFilePath());
     }
     
-    @Test
+    /*@Test
     public void testGetCurrentLevel(){
         instance.createPlayer(0, "Harry Potter", MAGE);
         instance.startMatch(MAP1);
         assertEquals(instance.getCurrentLevel(), MAP1);
         
-    }
+    }*/
 }

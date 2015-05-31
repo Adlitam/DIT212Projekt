@@ -35,6 +35,7 @@ public class Game implements IGame, Serializable{
     @SuppressFBWarnings("SE_TRANSIENT_FIELD_NOT_RESTORED")
     private transient int currentLevel;
     
+    //This is for deserialisation
     private Object readResolve() {
         allQuestions = ResourceReader.readQuestions();
         return this;
@@ -300,7 +301,8 @@ public int isThisTheRightAnswer(int index) {
         return levels[currentLevel];
     }
     
-    public int getCurrentLevel(){
-        return currentLevel;
-    }
+    //TODO: this isn't used.
+    //public int getCurrentLevel(){
+    //    return currentLevel;
+    //}
 }

@@ -9,11 +9,6 @@ public class Chest implements ISquare {
         return open ? YES:CHEST;
     }
 
-    //@Override
-    //public String toString(){
-      //  return "Chest";
-    //}
-
     @Override
     public void clearWay() {
         open=true;

@@ -18,9 +18,4 @@ public class FinalDoor implements ISquare{
     public void clearWay() {
         //do nothing
     }
-
-    //@Override
-    //public String toString(){
-      //  return "F";
-    //}
 }
