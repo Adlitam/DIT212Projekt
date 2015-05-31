@@ -87,7 +87,11 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
     // Check if it is the right answer
     private void checkAnswer(int i){
         final TextArea output = view.getOutput();
+        try {
         output.setText(model.isThisTheRightAnswer(i) == 1 ? 
                 "Correct answer!! \nYou earned: \n5 Points \n1 Key \n1 Apple" : "Wrong answer!! \nYou lost 5 points");
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
     }
 }
