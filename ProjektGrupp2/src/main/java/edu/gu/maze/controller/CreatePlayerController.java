@@ -14,11 +14,9 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
     private final Game model;
     private final Stage stage;
     private final CreatePlayerView view;
-    private InfoController infoController;
-    private InfoView infoView;
-    private InputOutputView inputView;
+
     //private InputOutputViewController inputOutputViewController;
-    private MapView mapView;
+
     private int type;
 
     public CreatePlayerController(IGame model, CreatePlayerView view, Stage primaryStage){
@@ -64,10 +62,14 @@ public class CreatePlayerController implements EventHandler<ActionEvent> {
 
     //initializes all the views and controllers needed for the actual gameplay view.
     private void play(){
+        InfoController infoController;
+        InfoView infoView;
+        InputOutputView inputView;
         infoView = new InfoView();
         infoController = new InfoController(model, infoView);
         inputView = new InputOutputView();
         new InputOutputViewController(model, inputView, stage);
+        MapView mapView;
         mapView = new MapView();
         model.addPropertyChangeListener(mapView);
         model.addPropertyChangeListener(inputView);

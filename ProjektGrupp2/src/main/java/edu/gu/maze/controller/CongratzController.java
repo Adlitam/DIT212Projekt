@@ -13,10 +13,9 @@ public class CongratzController implements EventHandler<ActionEvent> {
     private final Game model;
     private final Stage stage;
     private final CongratzView view;
-    private InfoController infoController;
-    private InfoView infoView;
-    private InputOutputView inputView;
-    private MapView mapView;
+
+
+
 
     public CongratzController(IGame model, CongratzView view, Stage primaryStage){
         this.model = (Game) model;
@@ -32,11 +31,15 @@ public class CongratzController implements EventHandler<ActionEvent> {
     private void play(){
         model.setGamesDoneToFalse();
         model.setStopLoops(false);
+        InfoView infoView;
+        InputOutputView inputView;
         infoView = new InfoView();
+        InfoController infoController;
         infoController = new InfoController(model, infoView);
         inputView = new InputOutputView();
         new InputOutputViewController(model, inputView, stage);
         model.addPropertyChangeListener(inputView);
+        MapView mapView;
         mapView = new MapView();
         model.addPropertyChangeListener(mapView);
         new GameView(stage, mapView, infoView, inputView);

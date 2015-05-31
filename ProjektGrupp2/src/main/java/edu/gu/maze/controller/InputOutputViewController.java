@@ -45,15 +45,27 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
                     event.consume();
                     break;
                 case A:
-                    checkAnswer(0);
+                    try {
+                        checkAnswer(0);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     event.consume();
                     break;
                 case S:
-                    checkAnswer(1);
+                    try {
+                        checkAnswer(1);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     event.consume();
                     break;
                 case D:
-                    checkAnswer(2);
+                    try {
+                        checkAnswer(2);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     event.consume();
                     break;
                 default:
@@ -73,16 +85,12 @@ public class InputOutputViewController implements EventHandler<ActionEvent> {
     }
 
     // Check if it is the right answer
-    private void checkAnswer(int i){
+    private void checkAnswer(int i) throws Exception {
         final TextArea output = view.getOutput();
-        try {
-            if (model.isThisTheRightAnswer(i) == 1) {
-                output.setText("Correct answer!! \nYou earned: \n5 Points \n1 Key \n1 Apple");
-            } else {
-                output.setText("Wrong answer!! \nYou lost 5 points");
-            }
-        }catch (NullPointerException e){
-            System.err.print("You tried to asnwer a question without any questions!");
+        if (model.isThisTheRightAnswer(i) != 1) {
+            output.setText("Wrong answer!! \nYou lost 5 points");
+        } else {
+            output.setText("Correct answer!! \nYou earned: \n5 Points \n1 Key \n1 Apple");
         }
     }
 }

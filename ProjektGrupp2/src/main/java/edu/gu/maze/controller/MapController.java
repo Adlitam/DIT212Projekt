@@ -13,8 +13,8 @@ import javafx.stage.Stage;
 
 public class MapController implements EventHandler<KeyEvent> {
     private final IGame model;
-    private Stage stage;
-    private MapView view;
+    private final Stage stage;
+    private final MapView view;
     private AnimationTimer animationTimer;
 
     public MapController(IGame model, MapView view, Stage primaryStage){
@@ -35,7 +35,7 @@ public class MapController implements EventHandler<KeyEvent> {
                     animationTimer.stop();
                     if(model.isTheGameDone()) {
                         SavedInformationHandler.saveGame((Game) model);
-                        CongratzView congratzView = new CongratzView(stage);
+                        final CongratzView congratzView = new CongratzView(stage);
                         new CongratzController(model, congratzView, stage);
                     }
                 }
@@ -71,9 +71,9 @@ public class MapController implements EventHandler<KeyEvent> {
     //Initializes the mapView that the MapController is associated with.
     private void initializeMap(){
         view.setMap(ResourceReader.readMapForView(model.getCurrentMapFilePath()));
-        int startX = ResourceReader.getPlayerViewStartX(model.getCurrentMapFilePath());
-        int startY = ResourceReader.getPlayerViewStartY(model.getCurrentMapFilePath());
-        int type = model.getPlayerType();
+        final int startX = ResourceReader.getPlayerViewStartX(model.getCurrentMapFilePath());
+        final int startY = ResourceReader.getPlayerViewStartY(model.getCurrentMapFilePath());
+        final int type = model.getPlayerType();
         this.view.initializePlayer(startX, startY, type);
         this.view.initializeGrid(startX, startY);
         this.view.setMapNr(model.getCurrentLevel());

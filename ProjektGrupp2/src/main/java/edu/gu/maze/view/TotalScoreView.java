@@ -39,7 +39,7 @@ public class TotalScoreView {
 
     //shows the list with all highscore for every player that
     //have played the game
-    private final void createList(){
+    private void createList(){
         final VBox vBox = new VBox();
         Label player;
         if(score.length == 0){
