@@ -157,23 +157,7 @@ public class Match {
         score -= 5;
     }
 
-    //TODO: We are not going to need this.
-    /*@Override
-    public String toString() {
-        final StringBuilder buf = new StringBuilder();
 
-        for (final ISquare[] i : map){
-            for (final ISquare s : i){
-
-        for (ISquare[] i : map) {
-            for (ISquare s : i) {
-
-                buf.append(s.toString());
-            }
-            buf.append('\n');
-        }
-        return buf.toString();
-    }*/
 
     protected void setTime(int min, int sec) {
         time = min * 60 + sec;

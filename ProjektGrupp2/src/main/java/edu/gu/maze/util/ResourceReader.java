@@ -21,12 +21,12 @@ public class ResourceReader {
             throw new RuntimeException ("Couldn't find Question file");
         }
         //The first line in the file should contain the starting x and y positions
-        int x = Integer.parseInt(s.next());
-        int y = Integer.parseInt(s.next());
-        ArrayList<ISquare[]> list = new ArrayList<>();
+        final int x = Integer.parseInt(s.next());
+        final int y = Integer.parseInt(s.next());
+        final ArrayList<ISquare[]> list = new ArrayList<>();
         while(s.hasNext()){
             ArrayList<ISquare> snd = new ArrayList<>();
-            for (char c : s.next().toCharArray()){
+            for (final char c : s.next().toCharArray()){
                 if (c=='W') snd.add(new Wall());   
                 else if (c=='F')snd.add(new FinalDoor());
                 else if (c=='D')snd.add(new Door());
@@ -49,14 +49,14 @@ public class ResourceReader {
         } catch (FileNotFoundException e){
             throw new RuntimeException ("Couldn't find Question file");
         }
-        ArrayList<Question> list = new ArrayList<Question>();
+        final ArrayList<Question> list = new ArrayList<Question>();
         while (s.hasNextLine()){
             String question;
             do {
                 question = s.nextLine();
                 
             } while (question.isEmpty());
-            String[] answers = new String[3];
+            final String[] answers = new String[3];
             answers[0]= "A. " + s.nextLine();
             answers[1]= "S. " + s.nextLine();
             answers[2]= "D. " + s.nextLine();
@@ -78,7 +78,7 @@ public class ResourceReader {
         }
         s.next();
         s.next();
-        ArrayList<ImageView[]> temp1 = new ArrayList();
+        final ArrayList<ImageView[]> temp1 = new ArrayList();
         int i = 0;
         while(s.hasNext()){
             int j = 0;

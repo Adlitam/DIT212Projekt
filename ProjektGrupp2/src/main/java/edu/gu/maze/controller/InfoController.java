@@ -25,7 +25,7 @@ public class InfoController{
 
                 // Stop the timer if the game is done
                 // else shows the updated time,apple,key and score
-                if(model.getStopLoops()){
+                if(model.isStopLoops()){
                     animationTimer.stop();
                 }else {
                     // Displays the time in minutes and seconds

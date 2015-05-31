@@ -365,7 +365,7 @@ public class GameTest {
 
     @Test // No errors
     public void testGetStopLoops(){
-        instance.getStopLoops();
+        instance.isStopLoops();
     }
 
     private void helptestGetTotalHighScores2(){

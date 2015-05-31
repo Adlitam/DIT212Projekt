@@ -67,7 +67,7 @@ public class Game implements IGame, Serializable{
 
 @Override
 public int isThisTheRightAnswer(int index) {
-    boolean a = currentQuestion.isThisTheRightAnswer(index);
+    final boolean a = currentQuestion.isThisTheRightAnswer(index);
     currentQuestion = null;
     if(a){
         currentMatch.correctAnswer();
@@ -98,7 +98,7 @@ public int isThisTheRightAnswer(int index) {
     }
 
     @Override
-    public boolean getStopLoops() {
+    public boolean isStopLoops() {
         return stopLoops;
     }
 
@@ -164,11 +164,11 @@ public int isThisTheRightAnswer(int index) {
 
     @Override
 
-    public void deletePlayer(int Slot){
-            if (slots[Slot]==null) {
-                throw new RuntimeException("Slot " + Slot + "is already empty.");
+    public void deletePlayer(int slot){
+            if (slots[slot]==null) {
+                throw new RuntimeException("slot " + slot + "is already empty.");
             }
-            slots[Slot]=null;  
+            slots[slot]=null;
     }
 
     @Override

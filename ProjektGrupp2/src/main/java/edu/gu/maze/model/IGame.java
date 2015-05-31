@@ -41,7 +41,7 @@ public interface IGame {
 
     // Tells the controllers to stop all loop
     void setStopLoops(boolean bool);
-    boolean getStopLoops();
+    boolean isStopLoops();
 
     void setGamesDoneToFalse();
 
