@@ -198,7 +198,7 @@ public int isThisTheRightAnswer(int index) {
     private void move(int i , String direction){
 
         if (i == YES){
-            pcs.firePropertyChange(direction+currentLevel, "value1", "value2");
+            pcs.firePropertyChange(direction, "value1", "value2");
             pcs.firePropertyChange("YES", "value1", "value2");
         }
 
@@ -297,10 +297,5 @@ public int isThisTheRightAnswer(int index) {
     @Override
     public int getPlayerType(){
         return currentPlayer.getType();
-    }
-
-    @Override
-    public int getCurrentLevel(){
-        return currentLevel;
     }
 }

@@ -37,6 +37,7 @@ public class MapController implements EventHandler<KeyEvent> {
                         SavedInformationHandler.saveGame((Game) model);
                         final CongratzView congratzView = new CongratzView(stage);
                         new CongratzController(model, congratzView, stage);
+                        view.inactivate();
                     }
                 }
             }
@@ -71,11 +72,10 @@ public class MapController implements EventHandler<KeyEvent> {
     //Initializes the mapView that the MapController is associated with.
     private void initializeMap(){
         view.setMap(ResourceReader.readMapForView(model.getCurrentMapFilePath()));
-        final int startX = ResourceReader.getPlayerViewStartX(model.getCurrentMapFilePath());
-        final int startY = ResourceReader.getPlayerViewStartY(model.getCurrentMapFilePath());
-        final int type = model.getPlayerType();
-        this.view.initializePlayer(startX, startY, type);
-        this.view.initializeGrid(startX, startY);
-        this.view.setMapNr(model.getCurrentLevel());
+        this.view.initializePlayer(ResourceReader.getPlayerViewStartX(model.getCurrentMapFilePath()),
+                ResourceReader.getPlayerViewStartY(model.getCurrentMapFilePath()),
+                model.getPlayerType());
+        this.view.initializeGrid(ResourceReader.getPlayerViewStartX(model.getCurrentMapFilePath()),
+                ResourceReader.getPlayerViewStartY(model.getCurrentMapFilePath()));
     }
 }

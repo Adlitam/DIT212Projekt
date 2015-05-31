@@ -90,7 +90,4 @@ public interface IGame {
 
     //Returns the type of the current player.
     int getPlayerType();
-
-    //Returns the current level/map.
-    public int getCurrentLevel();
 }

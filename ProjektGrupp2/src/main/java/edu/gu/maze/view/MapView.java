@@ -9,10 +9,11 @@ public class MapView implements PropertyChangeListener{
     private GridPane g;
     private PlayerView player;
     private ImageView[][] map;
-    private int mapNr;
+    private boolean inUse;
 
     public MapView() {
         createMapGridPane();
+        inUse = true;
     }
 
     //Initializes the GridPane, g.
@@ -52,21 +53,22 @@ public class MapView implements PropertyChangeListener{
     //Listening on the model for changes
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        String s1 = "UP" + mapNr;
-        String s2 = "DOWN" + mapNr;
-        String s3 = "LEFT" + mapNr;
-        String s4 = "RIGHT" + mapNr;
-        if(evt.getPropertyName().equals(s1)){
-            movePlayer(player.getxPos(), player.getyPos() - 1);
-        }
-        if(evt.getPropertyName().equals(s2)){
-            movePlayer(player.getxPos(),player.getyPos()+1);
-        }
-        if(evt.getPropertyName().equals(s3)){
-            movePlayer(player.getxPos()-1,player.getyPos());
-        }
-        if(evt.getPropertyName().equals(s4)){
-            movePlayer(player.getxPos()+1,player.getyPos());
+        if(inUse){
+            switch(evt.getPropertyName()){
+                case "UP":
+                    movePlayer(player.getxPos(),player.getyPos()-1);
+                    break;
+                case "DOWN":
+                    movePlayer(player.getxPos(),player.getyPos()+1);
+                    break;
+                case "LEFT":
+                    movePlayer(player.getxPos()-1,player.getyPos());
+                    break;
+                case "RIGHT":
+                    movePlayer(player.getxPos()+1,player.getyPos());
+                    break;
+                default:
+            }
         }
     }
 
@@ -75,8 +77,8 @@ public class MapView implements PropertyChangeListener{
         this.map = map;
     }
 
-    //Sets the int mapNr variable.
-    public void setMapNr(int mapNr){
-        this.mapNr = mapNr;
+    //temporary solution that inactivates the mapView.
+    public void inactivate(){
+        inUse = false;
     }
 }
