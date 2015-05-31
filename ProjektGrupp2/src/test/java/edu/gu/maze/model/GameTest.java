@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import edu.gu.maze.util.Constants;
+import static edu.gu.maze.util.Constants.MAGE;
+import static edu.gu.maze.util.Constants.MAP1;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -60,7 +62,7 @@ public class GameTest {
         instance.isThisTheRightAnswer(3);
     }
 
-    // Test with a answer between 0 and 2
+    // Test with an answer between 0 and 2
     @Test
     public void testIsThisTheRightAnswer3(){
         instance.createPlayer(0, "bla", 0);
@@ -176,6 +178,12 @@ public class GameTest {
     public void testGetPlayerType2(){
         final int type = instance.getPlayerType(0);
         assertEquals(-1,type);
+    }
+    
+    @Test
+    public void testGetPlayerType3(){
+        instance.createPlayer(0,"Glenn",0);
+        assertEquals(0, instance.getPlayerType());
     }
 
 
@@ -407,5 +415,20 @@ public class GameTest {
             i.printStackTrace();
         }
     }
-
+    
+    @Test
+    public void testGetCurrentMapFilePath(){
+        instance.createPlayer(0, "Harry Potter", MAGE);
+        instance.startMatch(MAP1);
+        final String expected = "src/main/resources/edu/gu/maze/util/Level1.txt";
+        assertEquals(expected, instance.getCurrentMapFilePath());
+    }
+    
+    @Test
+    public void testGetCurrentLevel(){
+        instance.createPlayer(0, "Harry Potter", MAGE);
+        instance.startMatch(MAP1);
+        assertEquals(instance.getCurrentLevel(), MAP1);
+        
+    }
 }

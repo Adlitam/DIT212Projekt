@@ -79,6 +79,9 @@ public interface IGame {
     
     // returns the type of the player in slot, or -1 if there is no player in the slot.
     int getPlayerType(int slot);
+    //Returns the type of the current player.
+    int getPlayerType();
+    
     //Returns player name or empty string if there is no player in the slot.
     String getPlayerName(int slot);
     
@@ -87,9 +90,6 @@ public interface IGame {
 
     //Returns the path for the current map used by the model.
     String getCurrentMapFilePath();
-
-    //Returns the type of the current player.
-    int getPlayerType();
 
     //Returns the current level/map.
     public int getCurrentLevel();

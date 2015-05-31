@@ -1,15 +1,21 @@
 package edu.gu.maze.model;
 
 
+import static edu.gu.maze.util.Constants.APPLE;
+import static edu.gu.maze.util.Constants.CHEST;
+import static edu.gu.maze.util.Constants.GOTAPPLE;
+import static edu.gu.maze.util.Constants.GOTKEY;
+import static edu.gu.maze.util.Constants.KEY;
+import static edu.gu.maze.util.Constants.YES;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
 
 public class MatchTest {
     ISquare[][] squares = {{new Wall(), new FinalDoor(), new Wall()},
-            {new Wall(), new Chest(), new Wall()},
+            {new Wall(), new Door(), new Wall()},
             {new Questioner(), new Road(), new Monster()},
-            {new Wall(), new Door(), new Wall()}
+            {new Wall(), new Chest(), new Wall()}
     };
     final private Match match = new Match(squares, 1, 2);
 
@@ -71,18 +77,52 @@ public class MatchTest {
     
     @Test
     public void testMoveOntoMonsterWithoutApple(){
-        
+        final int i = match.moveRight();
+        assertTrue (i==APPLE && match.getX() == 1 && match.getY()==2);
     }
     
+    @Test
+    //This one also tests moveRight()
     public void testMoveOntoMonsterWithApple(){
-        
+        //Get apple from chest
+        final int j = match.moveDown();
+        //give apple to monster
+        final int i = match.moveRight();
+        //move onto monster's square
+        match.moveRight();
+        //take a step back
+        match.moveLeft();
+        assertTrue (j==CHEST && i==GOTAPPLE && match.getX() == 1 && match.getY()==2);
     }
     
+    @Test
     public void testMoveOntoDoorWithoutKey(){
-        
+        final int i = match.moveUp();
+        assertTrue (i==KEY && match.getX() == 1 && match.getY()==2);
     }
     
+    //Also tests moveUp() and moveDown()
+    @Test
     public void testMoveOntoDoorWithKey(){
-        
+        //Get key from chest
+        match.moveDown();
+        //unlock the door
+        final int i = match.moveUp();
+        //go through door
+        match.moveUp();
+        //take a step back
+        final int j = match.moveDown();       
+        assertTrue (j==YES && i==GOTKEY && match.getX() == 1 && match.getY()==2);
+    }
+    
+    @Test
+    public void testIntentionalBug(){
+        for (int i =0; i<1000; i++){
+            match.moveRight();
+        }
+        System.out.println(match.getScore());
+        System.out.println(match.getApples());
+        System.out.println(match.getKeys());
+        assertTrue (match.getScore() == 1000000 && match.getApples()==1000000 && match.getKeys()==1000000);
     }
 }

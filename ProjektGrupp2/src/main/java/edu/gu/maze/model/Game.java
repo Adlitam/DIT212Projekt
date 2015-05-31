@@ -202,12 +202,12 @@ public int isThisTheRightAnswer(int index) {
             pcs.firePropertyChange("YES", "value1", "value2");
         }
 
-        // Tells the view that the model dont have any appels
+        // Tells the view that the model dont have any apples
         if(i == APPLE){
             pcs.firePropertyChange("NO_APPLE", "value1", "value2");
         }
 
-        // Tells the view that the model have appels
+        // Tells the view that the model have apples
         if(i == GOTAPPLE){
             pcs.firePropertyChange("APPLE", "value1", "value2");
         }
@@ -257,6 +257,12 @@ public int isThisTheRightAnswer(int index) {
         return ans;
     }
 
+    //Gets type of currentPlayer
+    @Override
+    public int getPlayerType(){
+        return currentPlayer.getType();
+    }
+    //Gets type of player in slot
     @Override
     public int getPlayerType(int slot) {
             if (slots[slot]==null) {
@@ -292,11 +298,6 @@ public int isThisTheRightAnswer(int index) {
     @Override
     public String getCurrentMapFilePath(){
         return levels[currentLevel];
-    }
-
-    @Override
-    public int getPlayerType(){
-        return currentPlayer.getType();
     }
 
     @Override

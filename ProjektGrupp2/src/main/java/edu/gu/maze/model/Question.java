@@ -13,9 +13,9 @@ public class Question{
             throw new IllegalArgumentException("Tried to initialize Question object with null");
         }
         this.q = q;
-        if (a.length<2) {
-            throw new IllegalArgumentException ("Attempted to initialize a Question with"
-                + " fewer than two answers.");
+        if (a.length!=3) {
+            throw new IllegalArgumentException ("Attempted to initialize a Question with "
+                + a.length + " answers. You need 3.");
         }
         answers = Arrays.copyOf(a, a.length);
         if (r<0|| r>= a.length) {
