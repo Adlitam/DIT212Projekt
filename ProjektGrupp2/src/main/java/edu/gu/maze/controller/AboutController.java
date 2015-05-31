@@ -1,6 +1,5 @@
 package edu.gu.maze.controller;
 
-import edu.gu.maze.model.Game;
 import edu.gu.maze.model.IGame;
 import edu.gu.maze.view.AboutView;
 import edu.gu.maze.view.MainView;
@@ -9,12 +8,12 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 public class AboutController implements EventHandler<ActionEvent> {
-    private final Game model;
+    private final IGame model;
     private final Stage stage;
     private final AboutView view;
 
     public AboutController(IGame model, AboutView view, Stage primaryStage){
-        this.model = (Game) model;
+        this.model = model;
         this.stage = primaryStage;
         this.view = view;
         this.view.getBackButton().setOnAction(this);

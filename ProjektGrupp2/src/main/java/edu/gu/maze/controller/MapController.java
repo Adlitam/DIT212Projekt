@@ -8,14 +8,13 @@ import edu.gu.maze.view.CongratzView;
 import edu.gu.maze.view.MapView;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class MapController implements EventHandler<KeyEvent> {
     private final IGame model;
     private Stage stage;
-    private final MapView view;
+    private MapView view;
     private AnimationTimer animationTimer;
 
     public MapController(IGame model, MapView view, Stage primaryStage){
@@ -23,8 +22,7 @@ public class MapController implements EventHandler<KeyEvent> {
         this.model = model;
         this.view = view;
         this.view.getMap().setOnKeyPressed(this);
-        //ImageView[][] map = ResourceReader.readMapForView((String) evt.getOldValue());
-
+        initializeMap();
         initializeTimer();
     }
 
@@ -68,5 +66,16 @@ public class MapController implements EventHandler<KeyEvent> {
                 break;
             default:
         }
+    }
+
+    //Initializes the mapView that the MapController is associated with.
+    private void initializeMap(){
+        view.setMap(ResourceReader.readMapForView(model.getCurrentMapFilePath()));
+        int startX = ResourceReader.getPlayerViewStartX(model.getCurrentMapFilePath());
+        int startY = ResourceReader.getPlayerViewStartY(model.getCurrentMapFilePath());
+        int type = model.getPlayerType();
+        this.view.initializePlayer(startX, startY, type);
+        this.view.initializeGrid(startX, startY);
+        this.view.setMapNr(model.getCurrentLevel());
     }
 }

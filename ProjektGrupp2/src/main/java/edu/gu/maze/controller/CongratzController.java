@@ -14,6 +14,9 @@ public class CongratzController implements EventHandler<ActionEvent> {
     private final Stage stage;
     private final CongratzView view;
     private InfoController infoController;
+    private InfoView infoView;
+    private InputOutputView inputView;
+    private MapView mapView;
 
     public CongratzController(IGame model, CongratzView view, Stage primaryStage){
         this.model = (Game) model;
@@ -26,17 +29,21 @@ public class CongratzController implements EventHandler<ActionEvent> {
     }
 
     //initializes all the views and controllers needed for the actual gameplay view.
-    /*private void play(){
-        final InfoView infoView = new InfoView();
+    private void play(){
+        model.setGamesDoneToFalse();
+        model.setStopLoops(false);
+        infoView = new InfoView();
         infoController = new InfoController(model, infoView);
-        final InputOutputView inputView = new InputOutputView();
+        inputView = new InputOutputView();
         new InputOutputViewController(model, inputView, stage);
-        final MapView mapView = new MapView();
-        model.addPropertyChangeListener(mapView);
         model.addPropertyChangeListener(inputView);
-        new MapController(model, mapView, stage);
+        mapView = new MapView();
+        model.addPropertyChangeListener(mapView);
         new GameView(stage, mapView, infoView, inputView);
-    }*/
+        model.startMatch(Constants.MAP2);
+        infoController.setAnimationTimer();
+        new MapController(model, mapView, stage);
+    }
 
     //handle method for when the player presses the back to start button and the next map button.
     @Override
@@ -48,19 +55,7 @@ public class CongratzController implements EventHandler<ActionEvent> {
             new MainController(model, mainView, stage);
         }
         if (b == view.getNextMap()) {
-            model.setGamesDoneToFalse();
-            model.setStopLoops(false);
-            final InfoView infoView = new InfoView();
-            infoController = new InfoController(model, infoView);
-            final InputOutputView inputView = new InputOutputView();
-            new InputOutputViewController(model, inputView, stage);
-            final MapView mapView = new MapView();
-            model.addPropertyChangeListener(mapView);
-            model.addPropertyChangeListener(inputView);
-            new GameView(stage, mapView, infoView, inputView);
-            model.startMatch(Constants.MAP2);
-            infoController.setAnimationTimer();
-            new MapController(model, mapView, stage);
+            play();
         }
     }
 }

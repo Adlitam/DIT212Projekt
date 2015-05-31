@@ -75,7 +75,7 @@ public class StartController implements EventHandler<ActionEvent> {
         final Object b = event.getSource();
         if(b == view.getSlot1Button()){
             if(view.checkSlot1()){
-                 model.setStopLoops(false);
+                model.setStopLoops(false);
                 final InfoView infoView = new InfoView();
                 infoController = new InfoController(model, infoView);
                 final InputOutputView inputView = new InputOutputView();
@@ -83,9 +83,7 @@ public class StartController implements EventHandler<ActionEvent> {
                 final MapView mapView = new MapView();
                 model.addPropertyChangeListener(mapView);
                 model.addPropertyChangeListener(inputView);
-                //new MapController(model, mapView, stage);
                 new GameView(stage, mapView, infoView, inputView);
-
                 model.selectPlayer(Constants.SLOT1);
                 model.startMatch(Constants.MAP1);
                 new MapController(model, mapView, stage);
@@ -105,9 +103,7 @@ public class StartController implements EventHandler<ActionEvent> {
                 final MapView mapView = new MapView();
                 model.addPropertyChangeListener(mapView);
                 model.addPropertyChangeListener(inputView);
-                //new MapController(model, mapView, stage);
                 new GameView(stage, mapView, infoView, inputView);
-
                 model.selectPlayer(Constants.SLOT2);
                 model.startMatch(Constants.MAP1);
                 new MapController(model, mapView, stage);
@@ -127,9 +123,7 @@ public class StartController implements EventHandler<ActionEvent> {
                 final MapView mapView = new MapView();
                 model.addPropertyChangeListener(mapView);
                 model.addPropertyChangeListener(inputView);
-                //new MapController(model, mapView, stage);
                 new GameView(stage, mapView, infoView, inputView);
-
                 model.selectPlayer(Constants.SLOT2);
                 model.startMatch(Constants.MAP1);
                 new MapController(model, mapView, stage);

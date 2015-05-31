@@ -66,7 +66,9 @@ public class ResourceReader {
         return list.toArray(new Question[1]);
     }
 
-    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
+    //Method for getting the current map from the level.txt file specified and
+    //returning it as a two-dimensional ImageView array.
+    @SuppressFBWarnings({"DM_DEFAULT_ENCODING", "NP_NULL_ON_SOME_PATH_EXCEPTION"})
     public static ImageView[][] readMapForView(String filename){
         Scanner s = null;
         try{
@@ -112,7 +114,31 @@ public class ResourceReader {
             temp1.add(temp2.toArray(new ImageView[temp2.size()]));
             i++;
         }
-        ImageView[][] map = temp1.toArray(new ImageView[i][temp1.size()]);
-        return map;
+        return temp1.toArray(new ImageView[i][temp1.size()]);
+    }
+
+    //Method for getting the starting x-position for the current map from the level.txt file.
+    @SuppressFBWarnings({"DM_DEFAULT_ENCODING", "NP_NULL_ON_SOME_PATH_EXCEPTION"})
+    public static int getPlayerViewStartX(String filename){
+        Scanner s = null;
+        try{
+            s = new Scanner(new File(filename));
+        }catch(IOException e){
+            System.err.println("could not read the file: " + filename + " while trying to initialize player in view.");
+        }
+        return Integer.parseInt(s.next());
+    }
+
+    //Method for getting the starting y-position for the current map from the level.txt file.
+    @SuppressFBWarnings({"DM_DEFAULT_ENCODING", "NP_NULL_ON_SOME_PATH_EXCEPTION"})
+    public static int getPlayerViewStartY(String filename){
+        Scanner s = null;
+        try{
+            s = new Scanner(new File(filename));
+        }catch(IOException e){
+            System.err.println("could not read the file: " + filename + " while trying to initialize player in view.");
+        }
+        s.next();
+        return Integer.parseInt(s.next());
     }
 }

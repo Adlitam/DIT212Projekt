@@ -84,5 +84,13 @@ public interface IGame {
     
     //Returns a player's combined high score for all maps, or -1 if there is no player in slot.
     int getPlayerTotalScore (int slot);
-    
+
+    //Returns the path for the current map used by the model.
+    String getCurrentMapFilePath();
+
+    //Returns the type of the current player.
+    int getPlayerType();
+
+    //Returns the current level/map.
+    public int getCurrentLevel();
 }
